@@ -9,3 +9,4 @@ class IndexClassView(ListView):
 
     model = Blog
     template_name = "blog/index.html"
+    context_object_name = "blogs"

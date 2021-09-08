@@ -10,6 +10,7 @@ class BlogAdmin(admin.ModelAdmin):
 
     date_hierarchy = "created_at"
     list_display = ["title", "created_at", "updated_at", "slug"]
+    list_filter = ["created_at", "updated_at"]
     ordering = ("-created_at",)
     search_fields = ["title"]
     readonly_fields = ["slug"]

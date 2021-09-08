@@ -33,4 +33,13 @@ class Blog(models.Model):
 
 
 class SitePreferences(Preferences):
-    sitename = models.CharField(max_length=50)
+    """Define the global site settings."""
+
+    sitename = models.CharField(max_length=50, default="My Sexy Blog")
+    title = models.CharField(max_length=20, default="My Blog")
+    heading = models.CharField(
+        max_length=200, default="A blog of blogging blogosity."
+    )
+
+    class Meta:
+        verbose_name_plural = "Site Preferences"

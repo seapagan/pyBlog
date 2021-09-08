@@ -32,7 +32,6 @@
   "python.linting.flake8Args": ["--max-line-length=80"],
   "python.linting.flake8Enabled": true,
   "python.linting.pydocstyleArgs": ["--convention=google"],
-  "python.linting.pydocstyleEnabled": true,
   "python.linting.pylintArgs": [
     "--load-plugins",
     "pylint_django",
@@ -48,5 +47,6 @@
   "python.testing.pytestEnabled": false,
   "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "*_test.py"],
   "python.testing.unittestEnabled": false,
-  "testExplorer.addToEditorContextMenu": true
+  "testExplorer.addToEditorContextMenu": true,
+  "cornflakes.linter.executablePath": "/home/seapagan/.pyenv/versions/myblog/bin/flake8"
 }

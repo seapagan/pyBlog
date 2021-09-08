@@ -16,6 +16,11 @@ class Blog(models.Model):
     body = models.TextField()
     slug = models.SlugField(default="")
 
+    class Meta:
+        """Meta configuration for the Blog model."""
+
+        ordering = ["-created_at"]
+
     def __str__(self):
         """Return string representation of the Blog object."""
         return self.title

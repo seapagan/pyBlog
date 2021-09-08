@@ -1,3 +1,11 @@
-from django.shortcuts import render
+"""Define the views for the 'blog' application."""
+from django.views.generic import ListView
 
-# Create your views here.
+from blog.models import Blog
+
+
+class IndexClassView(ListView):
+    """Define a ListView for the index (Blog main page)."""
+
+    model = Blog
+    template_name = "blog/index.html"

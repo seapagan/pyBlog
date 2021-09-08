@@ -5,6 +5,8 @@ from blog.models import Blog
 
 
 class BlogAdmin(admin.ModelAdmin):
+    """Define a custom admin class for the Blog model."""
+
     date_hierarchy = "created_at"
     list_display = ["title", "created_at", "updated_at"]
     ordering = ("-created_at",)

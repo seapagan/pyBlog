@@ -15,4 +15,5 @@ class Blog(models.Model):
     body = models.TextField()
 
     def __str__(self):
+        """Return string representation of the Blog object."""
         return self.title

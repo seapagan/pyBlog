@@ -1,7 +1,7 @@
 {% extends 'blog/_base.html' %}
 
 {% block body %}
-<h1>This is the Template</h1>
+<h1>{{ preferences.SitePreferences.sitename }}</h1>
 <div class="container">
   {% for blog in blogs %}
   <h2 class="blog-title">{{ blog.title }}</h2>

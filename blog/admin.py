@@ -1,7 +1,8 @@
 """Configure and customise the default Admin site."""
 from django.contrib import admin
+from preferences.admin import PreferencesAdmin
 
-from blog.models import Blog
+from blog.models import Blog, SitePreferences
 
 
 class BlogAdmin(admin.ModelAdmin):
@@ -15,3 +16,4 @@ class BlogAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Blog, BlogAdmin)
+admin.site.register(SitePreferences, PreferencesAdmin)

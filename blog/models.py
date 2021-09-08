@@ -1,6 +1,7 @@
 """Define the Database models for this application."""
 from django.db import models
 from django.template.defaultfilters import slugify
+from preferences.models import Preferences
 
 
 class Blog(models.Model):
@@ -29,3 +30,7 @@ class Blog(models.Model):
         """Override the save fumction, so we can generate the slug."""
         self.slug = slugify(self.title)
         super(Blog, self).save(*args, **kwargs)
+
+
+class SitePreferences(Preferences):
+    sitename = models.CharField(max_length=50)

@@ -36,7 +36,7 @@
     "--load-plugins",
     "pylint_django",
     "--django-settings-module",
-    "CHANGE.settings"
+    "myblog.settings"
   ],
   "python.linting.pylintEnabled": true,
   "python.linting.pylintUseMinimalCheckers": false,

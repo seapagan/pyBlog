@@ -3,24 +3,25 @@
 {% block body %}
 <h1>{{ preferences.SitePreferences.sitename }}</h1>
 <div>{{ preferences.SitePreferences.heading }}</div>
-<div class="container">
+<main class="container">
   {% for blog in blogs %}
-  <h2 class="blog-title">{{ blog.title }}</h2>
-  <h3 class="blog-description">{{ blog.desc }}</h3>
-  <div class="blog-date-wrapper">Posted : <span
-      class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
-    {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
-    <span class="blog-date-updated">(Updated at
-      {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
-    {% endif %}
-  </div>
-  <div class="blog-body">
-    {{ blog.body }}
-  </div>
-  <div class="blog-buttons">
-    <a href="{{ blog.slug }}">View</a>
-  </div>
+  <article>
+    <h2 class="blog-title">{{ blog.title }}</h2>
+    <h3 class="blog-description">{{ blog.desc }}</h3>
+    <div class="blog-date-wrapper">Posted : <span
+        class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
+      {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
+      <span class="blog-date-updated">(Updated at
+        {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
+      {% endif %}
+    </div>
+    <div class="blog-buttons">
+      <a href="{{ blog.slug }}">View</a>
+    </div>
+  </article>
   {% endfor %}
-</div>
+</main>
+
+<div class="blog-new-article"></div>
 
 {% endblock body %}

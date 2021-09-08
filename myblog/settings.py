@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "preferences",
     "blog",
+    "users",
 ]
 
 MIDDLEWARE = [

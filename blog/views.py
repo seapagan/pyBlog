@@ -1,5 +1,5 @@
 """Define the views for the 'blog' application."""
-from django.views.generic import TemplateView
+from django.views.generic import DetailView, TemplateView
 
 from blog.models import Blog
 
@@ -18,3 +18,10 @@ class IndexClassView(TemplateView):
         context = super(IndexClassView, self).get_context_data(**kwargs)
         context["blogs"] = Blog.objects.all()
         return context
+
+
+class PostDetailView(DetailView):
+    """Display an actual blog post."""
+
+    model = Blog
+    template = "blog/detail.html"

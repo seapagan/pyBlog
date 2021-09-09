@@ -21,7 +21,7 @@
       {% endif %}
     </div>
     <div class="blog-buttons">
-      <a href="{{ blog.slug }}">View</a>
+      <a href="{% url 'blog:detail' blog.slug %}">View</a>
     </div>
   </article>
   {% endfor %}

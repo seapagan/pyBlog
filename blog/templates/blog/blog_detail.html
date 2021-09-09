@@ -1,0 +1,19 @@
+{% extends 'blog/_base.html' %}
+
+{% block body %}
+<article>
+  <h2 class="blog-title">{{ blog.title }}</h2>
+  <h3 class="blog-description">{{ blog.desc }}</h3>
+  <div class="blog-date-wrapper">Posted : <span
+      class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
+    {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
+    <span class="blog-date-updated">(Updated at
+      {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
+    {% endif %}
+  </div>
+  <div class="blog-body">
+    {{ blog.body }}
+  </div>
+</article>
+<a href="{% url 'blog:index' %}">Back to Index</a>
+{% endblock body %}

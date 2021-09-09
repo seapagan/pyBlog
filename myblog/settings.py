@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "preferences",
     "blog",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -127,7 +128,17 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = "static"
 
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = "blog:index"
+LOGIN_URL = "login"
+
+# set a SITE_ID, due to the (3rd party) 'preferences' app using the sites
+# functionality. long term, rewrite the addon to remove this need.
+SITE_ID = 2

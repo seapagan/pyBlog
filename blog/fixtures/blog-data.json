@@ -1,0 +1,107 @@
+[
+{
+    "model": "blog.blog",
+    "pk": 1,
+    "fields": {
+        "title": "test of entry",
+        "desc": "test entry",
+        "created_at": "2021-09-08T09:13:29.664Z",
+        "updated_at": "2021-09-09T10:42:52.288Z",
+        "body": "this is a test blog entry",
+        "slug": "test-of-entry"
+    }
+},
+{
+    "model": "blog.blog",
+    "pk": 2,
+    "fields": {
+        "title": "second test with a changed title",
+        "desc": "Another test entry",
+        "created_at": "2021-09-08T09:22:48.025Z",
+        "updated_at": "2021-09-08T11:14:00.629Z",
+        "body": "This is the text for the second text entry.",
+        "slug": "second-test-with-a-changed-title"
+    }
+},
+{
+    "model": "blog.blog",
+    "pk": 3,
+    "fields": {
+        "title": "auto slug test with a longer title",
+        "desc": "Testing slug",
+        "created_at": "2021-09-08T11:06:31.330Z",
+        "updated_at": "2021-09-08T14:49:59.772Z",
+        "body": "content content content content content content content content \r\ncontent content vcontent v\r\nv\r\nvcontent v\r\ncontent content content content \r\n\r\n\r\ncontent",
+        "slug": "auto-slug-test-with-a-longer-title"
+    }
+},
+{
+    "model": "blog.blog",
+    "pk": 4,
+    "fields": {
+        "title": "Interesting stuff",
+        "desc": "oooh look at all the interesting stuff here!",
+        "created_at": "2021-09-08T14:50:51.454Z",
+        "updated_at": "2021-09-08T14:50:51.454Z",
+        "body": "nothing here",
+        "slug": "interesting-stuff"
+    }
+},
+{
+    "model": "blog.blog",
+    "pk": 5,
+    "fields": {
+        "title": "using block diagrams",
+        "desc": "single line title",
+        "created_at": "2021-09-09T10:41:55.562Z",
+        "updated_at": "2021-09-09T14:38:35.942Z",
+        "body": "this is a body\r\n\r\nblockdiag {\r\n    default_shape = roundedbox;\r\n    default_node_color = lightyellow;\r\n    default_fontsize = 6;\r\n\r\n    Root -> B -> C -> D;\r\n    Root -> E -> F -> G;\r\n}",
+        "slug": "using-block-diagrams"
+    }
+},
+{
+    "model": "blog.blog",
+    "pk": 6,
+    "fields": {
+        "title": "Markdown test",
+        "desc": "This post will be written using markdown",
+        "created_at": "2021-09-09T11:28:58.356Z",
+        "updated_at": "2021-09-09T13:51:46.773Z",
+        "body": "# Title\r\n## subtitle\r\n\r\n*This text* should be in italics, and __this__ in bold.\r\n\r\nThis uses abbreviations for HTML\r\n\r\n*[HTML]: Hyper Text Markup Language",
+        "slug": "markdown-test"
+    }
+},
+{
+    "model": "blog.blog",
+    "pk": 7,
+    "fields": {
+        "title": "post with code",
+        "desc": "test of rendering code in markdown",
+        "created_at": "2021-09-09T11:31:27.904Z",
+        "updated_at": "2021-09-09T13:49:01.102Z",
+        "body": "Code below.\r\n\r\n```python\r\nprint(\"Hello World\")\r\n```\r\n\r\nHow about a list?[^1]\r\n\r\n- item one\r\n- item 2\r\n- item 3\r\n\r\n[^1]: This is a footnote.",
+        "slug": "post-with-code"
+    }
+},
+{
+    "model": "blog.blog",
+    "pk": 8,
+    "fields": {
+        "title": "post with a lot of code",
+        "desc": "more code to test syntax hilight",
+        "created_at": "2021-09-09T12:16:06.987Z",
+        "updated_at": "2021-09-09T15:30:09.874Z",
+        "body": "## main title\r\n### stuff\r\n#### more stuff\r\n\r\n_Keys_\r\n\r\n++ctrl+alt+delete+arrow-up++\r\n\r\nctrl+alt+delete\r\n\r\njust lonely stuff\r\n\r\n``` \r\n{% load static %}\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n  <head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n    <link rel=\"stylesheet\"\r\n      href=\"https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css\"\r\n      integrity=\"sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==\"\r\n      crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" />\r\n    <link\r\n      href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap\"\r\n      rel=\"stylesheet\" />\r\n    <link rel=\"stylesheet\" href=\"{% static 'blog/github.css' %}\" />\r\n    <link rel=\"stylesheet\" href=\"{% static 'blog/site.css' %}\" />\r\n    <title>{{ preferences.SitePreferences.title }}</title>\r\n  </head>\r\n\r\n  <body>\r\n    {% if messages %}\r\n    {% for message in messages %}\r\n    <div class=\"alert alert-{{ message.tags }}\">\r\n      {{ message }}\r\n    </div>\r\n    {% endfor %}\r\n    {% endif %}\r\n\r\n    {% block body %}\r\n    {% endblock body %}\r\n  </body>\r\n\r\n</html>\r\n```",
+        "slug": "post-with-a-lot-of-code"
+    }
+},
+{
+    "model": "blog.sitepreferences",
+    "pk": 1,
+    "fields": {
+        "sitename": "My Blog title",
+        "title": "My Blog | Too COOL",
+        "heading": "A blog of blogging blogosity."
+    }
+}
+]

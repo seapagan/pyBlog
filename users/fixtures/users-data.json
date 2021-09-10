@@ -1,0 +1,11 @@
+[
+{
+    "model": "users.profile",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "image": "default_profile_pic.png",
+        "location": "Duns, UK"
+    }
+}
+]

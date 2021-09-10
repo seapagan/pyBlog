@@ -15,7 +15,7 @@ class Blog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     body = models.TextField()
-    slug = models.SlugField(default="")
+    slug = models.SlugField(default="", unique=True)
 
     class Meta:
         """Meta configuration for the Blog model."""

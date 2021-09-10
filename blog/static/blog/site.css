@@ -11,3 +11,20 @@ body {
   width: 90%;
   margin: 0 auto;
 }
+
+.blog-body {
+  padding: 0 20px;
+  overflow: auto;
+  border: 1px solid rgb(233, 172, 172);
+  border-radius: 10px;
+}
+
+.codehilite {
+  padding: 0 10px;
+  border: 1px solid rgb(233, 172, 172);
+  border-radius: 10px;
+}
+
+[data-linenos]:before {
+  content: attr(data-linenos);
+}

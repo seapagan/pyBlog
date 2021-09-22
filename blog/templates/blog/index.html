@@ -2,10 +2,9 @@
 
 {% block body %}
 {% for blog in blogs %}
-<article>
-  <h2 class="blog-title">{{ blog.title }}</h2>
-  <h3 class="blog-description">{{ blog.desc }}</h3>
-  <div class="blog-date-wrapper">Posted by <a class="blog_user"
+<article class="blog_article">
+  <h2 class="blog_title">{{ blog.title }}</h2>
+  <div class="blog_date-wrapper">Posted by <a class="blog_user"
       href="{% url 'profile' %}">{{blog.user}}</a> on <span
       class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
     {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
@@ -13,8 +12,9 @@
       {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
     {% endif %}
   </div>
+  <div class="blog_description">{{ blog.desc }}</div>
   <div class="blog-buttons">
-    <a href="{% url 'blog:detail' blog.slug %}">View</a>
+    <a class="btn" href="{% url 'blog:detail' blog.slug %}">View More -></a>
   </div>
 </article>
 {% endfor %}

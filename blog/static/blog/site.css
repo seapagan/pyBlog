@@ -13,7 +13,7 @@ body {
   margin: 0 auto;
 }
 
-.blog-body {
+.blog_body {
   padding: 1em;
   margin: 0;
   margin-top: 1em;
@@ -24,12 +24,37 @@ body {
 
 .blog_user {
   font-weight: bold;
+  text-decoration: none;
+}
+
+.blog_article {
+  padding: 1em;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: 1em 0;
+}
+
+.blog_description {
+  padding: 1em 0;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 100px;
+  background-color: hsla(244, 100%, 58%, 0.39);
+  padding: 5px 10px;
+  color: black;
+  font-family: "JetBrains Mono", monospace;
+  box-shadow: 0px 0px 1px 1px rgba(80, 93, 107, 0.5);
+  margin-top: 5px;
 }
 
 /* remove all margins on headings inside the markdown */
 /* .blog-body h2 { */
 h2 {
-  margin-top: 0;
+  margin: 0;
 }
 
 pre {
@@ -88,12 +113,13 @@ code {
   border: 1px black solid;
   border-radius: 10px;
   height: 100%;
-  background-color: hsla(199, 100%, 85%, 0.561);
-  box-shadow: 2px 2px 5px 2px rgba(172, 201, 233, 0.5);
+  box-shadow: 0px 0px 1px 1px rgba(80, 93, 107, 0.5);
+  background-color: hsla(198, 100%, 97%, 0.781);
 }
 
 .profile_post_summary:hover {
-  background-color: hsla(199, 100%, 80%, 0.561);
+  box-shadow: 0px 0px 2px 2px rgba(80, 93, 107, 0.5);
+  background-color: hsla(198, 100%, 95%, 0.781);
 }
 
 .profile_avatar {

@@ -5,6 +5,7 @@
 body {
   font-family: "Roboto", sans-serif;
   color: #1b2522;
+  margin: 0;
 }
 
 .container {
@@ -13,14 +14,28 @@ body {
 }
 
 .blog-body {
-  padding: 0 20px;
-  overflow: auto;
-  border: 1px solid rgb(233, 172, 172);
+  padding: 1em;
+  margin: 0;
+  margin-top: 1em;
+  border: 1px solid rgb(172, 201, 233);
   border-radius: 10px;
+  box-shadow: 2px 2px 3px 2px rgba(172, 201, 233, 0.5);
+  /* overflow: auto; */
 }
 
-.codehilite {
-  padding: 0 10px;
+/* remove all margins on headings inside the markdown */
+.blog-body h2 {
+  margin-top: 0;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1em 1em;
+  margin: 0;
+}
+
+.highlight {
+  padding-right: 1em;
   border: 1px solid rgb(233, 172, 172);
   border-radius: 10px;
 }
@@ -31,4 +46,8 @@ body {
 
 .pagination {
   padding-top: 1em;
+}
+
+.detail-back {
+  padding: 1em;
 }

@@ -34,6 +34,10 @@ pre {
   margin: 0;
 }
 
+code {
+  font-family: "JetBrains Mono", monospace;
+}
+
 .highlight {
   padding-right: 1em;
   border: 1px solid rgb(233, 172, 172);

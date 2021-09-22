@@ -9,7 +9,7 @@ class BlogAdmin(admin.ModelAdmin):
     """Define a custom admin class for the Blog model."""
 
     date_hierarchy = "created_at"
-    list_display = ["title", "created_at", "updated_at", "slug"]
+    list_display = ["title", "created_at", "updated_at", "slug", "user"]
     list_filter = ["created_at", "updated_at"]
     ordering = ("-created_at",)
     search_fields = ["title"]

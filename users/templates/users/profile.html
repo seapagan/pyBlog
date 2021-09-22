@@ -1,6 +1,52 @@
 {% extends 'blog/_base.html' %}
 
 {% block body %}
-<h1>{{ user.username }}</h1>
-<img width="100px" height="100px" src="{{ user.profile.image.url }}" alt="">
+
+
+<div class="profile_meta_wrapper">
+  <div class="profile_meta_left"><img class="profile_avatar"
+      src="{{ user.profile.image.url }}" alt=""></div>
+  <div class="profile_meta_right">
+    <h2 class="profile_username">{{ user.username }}</h2>
+    <div class="profile_joined_date">User since {{user.date_joined}}</div>
+    <div class="profile_post_count">Post Count : x</div>
+  </div>
+</div>
+<div class="profile_post_wrapper">
+  {% for post in posts %}
+  <article>
+    <a class="profile_post_summary" href="{% url 'blog:detail' post.slug %}">
+      <div class='profile_post_title'>{{ post.title }}</div>
+
+      <div class="profile_date_wrapper">
+        {% if post.created_at|date:"SHORT_DATETIME_FORMAT" != post.updated_at|date:"SHORT_DATETIME_FORMAT" %}
+        Updated :
+        {{ post.updated_at|date:"SHORT_DATETIME_FORMAT" }}
+        {% else %}
+        Posted :
+        {{ post.created_at|date:"SHORT_DATETIME_FORMAT" }}
+        {% endif %}
+      </div>
+      <div class='profile_post_desc'>{{ post.desc }}</div>
+    </a>
+  </article>
+  {% endfor %}
+  <div class="pagination">
+    <span class="step-links">
+      {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; first</a>
+      <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">next</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+</div>
 {% endblock body %}

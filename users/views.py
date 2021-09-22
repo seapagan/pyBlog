@@ -1,8 +1,10 @@
 """Define views for the User App."""
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
+from django.views.generic import ListView
 
+from blog.models import Blog
 from users.forms import RegisterForm
 
 
@@ -23,7 +25,18 @@ def register(request):
     return render(request, "users/register.html", {"form": form})
 
 
-@login_required
-def profilepage(request):
+class ProfileView(LoginRequiredMixin, ListView):
     """View for the users profile page."""
-    return render(request, "users/profile.html")
+
+    model = Blog
+    template_name = "users/profile.html"
+    context_object_name = "posts"
+    paginate_by = 8  # show the last 8 posts
+
+    def get_queryset(self):
+        """Only get posts by this user."""
+        queryset = super(ProfileView, self).get_queryset()
+        queryset = queryset.filter(user=self.request.user).order_by(
+            "-updated_at"
+        )
+        return queryset

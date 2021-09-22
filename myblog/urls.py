@@ -25,5 +25,6 @@ urlpatterns = [
         ),
         name="logout",
     ),
-    path("profile/", user_views.profilepage, name="profile"),
+    # path("profile/", user_views.profilepage, name="profile"),
+    path("profile/", user_views.ProfileView.as_view(), name="profile"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -20,11 +20,15 @@ body {
   border: 1px solid rgb(172, 201, 233);
   border-radius: 10px;
   box-shadow: 2px 2px 3px 2px rgba(172, 201, 233, 0.5);
-  /* overflow: auto; */
+}
+
+.blog_user {
+  font-weight: bold;
 }
 
 /* remove all margins on headings inside the markdown */
-.blog-body h2 {
+/* .blog-body h2 { */
+h2 {
   margin-top: 0;
 }
 
@@ -54,4 +58,60 @@ code {
 
 .detail-back {
   padding: 1em;
+}
+
+.profile_meta_wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  justify-items: left;
+  padding: 2em;
+}
+
+.profile_meta_right {
+  align-self: center;
+  padding-left: 2em;
+}
+
+.profile_post_wrapper {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 2em;
+}
+
+.profile_post_summary {
+  display: block;
+  padding: 10px 10px;
+  text-decoration: none;
+  color: inherit;
+  border: 1px black solid;
+  border-radius: 10px;
+  height: 100%;
+  background-color: hsla(199, 100%, 85%, 0.561);
+  box-shadow: 2px 2px 5px 2px rgba(172, 201, 233, 0.5);
+}
+
+.profile_post_summary:hover {
+  background-color: hsla(199, 100%, 80%, 0.561);
+}
+
+.profile_avatar {
+  width: 150px;
+  height: 150px;
+}
+
+.profile_post_title {
+  font-weight: bold;
+  font-size: 1.2em;
+  padding-bottom: 0.5em;
+  text-align: center;
+}
+
+.profile_date_wrapper {
+  font-size: 0.9em;
+}
+
+.profile_post_desc {
+  padding-top: 0.7em;
 }

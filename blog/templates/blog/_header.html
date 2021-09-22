@@ -1,7 +1,9 @@
 <h1>{{ preferences.SitePreferences.sitename }}</h1>
 <div>{{ preferences.SitePreferences.heading }}</div>
 <div>
-  {% if True %}
-  User : {{ user.username }}
+  {% if user.is_authenticated %}
+  <div class="user-display">User : {{ user.username }}</div>
+  {% else %}
+  <div class="no-user-display"><a href="{% url 'login' %}">Login</a></div>
   {% endif %}
 </div>

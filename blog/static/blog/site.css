@@ -40,7 +40,7 @@ code {
 
 .highlight {
   padding-right: 1em;
-  border: 1px solid rgb(233, 172, 172);
+  border: 1px solid rgba(110, 100, 100, 0.5);
   border-radius: 10px;
 }
 

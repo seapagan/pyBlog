@@ -1,43 +1,39 @@
 {% extends 'blog/_base.html' %}
 
 {% block body %}
-
-<main class="container">
-  {% for blog in blogs %}
-  <article>
-    <h2 class="blog-title">{{ blog.title }}</h2>
-    <h3 class="blog-description">{{ blog.desc }}</h3>
-    <div class="blog-date-wrapper">Posted : <span
-        class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
-      {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
-      <span class="blog-date-updated">(Updated at
-        {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
-      {% endif %}
-    </div>
-    <div class="blog-buttons">
-      <a href="{% url 'blog:detail' blog.slug %}">View</a>
-    </div>
-  </article>
-  {% endfor %}
-  <div class="pagination">
-    <span class="step-links">
-      {% if page_obj.has_previous %}
-      <a href="?page=1">&laquo; first</a>
-      <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-      {% endif %}
-
-      <span class="current">
-        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-      </span>
-
-      {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}">next</a>
-      <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-      {% endif %}
-    </span>
+{% for blog in blogs %}
+<article>
+  <h2 class="blog-title">{{ blog.title }}</h2>
+  <h3 class="blog-description">{{ blog.desc }}</h3>
+  <div class="blog-date-wrapper">Posted : <span
+      class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
+    {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
+    <span class="blog-date-updated">(Updated at
+      {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
+    {% endif %}
   </div>
-</main>
+  <div class="blog-buttons">
+    <a href="{% url 'blog:detail' blog.slug %}">View</a>
+  </div>
+</article>
+{% endfor %}
+<div class="pagination">
+  <span class="step-links">
+    {% if page_obj.has_previous %}
+    <a href="?page=1">&laquo; first</a>
+    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+    {% endif %}
 
+    <span class="current">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">next</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+    {% endif %}
+  </span>
+</div>
 <div class="blog-new-article"></div>
 
 {% endblock body %}

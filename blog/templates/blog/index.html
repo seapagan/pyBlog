@@ -5,7 +5,8 @@
 <article>
   <h2 class="blog-title">{{ blog.title }}</h2>
   <h3 class="blog-description">{{ blog.desc }}</h3>
-  <div class="blog-date-wrapper">Posted : <span
+  <div class="blog-date-wrapper">Posted by <a class="blog_user"
+      href="{% url 'profile' %}">{{blog.user}}</a> on <span
       class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
     {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
     <span class="blog-date-updated">(Updated at

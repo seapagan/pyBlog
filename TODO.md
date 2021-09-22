@@ -1,4 +1,4 @@
-# Todo File
+# Todo
 
 * detect the users timezone and display date/time formats properly.
 * add user login/logout/register functionality, though register should be by
@@ -16,3 +16,5 @@
   with the above issue.
 * API to allow getting summary data of a users posts for embedding in other
   apps.
+* pass the post count for a user to the profile template for display. due to
+  pagination, `{{ posts|length }}` only displays the number on that page.

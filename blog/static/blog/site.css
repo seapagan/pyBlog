@@ -28,3 +28,7 @@ body {
 [data-linenos]:before {
   content: attr(data-linenos);
 }
+
+.pagination {
+  padding-top: 1em;
+}

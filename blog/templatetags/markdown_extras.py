@@ -13,6 +13,7 @@ def markdown(value):
     return md.markdown(
         value,
         extensions=[
+            "mdx_headdown",
             "pymdownx.extra",
             "pymdownx.highlight",
             # "sane_lists",

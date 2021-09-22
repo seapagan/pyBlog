@@ -6,6 +6,7 @@ from django.db import models
 
 
 def get_upload_path(instance, filename):
+    """Helper function to get a user-specific upload path."""
     return os.path.join("profile_pictures", instance.user.username, filename)
 
 

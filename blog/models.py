@@ -42,4 +42,6 @@ class SitePreferences(Preferences):
     )
 
     class Meta:
+        """class-specific configuration."""
+
         verbose_name_plural = "Site Preferences"

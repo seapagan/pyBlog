@@ -35,6 +35,7 @@ class Blog(models.Model):
         super(Blog, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
+        """Override get_absolute_url function."""
         return reverse("blog:detail", args=[self.slug])
 
 

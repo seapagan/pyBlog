@@ -1,8 +1,13 @@
-<h1>{{ preferences.SitePreferences.sitename }}</h1>
+<h1><a
+    href="{% url 'blog:index' %}">{{ preferences.SitePreferences.sitename }}</a>
+</h1>
 <div>{{ preferences.SitePreferences.heading }}</div>
 <div>
   {% if user.is_authenticated %}
-  <div class="user-display">User : {{ user.username }}</div>
+  <div class="user-display">User : <a
+      href="{% url 'profile' %}">{{ user.username }}</a>
+  </div>
+  <div class="logout"><a href="{% url 'logout' %}">Logout</a></div>
   {% else %}
   <div class="no-user-display"><a href="{% url 'login' %}">Login</a></div>
   {% endif %}

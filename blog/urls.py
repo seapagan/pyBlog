@@ -7,4 +7,5 @@ app_name = "blog"
 urlpatterns = [
     path("", views.IndexClassView.as_view(), name="index"),
     path("<str:slug>", views.PostDetailView.as_view(), name="detail"),
+    path("new/", views.NewPostView.as_view(), name="newpost"),
 ]

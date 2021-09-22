@@ -3,7 +3,7 @@
 {% block body %}
 {% for blog in blogs %}
 <article class="blog_article">
-  <h2 class="blog_title">{{ blog.title }}</h2>
+  <h2 class="blog_title">{{ blog.title|capfirst }}</h2>
   <div class="blog_date-wrapper">Posted by <a class="blog_user"
       href="{% url 'profile' %}">{{blog.user}}</a> on <span
       class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
@@ -35,6 +35,6 @@
     {% endif %}
   </span>
 </div>
-<div class="blog-new-article"></div>
+
 
 {% endblock body %}

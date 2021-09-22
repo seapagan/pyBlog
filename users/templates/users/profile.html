@@ -16,7 +16,7 @@
   {% for post in posts %}
   <article>
     <a class="profile_post_summary" href="{% url 'blog:detail' post.slug %}">
-      <div class='profile_post_title'>{{ post.title }}</div>
+      <div class='profile_post_title'>{{ post.title|capfirst }}</div>
 
       <div class="profile_date_wrapper">
         {% if post.created_at|date:"SHORT_DATETIME_FORMAT" != post.updated_at|date:"SHORT_DATETIME_FORMAT" %}

@@ -5,15 +5,14 @@
 <article class="blog_article">
 
   <h2 class="blog_title">{{ blog.title }}</h2>
-  <h3 class="blog-description">{{ blog.desc }}</h3>
-  <div class="blog-date-wrapper">Posted : <span
-      class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
+  <div class="blog_date_wrapper">Posted : <span
+      class="blog_date_posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
     {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
     <span class="blog-date-updated">(Updated at
       {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
     {% endif %}
   </div>
-  <div class="blog-body">
+  <div class="blog_body">
     {{ blog.body | markdown | safe }}
   </div>
 </article>
@@ -27,17 +26,14 @@
   {% for comment in blog.comments.all %}
   <div class="blog_comment_wrapper">
     <div class="blog_comment_header">
-      <div class="blog_comment_author">Comment by
-
+      <div class="blog_comment_author">
         {% if comment.created_by_user %}
         <a href="{% url 'profile' %}">{{comment.get_commenter}}</a>
         {% else %}
         {{comment.get_commenter}}
         {% endif %}
-
-
       </div>
-      <div class="blog_comment_date">Posted {{comment.created_at}}</div>
+      <div class="blog_comment_date">Commented {{comment.created_at}}</div>
     </div>
     <div class="blog_comment_body">
       {{comment.body|linebreaks}}</div>

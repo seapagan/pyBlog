@@ -27,7 +27,7 @@ class IndexClassView(TemplateView):
         models to be shown in the template (eg comment counts etc).
         """
         context = super(IndexClassView, self).get_context_data(**kwargs)
-        context["blogs"] = Blog.objects.all()
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
 
         return context
 

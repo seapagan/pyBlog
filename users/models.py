@@ -20,6 +20,12 @@ class Profile(models.Model):
         upload_to=get_upload_path,
     )
     location = models.CharField(max_length=100, blank=True)
+    website = models.URLField(blank=True, default="")
+    linkedin_user = models.CharField(max_length=50, blank=True, default="")
+    facebook_user = models.CharField(max_length=50, blank=True, default="")
+    github_user = models.CharField(max_length=50, blank=True, default="")
+    youtube_user = models.CharField(max_length=50, blank=True, default="")
+    twitter_user = models.CharField(max_length=50, blank=True, default="")
 
     def __str__(self):
         """Return the string representation of this model."""

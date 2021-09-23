@@ -26,3 +26,11 @@
   apps.
 * pass the post count for a user to the profile template for display. due to
   pagination, `{{ posts|length }}` only displays the number on that page.
+
+* Comments - offer to remember commenter for next visit, or use credentials from
+  logged in user.
+* refactor CSS to PostCSS, using [`django-compressor`][djc] and
+  [`django-compressor-postcss`][djc-postcss]
+
+[djc]: https://github.com/django-compressor/django-compressor
+[djc-postcss]: https://github.com/Pithikos/django-compressor-postcss

@@ -16,6 +16,12 @@ class BlogAdmin(admin.ModelAdmin):
     readonly_fields = ["slug"]
 
 
+class CommentAdmin(admin.ModelAdmin):
+    """Define a custom admin class for the Comment model."""
+
+    list_display = ["__str__", "id", "created_at", "updated_at"]
+
+
 admin.site.register(Blog, BlogAdmin)
+admin.site.register(Comment, CommentAdmin)
 admin.site.register(SitePreferences, PreferencesAdmin)
-admin.site.register(Comment)

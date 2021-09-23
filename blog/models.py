@@ -29,14 +29,14 @@ class Blog(models.Model):
         """Return string representation of the Blog object."""
         return self.title
 
-    def no_of_comments(self):
-        """Count comments on this post."""
-        return len(Comment.objects.filter(related_post=self))
-
     def save(self, *args, **kwargs):
         """Override the save fumction, so we can generate the slug."""
         self.slug = slugify(self.title)
         super(Blog, self).save(*args, **kwargs)
+
+    def no_of_comments(self):
+        """Count comments on this post."""
+        return Comment.objects.filter(related_post=self).count()
 
     def get_absolute_url(self):
         """Override get_absolute_url function."""
@@ -57,11 +57,12 @@ class Comment(models.Model):
 
     def __str__(self):
         """Return string representation of the Blog object."""
-        return (
+        who_did_it = (
             self.created_by_user.username
             if self.created_by_user
             else self.created_by_guest
         )
+        return f"Comment by {who_did_it} on '{self.related_post}'"
 
 
 class SitePreferences(Preferences):

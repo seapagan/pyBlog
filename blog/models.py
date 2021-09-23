@@ -29,6 +29,10 @@ class Blog(models.Model):
         """Return string representation of the Blog object."""
         return self.title
 
+    def no_of_comments(self):
+        """Count comments on this post."""
+        return len(Comment.objects.filter(related_post=self))
+
     def save(self, *args, **kwargs):
         """Override the save fumction, so we can generate the slug."""
         self.slug = slugify(self.title)

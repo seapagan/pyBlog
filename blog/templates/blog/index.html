@@ -13,6 +13,7 @@
     {% endif %}
   </div>
   <div class="blog_description">{{ blog.desc }}</div>
+  <div class="blog_comment_count">Comments : {{blog.no_of_comments}}</div>
   <div class="blog-buttons">
     <a class="btn" href="{% url 'blog:detail' blog.slug %}">Read More -></a>
   </div>

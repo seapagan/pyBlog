@@ -61,12 +61,18 @@ class Comment(models.Model):
 
     def __str__(self):
         """Return string representation of the Blog object."""
-        who_did_it = (
+        return (
+            f"Comment by '{self.get_commenter()}' "
+            f"on post: '{self.related_post}'"
+        )
+
+    def get_commenter(self):
+        """Return either the logged in user name or temp user name."""
+        return (
             self.created_by_user.username
             if self.created_by_user
             else self.created_by_guest
         )
-        return f"Comment by {who_did_it} on '{self.related_post}'"
 
 
 class SitePreferences(Preferences):

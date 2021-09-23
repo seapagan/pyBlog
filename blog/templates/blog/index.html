@@ -9,7 +9,8 @@
   {% with blog.no_of_comments as total_comments %}
   <div class="blog_comment_count">There {{total_comments|pluralize:"is,are"}}
     <b>{{total_comments}}</b> comment{{total_comments|pluralize}} on this
-    post</div>
+    post
+  </div>
   {% endwith %}
   <div class="blog-buttons">
     <a class="btn" href="{% url 'blog:detail' blog.slug %}">Read More -></a>

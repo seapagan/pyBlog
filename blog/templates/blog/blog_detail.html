@@ -3,7 +3,8 @@
 
 {% block body %}
 <article class="blog_article">
-  <h2 class="blog-title">{{ blog.title }}</h2>
+
+  <h2 class="blog_title">{{ blog.title }}</h2>
   <h3 class="blog-description">{{ blog.desc }}</h3>
   <div class="blog-date-wrapper">Posted : <span
       class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
@@ -16,6 +17,33 @@
     {{ blog.body | markdown | safe }}
   </div>
 </article>
+<section class="blog_comments">
+  {% with blog.no_of_comments as total_comments %}
+  <div class="blog_comment_count">There {{total_comments|pluralize:"is,are"}}
+    <b>{{total_comments}}</b> comment{{total_comments|pluralize}} on this
+    post
+  </div>
+  {% endwith %}
+  {% for comment in blog.comments.all %}
+  <div class="blog_comment_wrapper">
+    <div class="blog_comment_header">
+      <div class="blog_comment_author">Comment by
+
+        {% if comment.created_by_user %}
+        <a href="{% url 'profile' %}">{{comment.get_commenter}}</a>
+        {% else %}
+        {{comment.get_commenter}}
+        {% endif %}
+
+
+      </div>
+      <div class="blog_comment_date">Posted {{comment.created_at}}</div>
+    </div>
+    <div class="blog_comment_body">
+      {{comment.body|linebreaks}}</div>
+  </div>
+  {% endfor %}
+</section>
 <div class="detail-back"><a href="{% url 'blog:index' %}">Back to Index</a>
 </div>
 {% endblock body %}

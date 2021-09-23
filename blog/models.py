@@ -39,6 +39,27 @@ class Blog(models.Model):
         return reverse("blog:detail", args=[self.slug])
 
 
+class Comment(models.Model):
+    """Define the 'Comment' Model."""
+
+    created_by_user = models.ForeignKey(
+        User, on_delete=models.CASCADE, blank=True
+    )
+    created_by_guest = models.CharField(max_length=50, blank=True)
+    related_post = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    body = models.TextField()
+
+    def __str__(self):
+        """Return string representation of the Blog object."""
+        return (
+            self.created_by_user.username
+            if self.created_by_user
+            else self.created_by_guest
+        )
+
+
 class SitePreferences(Preferences):
     """Define the global site settings."""
 

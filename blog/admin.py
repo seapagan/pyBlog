@@ -2,7 +2,7 @@
 from django.contrib import admin
 from preferences.admin import PreferencesAdmin
 
-from blog.models import Blog, SitePreferences
+from blog.models import Blog, Comment, SitePreferences
 
 
 class BlogAdmin(admin.ModelAdmin):
@@ -18,3 +18,4 @@ class BlogAdmin(admin.ModelAdmin):
 
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(SitePreferences, PreferencesAdmin)
+admin.site.register(Comment)

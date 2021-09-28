@@ -60,7 +60,7 @@ class Comment(models.Model):
     body = models.TextField()
 
     def __str__(self):
-        """Return string representation of the Blog object."""
+        """Return string representation of the Comment object."""
         return (
             f"Comment by '{self.get_commenter()}' "
             f"on post: '{self.related_post}'"

@@ -18,7 +18,7 @@ body {
   flex-direction: column;
   /* padding: 0.5em 1em; */
   border: 1px solid lightgray;
-  border-radius: 20px;
+  border-radius: 5px;
   margin-top: 1em;
   box-shadow: 0px 0px 3px 2px rgba(172, 201, 233, 0.5);
   overflow: hidden;
@@ -62,27 +62,46 @@ body {
 }
 
 .blog_comment_count {
+  /* padding: 0 1em; */
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+  align-items: center;
   font-style: italic;
+  margin: 1em auto;
+}
+
+.blog_comment_count_index {
+  width: inherit;
   margin: 1em 0;
 }
 
 .blog_comment_wrapper {
   border: 1px lightgray solid;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 1em auto;
   width: 95%;
   overflow: hidden;
 }
 
 .blog_comment_header {
-  padding: 0.5em;
+  padding: 0.2em 0.5em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* align-content: center; */
   width: 100%;
   background-color: rgba(193, 222, 231, 0.322);
   border-bottom: 1px lightgray dotted;
+}
+.blog_comment_footer {
+  padding: 0.2em 0.5em;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  background-color: rgba(193, 222, 231, 0.322);
+  border-top: 1px lightgray dotted;
 }
 
 .blog_comment_date {
@@ -95,17 +114,24 @@ body {
   padding: 0 0.5em;
 }
 
+.blog_comment_edit {
+  text-decoration: none;
+}
+.blog_comment_delete {
+  text-decoration: none;
+}
+
 .btn {
   display: inline-block;
   text-decoration: none;
   border: 1px solid lightgray;
-  border-radius: 8px;
+  border-radius: 5px;
   background-color: hsla(212, 55%, 73%, 0.39);
-  padding: 10px;
+  padding: 0.4em;
   color: black;
   font-family: "JetBrains Mono", monospace;
   /* box-shadow: 0px 0px 1px 1px rgba(80, 93, 107, 0.5); */
-  margin-top: 5px;
+  /* margin-top: 5px; */
 }
 
 /* remove all margins on headings inside the markdown */
@@ -127,7 +153,7 @@ code {
 .highlight {
   padding-right: 1em;
   border: 1px solid rgba(110, 100, 100, 0.5);
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 [data-linenos]:before {
@@ -140,6 +166,7 @@ code {
 
 .detail-back {
   padding: 1em;
+  margin-bottom: 1em;
 }
 
 .profile_meta_wrapper {

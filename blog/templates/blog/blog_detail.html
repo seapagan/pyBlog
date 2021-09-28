@@ -49,7 +49,7 @@
       <div class="blog_comment_date">Commented {{comment.created_at}}</div>
     </div>
     <div class="blog_comment_body">
-      {{comment.body|linebreaks}}
+      {{comment.body|markdown|safe}}
     </div>
     {% if comment.get_commenter == user.username %}
     <div class="blog_comment_footer">

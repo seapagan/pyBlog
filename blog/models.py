@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+from mdeditor.fields import MDTextField
 from preferences.models import Preferences
 
 
@@ -57,7 +58,8 @@ class Comment(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    body = models.TextField()
+    # body = models.TextField()
+    body = MDTextField()
 
     def __str__(self):
         """Return string representation of the Comment object."""

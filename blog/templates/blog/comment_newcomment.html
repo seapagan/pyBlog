@@ -11,6 +11,7 @@
 <div>Commenting on Post : {{ post.title }}</div>
 <form method="post">
   {% csrf_token %}
+  {{ form.media }}
   {{ form.as_p }}
   <input type="submit" value="Save">
 </form>

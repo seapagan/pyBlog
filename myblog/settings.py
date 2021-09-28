@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "preferences",
+    "mdeditor",
     "blog",
     "users",
 ]
@@ -142,3 +143,8 @@ LOGIN_URL = "login"
 # set a SITE_ID, due to the (3rd party) 'preferences' app using the sites
 # functionality. long term, rewrite the addon to remove this need.
 SITE_ID = 2
+
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
+
+MDEDITOR_CONFIGS = {"default": {"language": "en", "watch": False}}

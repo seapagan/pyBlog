@@ -1,6 +1,6 @@
 """Define the views for the 'blog' application."""
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.urls.base import reverse
 from django.views.generic import CreateView, DetailView, ListView
 
 from blog.forms import CommentForm
@@ -90,4 +90,4 @@ class AddCommentView(CreateView):
 
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""
-        return reverse_lazy("blog:detail", kwargs={"slug": self.kwargs["slug"]})
+        return reverse("blog:detail", kwargs={"slug": self.kwargs["slug"]})

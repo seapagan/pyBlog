@@ -2,8 +2,8 @@
 {% load markdown_extras %}
 
 {% block body %}
+<!-- Display the Blog Post, wrapped in an article tag -->
 <article class="blog_article">
-
   <h2 class="blog_title">{{ blog.title }}</h2>
   <div class="blog_date_wrapper">Posted : <span
       class="blog_date_posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
@@ -16,11 +16,23 @@
     {{ blog.body | markdown | safe }}
   </div>
 </article>
+
+<!-- This section displays the comments (if any) -->
 <section class="blog_comments">
+  {% if not blog.comments.all %}
+  <div class="blog_comment_count">
+    <span>There are <b>NO</b> comments for this post so far.</span>
+    <a class='btn' href="{% url 'blog:add_comment' blog.slug %}">Add a
+      comment!</a>
+  </div>
+  {% else %}
   {% with blog.no_of_comments as total_comments %}
-  <div class="blog_comment_count">There {{total_comments|pluralize:"is,are"}}
-    <b>{{total_comments}}</b> comment{{total_comments|pluralize}} on this
-    post
+  <div class="blog_comment_count"><span>
+      There {{total_comments|pluralize:"is,are"}}
+      <b>{{total_comments}}</b> comment{{total_comments|pluralize}} on this
+      post
+    </span><a class='btn' href="{% url 'blog:add_comment' blog.slug %}">Add
+      comment</a>
   </div>
   {% endwith %}
   {% for comment in blog.comments.all %}
@@ -28,7 +40,8 @@
     <div class="blog_comment_header">
       <div class="blog_comment_author">
         {% if comment.created_by_user %}
-        <a href="{% url 'profile' %}">{{comment.get_commenter}}</a>
+        <a class="blog_comment_userlink"
+          href="{% url 'profile' %}">{{comment.get_commenter}}</a>
         {% else %}
         {{comment.get_commenter}}
         {% endif %}
@@ -36,10 +49,21 @@
       <div class="blog_comment_date">Commented {{comment.created_at}}</div>
     </div>
     <div class="blog_comment_body">
-      {{comment.body|linebreaks}}</div>
+      {{comment.body|linebreaks}}
+    </div>
+    {% if comment.get_commenter == user.username %}
+    <div class="blog_comment_footer">
+      <a class="blog_comment_edit" href="">Edit this Comment</a>
+      <a class="blog_comment_delete" href="">Delete this Comment</a>
+    </div>
+    {% endif %}
   </div>
   {% endfor %}
+  <a href="{% url 'blog:add_comment' blog.slug %}">Add comment!</a>
+  {% endif %}
 </section>
-<div class="detail-back"><a href="{% url 'blog:index' %}">Back to Index</a>
+<!-- End of comment display -->
+
+<div><a class="btn" href="{% url 'blog:index' %}">Back to Index</a>
 </div>
 {% endblock body %}

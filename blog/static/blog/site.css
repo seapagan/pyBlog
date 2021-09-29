@@ -250,3 +250,32 @@ code {
 .profile_post_desc {
   padding-top: 0.7em;
 }
+
+.site_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+  padding-bottom: 0.5em;
+  margin: 0.5em;
+  border-bottom: 1px solid lightgray;
+}
+
+.site_header_brand {
+  margin: 0;
+}
+
+.site_header_brand a {
+  text-decoration: none;
+  color: #1b2522;
+}
+
+.site_header_heading {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #1b2522;
+}

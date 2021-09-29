@@ -2,7 +2,7 @@
 
 ## Important functionality
 
-* Comments
+* Comments - `Basic functionality complete`
 * Tags
 * Sidebar
 

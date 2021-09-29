@@ -1,3 +1,5 @@
+{% load gravatar %}
+
 <header class="site_header">
   <h1 class="site_header_brand"><a
       href="{% url 'blog:index' %}">{{ preferences.SitePreferences.sitename }}</a>
@@ -7,9 +9,12 @@
   <div class="site_header_user">
     {% if user.is_authenticated %}
     <span class="btn nav logout"><a href="{% url 'logout' %}">Logout</a></span>
-    <span class="btn nav user-display"><a
+    {% comment %} <span class="btn nav user-display"><a
         href="{% url 'profile' %}">{{ user.username|capfirst }}</a>
-    </span>
+    </span> {% endcomment %}
+    <a href="{% url 'profile' %}" alt="{{ user.username|capfirst }}'s Profile"
+      class="nav user_gravatar">{% gravatar user.email %}
+    </a>
     {% else %}
     <span class="btn nav no-user-display"><a
         href="{% url 'login' %}">Login</a></span>

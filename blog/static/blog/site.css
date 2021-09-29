@@ -275,9 +275,20 @@ code {
   font-weight: bold;
 }
 
+.site_header_user {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
 .nav a {
   text-decoration: none;
   color: #1b2522;
+}
+
+.gravatar {
+  height: 2em;
+  width: 2em;
 }
 
 .logout_container {

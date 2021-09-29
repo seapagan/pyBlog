@@ -3,9 +3,12 @@
 {% block body %}
 
 <form method="post">{% csrf_token %}
-  <p>Are you sure you want to delete "{{ object }}"?</p>
+  <p>Are you sure you want to delete your comment on the post :</p>
+  <p>"{{ object.related_post.title }}"?</p>
+
+  <div class="delete_comment_body">{{object.body|markdown|safe}}</div>
   <input class="btn" type="submit" value="Confirm">
-  <a class="btn" href="{{ view.get_success_url}}">Cancel</a>
+  <a class="btn" href="{{ view.get_success_url }}">Cancel</a>
 </form>
 
 {% endblock body %}

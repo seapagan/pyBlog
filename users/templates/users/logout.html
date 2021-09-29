@@ -1,1 +1,10 @@
-<h1>You have been logged out.</h1>
+{% extends 'blog/_base.html' %}
+
+{% block body %}
+
+<div class="logout_container">
+  <div class="logout_header">You have been logged out of the Blog.</div>
+  <a class="logout_button btn" href="{% url 'login' %}">Log back in</a>
+</div>
+
+{% endblock body %}

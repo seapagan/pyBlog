@@ -279,3 +279,45 @@ code {
   text-decoration: none;
   color: #1b2522;
 }
+
+.logout_container {
+  text-align: center;
+}
+
+.logout_header {
+  padding: 2em;
+}
+
+.logout_button {
+}
+
+.login_container {
+  text-align: center;
+}
+
+.login_header {
+  padding: 2em;
+}
+
+.login_field {
+  padding: 0.5em;
+}
+
+.login_field_label {
+  padding-right: 0.5em;
+}
+
+.login_button {
+  width: 100%;
+}
+
+input#id_username,
+input#id_password {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* input#id_password {
+  border-radius: 5px;
+  padding: 5px;
+} */

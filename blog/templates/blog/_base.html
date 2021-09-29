@@ -13,7 +13,7 @@
       integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@400;700&family=JetBrains+Mono&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet" />
     <link rel="shortcut icon" href="{% static 'blog/favicon.png' %}"
       type="image/x-icon">
@@ -23,20 +23,20 @@
   </head>
 
   <body>
-    {% include 'blog/_header.html' %}
-
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">
-      {{ message }}
+    <div class="site_container">
+      {% include 'blog/_header.html' %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+      {% endif %}
+      <main class="container">
+        {% block body %}
+        {% endblock body %}
+      </main>
     </div>
-    {% endfor %}
-    {% endif %}
-
-    <main class="container">
-      {% block body %}
-      {% endblock body %}
-    </main>
   </body>
 
 </html>

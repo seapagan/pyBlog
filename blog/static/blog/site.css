@@ -8,6 +8,13 @@ body {
   margin: 0;
 }
 
+.site_container {
+  width: 90%;
+  margin: 1em auto;
+  border: 1px solid rgba(211, 211, 211, 0.596);
+  border-radius: 5px;
+}
+
 .container {
   width: 90%;
   margin: 0 auto;
@@ -277,6 +284,10 @@ code {
 }
 
 .site_header_brand a {
+  display: inline-block;
+  font-family: "Big Shoulders Stencil Display", cursive;
+  transform-origin: left;
+  transform: scale(1.5, 1);
   text-decoration: none;
   color: #1b2522;
 }

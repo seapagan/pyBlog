@@ -6,7 +6,18 @@
 * Tags
 * Sidebar
 
-## Bugs / Fixes / Ideas
+### Comments
+
+* Offer to remember commenter for next visit, or use credentials from logged in
+  user.
+* ~~Integrate an HTML editor. Could use markdown but it gives unexpected results
+  to those not used to it (ie missing linebreaks). Comments saved as HTML and
+  filtered through 'safe'~~ Using Markdown with WYSIWYG functionality for now.
+* profile links for registered users need to be switched to specific links, once
+  that functionality is added
+* add ReCapcha to the comment entry form
+
+## Misc Bugs / Fixes / Ideas
 
 * detect the users timezone and display date/time formats properly.
 * add user login/logout/register functionality, though register should be by
@@ -26,11 +37,10 @@
   apps.
 * pass the post count for a user to the profile template for display. due to
   pagination, `{{ posts|length }}` only displays the number on that page.
-
-* Comments - offer to remember commenter for next visit, or use credentials from
-  logged in user.
 * refactor CSS to PostCSS, using [`django-compressor`][djc] and
   [`django-compressor-postcss`][djc-postcss]
+* add a 'like' option to a post
+* add social media sharing to a post
 
 [djc]: https://github.com/django-compressor/django-compressor
 [djc-postcss]: https://github.com/Pithikos/django-compressor-postcss

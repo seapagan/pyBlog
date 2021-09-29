@@ -4,17 +4,26 @@
 {% for blog in blogs %}
 <article class="blog_article">
   <h2 class="blog_title">{{ blog.title|capfirst }}</h2>
-  <div class="blog_date-wrapper">Posted by <a class="blog_user"
+
+  <div class="blog_description">{{ blog.desc }}</div>
+  {% with blog.no_of_comments as total_comments %}
+  <div class="blog_comment_count blog_comment_count_index"><span>
+      There {{total_comments|pluralize:"is,are"}}
+      <b>{{total_comments}}</b> comment{{total_comments|pluralize}} on this
+      post
+    </span>
+  </div>
+  {% endwith %}
+  <div class="blog-buttons">
+    <a class="btn" href="{% url 'blog:detail' blog.slug %}">Read More -></a>
+  </div>
+  <div class="blog_date_wrapper">Posted by <a class="blog_user"
       href="{% url 'profile' %}">{{blog.user}}</a> on <span
       class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
     {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
     <span class="blog-date-updated">(Updated at
       {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
     {% endif %}
-  </div>
-  <div class="blog_description">{{ blog.desc }}</div>
-  <div class="blog-buttons">
-    <a class="btn" href="{% url 'blog:detail' blog.slug %}">Read More -></a>
   </div>
 </article>
 {% endfor %}

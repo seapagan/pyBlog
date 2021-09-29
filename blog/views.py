@@ -1,5 +1,6 @@
 """Define the views for the 'blog' application."""
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http.response import Http404
 from django.urls.base import reverse
 from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
@@ -114,3 +115,10 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
         """On success, return to the blog post we commented on."""
         post_slug = Comment.objects.get(pk=self.kwargs["pk"]).related_post.slug
         return reverse("blog:detail", kwargs={"slug": post_slug})
+
+    def get_object(self, queryset=None):
+        """Ensure that the current logged in user owns the comment."""
+        obj = super(DeleteCommentView, self).get_object()
+        if not obj.created_by_user == self.request.user:
+            raise Http404("You Dont have permission to do that!")
+        return obj

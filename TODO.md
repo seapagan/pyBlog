@@ -10,9 +10,9 @@
 
 * Offer to remember commenter for next visit, or use credentials from logged in
   user.
-* Integrate an HTML editor. Could use markdown but it gives unexpected results
+* ~~Integrate an HTML editor. Could use markdown but it gives unexpected results
   to those not used to it (ie missing linebreaks). Comments saved as HTML and
-  filtered through 'safe'
+  filtered through 'safe'~~ Using Markdown with WYSIWYG functionality for now.
 * profile links for registered users need to be switched to specific links, once
   that functionality is added
 * add ReCapcha to the comment entry form

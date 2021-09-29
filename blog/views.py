@@ -62,7 +62,6 @@ class AddCommentView(CreateView):
     model = Comment
     form_class = NewCommentForm
     template_name = "blog/comment_newcomment.html"
-    # fields = "__all__"
 
     def get_context_data(self, **kwargs):
         """Add extra context to the View.
@@ -74,7 +73,6 @@ class AddCommentView(CreateView):
         slug = self.kwargs["slug"]
         context["post"] = Blog.objects.get(slug=slug)
         context["form"].related_post = context["post"]
-        print("Context:", context)
         return context
 
     def form_valid(self, form):
@@ -94,7 +92,7 @@ class AddCommentView(CreateView):
         return reverse("blog:detail", kwargs={"slug": self.kwargs["slug"]})
 
 
-class EditCommentView(UpdateView):
+class EditCommentView(LoginRequiredMixin, UpdateView):
     """Add a new comment to a specific post."""
 
     model = Comment

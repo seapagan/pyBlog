@@ -4,7 +4,7 @@ from django.urls.base import reverse
 from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import UpdateView
 
-from blog.forms import CommentForm
+from blog.forms import EditCommentForm, NewCommentForm
 from blog.models import Blog, Comment
 
 
@@ -60,7 +60,7 @@ class AddCommentView(CreateView):
     """Add a new comment to a specific post."""
 
     model = Comment
-    form_class = CommentForm
+    form_class = NewCommentForm
     template_name = "blog/comment_newcomment.html"
     # fields = "__all__"
 
@@ -98,7 +98,7 @@ class EditCommentView(UpdateView):
     """Add a new comment to a specific post."""
 
     model = Comment
-    form_class = CommentForm
+    form_class = EditCommentForm
     template_name = "blog/comment_editcomment.html"
 
     def get_success_url(self) -> str:

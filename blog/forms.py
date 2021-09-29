@@ -4,7 +4,7 @@ from django import forms
 from blog.models import Comment
 
 
-class CommentForm(forms.ModelForm):
+class NewCommentForm(forms.ModelForm):
     """Define the form to Add a comment."""
 
     class Meta:
@@ -18,3 +18,22 @@ class CommentForm(forms.ModelForm):
             "name": forms.TextInput(attrs={"class": "form-control"}),
             "body": forms.Textarea(attrs={"class": "form-control"}),
         }
+
+
+class EditCommentForm(forms.ModelForm):
+    """Define the form to Add a comment."""
+
+    class Meta:
+        """Metadata for this form."""
+
+        model = Comment
+
+        fields = ("body",)
+        labels = {
+            "body": "",
+        }
+
+        # widgets = {
+        #     # "name": forms.TextInput(attrs={"class": "form-control"}),
+        #     "body": forms.Textarea(attrs={"class": "form-control"}),
+        # }

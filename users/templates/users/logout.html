@@ -5,6 +5,7 @@
 <div class="logout_container">
   <div class="logout_header">You have been logged out of the Blog.</div>
   <a class="logout_button btn" href="{% url 'login' %}">Log back in</a>
+  <a class="logout_button btn" href="{% url 'blog:index' %}">Go to Homepage</a>
 </div>
 
 {% endblock body %}

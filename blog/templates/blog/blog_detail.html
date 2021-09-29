@@ -55,7 +55,9 @@
     <div class="blog_comment_footer">
       <a class="blog_comment_edit"
         href="{% url 'blog:edit_comment' comment.id %}">Edit this Comment</a>
-      <a class="blog_comment_delete" href="">Delete this Comment</a>
+      <a class="blog_comment_delete"
+        href="{% url 'blog:delete_comment' comment.id %}">Delete this
+        Comment</a>
     </div>
     {% endif %}
   </div>

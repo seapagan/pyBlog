@@ -1,0 +1,11 @@
+{% extends 'blog/_base.html' %}
+
+{% block body %}
+
+<form method="post">{% csrf_token %}
+  <p>Are you sure you want to delete "{{ object }}"?</p>
+  <input class="btn" type="submit" value="Confirm">
+  <a class="btn" href="{{ view.get_success_url}}">Cancel</a>
+</form>
+
+{% endblock body %}

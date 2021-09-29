@@ -2,7 +2,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls.base import reverse
 from django.views.generic import CreateView, DetailView, ListView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView, UpdateView
 
 from blog.forms import EditCommentForm, NewCommentForm
 from blog.models import Blog, Comment
@@ -100,6 +100,17 @@ class EditCommentView(UpdateView):
     model = Comment
     form_class = EditCommentForm
     template_name = "blog/comment_editcomment.html"
+
+    def get_success_url(self) -> str:
+        """On success, return to the blog post we commented on."""
+        post_slug = Comment.objects.get(pk=self.kwargs["pk"]).related_post.slug
+        return reverse("blog:detail", kwargs={"slug": post_slug})
+
+
+class DeleteCommentView(LoginRequiredMixin, DeleteView):
+    """Delete an existing comment."""
+
+    model = Comment
 
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""

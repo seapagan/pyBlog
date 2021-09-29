@@ -13,6 +13,7 @@
   {% csrf_token %}
   {{ form.media }}
   {{ form.as_p }}
-  <input type="submit" value="Save">
+  <input class="btn" type="submit" value="Save">
+  <a class="btn" href="{{ view.get_success_url }}">Cancel</a>
 </form>
 {% endblock body %}

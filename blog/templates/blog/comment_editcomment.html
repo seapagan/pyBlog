@@ -1,0 +1,19 @@
+{% extends 'blog/_base.html' %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+<div>You are Logged in as <b>{{ user.username }}</b></div>
+{% else %}
+<div>You are not logged in.</div>
+{% endif %}
+
+{% comment %} <div>Commenting on Post : {{ comment.body }}</div>
+{% endcomment %}
+<form method="post">
+  {% csrf_token %}
+  {{ form.media }}
+  {{ form.as_p }}
+  <input type="submit" value="Save">
+</form>
+{% endblock body %}

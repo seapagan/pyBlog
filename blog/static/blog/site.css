@@ -11,6 +11,7 @@ body {
 .site_container {
   width: 90%;
   margin: 1em auto;
+  padding-bottom: 1em;
   border: 1px solid rgba(211, 211, 211, 0.596);
   border-radius: 5px;
 }

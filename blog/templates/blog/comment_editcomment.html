@@ -8,8 +8,7 @@
 <div>You are not logged in.</div>
 {% endif %}
 
-{% comment %} <div>Commenting on Post : {{ comment.body }}</div>
-{% endcomment %}
+<div>Commenting on Post : <i>"{{ comment.related_post.title }}"</i></div>
 <form method="post">
   {% csrf_token %}
   {{ form.media }}

@@ -105,6 +105,16 @@ class EditCommentView(LoginRequiredMixin, UpdateView):
         post_slug = Comment.objects.get(pk=self.kwargs["pk"]).related_post.slug
         return reverse("blog:detail", kwargs={"slug": post_slug})
 
+    def get_object(self, queryset=None):
+        """Ensure that the current logged in user owns the comment."""
+        obj = super(EditCommentView, self).get_object()
+        if (
+            not obj.created_by_user == self.request.user
+            and not self.request.user.is_superuser
+        ):
+            raise Http404("You Dont have permission to do that!")
+        return obj
+
 
 class DeleteCommentView(LoginRequiredMixin, DeleteView):
     """Delete an existing comment."""
@@ -123,6 +133,5 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
             not obj.created_by_user == self.request.user
             and not self.request.user.is_superuser
         ):
-            print("User : ", self.request.user.is_superuser)
             raise Http404("You Dont have permission to do that!")
         return obj

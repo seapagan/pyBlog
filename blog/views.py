@@ -119,6 +119,10 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
     def get_object(self, queryset=None):
         """Ensure that the current logged in user owns the comment."""
         obj = super(DeleteCommentView, self).get_object()
-        if not obj.created_by_user == self.request.user:
+        if (
+            not obj.created_by_user == self.request.user
+            and not self.request.user.is_superuser
+        ):
+            print("User : ", self.request.user.is_superuser)
             raise Http404("You Dont have permission to do that!")
         return obj

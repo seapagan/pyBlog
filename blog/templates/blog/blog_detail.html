@@ -51,7 +51,7 @@
     <div class="blog_comment_body">
       {{comment.body|markdown|safe}}
     </div>
-    {% if comment.get_commenter == user.username %}
+    {% if comment.get_commenter == user.username or user.is_superuser %}
     <div class="blog_comment_footer">
       <a class="blog_comment_edit"
         href="{% url 'blog:edit_comment' comment.id %}">Edit this Comment</a>

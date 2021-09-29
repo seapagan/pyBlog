@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "preferences",
+    "django_gravatar",
     "mdeditor",
     "blog",
     "users",

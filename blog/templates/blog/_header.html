@@ -1,3 +1,5 @@
+{% load gravatar %}
+
 <header class="site_header">
   <h1 class="site_header_brand"><a
       href="{% url 'blog:index' %}">{{ preferences.SitePreferences.sitename }}</a>
@@ -10,6 +12,7 @@
     <span class="btn nav user-display"><a
         href="{% url 'profile' %}">{{ user.username|capfirst }}</a>
     </span>
+    <span class="nav user_gravatar">{% gravatar user.email %}</span>
     {% else %}
     <span class="btn nav no-user-display"><a
         href="{% url 'login' %}">Login</a></span>

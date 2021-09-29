@@ -16,6 +16,7 @@
 * profile links for registered users need to be switched to specific links, once
   that functionality is added
 * add ReCapcha to the comment entry form
+* Nested comments
 
 ## Misc Bugs / Fixes / Ideas
 

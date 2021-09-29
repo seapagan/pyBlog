@@ -287,6 +287,7 @@ code {
 .site_header_brand a {
   display: inline-block;
   font-family: "Big Shoulders Stencil Display", cursive;
+  font-size: 1.3em;
   transform-origin: left;
   transform: scale(1.5, 1);
   text-decoration: none;

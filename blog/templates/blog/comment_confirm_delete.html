@@ -13,10 +13,10 @@
     <h2 class="delete_comment_title">{{ object.related_post.title }}</h2>
     <div class="delete_comment_content">{{object.body|markdown|safe}}</div>
   </div>
-  <input class="btn" type="submit" value="Confirm">
+  <input class="btn btn_danger" type="submit" value="Confirm">
   <a class="btn" href="{{ view.get_success_url }}">Cancel</a>
-  <a class="btn" href="{% url 'blog:edit_comment' object.id %}">Edit
-    instead</a>
+  <a class="btn" href="{% url 'blog:edit_comment' object.id %}">Cancel and
+    Edit</a>
 </form>
 
 {% endblock body %}

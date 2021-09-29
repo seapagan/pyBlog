@@ -147,16 +147,27 @@ body {
 }
 
 .btn {
+  font-style: normal;
   display: inline-block;
   text-decoration: none;
   border: 1px solid lightgray;
   border-radius: 5px;
   background-color: hsla(212, 55%, 73%, 0.39);
-  padding: 0.4em;
+  padding: 0.1em 0.4em;
+  cursor: pointer;
   color: black;
-  font-family: "JetBrains Mono", monospace;
-  /* box-shadow: 0px 0px 1px 1px rgba(80, 93, 107, 0.5); */
-  /* margin-top: 5px; */
+}
+
+.btn_danger {
+  color: red;
+  background-color: hsla(0, 100%, 50%, 0.2);
+  border: 1px solid red;
+}
+
+.btn_success {
+  color: green;
+  background-color: hsla(118, 100%, 50%, 0.2);
+  border: 1px solid green;
 }
 
 /* remove all margins on headings inside the markdown */

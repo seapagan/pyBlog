@@ -4,14 +4,14 @@
 {% block body %}
 
 <form method="post">{% csrf_token %}
-  <div class="delete_comment_sure">Are you sure you want to delete your comment
+  <div class="delete_content_sure">Are you sure you want to delete your comment
     on this post?</div>
   {% comment %} <div class="title">{{ object.related_post.title }}?</div>
   {% endcomment %}
 
-  <div class="delete_comment_body">
-    <h2 class="delete_comment_title">{{ object.related_post.title }}</h2>
-    <div class="delete_comment_content">{{object.body|markdown|safe}}</div>
+  <div class="delete_content_body">
+    <h2 class="delete_content_title">{{ object.related_post.title }}</h2>
+    <div class="delete_content_content">{{object.body|markdown|safe}}</div>
   </div>
   <input class="btn btn_danger" type="submit" value="Confirm">
   <a class="btn" href="{{ view.get_success_url }}">Cancel</a>

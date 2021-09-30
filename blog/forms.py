@@ -1,7 +1,7 @@
 """Define any forms used in the Blogs app."""
 from django import forms
 
-from blog.models import Comment
+from blog.models import Blog, Comment
 
 
 class NewCommentForm(forms.ModelForm):
@@ -20,8 +20,22 @@ class NewCommentForm(forms.ModelForm):
         }
 
 
+class EditPostForm(forms.ModelForm):
+    """Define the form to Edit a Post."""
+
+    class Meta:
+        """Metadata for this form."""
+
+        model = Blog
+
+        fields = ("body",)
+        labels = {
+            "body": "",
+        }
+
+
 class EditCommentForm(forms.ModelForm):
-    """Define the form to Add a comment."""
+    """Define the form to Edit a comment."""
 
     class Meta:
         """Metadata for this form."""

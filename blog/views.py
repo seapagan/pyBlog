@@ -5,7 +5,7 @@ from django.urls.base import reverse
 from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
 
-from blog.forms import EditCommentForm, NewCommentForm
+from blog.forms import EditCommentForm, EditPostForm, NewCommentForm
 from blog.models import Blog, Comment
 
 
@@ -57,6 +57,33 @@ class NewPostView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+class EditPostView(LoginRequiredMixin, UpdateView):
+    """Edit an existing Post."""
+
+    model = Blog
+    form_class = EditPostForm
+    template_name = "blog/blog_editpost.html"
+
+    def get_success_url(self) -> str:
+        """On success, return to the blog post we commented on."""
+        post_slug = Blog.objects.get(slug=self.kwargs["slug"]).slug
+        print(post_slug)
+        return reverse("blog:detail", kwargs={"slug": post_slug})
+
+    def get_object(self, queryset=None):
+        """Ensure that the current logged in user owns the post.
+
+        Also can edit if they are a superuser.
+        """
+        obj = super(EditPostView, self).get_object()
+        if (
+            not obj.user == self.request.user
+            and not self.request.user.is_superuser
+        ):
+            raise Http404("You Dont have permission to do that!")
+        return obj
+
+
 class AddCommentView(CreateView):
     """Add a new comment to a specific post."""
 
@@ -94,7 +121,7 @@ class AddCommentView(CreateView):
 
 
 class EditCommentView(LoginRequiredMixin, UpdateView):
-    """Add a new comment to a specific post."""
+    """Edit an existing comment ."""
 
     model = Comment
     form_class = EditCommentForm

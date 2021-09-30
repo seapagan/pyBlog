@@ -15,6 +15,15 @@
   <div class="blog_body">
     {{ blog.body | markdown | safe }}
   </div>
+  <div class="blog_body_footer">
+    <span class="blog_body_footer_like"><a class="btn" href="">Like</a></span>
+    {% if blog.user.username == user.username or user.is_superuser %}
+    <span class="blog_body_footer_edit"><a class="btn"
+        href="{% url 'blog:edit_post' blog.slug %}">Edit</a></span>
+    <span class="blog_body_footer_delete"><a class="btn btn_danger"
+        href="">Delete</a></span>
+    {% endif %}
+  </div>
 </article>
 
 <!-- This section displays the comments (if any) -->

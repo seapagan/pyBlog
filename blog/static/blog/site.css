@@ -145,15 +145,22 @@ body {
   text-decoration: none;
 }
 
-.delete_comment_body {
+.delete_content_footer {
+  text-align: center;
+}
+
+.delete_content_body {
   /* padding: 0 0.5em 0.5em 0.5em; */
   border: 1px lightgray solid;
   border-radius: 5px;
   margin: 1em 0;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  height: 30vh;
 }
 
-.delete_comment_title {
+.delete_content_title {
   text-align: center;
   margin: 0;
   padding: 0.5em;
@@ -162,15 +169,16 @@ body {
   border-bottom: 1px lightgray dotted;
 }
 
-.delete_comment_content {
+.delete_content_content {
   padding: 0 0.5em;
 }
 
-.delete_comment_sure {
+.delete_content_sure {
   color: red;
   font-weight: bold;
   font-size: 1.2em;
   padding-top: 1em;
+  text-align: center;
 }
 
 .btn {

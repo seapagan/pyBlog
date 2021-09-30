@@ -1,0 +1,27 @@
+{% extends 'blog/_base.html' %}
+{% load markdown_extras %}
+
+{% block body %}
+
+<form method="post">{% csrf_token %}
+  <div class="delete_content_sure">Are you sure you want to delete this post?
+  </div>
+
+  <div class="delete_content_body">
+    <h2 class="delete_content_title">{{ object.title }}</h2>
+    <div class="delete_content_content">
+      {{object.body|markdown|safe}}</div>
+  </div>
+  <p>You will also delete {{ object.comments.count}}
+    comment{{ object.comments.count|pluralize}} associated with
+    this post.</p>
+  <div class="delete_content_footer">
+    <p>This operation CANNOT BE UNDONE!</p>
+    <input class="btn btn_danger" type="submit" value="Confirm">
+    <a class="btn" href="{{ view.get_success_url }}">Cancel</a>
+    <a class="btn" href="{% url 'blog:edit_post' object.slug %}">Cancel and
+      Edit</a>
+  </div>
+</form>
+
+{% endblock body %}

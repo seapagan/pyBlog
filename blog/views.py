@@ -1,7 +1,7 @@
 """Define the views for the 'blog' application."""
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.response import Http404
-from django.urls.base import reverse
+from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
 
@@ -76,6 +76,28 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         Also can edit if they are a superuser.
         """
         obj = super(EditPostView, self).get_object()
+        if (
+            not obj.user == self.request.user
+            and not self.request.user.is_superuser
+        ):
+            raise Http404("You Dont have permission to do that!")
+        return obj
+
+
+class DeletePostView(LoginRequiredMixin, DeleteView):
+    """Edit an existing Post."""
+
+    model = Blog
+    # template_name = "blog/blog_deletepost.html"
+
+    success_url = reverse_lazy("blog:index")
+
+    def get_object(self, queryset=None):
+        """Ensure that the current logged in user owns the post.
+
+        Also can delete if they are a superuser.
+        """
+        obj = super(DeletePostView, self).get_object()
         if (
             not obj.user == self.request.user
             and not self.request.user.is_superuser

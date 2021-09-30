@@ -13,6 +13,9 @@ urlpatterns = [
     ),
     path("<str:slug>/edit", views.EditPostView.as_view(), name="edit_post"),
     path(
+        "<str:slug>/delete", views.DeletePostView.as_view(), name="delete_post"
+    ),
+    path(
         "comment/<int:pk>/edit",
         views.EditCommentView.as_view(),
         name="edit_comment",

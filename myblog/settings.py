@@ -148,4 +148,11 @@ SITE_ID = 2
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
-MDEDITOR_CONFIGS = {"default": {"language": "en", "watch": False}}
+MDEDITOR_CONFIGS = {
+    "default": {
+        "language": "en",
+        "watch": False,
+        "mode": "gfm",
+        "placeholder": "Enter your comment using Markdown! Supports Github Flavoured Markdown (GFM)",
+    }
+}

@@ -17,11 +17,11 @@
   <div class="blog-buttons">
     <a class="btn" href="{% url 'blog:detail' blog.slug %}">Read More ...</a>
   </div>
-  <div class="blog_date_wrapper">Posted by <a class="blog_user"
-      href="{% url 'profile' %}">{{blog.user}}</a> on <span
-      class="blog-date-posted">{{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
+  <div class="blog_date_wrapper"><span class="blog_date_posted">Posted by <a
+        class="blog_user" href="{% url 'profile' %}">{{blog.user}}</a> on
+      {{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
     {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
-    <span class="blog-date-updated">(Updated at
+    <span class="blog_date_updated">(Edited
       {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
     {% endif %}
   </div>

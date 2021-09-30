@@ -5,6 +5,8 @@
 * Comments - `Basic functionality complete`
 * Tags
 * Sidebar
+* API to read / post Blog Posts and Comments, allowing a completely separate
+  front end to be written and used.
 
 ### Comments
 
@@ -18,7 +20,7 @@
 * add ReCapcha to the comment entry form
 * Nested comments
 
-## Misc Bugs / Fixes / Ideas
+### Misc Bugs / Fixes / Ideas
 
 * detect the users timezone and display date/time formats properly.
 * add user login/logout/register functionality, though register should be by
@@ -42,6 +44,8 @@
   [`django-compressor-postcss`][djc-postcss]
 * add a 'like' option to a post
 * add social media sharing to a post
+* Toggle (from manage.py) to disable the native Django front end completely if
+  required, so an external one can use the API (maybe make into a plugin app?)
 
 [djc]: https://github.com/django-compressor/django-compressor
 [djc-postcss]: https://github.com/Pithikos/django-compressor-postcss

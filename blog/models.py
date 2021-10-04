@@ -55,7 +55,7 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name="commenter",
+        related_name="comments",
     )
     created_by_guest = models.CharField(max_length=50, blank=True)
     related_post = models.ForeignKey(

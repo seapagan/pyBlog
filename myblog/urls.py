@@ -25,7 +25,6 @@ urlpatterns = [
         ),
         name="logout",
     ),
-    # path("profile/", user_views.profilepage, name="profile"),
     path(
         "profile/<int:pk>",
         user_views.UserProfileView.as_view(),

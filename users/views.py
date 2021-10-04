@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.views.generic import DetailView, ListView
 
-from blog.models import Blog
 from users.forms import RegisterForm
 
 
@@ -27,20 +26,10 @@ def register(request):
 
 
 class MyProfileView(LoginRequiredMixin, ListView):
-    """View for the users profile page."""
+    """View for the current users profile page."""
 
-    model = Blog
-    template_name = "users/my_profile.html"
-    context_object_name = "posts"
-    paginate_by = 8  # show the last 8 posts
-
-    def get_queryset(self):
-        """Only get posts by this user."""
-        queryset = super(MyProfileView, self).get_queryset()
-        queryset = queryset.filter(user=self.request.user).order_by(
-            "-updated_at"
-        )
-        return queryset
+    model = User
+    template_name = "users/user-profile.html"
 
 
 class UserProfileView(DetailView):

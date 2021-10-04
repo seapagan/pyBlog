@@ -18,7 +18,8 @@
     <a class="btn" href="{% url 'blog:detail' blog.slug %}">Read More ...</a>
   </div>
   <div class="blog_date_wrapper"><span class="blog_date_posted">Posted by <a
-        class="blog_user" href="{% url 'profile' %}">{{blog.user}}</a> on
+        class="blog_user"
+        href="{% url 'user-profile' blog.user.id %}">{{blog.user}}</a> on
       {{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
     {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
     <span class="blog_date_updated">(Edited
@@ -30,8 +31,8 @@
 <div class="pagination">
   <span class="step-links">
     {% if page_obj.has_previous %}
-    <a href="?page=1">&laquo; first</a>
-    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+    <a class="btn" href="?page=1">&laquo; first</a>
+    <a class="btn" href="?page={{ page_obj.previous_page_number }}">previous</a>
     {% endif %}
 
     <span class="current">
@@ -39,8 +40,9 @@
     </span>
 
     {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}">next</a>
-    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+    <a class="btn" href="?page={{ page_obj.next_page_number }}">next</a>
+    <a class="btn" href="?page={{ page_obj.paginator.num_pages }}">last
+      &raquo;</a>
     {% endif %}
   </span>
 </div>

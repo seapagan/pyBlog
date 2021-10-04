@@ -12,7 +12,8 @@
     {% comment %} <span class="btn nav user-display"><a
         href="{% url 'profile' %}">{{ user.username|capfirst }}</a>
     </span> {% endcomment %}
-    <a href="{% url 'profile' %}" alt="{{ user.username|capfirst }}'s Profile"
+    <a href="{% url 'my-profile' %}"
+      alt="{{ user.username|capfirst }}'s Profile"
       class="nav user_gravatar">{% gravatar user.email %}
     </a>
     {% else %}

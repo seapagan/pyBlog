@@ -11,8 +11,12 @@
     <h2 class="profile_username">{{ user.username }}</h2>
     <div class="profile_joined_date">Joined :
       {{user.date_joined|date:"dS \o\f F Y"}}</div>
-    <div class="profile_post_count">Post Count : {{user.blog_posts.all.count}}
+    {% with post_count=user.blog_posts.all.count comment_count=user.comments.all.count %}
+    <div class="profile_post_count">Contributions : {{post_count}}
+      post{{post_count|pluralize}} / {{comment_count}}
+      comment{{comment_count|pluralize}}
     </div>
+    {% endwith %}
   </div>
 </div>
 <div class="profile_post_wrapper">

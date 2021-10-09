@@ -4,6 +4,7 @@
 <div>You are Logged in as <b>{{ user.username }}</b></div>
 <form method="post">
   {% csrf_token %}
+  {{ form.media }}
   {{ form.as_p }}
   <input type="submit" value="Save">
 </form>

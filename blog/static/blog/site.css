@@ -273,7 +273,8 @@ code {
   border-radius: 10px;
   height: 100%;
   box-shadow: 0px 0px 1px 1px rgba(80, 93, 107, 0.5);
-  background-color: hsla(198, 100%, 97%, 0.781);
+  /* background-color: hsla(198, 100%, 97%, 0.781); */
+  background-color: hsl(30, 10%, 97%);
 }
 
 .profile_post_section_title {
@@ -286,7 +287,7 @@ code {
 
 .profile_post_summary:hover {
   box-shadow: 0px 0px 2px 2px rgba(80, 93, 107, 0.5);
-  background-color: hsla(198, 100%, 95%, 0.781);
+  /* background-color: hsla(198, 100%, 95%, 0.781); */
 }
 
 .profile_avatar {

@@ -49,6 +49,8 @@
 * add social media sharing to a post
 * Toggle (from manage.py) to disable the native Django front end completely if
   required, so an external one can use the API (maybe make into a plugin app?)
+* sort out different WYSIWYG editor placeholders depending if we are creating
+  a post or a comment
 
 [djc]: https://github.com/django-compressor/django-compressor
 [djc-postcss]: https://github.com/Pithikos/django-compressor-postcss

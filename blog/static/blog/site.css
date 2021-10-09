@@ -448,7 +448,7 @@ code {
   display: inline-grid;
   grid-template-columns: auto auto;
   /* width: auto; */
-  row-gap: 1em;
+  row-gap: 0.5em;
 }
 
 .form_header {
@@ -465,6 +465,12 @@ code {
   align-self: center;
   justify-self: right;
   padding: 0.5em;
+}
+
+.form_hr {
+  grid-column: 1/3;
+  width: 100%;
+  color: hsla(0, 0%, 80%, 0.3);
 }
 
 .form_button {

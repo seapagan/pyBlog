@@ -28,8 +28,13 @@ def register(request):
 class MyProfileView(LoginRequiredMixin, ListView):
     """View for the current users profile page."""
 
-    model = User
+    # model = User
     template_name = "users/user-profile.html"
+    context_object_name = "person"
+
+    def get_queryset(self):
+        """Customise the query to only return the logged in user."""
+        return User.objects.get(pk=self.request.user.pk)
 
 
 class UserProfileView(DetailView):
@@ -37,3 +42,4 @@ class UserProfileView(DetailView):
 
     model = User
     template_name = "users/user-profile.html"
+    context_object_name = "person"

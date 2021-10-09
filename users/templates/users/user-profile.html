@@ -8,7 +8,7 @@
   <div class="profile_meta_left"><img class="profile_avatar"
       src="{{ user.profile.image.url }}" alt=""></div>
   <div class="profile_meta_right">
-    <h2 class="profile_username">{{ user.username }}</h2>
+    <h2 class="profile_username">{{ user.username|capfirst }}</h2>
     <div class="profile_joined_date">Joined :
       {{user.date_joined|date:"dS \o\f F Y"}}</div>
     {% with post_count=user.blog_posts.all.count comment_count=user.comments.all.count %}
@@ -20,6 +20,7 @@
   </div>
 </div>
 <div class="profile_post_wrapper">
+  <div class="profile_post_section_title">User Posts.</div>
   {% with user.blog_posts.all as posts %}
   {% for post in posts %}
   <article>
@@ -42,10 +43,22 @@
   {% endwith %}
 </div>
 
-<div class="profile_comments_wrapper">
+<div class="profile_comments_section">
+  <div class="profile_section_title">User Comments.</div>
   {% with user.comments.all as comments %}
   {% for comment in comments %}
-  <div>{{ comment.body|markdown|safe }}</div>
+  <div class="profile_comments_wrapper">
+    <div class="profile_comments_header">
+      <span
+        class="profile_comments_title">'{{ comment.related_post.title }}'</span>
+      by
+      <span class="profile_comments_user">{{ comment.related_post.user }}</span>
+    </div>
+    <div class="profile_comments_body">{{ comment.body|markdown|safe }}</div>
+    <div class="profile_comments_date">
+      {{ comment.created_at|date:"d M Y, G:H:s" }}
+    </div>
+  </div>
   {% endfor %}
   {% endwith %}
 </div>

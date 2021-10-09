@@ -205,11 +205,15 @@ body {
   border: 1px solid green;
 }
 
-/* remove all margins on headings inside the markdown */
-/* .blog-body h2 { */
-/* h2 {
-  margin: 0;
-} */
+/* adjust all margins on headings etc */
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0.3em 0;
+}
 
 pre {
   overflow-x: auto;
@@ -272,6 +276,14 @@ code {
   background-color: hsla(198, 100%, 97%, 0.781);
 }
 
+.profile_post_section_title {
+  justify-self: center;
+  font-size: 1.5em;
+  grid-column: 1/3;
+  font-weight: bold;
+  padding-bottom: 0.5em;
+}
+
 .profile_post_summary:hover {
   box-shadow: 0px 0px 2px 2px rgba(80, 93, 107, 0.5);
   background-color: hsla(198, 100%, 95%, 0.781);
@@ -295,6 +307,55 @@ code {
 
 .profile_post_desc {
   padding-top: 0.7em;
+}
+
+.profile_comments_section {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1em;
+  margin: 0 auto;
+  width: 95%;
+}
+
+.profile_section_title {
+  justify-self: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.profile_comments_wrapper {
+  display: grid;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: hsl(30, 10%, 97%);
+
+  grid-template-rows: 1fr auto;
+  /* row-gap: 10px; */
+}
+
+.profile_comments_date {
+  font-style: italic;
+  padding: 0.3em;
+  font-size: 0.8em;
+  justify-self: right;
+}
+
+.profile_comments_user {
+  font-weight: bold;
+}
+
+.profile_comments_title {
+  font-weight: bold;
+}
+
+.profile_comments_header {
+  border-bottom: 1px solid lightgray;
+  padding: 0.5em;
+  background-color: hsl(30, 10%, 94%);
+}
+
+.profile_comments_body {
+  padding: 0.5em;
 }
 
 .site_header {

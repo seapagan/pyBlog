@@ -1,0 +1,87 @@
+{% extends 'blog/_base.html' %}
+{% load markdown_extras %}
+
+{% block body %}
+
+
+<div class="profile_meta_wrapper">
+  <div class="profile_meta_left"><img class="profile_avatar"
+      src="{{ person.profile.image.url }}" alt=""></div>
+  <div class="profile_meta_right">
+    <h2 class="profile_username">{{ person.username|capfirst }}</h2>
+    <div class="profile_joined_date">Joined :
+      {{person.date_joined|date:"dS \o\f F Y"}}</div>
+    {% with post_count=person.blog_posts.all.count comment_count=person.comments.all.count %}
+    <div class="profile_post_count">Contributions : {{post_count}}
+      post{{post_count|pluralize}} / {{comment_count}}
+      comment{{comment_count|pluralize}}
+    </div>
+    {% endwith %}
+  </div>
+</div>
+<div class="profile_post_wrapper">
+  <div class="profile_post_section_title">User Posts.</div>
+  {% with person.blog_posts.all as posts %}
+  {% for post in posts %}
+  <article>
+    <a class="profile_post_summary" href="{% url 'blog:detail' post.slug %}">
+      <div class='profile_post_title'>{{ post.title|capfirst }}</div>
+
+      <div class="profile_date_wrapper">
+        {% if post.created_at|date:"SHORT_DATETIME_FORMAT" != post.updated_at|date:"SHORT_DATETIME_FORMAT" %}
+        Updated :
+        {{ post.updated_at|date:"SHORT_DATETIME_FORMAT" }}
+        {% else %}
+        Posted :
+        {{ post.created_at|date:"SHORT_DATETIME_FORMAT" }}
+        {% endif %}
+      </div>
+      <div class='profile_post_desc'>{{ post.desc }}</div>
+    </a>
+  </article>
+  {% endfor %}
+  {% endwith %}
+</div>
+
+<div class="profile_comments_section">
+  <div class="profile_section_title">User Comments.</div>
+  {% with person.comments.all as comments %}
+  {% for comment in comments %}
+  <div class="profile_comments_wrapper">
+    <div class="profile_comments_header">
+      '<a class="profile_comments_title"
+        href="{% url 'blog:detail' comment.related_post.slug%}">{{ comment.related_post.title }}</a>'
+      by
+      <a href="{% url 'user-profile' comment.related_post.user.id %}"
+        class="profile_comments_user">{{ comment.related_post.user }}</a>
+    </div>
+    <div class="profile_comments_body">{{ comment.body|markdown|safe }}</div>
+    <div class="profile_comments_date">
+      {% comment %} {{ comment.created_at|date:"d M Y, G:H:s" }}
+      {% endcomment %}
+      {{ comment.created_at}}
+    </div>
+  </div>
+  {% endfor %}
+  {% endwith %}
+</div>
+
+{% comment %} <div class="pagination">
+  <span class="step-links">
+    {% if page_obj.has_previous %}
+    <a href="?page=1">&laquo; first</a>
+    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+    {% endif %}
+
+    <span class="current">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+
+    {% if page_obj.has_next %}
+    <a class="btn" href="?page={{ page_obj.next_page_number }}">next</a>
+    <a class="btn" href="?page={{ page_obj.paginator.num_pages }}">last
+      &raquo;</a>
+    {% endif %}
+  </span>
+</div> {% endcomment %}
+{% endblock body %}

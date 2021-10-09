@@ -50,7 +50,7 @@
       <div class="blog_comment_author">
         {% if comment.created_by_user %}
         <a class="blog_comment_userlink"
-          href="{% url 'profile' %}">{{comment.get_commenter}}</a>
+          href="{% url 'user-profile' comment.created_by_user.id %}">{{comment.get_commenter}}</a>
         {% else %}
         {{comment.get_commenter}}
         {% endif %}

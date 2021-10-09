@@ -15,13 +15,16 @@
 * ~~Integrate an HTML editor. Could use markdown but it gives unexpected results
   to those not used to it (ie missing linebreaks). Comments saved as HTML and
   filtered through 'safe'~~ Using Markdown with WYSIWYG functionality for now.
-* profile links for registered users need to be switched to specific links, once
-  that functionality is added
+* ~~profile links for registered users need to be switched to specific links, once
+  that functionality is added~~
 * add ReCapcha to the comment entry form
 * Nested comments
 
 ### Misc Bugs / Fixes / Ideas
 
+* ~~Header is messed up when looking at someone else profile when you are logged
+  in or out, it displays the header as if you are logged in as that user (ie the
+  avatar and logout display)~~
 * detect the users timezone and display date/time formats properly.
 * add user login/logout/register functionality, though register should be by
   invitation not open to all. [`PARTIAL`]

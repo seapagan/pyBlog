@@ -49,10 +49,11 @@
   {% for comment in comments %}
   <div class="profile_comments_wrapper">
     <div class="profile_comments_header">
-      <span
-        class="profile_comments_title">'{{ comment.related_post.title }}'</span>
+      '<a class="profile_comments_title"
+        href="{% url 'blog:detail' comment.related_post.slug%}">{{ comment.related_post.title }}</a>'
       by
-      <span class="profile_comments_user">{{ comment.related_post.user }}</span>
+      <a href="{% url 'user-profile' comment.related_post.user.id %}"
+        class="profile_comments_user">{{ comment.related_post.user }}</a>
     </div>
     <div class="profile_comments_body">{{ comment.body|markdown|safe }}</div>
     <div class="profile_comments_date">

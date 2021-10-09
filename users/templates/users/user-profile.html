@@ -56,7 +56,9 @@
     </div>
     <div class="profile_comments_body">{{ comment.body|markdown|safe }}</div>
     <div class="profile_comments_date">
-      {{ comment.created_at|date:"d M Y, G:H:s" }}
+      {% comment %} {{ comment.created_at|date:"d M Y, G:H:s" }}
+      {% endcomment %}
+      {{ comment.created_at}}
     </div>
   </div>
   {% endfor %}

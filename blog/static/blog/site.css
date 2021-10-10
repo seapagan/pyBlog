@@ -6,6 +6,7 @@ html {
   --block-background: hsl(30, 10%, 97%);
   --block-title: hsl(30, 10%, 94%);
   --button-color: hsl(30, 20%, 90%);
+  --faded-text: hsla(0, 0%, 20%, 0.6);
 }
 
 body {
@@ -17,10 +18,77 @@ body {
 .site_container {
   width: 90%;
   margin: 1em auto;
-  padding-bottom: 1em;
+  /* padding-bottom: 1em; */
   border: 1px solid rgba(211, 211, 211, 0.596);
   border-radius: 5px;
-  min-height: 95vh;
+  /* min-height: 95vh; */
+}
+
+.site_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+  padding-bottom: 0.5em;
+  margin: 0.5em;
+  border-bottom: 1px solid lightgray;
+}
+
+.site_footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1em;
+  border-top: 1px solid lightgray;
+}
+
+.site_header_brand {
+  margin: 0;
+}
+
+.site_header_brand a {
+  display: inline-block;
+  font-family: "Big Shoulders Stencil Display", cursive;
+  font-size: 1.3em;
+  transform-origin: left;
+  transform: scale(1.5, 1);
+  text-decoration: none;
+  color: #1b2522;
+}
+
+.site_header_heading {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.site_header_user {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.footer_citation {
+  font-size: 0.9em;
+  color: var(--faded-text);
+}
+
+.site_footer_engine {
+  text-decoration: none;
+}
+
+.site_footer_author {
+  text-decoration: none;
+  font-style: italic;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #1b2522;
+}
+
+.gravatar {
+  height: 2em;
+  width: 2em;
 }
 
 .container {
@@ -79,11 +147,11 @@ body {
 }
 
 .blog_date_updated {
-  color: hsla(0, 0%, 20%, 0.6);
+  color: var(--faded-text);
 }
 
 .blog_date_posted {
-  color: hsla(0, 0%, 20%, 0.6);
+  color: var(--faded-text);
 }
 
 .blog_description {
@@ -266,6 +334,66 @@ code {
   margin-bottom: 1em;
 }
 
+.logout_container {
+  text-align: center;
+}
+
+.logout_header {
+  padding: 2em;
+}
+
+.form_container {
+  text-align: center;
+}
+
+.form_form {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  /* width: auto; */
+  row-gap: 0.5em;
+}
+
+.form_header {
+  padding: 1em;
+  font-size: 2em;
+}
+
+.form_field {
+  padding: 0.5em;
+}
+
+.form_field_label {
+  /* padding-right: 0.5em; */
+  align-self: center;
+  justify-self: right;
+  padding: 0.5em;
+}
+
+.form_hr {
+  grid-column: 1/3;
+  width: 100%;
+  color: hsla(0, 0%, 80%, 0.3);
+}
+
+.form_button {
+  grid-column: 1/3;
+  padding: 0.5em;
+}
+
+input#id_username,
+input#id_password,
+input#id_email,
+input#id_password1,
+input#id_password2 {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* input#id_password {
+  border-radius: 5px;
+  padding: 5px;
+} */
+
 .profile_meta_wrapper {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -396,108 +524,3 @@ code {
 .profile_comments_body {
   padding: 0.5em;
 }
-
-.site_header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1em;
-  padding-bottom: 0.5em;
-  margin: 0.5em;
-  border-bottom: 1px solid lightgray;
-}
-
-.site_header_brand {
-  margin: 0;
-}
-
-.site_header_brand a {
-  display: inline-block;
-  font-family: "Big Shoulders Stencil Display", cursive;
-  font-size: 1.3em;
-  transform-origin: left;
-  transform: scale(1.5, 1);
-  text-decoration: none;
-  color: #1b2522;
-}
-
-.site_header_heading {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-.site_header_user {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
-.nav a {
-  text-decoration: none;
-  color: #1b2522;
-}
-
-.gravatar {
-  height: 2em;
-  width: 2em;
-}
-
-.logout_container {
-  text-align: center;
-}
-
-.logout_header {
-  padding: 2em;
-}
-
-.form_container {
-  text-align: center;
-}
-
-.form_form {
-  display: inline-grid;
-  grid-template-columns: auto auto;
-  /* width: auto; */
-  row-gap: 0.5em;
-}
-
-.form_header {
-  padding: 1em;
-  font-size: 2em;
-}
-
-.form_field {
-  padding: 0.5em;
-}
-
-.form_field_label {
-  /* padding-right: 0.5em; */
-  align-self: center;
-  justify-self: right;
-  padding: 0.5em;
-}
-
-.form_hr {
-  grid-column: 1/3;
-  width: 100%;
-  color: hsla(0, 0%, 80%, 0.3);
-}
-
-.form_button {
-  grid-column: 1/3;
-  padding: 0.5em;
-}
-
-input#id_username,
-input#id_password,
-input#id_email,
-input#id_password1,
-input#id_password2 {
-  border-radius: 5px;
-  padding: 5px;
-}
-
-/* input#id_password {
-  border-radius: 5px;
-  padding: 5px;
-} */

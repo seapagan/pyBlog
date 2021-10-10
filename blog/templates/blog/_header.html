@@ -18,8 +18,8 @@
       class="nav user_gravatar">{% gravatar user.email %}
     </a>
     {% else %}
-    <span class="btn nav no-user-display"><i class="fad fa-sign-in"></i>&nbsp;<a
-        href="{% url 'login' %}">Login</a></span>
+    <span class="btn nav no-user-display"><a href="{% url 'login' %}"><i
+          class="fad fa-sign-in"></i>&nbsp;Login</a></span>
     {% endif %}
   </div>
 </header>

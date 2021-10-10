@@ -101,6 +101,12 @@ body {
   margin: 1em auto;
 }
 
+.blog_comment_footer_add {
+  width: 95%;
+  text-align: right;
+  margin: 1em auto;
+}
+
 .blog_comment_count_index {
   width: inherit;
   margin: 1em 0;

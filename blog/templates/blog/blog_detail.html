@@ -77,7 +77,11 @@
     {% endif %}
   </div>
   {% endfor %}
-  <a href="{% url 'blog:add_comment' blog.slug %}">Add comment!</a>
+  <div class="blog_comment_footer_add">
+    <a class='btn' href="{% url 'blog:add_comment' blog.slug %}"><i
+        class="fad fa-comment-lines"></i>&nbsp;Add
+      comment</a>
+  </div>
   {% endif %}
 </section>
 <!-- End of comment display -->

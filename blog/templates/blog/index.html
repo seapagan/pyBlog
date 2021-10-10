@@ -23,8 +23,7 @@
           href="{% url 'user-profile' blog.user.id %}">{{blog.user}}</a> on
         {{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
       {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
-      <span class="blog_date_updated">(Edited
-        {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
+      <span class="blog_date_updated">(Edited)</span>
       {% endif %}
     </div>
   </div>

@@ -31,10 +31,9 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.0.10"]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     # "django.contrib.admin",
-    "myblog.apps.MyAdminConfig",
+    # "myblog.apps.MyAdminConfig",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -48,6 +47,11 @@ INSTALLED_APPS = [
     "blog",
     "users",
 ]
+
+# only include the Admin paths if we are in DEBUG mode
+if DEBUG:
+    INSTALLED_APPS = ["myblog.apps.MyAdminConfig"] + INSTALLED_APPS
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

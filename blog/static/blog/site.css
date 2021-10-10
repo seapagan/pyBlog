@@ -135,7 +135,8 @@ body {
   flex-direction: row;
   justify-content: flex-end;
   width: 100%;
-  background-color: rgba(193, 222, 231, 0.322);
+  /* background-color: rgba(193, 222, 231, 0.322); */
+  background-color: var(--block-title);
   border-top: 1px lightgray dotted;
 }
 
@@ -146,7 +147,8 @@ body {
 }
 
 .blog_comment_body {
-  padding: 0 0.5em 0.5em 0.5em;
+  /* padding: 0 0.5em 0.5em 0.5em; */
+  padding: 0.5em;
   background-color: var(--block-background);
 }
 

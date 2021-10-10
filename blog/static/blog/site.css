@@ -212,7 +212,7 @@ body {
 .btn_danger {
   color: red;
   background-color: hsla(0, 100%, 50%, 0.1);
-  border: 1px solid red;
+  border: 1px solid hsla(0, 100%, 50%, 0.3);
 }
 
 .btn_success {

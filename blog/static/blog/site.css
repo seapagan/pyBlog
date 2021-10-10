@@ -5,7 +5,10 @@
 html {
   --block-background: hsl(30, 10%, 97%);
   --block-title: hsl(30, 10%, 94%);
-  --button-color: hsl(30, 20%, 90%);
+
+  --button-background-color: hsl(30, 20%, 90%);
+  --btn-backgroud-disabled: inherit;
+
   --faded-text: hsla(0, 0%, 20%, 0.6);
 }
 
@@ -271,7 +274,7 @@ body {
   text-decoration: none;
   border: 1px solid lightgray;
   border-radius: 5px;
-  background-color: var(--button-color);
+  background-color: var(--button-background-color);
   padding: 0.1em 0.4em;
   cursor: pointer;
   color: black;
@@ -287,6 +290,12 @@ body {
   color: green;
   background-color: hsla(118, 100%, 50%, 0.2);
   border: 1px solid green;
+}
+
+.btn-disabled {
+  background-color: var(--btn-background-disabled);
+  color: lightgray;
+  cursor: not-allowed;
 }
 
 .right_pad {
@@ -327,6 +336,11 @@ code {
 
 .pagination {
   padding: 1em 0;
+  text-align: center;
+}
+
+.current {
+  padding: 0 1em;
 }
 
 .detail-back {

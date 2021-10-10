@@ -33,6 +33,9 @@
     {% if page_obj.has_previous %}
     <a class="btn" href="?page=1">&laquo; first</a>
     <a class="btn" href="?page={{ page_obj.previous_page_number }}">previous</a>
+    {% else %}
+    <span class="btn btn-disabled">&laquo; first</span>
+    <span class="btn btn-disabled">previous</span>
     {% endif %}
 
     <span class="current">
@@ -43,6 +46,9 @@
     <a class="btn" href="?page={{ page_obj.next_page_number }}">next</a>
     <a class="btn" href="?page={{ page_obj.paginator.num_pages }}">last
       &raquo;</a>
+    {% else %}
+    <span class="btn btn-disabled">next</span>
+    <span class="btn btn-disabled">last &raquo;</span>
     {% endif %}
   </span>
 </div>

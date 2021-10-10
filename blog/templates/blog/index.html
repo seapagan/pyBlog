@@ -6,25 +6,27 @@
   <h2 class="blog_title">{{ blog.title|capfirst }}</h2>
 
   <div class="blog_description">{{ blog.desc }}</div>
-  {% with blog.no_of_comments as total_comments %}
-  <div class="blog_comment_count blog_comment_count_index"><span>
-      There {{total_comments|pluralize:"is,are"}}
-      <b>{{total_comments}}</b> comment{{total_comments|pluralize}} on this
-      post
-    </span>
-  </div>
-  {% endwith %}
-  <div class="blog-buttons">
+
+  <div class="blog_buttons">
     <a class="btn" href="{% url 'blog:detail' blog.slug %}">Read More ...</a>
   </div>
-  <div class="blog_date_wrapper"><span class="blog_date_posted">Posted by <a
-        class="blog_user"
-        href="{% url 'user-profile' blog.user.id %}">{{blog.user}}</a> on
-      {{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
-    {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
-    <span class="blog_date_updated">(Edited
-      {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
-    {% endif %}
+  <div class="blog_body_footer index">
+    <div class="blog_comment_badge" title="Go to the Comments"><span>
+        {% with blog.no_of_comments as total_comments %}
+        <a href="{% url 'blog:detail' blog.slug %}#comments">{{total_comments}}&nbsp;<i
+            class="fal fa-comment"></i></a>
+        {% endwith %}
+      </span>
+    </div>
+    <div class="blog_date_wrapper"><span class="blog_date_posted">Posted by <a
+          class="blog_user"
+          href="{% url 'user-profile' blog.user.id %}">{{blog.user}}</a> on
+        {{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
+      {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
+      <span class="blog_date_updated">(Edited
+        {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
+      {% endif %}
+    </div>
   </div>
 </article>
 {% endfor %}

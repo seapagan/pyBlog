@@ -131,11 +131,13 @@ body {
   gap: 10px;
   flex-direction: row;
   justify-content: flex-end;
-  width: 100%;
-  /* background-color: rgba(193, 222, 231, 0.322); */
   background-color: var(--block-title);
 
   border-top: 1px lightgray dotted;
+}
+
+.blog_body_footer.index {
+  justify-content: space-between;
 }
 
 .blog_user {
@@ -162,6 +164,11 @@ body {
   font-style: italic;
 }
 
+.blog_buttons {
+  text-align: center;
+  padding-bottom: 0.5em;
+}
+
 .blog_comment_count {
   /* padding: 0 1em; */
   display: flex;
@@ -178,9 +185,14 @@ body {
   margin: 1em auto;
 }
 
-.blog_comment_count_index {
-  width: inherit;
-  margin: 1em 0;
+.blog_comment_badge {
+  align-self: center;
+  font-size: 0.8em;
+}
+
+.blog_comment_badge a {
+  text-decoration: none;
+  color: var(--faded-text);
 }
 
 .blog_comment_wrapper {

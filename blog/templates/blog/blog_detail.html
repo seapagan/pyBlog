@@ -16,12 +16,15 @@
     {{ blog.body | markdown | safe }}
   </div>
   <div class="blog_body_footer">
-    <span class="blog_body_footer_like"><a class="btn" href="">Like</a></span>
+    <span class="blog_body_footer_like"><a class="btn" href=""><i
+          class="fad fa-thumbs-up"></i>&nbsp;Like</a></span>
     {% if blog.user.username == user.username or user.is_superuser %}
     <span class="blog_body_footer_edit"><a class="btn"
-        href="{% url 'blog:edit_post' blog.slug %}">Edit</a></span>
+        href="{% url 'blog:edit_post' blog.slug %}"><i
+          class="fad fa-edit"></i>&nbsp;Edit</a></span>
     <span class="blog_body_footer_delete"><a class="btn btn_danger"
-        href="{% url 'blog:delete_post' blog.slug %}">Delete</a></span>
+        href="{% url 'blog:delete_post' blog.slug %}"><i
+          class="fad fa-trash-alt"></i>&nbsp;Delete</a></span>
     {% endif %}
   </div>
 </article>
@@ -31,7 +34,8 @@
   {% if not blog.comments.all %}
   <div class="blog_comment_count">
     <span>There are <b>NO</b> comments for this post so far.</span>
-    <a class='btn' href="{% url 'blog:add_comment' blog.slug %}">Add a
+    <a class='btn' href="{% url 'blog:add_comment' blog.slug %}"><i
+        class="fad fa-comment-lines"></i>&nbsp;Add a
       comment!</a>
   </div>
   {% else %}
@@ -40,7 +44,8 @@
       There {{total_comments|pluralize:"is,are"}}
       <b>{{total_comments}}</b> comment{{total_comments|pluralize}} on this
       post
-    </span><a class='btn' href="{% url 'blog:add_comment' blog.slug %}">Add
+    </span><a class='btn' href="{% url 'blog:add_comment' blog.slug %}"><i
+        class="fad fa-comment-lines"></i>&nbsp;Add
       comment</a>
   </div>
   {% endwith %}
@@ -63,9 +68,11 @@
     {% if comment.get_commenter == user.username or user.is_superuser %}
     <div class="blog_comment_footer">
       <a class="btn blog_comment_edit"
-        href="{% url 'blog:edit_comment' comment.id %}">Edit</a>
+        href="{% url 'blog:edit_comment' comment.id %}"><i
+          class="fad fa-edit"></i>&nbsp;Edit</a>
       <a class="btn btn_danger blog_comment_delete"
-        href="{% url 'blog:delete_comment' comment.id %}">Delete</a>
+        href="{% url 'blog:delete_comment' comment.id %}"><i
+          class="fad fa-trash-alt"></i>&nbsp;Delete</a>
     </div>
     {% endif %}
   </div>
@@ -75,6 +82,7 @@
 </section>
 <!-- End of comment display -->
 
-<div><a class="btn" href="{% url 'blog:index' %}">Back to Index</a>
+<div><a class="btn" href="{% url 'blog:index' %}"><i
+      class="fad fa-home"></i>&nbsp;Back to Index</a>
 </div>
 {% endblock body %}

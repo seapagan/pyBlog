@@ -17,10 +17,12 @@
     this post.</p>
   <div class="delete_content_footer">
     <p>This operation CANNOT BE UNDONE!</p>
-    <input class="btn btn_danger" type="submit" value="Confirm">
-    <a class="btn" href="{{ view.get_success_url }}">Cancel</a>
-    <a class="btn" href="{% url 'blog:edit_post' object.slug %}">Cancel and
-      Edit</a>
+    <button class="btn btn_danger" type="submit"><i
+        class="fad fa-trash-alt"></i>&nbsp;Confirm</button>
+    <a class="btn" href="{% url 'blog:detail' object.slug %}"><i
+        class="fad fa-ban"></i>&nbsp;Cancel</a>
+    <a class="btn" href="{% url 'blog:edit_post' object.slug %}"><i
+        class="fad fa-edit"></i>&nbsp;Edit instead</a>
   </div>
 </form>
 

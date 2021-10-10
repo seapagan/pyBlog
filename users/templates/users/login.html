@@ -11,11 +11,12 @@
       <div class="form_field_field">{{ field }}</div>
       {% endfor %}
       <div class="form_button">
-        <button class="btn" type="submit">Login</button>
+        <button class="btn" type="submit"><i
+            class="fad fa-sign-in"></i>&nbsp;Login</button>
       </div>
       <hr class="form_hr">
-      <div class="form_button">or <a class="btn"
-          href="{% url 'register' %}">Register</a> as a new
+      <div class="form_button">or <a class="btn" href="{% url 'register' %}"><i
+            class="fad fa-user-plus"></i>&nbsp;Register</a> as a new
         user.</div>
     </div>
   </form>

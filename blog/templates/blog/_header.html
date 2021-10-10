@@ -8,7 +8,8 @@
   </div>
   <div class="site_header_user">
     {% if user.is_authenticated %}
-    <span class="btn nav logout"><a href="{% url 'logout' %}">Logout</a></span>
+    <span class="btn nav logout"><i class="fad fa-sign-out"></i>&nbsp;<a
+        href="{% url 'logout' %}">Logout</a></span>
     {% comment %} <span class="btn nav user-display"><a
         href="{% url 'profile' %}">{{ user.username|capfirst }}</a>
     </span> {% endcomment %}
@@ -17,7 +18,7 @@
       class="nav user_gravatar">{% gravatar user.email %}
     </a>
     {% else %}
-    <span class="btn nav no-user-display"><a
+    <span class="btn nav no-user-display"><i class="fad fa-sign-in"></i>&nbsp;<a
         href="{% url 'login' %}">Login</a></span>
     {% endif %}
   </div>

@@ -217,6 +217,10 @@ body {
   border: 1px solid green;
 }
 
+.right_pad {
+  padding-right: 0.5em;
+}
+
 /* adjust all margins on headings etc */
 h2,
 h3,

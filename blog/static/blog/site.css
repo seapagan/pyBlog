@@ -93,6 +93,21 @@ body {
   padding: 0 1em;
 }
 
+.sidebar_container {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  row-gap: 10px;
+}
+
+.sidebar_article {
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: var(--block-background);
+}
+
 .nav a {
   text-decoration: none;
   color: #1b2522;

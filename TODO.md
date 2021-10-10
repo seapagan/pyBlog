@@ -25,6 +25,7 @@
 * ~~Header is messed up when looking at someone else profile when you are logged
   in or out, it displays the header as if you are logged in as that user (ie the
   avatar and logout display)~~
+* buttons missing or not working in the markdown WYSIWYG editor
 * detect the users timezone and display date/time formats properly.
 * add user login/logout/register functionality, though register should be by
   invitation not open to all. [`PARTIAL`]

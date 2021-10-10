@@ -33,10 +33,15 @@
       </div>
       {% endfor %}
       {% endif %}
-      <main class="container">
-        {% block body %}
-        {% endblock body %}
-      </main>
+      <div class="content_container">
+        <main class="main_container">
+          {% block body %}
+          {% endblock body %}
+        </main>
+        <aside class="sidebar_container">
+          This is the sidebar
+        </aside>
+      </div>
       {% include 'blog/_footer.html' %}
     </div>
   </body>

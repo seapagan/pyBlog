@@ -86,6 +86,13 @@ body {
   font-style: italic;
 }
 
+.content_container {
+  display: grid;
+  grid-template-columns: auto 200px;
+  column-gap: 1em;
+  padding: 0 1em;
+}
+
 .nav a {
   text-decoration: none;
   color: #1b2522;
@@ -96,10 +103,10 @@ body {
   width: 2em;
 }
 
-.container {
+/* .main_container {
   width: 90%;
   margin: 0 auto;
-}
+} */
 
 .blog_article {
   display: flex;
@@ -161,7 +168,7 @@ body {
 }
 
 .blog_description {
-  padding: 1em 0;
+  padding: 1em;
   font-style: italic;
 }
 

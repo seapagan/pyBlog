@@ -39,7 +39,12 @@
           {% endblock body %}
         </main>
         <aside class="sidebar_container">
-          This is the sidebar
+          <article class="sidebar_article">
+            {% include 'blog/sidebar/sidebar1.html' %}</article>
+          <article class="sidebar_article">
+            {% include 'blog/sidebar/sidebar2.html' %}</article>
+          <article class="sidebar_article">
+            {% include 'blog/sidebar/sidebar3.html' %}</article>
         </aside>
       </div>
       {% include 'blog/_footer.html' %}

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "preferences",
     "django_gravatar",
     "mdeditor",
+    "fontawesomepro",
     "blog",
     "users",
 ]

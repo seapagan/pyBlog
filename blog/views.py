@@ -83,6 +83,16 @@ class EditPostView(LoginRequiredMixin, UpdateView):
     form_class = EditPostForm
     template_name = "blog/blog_editpost.html"
 
+    def get_context_data(self, **kwargs):
+        """Add every post to this context, so we can use in the sidebar."""
+        context = super(EditPostView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+        print(context["tags"])
+
+        return context
+
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""
         post_slug = Blog.objects.get(slug=self.kwargs["slug"]).slug

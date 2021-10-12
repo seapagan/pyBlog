@@ -267,7 +267,29 @@ body {
   padding-bottom: 0.5em;
 }
 
-.blog_comment_count {
+.edit_post_wrapper {
+  padding-top: 1em;
+}
+
+.edit_post_user {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.edit_post_title {
+  text-align: center;
+  padding: 1em 0;
+}
+
+.edit_post_tags {
+  padding: 0.5em 0;
+}
+
+.edit_post_buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+. .blog_comment_count {
   display: flex;
   width: 95%;
   justify-content: space-between;

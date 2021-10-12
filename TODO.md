@@ -23,6 +23,7 @@
 * Nested comments
 * Record visitors IP address with the comment. Can be used for moderation or in
   case of spamming / abuse. Can use `django-ipware` package.
+* Add Emoji reactions to posts and comments
 
 ### Misc Bugs / Fixes / Ideas
 

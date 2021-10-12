@@ -10,8 +10,6 @@
   front end to be written and used.
 * Sensitive variables to ENV vars, using `python-dotenv`
 
-*
-
 ### Comments
 
 * Offer to remember commenter for next visit, or use credentials from logged in

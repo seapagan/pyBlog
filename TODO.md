@@ -21,6 +21,8 @@
   that functionality is added~~
 * add ReCapcha to the comment entry form
 * Nested comments
+* Record visitors IP address with the comment. Can be used for moderation or in
+  case of spamming / abuse. Can use `django-ipware` package.
 
 ### Misc Bugs / Fixes / Ideas
 

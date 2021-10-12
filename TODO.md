@@ -7,6 +7,9 @@
 * Sidebar
 * API to read / post Blog Posts and Comments, allowing a completely separate
   front end to be written and used.
+* Sensitive variables to ENV vars, using `python-dotenv`
+
+*
 
 ### Comments
 
@@ -33,7 +36,6 @@
   displayed on the main index page list, followed by a 'read more' button. Can
   do fancy styling to fade the last few lines etc too.
 * ~~paginate the first page to say 5 or 10 etc latest post only.~~
-
 * show a pinned post?
 * automatically create a google sitemap.xml on each new post.
 * ensure we don't have duplicate slugs. not too difficult in a single-user blog
@@ -42,7 +44,7 @@
   with the above issue.
 * API to allow getting summary data of a users posts for embedding in other
   apps.
-* pass the post count for a user to the profile template for display. due to
+* pass the post count for a user to the profile template for display. Due to
   pagination, `{{ posts|length }}` only displays the number on that page.
 * refactor CSS to PostCSS, using [`django-compressor`][djc] and
   [`django-compressor-postcss`][djc-postcss]

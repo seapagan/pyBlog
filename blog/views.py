@@ -15,6 +15,7 @@ class IndexClassView(ListView):
     template_name = "blog/index.html"
     context_object_name = "blogs"
     paginate_by = 6
+    ordering = ["-created_at"]
     model = Blog
 
 
@@ -41,6 +42,13 @@ class PostDetailView(DetailView):
 
     model = Blog
     template = "blog/detail.html"
+
+    def get_context_data(self, **kwargs):
+        """Add every post to this context, so we can use in the sidebar."""
+        context = super(PostDetailView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+
+        return context
 
 
 class NewPostView(LoginRequiredMixin, CreateView):

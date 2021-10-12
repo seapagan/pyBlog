@@ -33,12 +33,12 @@
       </div>
       {% endfor %}
       {% endif %}
-      <div class="content_container">
+      {% comment %} <div class="content_container"> {% endcomment %}
         <main class="main_container">
           {% block body %}
           {% endblock body %}
         </main>
-        <aside class="sidebar_container">
+        {% comment %} <aside class="sidebar_container">
           <article class="sidebar_article">
             {% include 'blog/sidebar/sidebar_search.html' %}
           </article>
@@ -51,8 +51,9 @@
           <article class="sidebar_article">
             {% include 'blog/sidebar/sidebar_tags.html' %}
           </article>
-        </aside>
-      </div>
+        </aside> {% endcomment %}
+        {% comment %}
+      </div> {% endcomment %}
       {% include 'blog/_footer.html' %}
     </div>
   </body>

@@ -6,7 +6,12 @@ from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
 
-from blog.forms import EditCommentForm, EditPostForm, NewCommentForm
+from blog.forms import (
+    EditCommentForm,
+    EditPostForm,
+    NewCommentForm,
+    NewPostForm,
+)
 from blog.models import Blog, Comment, Tag
 
 
@@ -66,8 +71,8 @@ class NewPostView(LoginRequiredMixin, CreateView):
     """Add a new post to the Blog."""
 
     model = Blog
-    fields = ["title", "desc", "body"]
     template_name = "blog/blog_newpost.html"
+    form_class = NewPostForm
 
     def get_context_data(self, **kwargs):
         """Add every post and tag to context, so we can use in the sidebar."""

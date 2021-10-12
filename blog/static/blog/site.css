@@ -291,10 +291,43 @@ body {
   gap: 0.5em;
 }
 
+.new_post_wrapper {
+  padding-top: 1em;
+}
+
+.new_post_user {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.new_post_title {
+  text-align: center;
+  padding: 1em 0;
+}
+
+.new_post_field {
+  margin-bottom: 1em;
+}
+
+.new_post_field_label {
+}
+
+.new_post_field_field input {
+  width: 100%;
+  padding: 2px 5px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.new_post_tags {
+  padding: 0.5em 0;
+}
+
 .new_post_buttons {
   display: flex;
   justify-content: flex-end;
-  gap: 0.5em;
+  /* gap: 0.5em; */
 }
 
 .blog_comment_count {

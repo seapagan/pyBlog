@@ -20,6 +20,26 @@ class NewCommentForm(forms.ModelForm):
         }
 
 
+class NewPostForm(forms.ModelForm):
+    """Define the form to Create a Post."""
+
+    class Meta:
+        """Metadata for this form."""
+
+        model = Blog
+
+        fields = (
+            "title",
+            "desc",
+            "body",
+        )
+        labels = {
+            "title": "Post Title",
+            "desc": "Post Description",
+            "body": "",
+        }
+
+
 class EditPostForm(forms.ModelForm):
     """Define the form to Edit a Post."""
 

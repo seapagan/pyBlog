@@ -43,6 +43,13 @@ class PostDetailView(DetailView):
     model = Blog
     template = "blog/detail.html"
 
+    def get_context_data(self, **kwargs):
+        """Add every post to this context, so we can use in the sidebar."""
+        context = super(PostDetailView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+
+        return context
+
 
 class NewPostView(LoginRequiredMixin, CreateView):
     """Add a new post to the Blog."""

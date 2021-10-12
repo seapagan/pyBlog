@@ -97,16 +97,22 @@ class SitePreferences(Preferences):
         verbose_name_plural = "Site Preferences"
 
 
+def post_count(self):
+    """Helper function to get the count of posts with this tag."""
+    return self.posts.all().count()
+
+
 class Tag(models.Model):
     """Define the Tags model."""
 
     tag_name = models.CharField(max_length=15)
-    tag_count = models.PositiveIntegerField(default=1)
+    # tag_count = models.PositiveIntegerField(default=1)
+    tag_count = post_count
     tag_creator = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="tags"
     )
-    posts = models.ManyToManyField(Blog, null=True, blank=True)
+    posts = models.ManyToManyField(Blog, blank=True)
 
     def __str__(self):
         """Define the Text version of this object."""
-        return f"{self.tag_name} ({self.tag_count})"
+        return f"{self.tag_name}"

@@ -1,6 +1,7 @@
 <div class="sidebar_article_header">Tags</div>
 <div class="sidebar_article_content sidebar_tags_content">
   {% for tag in tags %}
-  <a href="" class="sidebar_tag">{{ tag.tag_name}}</a>
+  <a href="{% url 'blog:tag_detail' tag.pk %}"
+    class="sidebar_tag">{{ tag.tag_name}}</a>
   {% endfor %}
 </div>

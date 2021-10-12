@@ -35,7 +35,8 @@
   {% if tags %}
   <span>Tags :</span>
   {% for tag in tags %}
-  <a class="sidebar_tag" href="">{{tag.tag_name}}</a>
+  <a class="sidebar_tag"
+    href="{% url 'blog:tag_detail' tag.pk %}">{{tag.tag_name}}</a>
   {% endfor %}
   {% else %}
   <div>No Tags</div>

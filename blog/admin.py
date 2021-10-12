@@ -26,7 +26,7 @@ class CommentAdmin(admin.ModelAdmin):
 class TagsAdmin(admin.ModelAdmin):
     """Define a custom admin class for the Tag Model."""
 
-    list_display = ["tag_name", "tag_count", "tag_creator"]
+    list_display = ["tag_name", "pk", "tag_count", "tag_creator"]
     ordering = (Lower("tag_name"),)
 
 

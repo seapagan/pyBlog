@@ -1,2 +1,7 @@
 <div class="sidebar_article_header">Recent Posts</div>
-<div class="sidebar_article_content">Content</div>
+<div class="sidebar_article_content">
+  {% for blog in blogs|slice:":5" %}
+  <a href="{% url 'blog:detail' blog.slug %}"
+    class="sidebar_latest_post_link">{{ blog.title|capfirst}}</a>
+  {% endfor %}
+</div>

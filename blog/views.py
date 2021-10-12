@@ -1,5 +1,6 @@
 """Define the views for the 'blog' application."""
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models.functions import Lower
 from django.http.response import Http404
 from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
@@ -54,7 +55,9 @@ class PostDetailView(DetailView):
         """Add every post to this context, so we can use in the sidebar."""
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context["blogs"] = Blog.objects.all().order_by("-created_at")
-        context["tags"] = Tag.objects.all().order_by("tag_name")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+        print(context["tags"])
 
         return context
 

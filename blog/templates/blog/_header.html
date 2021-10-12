@@ -8,8 +8,8 @@
   </div>
   <div class="site_header_user">
     {% if user.is_authenticated %}
-    <span class="btn nav logout"><i class="fad fa-sign-out"></i>&nbsp;<a
-        href="{% url 'logout' %}">Logout</a></span>
+    <span class="btn nav logout"><a href="{% url 'logout' %}"><i
+          class="fad fa-sign-out"></i>&nbsp;Logout</a></span>
     {% comment %} <span class="btn nav user-display"><a
         href="{% url 'profile' %}">{{ user.username|capfirst }}</a>
     </span> {% endcomment %}

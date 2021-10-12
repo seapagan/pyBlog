@@ -89,8 +89,6 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         context["blogs"] = Blog.objects.all().order_by("-created_at")
         context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
 
-        print(context["tags"])
-
         return context
 
     def get_success_url(self) -> str:

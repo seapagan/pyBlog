@@ -69,6 +69,14 @@ class NewPostView(LoginRequiredMixin, CreateView):
     fields = ["title", "desc", "body"]
     template_name = "blog/blog_newpost.html"
 
+    def get_context_data(self, **kwargs):
+        """Add every post and tag to context, so we can use in the sidebar."""
+        context = super(NewPostView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+        return context
+
     def form_valid(self, form):
         """Validate the form."""
         form.instance.user = self.request.user
@@ -84,7 +92,7 @@ class EditPostView(LoginRequiredMixin, UpdateView):
     template_name = "blog/blog_editpost.html"
 
     def get_context_data(self, **kwargs):
-        """Add every post to this context, so we can use in the sidebar."""
+        """Add every post and tag to context, so we can use in the sidebar."""
         context = super(EditPostView, self).get_context_data(**kwargs)
         context["blogs"] = Blog.objects.all().order_by("-created_at")
         context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
@@ -118,6 +126,14 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
     # template_name = "blog/blog_deletepost.html"
 
     success_url = reverse_lazy("blog:index")
+
+    def get_context_data(self, **kwargs):
+        """Add every post to this context, so we can use in the sidebar."""
+        context = super(DeletePostView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+        return context
 
     def get_object(self, queryset=None):
         """Ensure that the current logged in user owns the post.

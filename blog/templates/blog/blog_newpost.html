@@ -6,7 +6,9 @@
   {% csrf_token %}
   {{ form.media }}
   {{ form.as_p }}
-  <button class="btn btn_success" type="submit"><i
-      class="fad fa-save"></i>&nbsp;Save</button>
+  <div class="new_post_buttons">
+    <button class="btn btn_success" type="submit"><i
+        class="fad fa-save"></i>&nbsp;Save</button>
+  </div>
 </form>
 {% endblock body %}

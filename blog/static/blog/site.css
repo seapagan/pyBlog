@@ -291,6 +291,12 @@ body {
   gap: 0.5em;
 }
 
+.new_post_buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+
 .blog_comment_count {
   display: flex;
   width: 95%;

@@ -95,3 +95,17 @@ class SitePreferences(Preferences):
         """class-specific configuration."""
 
         verbose_name_plural = "Site Preferences"
+
+
+class Tag(models.Model):
+    """Define the Tags model."""
+
+    tag_name = models.CharField(max_length=15)
+    tag_count = models.PositiveIntegerField(default=1)
+    tag_creator = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="tags"
+    )
+
+    def __str__(self):
+        """Define the Text version of this object."""
+        return f"{self.tag_name} ({self.tag_count})"

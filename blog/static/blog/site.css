@@ -13,6 +13,7 @@ html {
 
   --faded-text: hsla(0, 0%, 20%, 0.6);
   --sidebar-links: hsla(0, 0%, 20%, 0.8);
+  --sidebar-links-hover: black;
 }
 
 body {
@@ -110,11 +111,35 @@ body {
   overflow: hidden;
 }
 
-.sidebar_latest_post_link {
+.sidebar_link {
   display: block;
   padding-bottom: 0.5em;
   text-decoration: none;
   color: var(--sidebar-links);
+}
+
+.sidebar_link:hover {
+  color: var(--sidebar-links-hover);
+}
+
+.sidebar_admin {
+  text-align: center;
+}
+
+.sidebar_danger {
+  color: red;
+}
+
+.sidebar_danger:hover {
+  font-weight: bold;
+  color: red;
+}
+
+.sidebar_separator {
+  border-width: 0;
+  height: 1px;
+  color: lightgray;
+  background-color: lightgray;
 }
 
 .sidebar_search_form {

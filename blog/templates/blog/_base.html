@@ -51,6 +51,13 @@
           <article class="sidebar_article">
             {% include 'blog/sidebar/sidebar_tags.html' %}
           </article>
+
+          {% if user.is_superuser %}
+          <article class="sidebar_article">
+            {% include 'blog/sidebar/sidebar_admin.html' %}
+          </article>
+          {% endif %}
+
         </aside>
       </div>
       {% include 'blog/_footer.html' %}

@@ -105,6 +105,7 @@ class Tag(models.Model):
     tag_creator = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="tags"
     )
+    posts = models.ManyToManyField(Blog)
 
     def __str__(self):
         """Define the Text version of this object."""

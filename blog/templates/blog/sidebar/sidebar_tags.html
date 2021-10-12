@@ -1,2 +1,6 @@
 <div class="sidebar_article_header">Tags</div>
-<div class="sidebar_article_content">Content</div>
+<div class="sidebar_article_content sidebar_tags_content">
+  {% for tag in tags %}
+  <a class="sidebar_tag">{{ tag.tag_name}}</a>
+  {% endfor %}
+</div>

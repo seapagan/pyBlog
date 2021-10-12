@@ -6,7 +6,7 @@ from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
 
 from blog.forms import EditCommentForm, EditPostForm, NewCommentForm
-from blog.models import Blog, Comment
+from blog.models import Blog, Comment, Tag
 
 
 class IndexClassView(ListView):
@@ -17,6 +17,13 @@ class IndexClassView(ListView):
     paginate_by = 6
     ordering = ["-created_at"]
     model = Blog
+
+    def get_context_data(self, **kwargs):
+        """Add tags to this context, so we can use in the sidebar."""
+        context = super(IndexClassView, self).get_context_data(**kwargs)
+        context["tags"] = Tag.objects.all().order_by("tag_name")
+
+        return context
 
 
 # class IndexClassView(TemplateView):
@@ -47,6 +54,7 @@ class PostDetailView(DetailView):
         """Add every post to this context, so we can use in the sidebar."""
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by("tag_name")
 
         return context
 

@@ -111,6 +111,19 @@ body {
   overflow: hidden;
 }
 
+.sidebar_tags_content {
+  text-align: center;
+}
+
+.sidebar_tag {
+  display: inline-block;
+  margin: 0.2em 0.2em;
+  padding: 0.1em 0.2em;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  background-color: var(--button-background-color);
+}
+
 .sidebar_link {
   display: block;
   padding-bottom: 0.5em;

@@ -1,0 +1,17 @@
+<article class="sidebar_article">
+  {% include 'blog/sidebar/sidebar_search.html' %}
+</article>
+<article class="sidebar_article">
+  {% include 'blog/sidebar/sidebar_recent.html' %}
+</article>
+<article class="sidebar_article">
+  {% include 'blog/sidebar/sidebar_popular.html' %}
+</article>
+<article class="sidebar_article">
+  {% include 'blog/sidebar/sidebar_tags.html' %}
+</article>
+{% if user.is_superuser %}
+<article class="sidebar_article">
+  {% include 'blog/sidebar/sidebar_admin.html' %}
+</article>
+{% endif %}

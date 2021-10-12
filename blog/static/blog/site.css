@@ -86,24 +86,38 @@ body {
 
 .content_container {
   display: grid;
-  grid-template-columns: auto 200px;
+  grid-template-columns: auto minmax(250px, 20%);
   column-gap: 1em;
   padding: 0 1em;
 }
 
 .sidebar_container {
-  display: grid;
-  grid-template-rows: auto auto auto 1fr;
-  row-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  padding-top: 1em;
 }
 
 .sidebar_article {
-  margin: 1em 0;
-  display: flex;
-  flex-direction: column;
+  margin: 0;
+
   border: 1px solid lightgray;
   border-radius: 5px;
   background-color: var(--block-background);
+}
+
+.sidebar_search_form {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 10px;
+}
+
+.sidebar_search_form input {
+  width: 100%;
+  padding: 2px 5px;
+  border-radius: 5px;
+  outline: none;
+  margin-right: 10px;
 }
 
 .nav a {

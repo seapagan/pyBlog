@@ -12,6 +12,7 @@ html {
   --btn-backgroud-disabled: inherit;
 
   --faded-text: hsla(0, 0%, 20%, 0.6);
+  --sidebar-links: hsla(0, 0%, 20%, 0.8);
 }
 
 body {
@@ -109,6 +110,13 @@ body {
   overflow: hidden;
 }
 
+.sidebar_latest_post_link {
+  display: block;
+  padding-bottom: 0.5em;
+  text-decoration: none;
+  color: var(--sidebar-links);
+}
+
 .sidebar_search_form {
   display: flex;
   flex-direction: row;
@@ -125,6 +133,7 @@ body {
 
 .sidebar_article_header {
   text-align: center;
+  padding: 0.2em 0;
   font-size: 1.2em;
   border-bottom: 1px dotted lightgray;
   background-color: var(--block-title);

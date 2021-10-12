@@ -40,11 +40,17 @@
         </main>
         <aside class="sidebar_container">
           <article class="sidebar_article">
-            {% include 'blog/sidebar/sidebar1.html' %}</article>
+            {% include 'blog/sidebar/sidebar_search.html' %}
+          </article>
           <article class="sidebar_article">
-            {% include 'blog/sidebar/sidebar2.html' %}</article>
+            {% include 'blog/sidebar/sidebar_recent.html' %}
+          </article>
           <article class="sidebar_article">
-            {% include 'blog/sidebar/sidebar3.html' %}</article>
+            {% include 'blog/sidebar/sidebar_popular.html' %}
+          </article>
+          <article class="sidebar_article">
+            {% include 'blog/sidebar/sidebar_tags.html' %}
+          </article>
         </aside>
       </div>
       {% include 'blog/_footer.html' %}

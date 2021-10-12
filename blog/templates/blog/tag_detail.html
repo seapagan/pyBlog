@@ -4,8 +4,8 @@
 {% with tag.posts.all as posts %}
 
 {% if posts %}
-<div class="tags_header">The following Posts are tagged as <span
-    class="sidebar_tag">{{ tag.tag_name }}</span></div>
+<div class="tags_header"><span>The following Posts are tagged
+        as</span><span class="sidebar_tag">{{ tag.tag_name }}</span></div>
 {% for blog in posts %}
 {% include 'blog/_single_post_summary.html' %}
 {% endfor %}

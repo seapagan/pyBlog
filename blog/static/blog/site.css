@@ -640,6 +640,7 @@ input#id_password2 {
 
 .tags_header {
   display: flex;
+  margin-top: 0.5em;
   flex-direction: row;
   align-items: center;
   justify-content: center;

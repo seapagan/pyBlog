@@ -1,0 +1,17 @@
+{% extends 'blog/_base.html' %}
+
+{% block body %}
+{% with tag.posts.all as posts %}
+
+{% if posts %}
+<div class="tags_header">The following Posts are tagged as <span
+    class="sidebar_tag">{{ tag.tag_name }}</span></div>
+{% for blog in posts %}
+{% include 'blog/_single_post_summary.html' %}
+{% endfor %}
+{% else %}
+<div>No posts are tagged with {{tag.tag_name}}</div>
+{% endif %}
+{% endwith %}
+
+{% endblock body %}

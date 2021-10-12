@@ -25,4 +25,5 @@ urlpatterns = [
         views.DeleteCommentView.as_view(),
         name="delete_comment",
     ),
+    path("tags/<int:pk>/", views.TagDetailView.as_view(), name="tag_detail"),
 ]

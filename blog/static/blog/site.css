@@ -637,3 +637,11 @@ input#id_password2 {
 .blog_tags {
   margin-top: 0.5em;
 }
+
+.tags_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+}

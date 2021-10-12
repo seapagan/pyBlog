@@ -203,3 +203,18 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
         ):
             raise Http404("You Dont have permission to do that!")
         return obj
+
+
+class TagDetailView(DetailView):
+    """This will list all posts with a certain Tag."""
+
+    model = Tag
+    template_name = "blog/tag_detail.html"
+
+    def get_context_data(self, **kwargs):
+        """Add posts ant tags to this context, so we can use in the sidebar."""
+        context = super(TagDetailView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+        return context

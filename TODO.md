@@ -4,7 +4,8 @@
 
 * Comments - `Basic functionality complete`
 * Tags
-* Sidebar
+* Sidebar - `Functional`. Sections need more coding as the relevant functionality
+  is written.
 * API to read / post Blog Posts and Comments, allowing a completely separate
   front end to be written and used.
 * Sensitive variables to ENV vars, using `python-dotenv`

@@ -111,8 +111,14 @@ class Tag(models.Model):
     tag_creator = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="tags"
     )
+    slug = models.SlugField(default="", unique=True)
     posts = models.ManyToManyField(Blog, blank=True)
 
     def __str__(self):
         """Define the Text version of this object."""
         return f"{self.tag_name}"
+
+    def save(self, *args, **kwargs):
+        """Override the save function, so we can generate the slug."""
+        self.slug = slugify(self.tag_name)
+        super(Tag, self).save(*args, **kwargs)

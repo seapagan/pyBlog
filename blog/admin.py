@@ -28,6 +28,7 @@ class TagsAdmin(admin.ModelAdmin):
 
     list_display = ["tag_name", "pk", "tag_count", "tag_creator"]
     ordering = (Lower("tag_name"),)
+    readonly_fields = ["slug"]
 
 
 admin.site.register(Blog, BlogAdmin)

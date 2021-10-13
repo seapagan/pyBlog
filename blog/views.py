@@ -235,7 +235,7 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
 
 
 class TagDetailView(DetailView):
-    """This will list all posts with a certain Tag."""
+    """This will list all posts with a certain Tag slug."""
 
     model = Tag
     template_name = "blog/tag_detail.html"

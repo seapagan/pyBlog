@@ -8,12 +8,18 @@ html {
   --block-background: hsl(30, 10%, 97%);
   --block-title: hsl(30, 10%, 94%);
 
+  --faded-border: rgba(211, 211, 211, 0.596);
+  --faded-text: hsla(0, 0%, 20%, 0.6);
+
   --button-background-color: hsl(30, 20%, 90%);
   --btn-backgroud-disabled: inherit;
 
-  --faded-text: hsla(0, 0%, 20%, 0.6);
   --sidebar-links: hsla(0, 0%, 20%, 0.8);
   --sidebar-links-hover: black;
+
+  --light-blue: rgba(0, 0, 255, 0.507);
+
+  --code-background: rgba(211, 211, 211, 0.2);
 }
 
 body {
@@ -25,7 +31,7 @@ body {
 .site_container {
   width: 90%;
   margin: 1em auto;
-  border: 1px solid rgba(211, 211, 211, 0.596);
+  border: 1px solid var(--faded-border);
   border-radius: 5px;
 }
 
@@ -36,7 +42,8 @@ body {
   padding: 0 1em;
   padding-bottom: 0.5em;
   margin: 0.5em;
-  border-bottom: 1px solid lightgray;
+  /* border-bottom: 1px solid lightgray; */
+  border-bottom: 1px solid var(--faded-border);
 }
 
 .site_footer {
@@ -46,7 +53,7 @@ body {
   padding: 1em;
   margin: 0 0.5em;
   margin-top: 1em;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid var(--faded-border);
 }
 
 .site_header_brand {
@@ -105,7 +112,7 @@ body {
 .sidebar_article {
   margin: 0;
 
-  border: 1px solid lightgray;
+  border: 1px solid var(--faded-border);
   border-radius: 5px;
   background-color: var(--block-background);
   overflow: hidden;
@@ -120,7 +127,8 @@ body {
   margin: 0.2em 0.2em;
   padding: 0.1em 0.2em;
   border-radius: 5px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--faded-border);
+
   color: var(--sidebar-links);
   background-color: var(--button-background-color);
   text-decoration: none;
@@ -154,8 +162,8 @@ body {
 .sidebar_separator {
   border-width: 0;
   height: 1px;
-  color: lightgray;
-  background-color: lightgray;
+  color: var(--faded-border);
+  background-color: var(--faded-border);
 }
 
 .sidebar_search_form {
@@ -176,7 +184,7 @@ body {
   text-align: center;
   padding: 0.2em 0;
   font-size: 1.2em;
-  border-bottom: 1px dotted lightgray;
+  border-bottom: 1px dotted var(--faded-border);
   background-color: var(--block-title);
 }
 
@@ -210,7 +218,7 @@ body {
 .blog_article {
   display: flex;
   flex-direction: column;
-  border: 1px solid lightgray;
+  border: 1px solid var(--faded-border);
   border-radius: 5px;
   margin-top: 1em;
   overflow: hidden;
@@ -223,13 +231,13 @@ body {
   padding: 0.3em;
   width: 100%;
   background-color: var(--block-title);
-  border-bottom: 1px lightgray dotted;
+  border-bottom: 1px dotted var(--faded-border);
 }
 
 .blog_body {
   padding: 1em;
   margin: 0;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid var(--faded-border);
 }
 
 .blog_body_footer {
@@ -240,7 +248,7 @@ body {
   justify-content: flex-end;
   background-color: var(--block-title);
 
-  border-top: 1px lightgray dotted;
+  border-top: 1px dotted var(--faded-border);
 }
 
 .blog_body_footer.index {
@@ -342,7 +350,6 @@ body {
 .new_post_buttons {
   display: flex;
   justify-content: flex-end;
-  /* gap: 0.5em; */
 }
 
 .blog_comment_count {
@@ -371,7 +378,7 @@ body {
 }
 
 .blog_comment_wrapper {
-  border: 1px lightgray solid;
+  border: 1px solid var(--faded-border);
   border-radius: 5px;
   margin: 1em auto;
   width: 95%;
@@ -385,7 +392,7 @@ body {
   justify-content: space-between;
   width: 100%;
   background-color: var(--block-title);
-  border-bottom: 1px lightgray dotted;
+  border-bottom: 1px dotted var(--faded-border);
 }
 .blog_comment_footer {
   padding: 0.2em 0.5em;
@@ -395,11 +402,11 @@ body {
   justify-content: flex-end;
   width: 100%;
   background-color: var(--block-title);
-  border-top: 1px lightgray dotted;
+  border-top: 1px dotted var(--faded-border);
 }
 
 .blog_comment_date {
-  color: rgba(0, 0, 255, 0.507);
+  color: var(--light-blue);
   font-size: 0.9em;
   align-self: center;
 }
@@ -421,7 +428,7 @@ body {
 }
 
 .delete_content_body {
-  border: 1px lightgray solid;
+  border: 1px solid var(--faded-border);
   border-radius: 5px;
   margin: 1em 0;
   white-space: nowrap;
@@ -435,8 +442,8 @@ body {
   margin: 0;
   padding: 0.5em;
   width: 100%;
-  background-color: rgba(193, 222, 231, 0.322);
-  border-bottom: 1px lightgray dotted;
+  background-color: var(--block-title);
+  border-bottom: 1px dotted var(--faded-border);
 }
 
 .delete_content_content {
@@ -455,7 +462,7 @@ body {
   font-style: normal;
   display: inline-block;
   text-decoration: none;
-  border: 1px solid lightgray;
+  border: 1px solid var(--faded-border);
   border-radius: 5px;
   background-color: var(--button-background-color);
   padding: 0.1em 0.4em;
@@ -477,7 +484,7 @@ body {
 
 .btn-disabled {
   background-color: var(--btn-background-disabled);
-  color: lightgray;
+  color: var(--faded-text);
   cursor: not-allowed;
 }
 
@@ -507,10 +514,9 @@ code {
 
 .highlight {
   padding-right: 1em;
-  /* border: 1px solid rgba(110, 100, 100, 0.5); */
-  border: 1px solid lightgray;
+  border: 1px solid var(--faded-border);
   border-radius: 5px;
-  background-color: rgba(211, 211, 211, 0.2);
+  background-color: var(--code-background);
 }
 
 [data-linenos]:before {
@@ -567,7 +573,10 @@ code {
 .form_hr {
   grid-column: 1/3;
   width: 100%;
-  color: hsla(0, 0%, 80%, 0.3);
+  border-width: 0;
+  height: 1px;
+  color: var(--faded-border);
+  background-color: var(--faded-border);
 }
 
 .form_button {
@@ -594,11 +603,11 @@ input#id_password2 {
   gap: 10px;
   justify-items: left;
   padding: 1em;
-  border: 1px solid lightgray;
+  border: 1px solid var(--faded-border);
   border-radius: 5px;
   margin: 1em 0;
-  background-color: hsl(30, 10%, 97%);
-  box-shadow: 1px 1px 1px 0px rgba(139, 139, 139, 0.678);
+  background-color: var(--block-background);
+  box-shadow: 1px 1px 1px 0px hsla(0, 0%, 55%, 0.678);
   overflow: hidden;
 }
 
@@ -625,10 +634,10 @@ input#id_password2 {
   padding: 10px 10px;
   text-decoration: none;
   color: inherit;
-  border: 1px lightgray solid;
+  border: 1px solid var(--faded-border);
   border-radius: 10px;
   height: 100%;
-  background-color: hsl(30, 10%, 97%);
+  background-color: var(--block-background);
 }
 
 .profile_post_section_title {
@@ -675,9 +684,9 @@ input#id_password2 {
 
 .profile_comments_wrapper {
   display: grid;
-  border: 1px solid lightgray;
+  border: 1px solid var(--faded-border);
   border-radius: 5px;
-  background-color: hsl(30, 10%, 97%);
+  background-color: var(--block-background);
 
   grid-template-rows: 1fr auto;
   overflow: hidden;
@@ -703,9 +712,9 @@ input#id_password2 {
 }
 
 .profile_comments_header {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--faded-border);
   padding: 0.5em;
-  background-color: hsl(30, 10%, 94%);
+  background-color: var(--block-title);
 }
 
 .profile_comments_body {
@@ -758,7 +767,7 @@ input#id_password2 {
 .tag_list_post_list {
   margin-left: 1em;
   margin-bottom: 0.5em;
-  border: 1px solid lightgray;
+  border: 1px solid var(--faded-border);
   border-radius: 5px;
   height: calc(100% - 2em);
   background-color: var(--block-background);

@@ -14,9 +14,8 @@ class NewCommentForm(forms.ModelForm):
 
         fields = ("created_by_guest", "body")
 
-        widgets = {
-            "name": forms.TextInput(attrs={"class": "form-control"}),
-            "body": forms.Textarea(attrs={"class": "form-control"}),
+        labels = {
+            "body": "",
         }
 
 

@@ -9,6 +9,9 @@
 * API to read / post Blog Posts and Comments, allowing a completely separate
   front end to be written and used.
 * Sensitive variables to ENV vars, using `python-dotenv`
+* add a 'like' option to a post
+* Implement the 'Popular Posts' sidebar section. This will need to wait until
+  the 'likes' functionality is complete.
 
 ### Comments
 
@@ -27,6 +30,8 @@
 ### Misc Bugs / Fixes / Ideas
 
 * Add Emoji reactions to posts and comments
+* Need to reformat the style for the index page post summary  display, I really
+  really don't like it!
 * Dynamic titles using template content blocks
 * Add a user section in the sidebar (also holding login/register links in not
   logged in). Will allow to create a new post, edit profile etc.#
@@ -58,7 +63,6 @@
   pagination, `{{ posts|length }}` only displays the number on that page.
 * refactor CSS to PostCSS, using [`django-compressor`][djc] and
   [`django-compressor-postcss`][djc-postcss]
-* add a 'like' option to a post
 * add social media sharing to a post
 * Toggle (from manage.py) to disable the native Django front end completely if
   required, so an external one can use the API (maybe make into a plugin app?)

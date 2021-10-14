@@ -32,24 +32,6 @@ class IndexClassView(ListView):
         return context
 
 
-# class IndexClassView(TemplateView):
-#     """Define a TemplateView for the index (Blog main page)."""
-
-#     template_name = "blog/index.html"
-#     paginate_by = 6
-
-#     def get_context_data(self, **kwargs):
-#         """Return the context for this view.
-
-#         Doing it this way (and not using a ListView so as to enable multiple
-#         models to be shown in the template (eg comment counts etc).
-#         """
-#         context = super(IndexClassView, self).get_context_data(**kwargs)
-#         context["blogs"] = Blog.objects.all().order_by("-created_at")
-
-#         return context
-
-
 class PostDetailView(DetailView):
     """Display an actual blog post."""
 
@@ -72,6 +54,31 @@ class NewPostView(LoginRequiredMixin, CreateView):
     template_name = "blog/blog_newpost.html"
     form_class = NewPostForm
 
+    def form_valid(self, form):
+        """Validate the form."""
+        form.save()
+        tag_list = [
+            tag.strip() for tag in form.cleaned_data["tags_list"].split(",")
+        ]
+        new_tags = []
+        for tag in tag_list:
+            if tag == "":
+                continue
+            try:
+                existing_tag = Tag.objects.get(tag_name=tag)
+            except Tag.DoesNotExist:
+                new_tags.append(
+                    Tag.objects.create(
+                        tag_name=tag, tag_creator=self.request.user
+                    )
+                )
+            else:
+                new_tags.append(existing_tag)
+
+        # replace all the tag associations on this post with the new list
+        form.instance.tag_set.set(new_tags)
+        return super().form_valid(form)
+
     def get_context_data(self, **kwargs):
         """Add every post and tag to context, so we can use in the sidebar."""
         context = super(NewPostView, self).get_context_data(**kwargs)
@@ -80,12 +87,6 @@ class NewPostView(LoginRequiredMixin, CreateView):
 
         return context
 
-    def form_valid(self, form):
-        """Validate the form."""
-        form.instance.user = self.request.user
-
-        return super().form_valid(form)
-
 
 class EditPostView(LoginRequiredMixin, UpdateView):
     """Edit an existing Post."""
@@ -93,6 +94,33 @@ class EditPostView(LoginRequiredMixin, UpdateView):
     model = Blog
     form_class = EditPostForm
     template_name = "blog/blog_editpost.html"
+
+    def form_valid(self, form):
+        """Validate the form."""
+        form.save()
+        tag_list = [
+            tag.strip() for tag in form.cleaned_data["tags_list"].split(",")
+        ]
+
+        print(tag_list)
+        new_tags = []
+        for tag in tag_list:
+            if tag == "":
+                continue
+            try:
+                existing_tag = Tag.objects.get(tag_name=tag)
+            except Tag.DoesNotExist:
+                new_tags.append(
+                    Tag.objects.create(
+                        tag_name=tag, tag_creator=self.request.user
+                    )
+                )
+            else:
+                new_tags.append(existing_tag)
+
+        print(new_tags)
+        form.instance.tag_set.set(new_tags)
+        return super().form_valid(form)
 
     def get_initial(self):
         """Override initial value to display active tags."""

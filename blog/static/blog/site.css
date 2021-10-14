@@ -96,11 +96,21 @@ body {
 
 .site_footer_engine {
   text-decoration: none;
+  color: var(--sidebar-links);
+}
+
+.site_footer_engine:hover {
+  color: var(--sidebar-links-hover);
 }
 
 .site_footer_author {
   text-decoration: none;
   font-style: italic;
+  color: var(--sidebar-links);
+}
+
+.site_footer_author:hover {
+  color: var(--sidebar-links-hover);
 }
 
 .content_container {

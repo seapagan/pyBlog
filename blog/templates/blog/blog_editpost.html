@@ -14,7 +14,12 @@
   <form method="post">
     {% csrf_token %}
     {{ form.media }}
-    {{ form.as_p }}
+    {% for field in form %}
+    <div class="edit_post_field">
+      <span class="edit_post_field_label">{{ field.label_tag|capfirst }}</span>
+      <span class="edit_post_field_field">{{ field }}</span>
+    </div>
+    {% endfor %}
     <div class="edit_post_tags">
       Existing Tags :&nbsp;
       {% for tag in tags %}

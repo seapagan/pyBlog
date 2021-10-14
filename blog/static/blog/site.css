@@ -281,7 +281,8 @@ body {
   padding: 1em 0;
 }
 
-.edit_post_tags {
+.edit_post_tags,
+.new_post_tags {
   padding: 0.5em 0;
 }
 
@@ -306,14 +307,19 @@ body {
   padding: 1em 0;
 }
 
-.new_post_field {
+.new_post_field,
+.edit_post_field {
   margin-bottom: 1em;
 }
 
-.new_post_field_label {
+.new_post_field_label,
+.edit_post_field_label {
+  display: block;
+  margin-bottom: 0.3em;
 }
 
-.new_post_field_field input {
+.new_post_field_field input,
+.edit_post_field_field input {
   width: 100%;
   padding: 2px 5px;
   border-radius: 5px;

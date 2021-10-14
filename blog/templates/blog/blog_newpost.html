@@ -13,6 +13,12 @@
       <span class="new_post_field_field">{{ field }}</span>
     </div>
     {% endfor %}
+    <div class="new_post_tags">
+      Existing Tags :&nbsp;
+      {% for tag in tags %}
+      <span class="sidebar_tag">{{ tag.tag_name}}</span>
+      {% endfor %}
+    </div>
     <div class="new_post_buttons">
       <button class="btn btn_success" type="submit"><i
           class="fad fa-save"></i>&nbsp;Save</button>

@@ -27,6 +27,7 @@
 ### Misc Bugs / Fixes / Ideas
 
 * Add Emoji reactions to posts and comments
+* Dynamic titles using template content blocks
 * Add a user section in the sidebar (also holding login/register links in not
   logged in). Will allow to create a new post, edit profile etc.#
 * zap up the profile, allow display of social links, make edit page etc.

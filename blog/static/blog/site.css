@@ -180,6 +180,15 @@ body {
   background-color: var(--block-title);
 }
 
+.sidebar_article_header_link {
+  text-decoration: none;
+  color: var(--sidebar-links);
+}
+
+.sidebar_article_header_link:hover {
+  color: var(--sidebar-links-hover);
+}
+
 .sidebar_article_content {
   padding: 0.5em;
 }

@@ -62,8 +62,6 @@ class PostDetailView(DetailView):
         context["blogs"] = Blog.objects.all().order_by("-created_at")
         context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
 
-        print(context["tags"])
-
         return context
 
 
@@ -119,7 +117,6 @@ class EditPostView(LoginRequiredMixin, UpdateView):
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""
         post_slug = Blog.objects.get(slug=self.kwargs["slug"]).slug
-        print(post_slug)
         return reverse("blog:detail", kwargs={"slug": post_slug})
 
     def get_object(self, queryset=None):

@@ -33,6 +33,11 @@ body {
   margin: 1em auto;
   border: 1px solid var(--faded-border);
   border-radius: 5px;
+  overflow: hidden;
+}
+
+.site_header_container {
+  display: grid;
 }
 
 .site_header {
@@ -41,8 +46,8 @@ body {
   align-items: center;
   padding: 0 1em;
   padding-bottom: 0.5em;
-  margin: 0.5em;
-  /* border-bottom: 1px solid lightgray; */
+  margin: 0.5em 0;
+  margin-bottom: 0;
   border-bottom: 1px solid var(--faded-border);
 }
 
@@ -67,12 +72,15 @@ body {
   transform-origin: left;
   transform: scale(1.5, 1);
   text-decoration: none;
-  color: #1b2522;
+  color: hsl(162, 16%, 13%);
 }
 
 .site_header_heading {
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: bold;
+  text-align: left;
+  width: 100%;
+  padding: 0.5em;
 }
 
 .site_header_user {
@@ -783,4 +791,27 @@ input#id_password2 {
 
 .tag_list_post:hover {
   color: var(--sidebar-links-hover);
+}
+
+@media screen and (max-width: 900px) {
+  .content_container {
+    display: block;
+  }
+
+  .sidebar_container {
+    display: none;
+  }
+
+  .site_header {
+    /* display: block; */
+    text-align: center;
+    justify-self: center;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .site_header_user {
+    display: none;
+  }
 }

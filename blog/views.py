@@ -95,7 +95,7 @@ class EditPostView(LoginRequiredMixin, UpdateView):
     template_name = "blog/blog_editpost.html"
 
     def get_initial(self):
-        """override initial value to display active tags."""
+        """Override initial value to display active tags."""
         initial = super(EditPostView, self).get_initial()
 
         current_tags = self.object.tag_set.all().order_by(Lower("tag_name"))

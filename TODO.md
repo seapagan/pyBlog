@@ -3,9 +3,9 @@
 ## Important functionality
 
 * Comments - `Basic functionality complete`
-* Tags
-* Sidebar - `Functional`. Sections need more coding as the relevant functionality
-  is written.
+* Tags - `Basic functionality complete`
+* Sidebar - `Basic functionality complete`. Sections need more coding as the
+  relevant functionality is written.
 * API to read / post Blog Posts and Comments, allowing a completely separate
   front end to be written and used.
 * Sensitive variables to ENV vars, using `python-dotenv`
@@ -23,10 +23,13 @@
 * Nested comments
 * Record visitors IP address with the comment. Can be used for moderation or in
   case of spamming / abuse. Can use `django-ipware` package.
-* Add Emoji reactions to posts and comments
 
 ### Misc Bugs / Fixes / Ideas
 
+* Add Emoji reactions to posts and comments
+* Add a user section in the sidebar (also holding login/register links in not
+  logged in). Will allow to create a new post, edit profile etc.#
+* zap up the profile, allow display of social links, make edit page etc.
 * ~~Header is messed up when looking at someone else profile when you are logged
   in or out, it displays the header as if you are logged in as that user (ie the
   avatar and logout display)~~

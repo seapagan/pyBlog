@@ -284,3 +284,18 @@ class TagDetailView(DetailView):
         context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
 
         return context
+
+
+class TagListView(ListView):
+    """List all the tags, and posts that are linked to them."""
+
+    model = Tag
+    template_name = "blog/tag/list.html"
+
+    def get_context_data(self, **kwargs):
+        """Add posts ant tags to this context, so we can use in the sidebar."""
+        context = super(TagListView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+        return context

@@ -26,4 +26,5 @@ urlpatterns = [
         name="delete_comment",
     ),
     path("tags/<str:slug>/", views.TagDetailView.as_view(), name="tag_detail"),
+    path("tags/", views.TagListView.as_view(), name="tag_list"),
 ]

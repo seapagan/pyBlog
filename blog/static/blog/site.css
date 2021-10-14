@@ -730,3 +730,39 @@ input#id_password2 {
   margin-top: 1.5em;
   text-align: center;
 }
+
+.tag_list_container {
+  /* margin-top: 1em; */
+  margin: 1em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1em;
+}
+
+.tag_list_tag {
+  font-size: 1.5em;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.tag_list_post_list {
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  height: calc(100% - 2em);
+  background-color: var(--block-background);
+}
+
+.tag_list_post,
+.notag_list_post {
+  padding: 0.5em 0.5em;
+  display: block;
+  color: var(--sidebar-links);
+  text-decoration: none;
+}
+
+.tag_list_post:hover {
+  color: var(--sidebar-links-hover);
+}

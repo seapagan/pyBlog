@@ -276,6 +276,11 @@ body {
 .blog_user {
   font-weight: bold;
   text-decoration: none;
+  color: var(--sidebar-links);
+}
+
+.blog_user:hover {
+  color: var(--sidebar-links-hover);
 }
 
 .blog_date_wrapper {
@@ -377,6 +382,15 @@ body {
   align-items: center;
   font-style: italic;
   margin: 1em auto;
+}
+
+.blog_comment_userlink {
+  text-decoration: none;
+  color: var(--sidebar-links);
+}
+
+.blog_comment_userlink:hover {
+  color: var(--sidebar-links-hover);
 }
 
 .blog_comment_footer_add {

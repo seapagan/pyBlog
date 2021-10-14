@@ -16,8 +16,8 @@
     {{ form.media }}
     {{ form.as_p }}
     <div class="edit_post_tags">
-      Tags :&nbsp;
-      {% for tag in blog.tag_set.all %}
+      Existing Tags :&nbsp;
+      {% for tag in tags %}
       <span class="sidebar_tag">{{ tag.tag_name}}</span>
       {% endfor %}
     </div>

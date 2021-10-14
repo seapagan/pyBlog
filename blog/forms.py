@@ -23,6 +23,8 @@ class NewCommentForm(forms.ModelForm):
 class NewPostForm(forms.ModelForm):
     """Define the form to Create a Post."""
 
+    tags_list = forms.CharField(required=False, label="Tags")
+
     class Meta:
         """Metadata for this form."""
 
@@ -43,12 +45,14 @@ class NewPostForm(forms.ModelForm):
 class EditPostForm(forms.ModelForm):
     """Define the form to Edit a Post."""
 
+    tags_list = forms.CharField(required=False, label="Tags")
+
     class Meta:
         """Metadata for this form."""
 
         model = Blog
 
-        fields = ("body",)
+        fields = ("body", "tags_list")
         labels = {
             "body": "",
         }

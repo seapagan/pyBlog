@@ -96,6 +96,18 @@ class EditPostView(LoginRequiredMixin, UpdateView):
     form_class = EditPostForm
     template_name = "blog/blog_editpost.html"
 
+    def get_initial(self):
+        """override initial value to display active tags."""
+        initial = super(EditPostView, self).get_initial()
+
+        current_tags = self.object.tag_set.all().order_by(Lower("tag_name"))
+        tag_string = ""
+        for tag in current_tags:
+            tag_string += tag.tag_name + ", "
+        initial["tags_list"] = tag_string[:-2]
+
+        return initial
+
     def get_context_data(self, **kwargs):
         """Add every post and tag to context, so we can use in the sidebar."""
         context = super(EditPostView, self).get_context_data(**kwargs)

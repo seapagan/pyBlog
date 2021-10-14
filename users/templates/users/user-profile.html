@@ -21,7 +21,8 @@
     </div>
   </div>
   <div class="profile_post_wrapper">
-    <div class="profile_post_section_title">User Posts.</div>
+    <div class="profile_post_section_title">Posts by
+      {{ person.username|capfirst }}.</div>
     {% with person.blog_posts.all as posts %}
     {% for post in posts %}
     <article>
@@ -45,13 +46,14 @@
   </div>
 
   <div class="profile_comments_section">
-    <div class="profile_section_title">User Comments.</div>
+    <div class="profile_section_title">Comments by
+      {{ person.username|capfirst }}.</div>
     {% with person.comments.all as comments %}
     {% for comment in comments %}
     <div class="profile_comments_wrapper">
       <div class="profile_comments_header">
         '<a class="profile_comments_title"
-          href="{% url 'blog:detail' comment.related_post.slug%}">{{ comment.related_post.title }}</a>'
+          href="{% url 'blog:detail' comment.related_post.slug%}">{{ comment.related_post.title|capfirst }}</a>'
         by
         <a href="{% url 'user-profile' comment.related_post.user.id %}"
           class="profile_comments_user">{{ comment.related_post.user }}</a>

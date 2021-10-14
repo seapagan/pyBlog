@@ -715,3 +715,18 @@ input#id_password2 {
   justify-content: center;
   font-size: 2em;
 }
+
+.tags_no_tags_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: 500;
+  margin: 1em 0;
+}
+
+.tags_home_btn,
+.detail_home_btn {
+  margin-top: 1.5em;
+  text-align: center;
+}

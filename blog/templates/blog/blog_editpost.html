@@ -2,21 +2,37 @@
 
 {% block body %}
 
-{% if user.is_authenticated %}
-<div>You are Logged in as <b>{{ user.username }}</b></div>
-{% else %}
-<div>You are not logged in.</div>
-{% endif %}
+<div class="edit_post_wrapper">
+  {% if user.is_authenticated %}
+  <div class="edit_post_user">You are Logged in as <b>{{ user.username }}</b>
+  </div>
+  {% else %}
+  <div>You are not logged in.</div>
+  {% endif %}
 
-<div>Editing Post : <i>"{{ blog.title }}"</i></div>
-<form method="post">
-  {% csrf_token %}
-  {{ form.media }}
-  {{ form.as_p }}
-  <button class="btn btn_success" type="submit"><i
-      class="fad fa-save"></i>&nbsp;Save</button>
+  <div class="edit_post_title">Editing Post : <i>"{{ blog.title }}"</i></div>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.media }}
+    {% for field in form %}
+    <div class="edit_post_field">
+      <span class="edit_post_field_label">{{ field.label_tag|capfirst }}</span>
+      <span class="edit_post_field_field">{{ field }}</span>
+    </div>
+    {% endfor %}
+    <div class="edit_post_tags">
+      Existing Tags :&nbsp;
+      {% for tag in tags %}
+      <span class="sidebar_tag">{{ tag.tag_name}}</span>
+      {% endfor %}
+    </div>
+    <div class="edit_post_buttons">
+      <button class="btn btn_success" type="submit"><i
+          class="fad fa-save"></i>&nbsp;Save</button>
+      <a class="btn" href="{{ view.get_success_url }}"><i
+          class="fad fa-ban"></i>&nbsp;Cancel</a>
+    </div>
+  </form>
 
-  <a class="btn" href="{{ view.get_success_url }}"><i
-      class="fad fa-ban"></i>&nbsp;Cancel</a>
-</form>
+</div>
 {% endblock body %}

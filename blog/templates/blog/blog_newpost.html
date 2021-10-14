@@ -1,12 +1,28 @@
 {% extends 'blog/_base.html' %}
 
 {% block body %}
-<div>You are Logged in as <b>{{ user.username }}</b></div>
-<form method="post">
-  {% csrf_token %}
-  {{ form.media }}
-  {{ form.as_p }}
-  <button class="btn btn_success" type="submit"><i
-      class="fad fa-save"></i>&nbsp;Save</button>
-</form>
+<div class="new_post_wrapper">
+  <div class="new_post_user">You are Logged in as <b>{{ user.username }}</b>
+  </div>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.media }}
+    {% for field in form %}
+    <div class="new_post_field">
+      <span class="new_post_field_label">{{ field.label_tag|capfirst }}</span>
+      <span class="new_post_field_field">{{ field }}</span>
+    </div>
+    {% endfor %}
+    <div class="new_post_tags">
+      Existing Tags :&nbsp;
+      {% for tag in tags %}
+      <span class="sidebar_tag">{{ tag.tag_name}}</span>
+      {% endfor %}
+    </div>
+    <div class="new_post_buttons">
+      <button class="btn btn_success" type="submit"><i
+          class="fad fa-save"></i>&nbsp;Save</button>
+    </div>
+  </form>
+</div>
 {% endblock body %}

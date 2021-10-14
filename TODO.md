@@ -3,9 +3,9 @@
 ## Important functionality
 
 * Comments - `Basic functionality complete`
-* Tags
-* Sidebar - `Functional`. Sections need more coding as the relevant functionality
-  is written.
+* Tags - `Basic functionality complete`
+* Sidebar - `Basic functionality complete`. Sections need more coding as the
+  relevant functionality is written.
 * API to read / post Blog Posts and Comments, allowing a completely separate
   front end to be written and used.
 * Sensitive variables to ENV vars, using `python-dotenv`
@@ -21,13 +21,24 @@
   that functionality is added~~
 * add ReCapcha to the comment entry form
 * Nested comments
+* Record visitors IP address with the comment. Can be used for moderation or in
+  case of spamming / abuse. Can use `django-ipware` package.
 
 ### Misc Bugs / Fixes / Ideas
 
+* Add Emoji reactions to posts and comments
+* Dynamic titles using template content blocks
+* Add a user section in the sidebar (also holding login/register links in not
+  logged in). Will allow to create a new post, edit profile etc.#
+* zap up the profile, allow display of social links, make edit page etc.
 * ~~Header is messed up when looking at someone else profile when you are logged
   in or out, it displays the header as if you are logged in as that user (ie the
   avatar and logout display)~~
-* buttons missing or not working in the markdown WYSIWYG editor
+* redundant code in `blog_edit_post.html` to check if logged in. If not logged
+  in, this page is inaccesible anyway d/t view permissions.
+* buttons missing or not working in the markdown WYSIWYG editor **UPDATE This is
+  due to incompatibility with FontAwesome. Need to find an alternative
+  HTML/Markup editor or a different Icon source.**
 * detect the users timezone and display date/time formats properly.
 * add user login/logout/register functionality, though register should be by
   invitation not open to all. [`PARTIAL`]

@@ -1,0 +1,37 @@
+{% extends 'blog/_base.html' %}
+
+{% block body %}
+
+<div class="tags_header">Posts grouped by Tags.</div>
+<div class="tag_list_container">
+  {% if tags %}
+  {% for tag in tags %}
+  <div>
+    <span class="tag_list_tag"><a class="sidebar_tag"
+        href="{% url 'blog:tag_detail' tag.slug %}">{{ tag }}</a></span>
+    <div class="tag_list_post_list">
+      {% with tag.posts.all as posts %}
+      {% if posts %}
+      <div>
+        {% for post in posts %}
+        <a href="{% url 'blog:detail' post.slug %}"
+          class="tag_list_post">{{post.title|capfirst}}</a>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="notag_list_post">No tagged posts.</div>
+      {% endif %}
+      {% endwith %}
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <div class="tags_no_tags_text">There are no tags defined.</div>
+  {% endif %}
+</div>
+<div class=tags_home_btn>
+  <a class="btn" href="{% url 'blog:index' %}"><i
+      class="fad fa-home"></i>&nbsp;Back to Index</a>
+</div>
+
+{% endblock body %}

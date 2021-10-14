@@ -95,3 +95,30 @@ class SitePreferences(Preferences):
         """class-specific configuration."""
 
         verbose_name_plural = "Site Preferences"
+
+
+def post_count(self):
+    """Helper function to get the count of posts with this tag."""
+    return self.posts.all().count()
+
+
+class Tag(models.Model):
+    """Define the Tags model."""
+
+    tag_name = models.CharField(max_length=15)
+    # tag_count = models.PositiveIntegerField(default=1)
+    tag_count = post_count
+    tag_creator = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="tags"
+    )
+    slug = models.SlugField(default="", unique=True)
+    posts = models.ManyToManyField(Blog, blank=True)
+
+    def __str__(self):
+        """Define the Text version of this object."""
+        return f"{self.tag_name}"
+
+    def save(self, *args, **kwargs):
+        """Override the save function, so we can generate the slug."""
+        self.slug = slugify(self.tag_name)
+        super(Tag, self).save(*args, **kwargs)

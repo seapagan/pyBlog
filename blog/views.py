@@ -1,12 +1,18 @@
 """Define the views for the 'blog' application."""
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models.functions import Lower
 from django.http.response import Http404
 from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
 
-from blog.forms import EditCommentForm, EditPostForm, NewCommentForm
-from blog.models import Blog, Comment
+from blog.forms import (
+    EditCommentForm,
+    EditPostForm,
+    NewCommentForm,
+    NewPostForm,
+)
+from blog.models import Blog, Comment, Tag
 
 
 class IndexClassView(ListView):
@@ -18,23 +24,12 @@ class IndexClassView(ListView):
     ordering = ["-created_at"]
     model = Blog
 
+    def get_context_data(self, **kwargs):
+        """Add tags to this context, so we can use in the sidebar."""
+        context = super(IndexClassView, self).get_context_data(**kwargs)
+        context["tags"] = Tag.objects.all().order_by("tag_name")
 
-# class IndexClassView(TemplateView):
-#     """Define a TemplateView for the index (Blog main page)."""
-
-#     template_name = "blog/index.html"
-#     paginate_by = 6
-
-#     def get_context_data(self, **kwargs):
-#         """Return the context for this view.
-
-#         Doing it this way (and not using a ListView so as to enable multiple
-#         models to be shown in the template (eg comment counts etc).
-#         """
-#         context = super(IndexClassView, self).get_context_data(**kwargs)
-#         context["blogs"] = Blog.objects.all().order_by("-created_at")
-
-#         return context
+        return context
 
 
 class PostDetailView(DetailView):
@@ -47,6 +42,7 @@ class PostDetailView(DetailView):
         """Add every post to this context, so we can use in the sidebar."""
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
 
         return context
 
@@ -55,14 +51,41 @@ class NewPostView(LoginRequiredMixin, CreateView):
     """Add a new post to the Blog."""
 
     model = Blog
-    fields = ["title", "desc", "body"]
     template_name = "blog/blog_newpost.html"
+    form_class = NewPostForm
 
     def form_valid(self, form):
         """Validate the form."""
-        form.instance.user = self.request.user
+        form.save()
+        tag_list = [
+            tag.strip() for tag in form.cleaned_data["tags_list"].split(",")
+        ]
+        new_tags = []
+        for tag in tag_list:
+            if tag == "":
+                continue
+            try:
+                existing_tag = Tag.objects.get(tag_name=tag.lower())
+            except Tag.DoesNotExist:
+                new_tags.append(
+                    Tag.objects.create(
+                        tag_name=tag.lower(), tag_creator=self.request.user
+                    )
+                )
+            else:
+                new_tags.append(existing_tag)
 
+        # replace all the tag associations on this post with the new list
+        form.instance.tag_set.set(new_tags)
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        """Add every post and tag to context, so we can use in the sidebar."""
+        context = super(NewPostView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+        return context
 
 
 class EditPostView(LoginRequiredMixin, UpdateView):
@@ -72,10 +95,56 @@ class EditPostView(LoginRequiredMixin, UpdateView):
     form_class = EditPostForm
     template_name = "blog/blog_editpost.html"
 
+    def form_valid(self, form):
+        """Validate the form."""
+        form.save()
+        tag_list = [
+            tag.strip() for tag in form.cleaned_data["tags_list"].split(",")
+        ]
+
+        print(tag_list)
+        new_tags = []
+        for tag in tag_list:
+            if tag == "":
+                continue
+            try:
+                existing_tag = Tag.objects.get(tag_name=tag.lower())
+            except Tag.DoesNotExist:
+                new_tags.append(
+                    Tag.objects.create(
+                        tag_name=tag.lower(), tag_creator=self.request.user
+                    )
+                )
+            else:
+                new_tags.append(existing_tag)
+
+        print(new_tags)
+        form.instance.tag_set.set(new_tags)
+        return super().form_valid(form)
+
+    def get_initial(self):
+        """Override initial value to display active tags."""
+        initial = super(EditPostView, self).get_initial()
+
+        current_tags = self.object.tag_set.all().order_by(Lower("tag_name"))
+        tag_string = ""
+        for tag in current_tags:
+            tag_string += tag.tag_name + ", "
+        initial["tags_list"] = tag_string[:-2]
+
+        return initial
+
+    def get_context_data(self, **kwargs):
+        """Add every post and tag to context, so we can use in the sidebar."""
+        context = super(EditPostView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+        return context
+
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""
         post_slug = Blog.objects.get(slug=self.kwargs["slug"]).slug
-        print(post_slug)
         return reverse("blog:detail", kwargs={"slug": post_slug})
 
     def get_object(self, queryset=None):
@@ -99,6 +168,14 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
     # template_name = "blog/blog_deletepost.html"
 
     success_url = reverse_lazy("blog:index")
+
+    def get_context_data(self, **kwargs):
+        """Add every post to this context, so we can use in the sidebar."""
+        context = super(DeletePostView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+        return context
 
     def get_object(self, queryset=None):
         """Ensure that the current logged in user owns the post.
@@ -192,3 +269,33 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
         ):
             raise Http404("You Dont have permission to do that!")
         return obj
+
+
+class TagDetailView(DetailView):
+    """This will list all posts with a certain Tag slug."""
+
+    model = Tag
+    template_name = "blog/tag_detail.html"
+
+    def get_context_data(self, **kwargs):
+        """Add posts ant tags to this context, so we can use in the sidebar."""
+        context = super(TagDetailView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+        return context
+
+
+class TagListView(ListView):
+    """List all the tags, and posts that are linked to them."""
+
+    model = Tag
+    template_name = "blog/tag/list.html"
+
+    def get_context_data(self, **kwargs):
+        """Add posts ant tags to this context, so we can use in the sidebar."""
+        context = super(TagListView, self).get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+        return context

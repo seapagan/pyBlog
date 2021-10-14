@@ -14,21 +14,44 @@ class NewCommentForm(forms.ModelForm):
 
         fields = ("created_by_guest", "body")
 
-        widgets = {
-            "name": forms.TextInput(attrs={"class": "form-control"}),
-            "body": forms.Textarea(attrs={"class": "form-control"}),
+        labels = {
+            "body": "",
         }
 
 
-class EditPostForm(forms.ModelForm):
-    """Define the form to Edit a Post."""
+class NewPostForm(forms.ModelForm):
+    """Define the form to Create a Post."""
+
+    tags_list = forms.CharField(required=False, label="Tags")
 
     class Meta:
         """Metadata for this form."""
 
         model = Blog
 
-        fields = ("body",)
+        fields = (
+            "title",
+            "desc",
+            "body",
+        )
+        labels = {
+            "title": "Post Title",
+            "desc": "Post Description",
+            "body": "",
+        }
+
+
+class EditPostForm(forms.ModelForm):
+    """Define the form to Edit a Post."""
+
+    tags_list = forms.CharField(required=False, label="Tags")
+
+    class Meta:
+        """Metadata for this form."""
+
+        model = Blog
+
+        fields = ("body", "tags_list")
         labels = {
             "body": "",
         }
@@ -46,8 +69,3 @@ class EditCommentForm(forms.ModelForm):
         labels = {
             "body": "",
         }
-
-        # widgets = {
-        #     # "name": forms.TextInput(attrs={"class": "form-control"}),
-        #     "body": forms.Textarea(attrs={"class": "form-control"}),
-        # }

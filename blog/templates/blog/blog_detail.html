@@ -29,6 +29,23 @@
   </div>
 </article>
 
+<!-- This section will display any tags associated with this post -->
+<section class="blog_tags">
+  {% with blog.tag_set.all as tags %}
+  {% if tags %}
+  <span>Tags :</span>
+  {% for tag in tags %}
+  <a class="sidebar_tag"
+    href="{% url 'blog:tag_detail' tag.slug %}">{{tag.tag_name}}</a>
+  {% endfor %}
+  {% else %}
+  <div>No Tags</div>
+  {% endif %}
+  {% endwith %}
+</section>
+
+
+
 <!-- This section displays the comments (if any) -->
 <a id="comments"></a>
 <section class="blog_comments">
@@ -87,7 +104,7 @@
 </section>
 <!-- End of comment display -->
 
-<div><a class="btn" href="{% url 'blog:index' %}"><i
+<div class="detail_home_btn"><a class="btn" href="{% url 'blog:index' %}"><i
       class="fad fa-home"></i>&nbsp;Back to Index</a>
 </div>
 {% endblock body %}

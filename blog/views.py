@@ -65,11 +65,11 @@ class NewPostView(LoginRequiredMixin, CreateView):
             if tag == "":
                 continue
             try:
-                existing_tag = Tag.objects.get(tag_name=tag)
+                existing_tag = Tag.objects.get(tag_name=tag.lower())
             except Tag.DoesNotExist:
                 new_tags.append(
                     Tag.objects.create(
-                        tag_name=tag, tag_creator=self.request.user
+                        tag_name=tag.lower(), tag_creator=self.request.user
                     )
                 )
             else:
@@ -108,11 +108,11 @@ class EditPostView(LoginRequiredMixin, UpdateView):
             if tag == "":
                 continue
             try:
-                existing_tag = Tag.objects.get(tag_name=tag)
+                existing_tag = Tag.objects.get(tag_name=tag.lower())
             except Tag.DoesNotExist:
                 new_tags.append(
                     Tag.objects.create(
-                        tag_name=tag, tag_creator=self.request.user
+                        tag_name=tag.lower(), tag_creator=self.request.user
                     )
                 )
             else:

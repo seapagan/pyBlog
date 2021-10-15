@@ -10,13 +10,9 @@
 <article class="sidebar_article">
   {% include 'blog/sidebar/sidebar_tags.html' %}
 </article>
-
-{% if user.is_authenticated %}
 <article class="sidebar_article">
   {% include 'blog/sidebar/sidebar_user.html' %}
 </article>
-{% endif %}
-
 {% if user.is_superuser %}
 <article class="sidebar_article">
   {% include 'blog/sidebar/sidebar_admin.html' %}

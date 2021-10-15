@@ -1,2 +1,18 @@
 <div class="sidebar_article_header">User</div>
-<div class="sidebar_article_content">User Content</div>
+<div class="sidebar_article_content sidebar_user">
+  {% if user.is_authenticated %}
+  <a href="{% url 'blog:add_post' %}" class="sidebar_link"><i
+      class="fad fa-file-alt"></i>&nbsp;New Post</a>
+  <a class="sidebar_link" href="{% url 'my-profile' %}"><i
+      class="fad fa-id-card"></i>&nbsp;View Profile</a>
+  <hr class="sidebar_separator">
+  <a class="sidebar_link" href="{% url 'logout' %}"><i
+      class="fad fa-sign-out"></i>&nbsp;Logout</a>
+  {% else %}
+  <a class="sidebar_link" href="{% url 'login' %}"><i
+      class="fad fa-sign-in"></i>&nbsp;Login</a>
+  <hr class="sidebar_separator">
+  <a class="sidebar_link" href="{% url 'register' %}"><i
+      class="fad fa-user-plus"></i>&nbsp;Register</a>
+  {% endif %}
+</div>

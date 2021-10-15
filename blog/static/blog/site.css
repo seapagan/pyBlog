@@ -76,6 +76,8 @@ body {
 }
 
 .site_header_heading {
+  font-family: "Architects Daughter", cursive;
+  letter-spacing: 2px;
   font-size: 2em;
   font-weight: bold;
   text-align: left;

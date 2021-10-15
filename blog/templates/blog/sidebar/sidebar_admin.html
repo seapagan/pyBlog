@@ -6,8 +6,10 @@
   {% if blog %}
   <a class="sidebar_link" href="">Moderate this Post</a>
   {% endif %}
-
   <a class="sidebar_link" href="">Moderate Comments</a>
+  {% if tags %}
+  <a class="sidebar_link" href="">Moderate Tags</a>
+  {% endif %}
   <hr class="sidebar_separator">
   <a class="sidebar_link sidebar_danger" href="">Maintenance Mode</a>
 </div>

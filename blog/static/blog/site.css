@@ -8,7 +8,9 @@ html {
   --block-background: hsl(30, 10%, 97%);
   --block-title: hsl(30, 10%, 94%);
 
-  --faded-border: rgba(211, 211, 211, 0.596);
+  --standard-text: hsl(0, 0%, 25%);
+
+  --faded-border: hsla(0, 0%, 83%, 0.596);
   --faded-text: hsla(0, 0%, 20%, 0.6);
 
   --button-background-color: hsl(30, 20%, 90%);
@@ -24,7 +26,7 @@ html {
 
 body {
   font-family: "Open Sans", sans-serif;
-  color: #1b2522;
+  color: var(--standard-text);
   margin: 0;
 }
 
@@ -157,7 +159,7 @@ body {
 
 .sidebar_link {
   display: block;
-  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
   text-decoration: none;
   color: var(--sidebar-links);
 }
@@ -167,6 +169,10 @@ body {
 }
 
 .sidebar_admin {
+  text-align: center;
+}
+
+.sidebar_user {
   text-align: center;
 }
 

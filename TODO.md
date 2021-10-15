@@ -12,6 +12,7 @@
 * add a 'like' option to a post
 * Implement the 'Popular Posts' sidebar section. This will need to wait until
   the 'likes' functionality is complete.
+* Testing. Seriously, lots and lots of testing. Just DO It.
 
 ### Comments
 
@@ -20,8 +21,8 @@
 * ~~Integrate an HTML editor. Could use markdown but it gives unexpected results
   to those not used to it (ie missing linebreaks). Comments saved as HTML and
   filtered through 'safe'~~ Using Markdown with WYSIWYG functionality for now.
-* ~~profile links for registered users need to be switched to specific links, once
-  that functionality is added~~
+* ~~profile links for registered users need to be switched to specific links,
+  once that functionality is added~~
 * add ReCapcha to the comment entry form
 * Nested comments
 * Record visitors IP address with the comment. Can be used for moderation or in
@@ -31,10 +32,10 @@
 
 * Add Emoji reactions to posts and comments
 * Need to reformat the style for the index page post summary  display, I really
-  really don't like it!
+  really don't like it! Probably the post detail display too.
 * Dynamic titles using template content blocks
-* Add a user section in the sidebar (also holding login/register links in not
-  logged in). Will allow to create a new post, edit profile etc.#
+* ~~Add a user section in the sidebar (also holding login/register links if not
+  logged in). Will allow to create a new post, edit profile etc.~~
 * zap up the profile, allow display of social links, make edit page etc.
 * ~~Header is messed up when looking at someone else profile when you are logged
   in or out, it displays the header as if you are logged in as that user (ie the

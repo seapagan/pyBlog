@@ -1,6 +1,6 @@
 django>=3.2.6,<3.3.0
 ipython>=7.27.0,<7.29.0
-pillow>=8.3.1,<8.4.0
+pillow>=8.3.1,<8.5.0
 djangorestframework>=3.12.4,<3.13.0
 markdown>=3.3.4,<3.4.0
 Pygments>=2.10.0,<2.11.0

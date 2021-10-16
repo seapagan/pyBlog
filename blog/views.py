@@ -5,6 +5,7 @@ from django.http.response import Http404
 from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
+from preferences import preferences
 
 from blog.forms import (
     EditCommentForm,
@@ -28,6 +29,7 @@ class IndexClassView(ListView):
         """Add tags to this context, so we can use in the sidebar."""
         context = super(IndexClassView, self).get_context_data(**kwargs)
         context["tags"] = Tag.objects.all().order_by("tag_name")
+        context["page_title"] = preferences.SitePreferences.heading
 
         return context
 
@@ -43,6 +45,8 @@ class PostDetailView(DetailView):
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context["blogs"] = Blog.objects.all().order_by("-created_at")
         context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+        context["page_title"] = preferences.SitePreferences.heading
+        context["page_title"] = self.object.title.capitalize()
 
         return context
 
@@ -84,6 +88,7 @@ class NewPostView(LoginRequiredMixin, CreateView):
         context = super(NewPostView, self).get_context_data(**kwargs)
         context["blogs"] = Blog.objects.all().order_by("-created_at")
         context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+        context["page_title"] = "New Post"
 
         return context
 
@@ -139,6 +144,7 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         context = super(EditPostView, self).get_context_data(**kwargs)
         context["blogs"] = Blog.objects.all().order_by("-created_at")
         context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+        context["page_title"] = self.object.title.capitalize()
 
         return context
 
@@ -174,6 +180,7 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
         context = super(DeletePostView, self).get_context_data(**kwargs)
         context["blogs"] = Blog.objects.all().order_by("-created_at")
         context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+        context["page_title"] = self.object.title.capitalize()
 
         return context
 
@@ -208,6 +215,8 @@ class AddCommentView(CreateView):
         slug = self.kwargs["slug"]
         context["post"] = Blog.objects.get(slug=slug)
         context["form"].related_post = context["post"]
+        context["page_title"] = "New Comment"
+
         return context
 
     def form_valid(self, form):
@@ -282,6 +291,7 @@ class TagDetailView(DetailView):
         context = super(TagDetailView, self).get_context_data(**kwargs)
         context["blogs"] = Blog.objects.all().order_by("-created_at")
         context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+        context["page_title"] = f"Posts tagged as '{self.object.tag_name}'"
 
         return context
 
@@ -297,5 +307,6 @@ class TagListView(ListView):
         context = super(TagListView, self).get_context_data(**kwargs)
         context["blogs"] = Blog.objects.all().order_by("-created_at")
         context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+        context["page_title"] = "Tags"
 
         return context

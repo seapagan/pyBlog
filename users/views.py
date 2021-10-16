@@ -99,6 +99,7 @@ class MyProfileView(LoginRequiredMixin, ListView):
         """Add links data to this context."""
         context = super(MyProfileView, self).get_context_data(**kwargs)
         context["links"] = get_profile_context(self.object_list)
+        context["page_title"] = self.object_list.username.capitalize()
         return context
 
 
@@ -113,4 +114,5 @@ class UserProfileView(DetailView):
         """Add links data to this context."""
         context = super(UserProfileView, self).get_context_data(**kwargs)
         context["links"] = get_profile_context(self.object)
+        context["page_title"] = self.object.username.capitalize()
         return context

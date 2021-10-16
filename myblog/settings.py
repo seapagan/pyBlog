@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django_gravatar",
     "mdeditor",
     "fontawesomepro",
+    "dj_pagination",
     "blog",
     "users",
 ]
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "dj_pagination.middleware.PaginationMiddleware",
 ]
 
 ROOT_URLCONF = "myblog.urls"
@@ -161,3 +163,7 @@ MDEDITOR_CONFIGS = {
         "placeholder": "Enter your comment using Markdown! Supports Github Flavoured Markdown (GFM)",
     }
 }
+
+# settings for the dj-pagination application.
+PAGINATION_DISPLAY_DISABLED_PREVIOUS_LINK = True
+PAGINATION_DISPLAY_DISABLED_NEXT_LINK = True

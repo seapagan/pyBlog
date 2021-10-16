@@ -10,6 +10,63 @@ from users.forms import RegisterForm
 from users.models import Profile
 
 
+def get_profile_context(profile_object):
+    """Take the profile links and return a fuller dictionary."""
+    my_profile = Profile.objects.filter(user=profile_object).values()[0]
+    # remove certain fields that we dont want
+    unwanted = ["id", "user_id", "user", "image", "location"]
+    my_copy = my_profile.copy()
+    for item in my_copy:
+        if item in unwanted:
+            my_profile.pop(item)
+
+    # lookup dictionary
+    final = {
+        "website": {
+            "icon": "fal fa-globe",
+            "base_url": "",
+            "title": "Homepage",
+            "color": "var(--sidebar-links)",
+        },
+        "twitter_user": {
+            "icon": "fab fa-twitter-square",
+            "base_url": "https://twitter.com/",
+            "title": "Twitter",
+            "color": "#1DA1F2",
+        },
+        "github_user": {
+            "icon": "fab fa-github-square",
+            "base_url": "https://github.com/",
+            "title": "GitHub Page",
+            "color": "#333",
+        },
+        "youtube_user": {
+            "icon": "fab fa-youtube-square",
+            "base_url": "https://youtube.com/user/",
+            "title": "Youtube Channel",
+            "color": "#FF0000",
+        },
+        "linkedin_user": {
+            "icon": "fab fa-linkedin",
+            "base_url": "https://www.linkedin.com/in/",
+            "title": "LinkedIn",
+            "color": "#0077b5",
+        },
+        "facebook_user": {
+            "icon": "fab fa-facebook-square",
+            "base_url": "https://www.facebook.com/",
+            "title": "Facebook",
+            "color": "#4267B2",
+        },
+    }
+
+    # add the link to the disctionary above.
+    for item, value in my_profile.items():
+        final[item]["value"] = value
+
+    return final
+
+
 # Create your views here.
 def register(request):
     """Register a new user."""
@@ -38,6 +95,13 @@ class MyProfileView(LoginRequiredMixin, ListView):
         """Customise the query to only return the logged in user."""
         return User.objects.get(pk=self.request.user.pk)
 
+    def get_context_data(self, **kwargs):
+        """Add links data to this context."""
+        context = super(MyProfileView, self).get_context_data(**kwargs)
+        print("self: ", self.object_list)
+        context["links"] = get_profile_context(self.object_list)
+        return context
+
 
 class UserProfileView(DetailView):
     """View for a specific users profile page."""
@@ -47,69 +111,7 @@ class UserProfileView(DetailView):
     context_object_name = "person"
 
     def get_context_data(self, **kwargs):
-        """Add tags to this context, so we can use in the sidebar."""
+        """Add links data to this context."""
         context = super(UserProfileView, self).get_context_data(**kwargs)
-        # my_profile = Profile.objects.filter(user=self.object).values()[0]
-
-        context["links"] = self.get_profile_links()
-        # print(context)
+        context["links"] = get_profile_context(self.object)
         return context
-
-    def get_profile_links(self):
-        """Take the profile links and return a fuller dictionary."""
-        my_profile = Profile.objects.filter(user=self.object).values()[0]
-        # remove certain fields that we dont want
-        unwanted = ["id", "user_id", "user", "image", "location"]
-        my_copy = my_profile.copy()
-        for item in my_copy:
-            if item in unwanted:
-                my_profile.pop(item)
-
-        # lookup dictionary
-        final = {
-            "website": {
-                "icon": "fal fa-globe",
-                "base_url": "",
-                "title": "Homepage",
-                "color": "var(--sidebar-links)",
-            },
-            "twitter_user": {
-                "icon": "fab fa-twitter-square",
-                "base_url": "https://twitter.com/",
-                "title": "Twitter",
-                "color": "#1DA1F2",
-            },
-            "github_user": {
-                "icon": "fab fa-github-square",
-                "base_url": "https://github.com/",
-                "title": "GitHub Page",
-                "color": "#333",
-            },
-            "youtube_user": {
-                "icon": "fab fa-youtube-square",
-                "base_url": "https://youtube.com/user/",
-                "title": "Youtube Channel",
-                "color": "#FF0000",
-            },
-            "linkedin_user": {
-                "icon": "fab fa-linkedin",
-                "base_url": "https://www.linkedin.com/in/",
-                "title": "LinkedIn",
-                "color": "#0077b5",
-            },
-            "facebook_user": {
-                "icon": "fab fa-facebook-square",
-                "base_url": "https://www.facebook.com/",
-                "title": "Facebook",
-                "color": "#4267B2",
-            },
-        }
-
-        # create empty final dictionary.
-
-        for item, value in my_profile.items():
-            final[item]["value"] = value
-
-        print(final)
-
-        return final

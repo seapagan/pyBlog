@@ -12,3 +12,4 @@ django-gravatar2>=1.4.4,<1.5.0
 django-mdeditor>=0.1.18,<0.2.0
 --extra-index-url https://dl.fontawesome.com/2691A127-5CA3-4D12-9472-192F1F9D4BFD/fontawesome-pro/python/simple/
 fontawesomepro>=5.15.4,<6.0.0
+dj-pagination>=2.5.0,<2.6.0

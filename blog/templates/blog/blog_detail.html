@@ -1,5 +1,6 @@
 {% extends 'blog/_base.html' %}
 {% load markdown_extras %}
+{% load pagination_tags %}
 
 {% block body %}
 <!-- Display the Blog Post, wrapped in an article tag -->
@@ -67,7 +68,9 @@
       comment</a>
   </div>
   {% endwith %}
-  {% for comment in blog.comments.all %}
+  {% with blog.comments.all as comments %}
+  {% autopaginate comments 8 %}
+  {% for comment in comments %}
   <div class="blog_comment_wrapper">
     <div class="blog_comment_header">
       <div class="blog_comment_author">
@@ -95,6 +98,8 @@
     {% endif %}
   </div>
   {% endfor %}
+  {% paginate %}
+  {% endwith %}
   <div class="blog_comment_footer_add">
     <a class='btn' href="{% url 'blog:add_comment' blog.slug %}"><i
         class="fad fa-comment-lines"></i>&nbsp;Add

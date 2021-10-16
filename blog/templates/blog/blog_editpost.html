@@ -3,12 +3,8 @@
 {% block body %}
 
 <div class="edit_post_wrapper">
-  {% if user.is_authenticated %}
   <div class="edit_post_user">You are Logged in as <b>{{ user.username }}</b>
   </div>
-  {% else %}
-  <div>You are not logged in.</div>
-  {% endif %}
 
   <div class="edit_post_title">Editing Post : <i>"{{ blog.title }}"</i></div>
   <form method="post">

@@ -659,24 +659,42 @@ input#id_password2 {
   overflow: hidden;
 }
 
-.profile_meta_center {
+.profile_meta_right {
   align-self: center;
   padding-left: 2em;
   height: 100%;
 }
 
-.profile_meta_right {
-  margin-top: 0.5em;
-  padding-left: 2em;
-  align-self: left;
-  width: 100%;
+.profile_post_count {
+  margin: 0.5em 0;
+}
+
+.profile_joined_date {
+  margin: 0.5em 0;
+}
+
+.profile_location_text {
+  font-weight: bold;
+}
+
+.profile_social_buttons {
+  margin: 0.5em 0;
+  padding: 5px;
+  border: 1px solid var(--faded-border);
+  border-radius: 5px;
+  width: max-content;
+  background-color: var(--block-title);
 }
 
 .profile_social_link {
-  font-size: 24px;
-  margin: 0 6px;
+  font-size: 32px;
+  padding: 6px;
 }
 
+.profile_social_link:hover svg {
+  /* color: var(--faded-text) !important; */
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.5));
+}
 .profile_post_wrapper {
   display: grid;
   gap: 10px;

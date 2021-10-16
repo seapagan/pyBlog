@@ -36,7 +36,7 @@
 * Dynamic titles using template content blocks
 * ~~Add a user section in the sidebar (also holding login/register links if not
   logged in). Will allow to create a new post, edit profile etc.~~
-* zap up the profile, allow display of social links, make edit page etc.
+* zap up the profile, ~~allow display of social links,~~ make edit page etc.
 * ~~Header is messed up when looking at someone else profile when you are logged
   in or out, it displays the header as if you are logged in as that user (ie the
   avatar and logout display)~~
@@ -60,8 +60,8 @@
   with the above issue.
 * API to allow getting summary data of a users posts for embedding in other
   apps.
-* pass the post count for a user to the profile template for display. Due to
-  pagination, `{{ posts|length }}` only displays the number on that page.
+* ~~pass the post count for a user to the profile template for display. Due to
+  pagination, `{{ posts|length }}` only displays the number on that page.~~
 * refactor CSS to PostCSS, using [`django-compressor`][djc] and
   [`django-compressor-postcss`][djc-postcss]
 * add social media sharing to a post

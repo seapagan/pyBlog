@@ -6,6 +6,11 @@ and release as OSS when it reaches that level.
 This README is very basic and will be updated as more functionality is coded
 into the project.
 
+## Progress
+
+See the [TODO.md](TODO.md) in the root of this repository for details of
+outstanding bugs and future plans.
+
 ## Development
 
 From the root of the checked out repository.

@@ -33,7 +33,7 @@
 * Add Emoji reactions to posts and comments
 * Need to reformat the style for the index page post summary  display, I really
   really don't like it! Probably the post detail display too.
-* Dynamic titles using template content blocks
+* ~~Dynamic page titles~~
 * ~~Add a user section in the sidebar (also holding login/register links if not
   logged in). Will allow to create a new post, edit profile etc.~~
 * zap up the profile, ~~allow display of social links,~~ make edit page etc.

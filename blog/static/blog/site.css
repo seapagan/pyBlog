@@ -286,9 +286,15 @@ body {
   gap: 10px;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   background-color: var(--block-title);
-
   border-top: 1px dotted var(--faded-border);
+}
+
+.blog_body_footer_left {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
 }
 
 .blog_body_footer.index {

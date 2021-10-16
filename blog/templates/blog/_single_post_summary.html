@@ -7,12 +7,20 @@
     <a class="btn" href="{% url 'blog:detail' blog.slug %}">Read More ...</a>
   </div>
   <div class="blog_body_footer index">
-    <div class="blog_comment_badge" title="Go to the Comments"><span>
-        {% with blog.no_of_comments as total_comments %}
-        <a href="{% url 'blog:detail' blog.slug %}#comments">{{total_comments}}&nbsp;<i
-            class="fal fa-comment"></i></a>
-        {% endwith %}
-      </span>
+    <div class="blog_body_footer_left">
+      <div class="blog_comment_badge" title="Go to the Comments"><span>
+          {% with blog.no_of_comments as total_comments %}
+          <a href="{% url 'blog:detail' blog.slug %}#comments">{{total_comments}}&nbsp;<i
+              class="fal fa-comment"></i></a>
+          {% endwith %}
+        </span>
+      </div>
+      <div class="blog_tag_list">
+        {% for tag in blog.tag_set.all %}
+        <a href="{% url 'blog:tag_detail' tag.slug %}"
+          class="sidebar_tag">{{tag.tag_name}}</a>
+        {% endfor %}
+      </div>
     </div>
     <div class="blog_date_wrapper"><span class="blog_date_posted">Posted by <a
           class="blog_user"

@@ -3,12 +3,11 @@
 
 {% block body %}
 
-
 <div class="profile_page_wrapper">
   <div class="profile_meta_wrapper">
     <div class="profile_meta_left"><img class="profile_avatar"
         src="{{ person.profile.image.url }}" alt=""></div>
-    <div class="profile_meta_right">
+    <div class="profile_meta_center">
       <h2 class="profile_username">{{ person.username|capfirst }}</h2>
       <div class="profile_joined_date">Joined :
         {{person.date_joined|date:"dS \o\f F Y"}}</div>
@@ -18,6 +17,16 @@
         comment{{comment_count|pluralize}}
       </div>
       {% endwith %}
+    </div>
+    <div class="profile_meta_right">
+      {%for key, social in links.items %}
+      {% if social.value %}
+      <span class="profile_social_link"><a
+          href="{{social.base_url}}{{social.value}}" title="{{social.title}}"
+          target="_blank" rel="noopener"><i class="{{social.icon}}"
+            style="color:{{social.color}}"></i></a></span>
+      {% endif %}
+      {% endfor %}
     </div>
   </div>
   <div class="profile_post_wrapper">

@@ -641,7 +641,7 @@ input#id_password2 {
 
 .profile_meta_wrapper {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr 1fr;
   gap: 10px;
   justify-items: left;
   padding: 1em;
@@ -659,9 +659,22 @@ input#id_password2 {
   overflow: hidden;
 }
 
-.profile_meta_right {
+.profile_meta_center {
   align-self: center;
   padding-left: 2em;
+  height: 100%;
+}
+
+.profile_meta_right {
+  margin-top: 0.5em;
+  padding-left: 2em;
+  align-self: left;
+  width: 100%;
+}
+
+.profile_social_link {
+  font-size: 24px;
+  margin: 0 6px;
 }
 
 .profile_post_wrapper {

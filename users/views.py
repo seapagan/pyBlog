@@ -98,7 +98,6 @@ class MyProfileView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         """Add links data to this context."""
         context = super(MyProfileView, self).get_context_data(**kwargs)
-        print("self: ", self.object_list)
         context["links"] = get_profile_context(self.object_list)
         return context
 

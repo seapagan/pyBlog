@@ -12,6 +12,20 @@
 * add a 'like' option to a post
 * Implement the 'Popular Posts' sidebar section. This will need to wait until
   the 'likes' functionality is complete.
+* Add draft mode for new posts, and a future post mode, also the ability to put
+  any post back into draft mode or a pending mode.
+* Add 'Series' functionality where a set of posts can be grouped numerically
+  and accessed as such.
+* Add list of other recommended posts at the bottom of each post, calculated on
+  post tags and popularity.
+* Implement an 'Admin' site, independent of the Django built-in Admin pages, and
+  specific to administrating just the Blog.
+* Add the ability for Admin user to Moderate Comments and Tags, or even a Post
+  (if we have guest posters for example)
+* Implement a maintenance mode to temporarily disable the whole app if needed.
+  Admin pages would still be available. Add option to totally lock down the
+  site, eg if under attack so all routes are disabled. This would require manual
+  access of the server to undo (ie delete a flag file or similar)
 * Testing. Seriously, lots and lots of testing. Just DO It.
 
 ### Comments

@@ -12,6 +12,7 @@ html {
 
   --faded-border: hsla(0, 0%, 83%, 0.596);
   --faded-text: hsla(0, 0%, 20%, 0.6);
+  --very-faded-text: hsla(0, 0%, 38%, 0.4);
 
   --button-background-color: hsl(30, 20%, 90%);
   --btn-backgroud-disabled: inherit;
@@ -185,7 +186,8 @@ body {
   color: red;
 }
 
-.sidebar_separator {
+.sidebar_separator,
+.profile_separator {
   border-width: 0;
   height: 1px;
   color: var(--faded-border);
@@ -500,7 +502,9 @@ body {
   text-align: center;
 }
 
-.btn {
+.btn,
+.next,
+.prev {
   font-style: normal;
   display: inline-block;
   text-decoration: none;
@@ -524,7 +528,8 @@ body {
   border: 1px solid green;
 }
 
-.btn-disabled {
+.btn-disabled,
+.disabled {
   background-color: var(--btn-background-disabled);
   color: var(--faded-text);
   cursor: not-allowed;
@@ -570,8 +575,18 @@ code {
   text-align: center;
 }
 
-.current {
+.pagination .current,
+.pagination .page {
   padding: 0 1em;
+}
+
+.pagination .current {
+  color: var(--very-faded-text) !important;
+}
+
+.pagination .page {
+  text-decoration: none;
+  color: var(--sidebar-links);
 }
 
 .detail-back {
@@ -703,7 +718,7 @@ input#id_password2 {
   display: grid;
   gap: 10px;
   grid-template-columns: 1fr 1fr;
-  padding-bottom: 2em;
+  padding-bottom: 1em;
 }
 
 .profile_post_summary {

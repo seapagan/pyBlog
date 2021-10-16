@@ -1,5 +1,6 @@
 {% extends 'users/_base.html' %}
 {% load markdown_extras %}
+{% load pagination_tags %}
 
 {% block body %}
 
@@ -37,6 +38,7 @@
     <div class="profile_post_section_title">Posts by
       {{ person.username|capfirst }}.</div>
     {% with person.blog_posts.all as posts %}
+    {% autopaginate posts 8 %}
     {% for post in posts %}
     <article>
       <a class="profile_post_summary" href="{% url 'blog:detail' post.slug %}">
@@ -55,13 +57,17 @@
       </a>
     </article>
     {% endfor %}
-    {% endwith %}
   </div>
+  {% paginate %}
+  {% endwith %}
+
+  <hr class="profile_separator">
 
   <div class="profile_comments_section">
     <div class="profile_section_title">Comments by
       {{ person.username|capfirst }}.</div>
     {% with person.comments.all as comments %}
+    {% autopaginate comments 4 %}
     {% for comment in comments %}
     <div class="profile_comments_wrapper">
       <div class="profile_comments_header">
@@ -79,6 +85,7 @@
       </div>
     </div>
     {% endfor %}
+    {% paginate %}
     {% endwith %}
   </div>
 </div>

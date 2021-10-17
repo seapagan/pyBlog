@@ -48,7 +48,7 @@ body {
   border: 1px solid var(--faded-border);
   border-radius: 5px;
   overflow: hidden;
-  max-width: 1200px;
+  max-width: 1280px;
 }
 
 .site_header_container {
@@ -56,14 +56,30 @@ body {
 }
 
 .site_header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1em;
-  padding-bottom: 0.5em;
+  padding: 0 0.5em;
+  /* padding-bottom: 0.5em; */
   margin: 0.5em 0;
   margin-bottom: 0;
+  margin: 0;
   border-bottom: 1px solid var(--faded-border);
+}
+
+.site_header a {
+  position: relative;
+  display: inline-block;
+  font-family: "Big Shoulders Stencil Display", cursive;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: hsl(162, 16%, 13%);
+}
+
+.site_header_heading {
+  font-family: "Architects Daughter", cursive;
+  letter-spacing: 2px;
+  font-size: 2em;
+  font-weight: bold;
+  padding: 0.5em;
 }
 
 .site_footer {
@@ -74,36 +90,6 @@ body {
   margin: 0 0.5em;
   margin-top: 1em;
   border-top: 1px solid var(--faded-border);
-}
-
-.site_header_brand {
-  margin: 0;
-}
-
-.site_header_brand a {
-  display: inline-block;
-  font-family: "Big Shoulders Stencil Display", cursive;
-  font-size: 1.3em;
-  transform-origin: left;
-  transform: scale(1.5, 1);
-  text-decoration: none;
-  color: hsl(162, 16%, 13%);
-}
-
-.site_header_heading {
-  font-family: "Architects Daughter", cursive;
-  letter-spacing: 2px;
-  font-size: 2em;
-  font-weight: bold;
-  text-align: left;
-  width: 100%;
-  padding: 0.5em;
-}
-
-.site_header_user {
-  display: flex;
-  gap: 5px;
-  align-items: center;
 }
 
 .footer_citation {
@@ -900,15 +886,16 @@ input#id_password2 {
   }
 
   .site_header {
-    /* display: block; */
     text-align: center;
-    justify-self: center;
-    width: 100%;
+  }
+
+  .site_header_heading {
+    text-align: center;
   }
 }
 
-@media screen and (max-width: 420px) {
-  .site_header_user {
-    display: none;
+@media screen and (max-width: 550px) {
+  .site_footer {
+    text-align: center;
   }
 }

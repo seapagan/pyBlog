@@ -23,6 +23,8 @@ html {
   --light-blue: rgba(0, 0, 255, 0.507);
 
   --code-background: rgba(211, 211, 211, 0.2);
+
+  --content-line-height: 1.4;
 }
 
 body {
@@ -265,6 +267,7 @@ body {
   margin: 0;
   border-top: 1px solid var(--faded-border);
   letter-spacing: 0.5px;
+  line-height: var(--content-line-height);
 }
 
 .blog_body_footer {
@@ -462,6 +465,7 @@ body {
   padding: 0.5em;
   background-color: var(--block-background);
   letter-spacing: 0.5px;
+  line-height: var(--content-line-height);
 }
 
 .blog_comment_edit {

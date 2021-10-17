@@ -46,6 +46,7 @@
 ### Misc Bugs / Fixes / Ideas
 
 * Style the image upload widget for nae/edit post.
+* ~~make sure front page link in sidebar doesn't show on front page.~~
 * Add Emoji reactions to posts and comments
 * More work needed on the form styles for small mobile devices
 * Make a default post image to use if one is not specified. Also offer default

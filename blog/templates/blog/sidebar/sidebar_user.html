@@ -1,26 +1,30 @@
 <div class="sidebar_article_header">User</div>
 <div class="sidebar_article_content sidebar_user">
-    {% if user.is_authenticated %}
-    {% if not request.get_full_path == '/profile/' %}
-    <a class="sidebar_link" href="{% url 'my-profile' %}"><i
-            class="fad fa-id-card"></i>&nbsp;View Profile</a>
-    {% else %}
-    <a class="sidebar_link" href="{% url 'blog:index' %}"><i
-            class="fad fa-home"></i>&nbsp;Front Page</a>
-    {% endif %}
-    <a href="{% url 'blog:add_post' %}" class="sidebar_link"><i
-            class="fad fa-file-alt"></i>&nbsp;New Post</a>
+  {% if user.is_authenticated %}
+  {% if not request.get_full_path == '/' %}
+  <a class="sidebar_link" href="{% url 'blog:index' %}"><i
+      class="fad fa-home"></i>&nbsp;Front Page</a>
+  {% endif %}
+  {% if not request.get_full_path == '/profile/' %}
+  <a class="sidebar_link" href="{% url 'my-profile' %}"><i
+      class="fad fa-id-card"></i>&nbsp;View Profile</a>
+  {% endif %}
+  <a href="{% url 'blog:add_post' %}" class="sidebar_link"><i
+      class="fad fa-file-alt"></i>&nbsp;New Post</a>
 
-    <hr class="sidebar_separator">
-    <a class="sidebar_link" href="{% url 'logout' %}"><i
-            class="fad fa-sign-out"></i>&nbsp;Logout</a>
-    {% else %}
-    <a class="sidebar_link" href="{% url 'blog:index' %}"><i
-            class="fad fa-home"></i>&nbsp;Front Page</a>
-    <a class="sidebar_link" href="{% url 'login' %}"><i
-            class="fad fa-sign-in"></i>&nbsp;Login</a>
-    <hr class="sidebar_separator">
-    <a class="sidebar_link" href="{% url 'register' %}"><i
-            class="fad fa-user-plus"></i>&nbsp;Register</a>
-    {% endif %}
+  <hr class="sidebar_separator">
+  <a class="sidebar_link" href="{% url 'logout' %}"><i
+      class="fad fa-sign-out"></i>&nbsp;Logout</a>
+  {% else %}
+
+  {% if not request.get_full_path == '/' %}
+  <a class="sidebar_link" href="{% url 'blog:index' %}"><i
+      class="fad fa-home"></i>&nbsp;Front Page</a>
+  {% endif %}
+  <a class="sidebar_link" href="{% url 'login' %}"><i
+      class="fad fa-sign-in"></i>&nbsp;Login</a>
+  <hr class="sidebar_separator">
+  <a class="sidebar_link" href="{% url 'register' %}"><i
+      class="fad fa-user-plus"></i>&nbsp;Register</a>
+  {% endif %}
 </div>

@@ -1,10 +1,37 @@
 """Define the Database models for this application."""
+import os
+
 from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from mdeditor.fields import MDTextField
 from preferences.models import Preferences
+
+
+class OverwriteStorage(FileSystemStorage):
+    """Returns a filename that's free on the target storage system.
+
+    Will delete any file with the same name.
+    """
+
+    def get_available_name(self, name, max_length=None):
+        """Override the get_availiable_name, to delete existing file."""
+        self.delete(name)
+        super().get_available_name(name, max_length)
+        return name
+
+
+def get_upload_path(instance, filename):
+    """Helper function to get a user-specific upload path.
+
+    We rename the file to "header_image" with the existing extension. This
+    should stop the media dirs being cluttered if the image changes.
+    """
+    ext = os.path.splitext(filename)[1]
+    filename = "header_image" + ext
+    return os.path.join("posts", instance.slug, filename)
 
 
 class Blog(models.Model):
@@ -23,6 +50,9 @@ class Blog(models.Model):
     # body = models.TextField()
     body = MDTextField()
     slug = models.SlugField(default="", unique=True)
+    image = models.ImageField(
+        upload_to=get_upload_path, null=True, storage=OverwriteStorage()
+    )
 
     class Meta:
         """Meta configuration for the Blog model."""

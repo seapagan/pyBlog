@@ -46,6 +46,7 @@
 ### Misc Bugs / Fixes / Ideas
 
 * Add Emoji reactions to posts and comments
+* More work needed on the form styles for small mobile devices
 * Profile needs link back to main page, or use the sidebar template?
 * Need to reformat the style for the index page post summary  display, I really
   really don't like it! Probably the post detail display too.

@@ -51,8 +51,8 @@
 * Make a default post image to use if one is not specified. Also offer default
   ones based on tag and predefined ones?
 * ~~Profile needs link back to main page, or use the sidebar template?~~
-* ~~Need to reformat the style for the index page post summary  display, I really
-  really don't like it! Probably the post detail display too.~~
+* ~~Need to reformat the style for the index page post summary  display, I
+  really really don't like it! Probably the post detail display too.~~
 * ~~Dynamic page titles~~
 * ~~Add a user section in the sidebar (also holding login/register links if not
   logged in). Will allow to create a new post, edit profile etc.~~
@@ -86,7 +86,8 @@
   pagination, `{{ posts|length }}` only displays the number on that page.~~
 * refactor CSS to PostCSS, using [`django-compressor`][djc] and
   [`django-compressor-postcss`][djc-postcss]
-* add social media sharing to a post
+* add social media sharing to a post. Add correct post metadata for Twitter,
+  Facebook etc to give proper share summarys
 * Toggle (from manage.py) to disable the native Django front end completely if
   required, so an external one can use the API (maybe make into a plugin app?)
 * sort out different WYSIWYG editor placeholders depending if we are creating

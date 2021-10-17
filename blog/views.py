@@ -107,7 +107,6 @@ class EditPostView(LoginRequiredMixin, UpdateView):
             tag.strip() for tag in form.cleaned_data["tags_list"].split(",")
         ]
 
-        print(tag_list)
         new_tags = []
         for tag in tag_list:
             if tag == "":
@@ -123,7 +122,6 @@ class EditPostView(LoginRequiredMixin, UpdateView):
             else:
                 new_tags.append(existing_tag)
 
-        print(new_tags)
         form.instance.tag_set.set(new_tags)
         return super().form_valid(form)
 

@@ -16,6 +16,9 @@
       {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
     {% endif %}
   </div>
+  <div class="blog_description">
+    {{ blog.desc|capfirst }}
+  </div>
   <div class="blog_body">
     {{ blog.body | markdown | safe }}
   </div>

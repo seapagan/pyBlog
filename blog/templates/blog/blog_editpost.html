@@ -7,7 +7,7 @@
   </div>
 
   <div class="edit_post_title">Editing Post : <i>"{{ blog.title }}"</i></div>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.media }}
     {% for field in form %}

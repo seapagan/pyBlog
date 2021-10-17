@@ -83,6 +83,10 @@
   required, so an external one can use the API (maybe make into a plugin app?)
 * sort out different WYSIWYG editor placeholders depending if we are creating
   a post or a comment
+* add `rel=canonical` to \<head\> where it fits, to avoid google tagging ie
+  pagainated pages as different
+* add site metadata, custom search tags eg for each post, generic ones for the
+  others, tag with the n most used tags?
 
 [djc]: https://github.com/django-compressor/django-compressor
 [djc-postcss]: https://github.com/Pithikos/django-compressor-postcss

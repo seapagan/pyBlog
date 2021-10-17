@@ -16,6 +16,8 @@ def markdown(value):
             "mdx_headdown",
             "pymdownx.extra",
             "pymdownx.highlight",
+            "nl2br",
+            "markdown_del_ins",
             # "sane_lists",
             # "markdown_blockdiag",
         ],

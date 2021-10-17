@@ -45,11 +45,12 @@
 
 ### Misc Bugs / Fixes / Ideas
 
+* Style the image upload widget for nae/edit post.
 * Add Emoji reactions to posts and comments
 * More work needed on the form styles for small mobile devices
 * Make a default post image to use if one is not specified. Also offer default
   ones based on tag and predefined ones?
-* Profile needs link back to main page, or use the sidebar template?
+* ~~Profile needs link back to main page, or use the sidebar template?~~
 * ~~Need to reformat the style for the index page post summary  display, I really
   really don't like it! Probably the post detail display too.~~
 * ~~Dynamic page titles~~

@@ -51,7 +51,10 @@ class Blog(models.Model):
     body = MDTextField()
     slug = models.SlugField(default="", unique=True)
     image = models.ImageField(
-        upload_to=get_upload_path, null=True, storage=OverwriteStorage()
+        upload_to=get_upload_path,
+        null=True,
+        storage=OverwriteStorage(),
+        blank=True,
     )
 
     class Meta:

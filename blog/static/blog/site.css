@@ -48,6 +48,7 @@ body {
   border: 1px solid var(--faded-border);
   border-radius: 5px;
   overflow: hidden;
+  max-width: 1200px;
 }
 
 .site_header_container {

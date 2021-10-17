@@ -576,6 +576,7 @@ code {
   border: 1px solid var(--faded-border);
   border-radius: 5px;
   background-color: var(--code-background);
+  margin: 1em 0;
 }
 
 [data-linenos]:before {

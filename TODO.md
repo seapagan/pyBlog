@@ -45,7 +45,7 @@
 
 ### Misc Bugs / Fixes / Ideas
 
-* Style the image upload widget for nae/edit post.
+* Style the image upload widget for new/edit post.
 * ~~make sure front page link in sidebar doesn't show on front page.~~
 * Add Emoji reactions to posts and comments
 * More work needed on the form styles for small mobile devices
@@ -57,7 +57,8 @@
 * ~~Dynamic page titles~~
 * ~~Add a user section in the sidebar (also holding login/register links if not
   logged in). Will allow to create a new post, edit profile etc.~~
-* zap up the profile, ~~allow display of social links,~~ make edit page etc.
+* zap up the profile, allow ~~display of social links, and~~ to edit User settings
+  etc.
 * ~~Header is messed up when looking at someone else profile when you are logged
   in or out, it displays the header as if you are logged in as that user (ie the
   avatar and logout display)~~

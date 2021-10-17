@@ -53,8 +53,12 @@ class EditPostForm(forms.ModelForm):
 
         model = Blog
 
-        fields = ("body", "image", "tags_list")
-        labels = {"body": "", "image": "Post Header Image"}
+        fields = ("desc", "body", "image", "tags_list")
+        labels = {
+            "desc": "Description",
+            "body": "",
+            "image": "Post Header Image",
+        }
 
 
 class EditCommentForm(forms.ModelForm):

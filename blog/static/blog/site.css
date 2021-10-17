@@ -262,6 +262,10 @@ body {
   border-bottom: 1px dotted var(--faded-border);
 }
 
+.blog_heading_image {
+  padding: 0.5em;
+}
+
 .blog_body {
   padding: 1em;
   margin: 0;

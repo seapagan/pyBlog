@@ -2,6 +2,7 @@
 
 ## Important functionality
 
+* Responsive menu, replace the sidebar for smaller screens.
 * Comments - `Basic functionality complete`
 * Tags - `Basic functionality complete`
 * Sidebar - `Basic functionality complete`. Sections need more coding as the
@@ -45,6 +46,7 @@
 ### Misc Bugs / Fixes / Ideas
 
 * Add Emoji reactions to posts and comments
+* Profile needs link back to main page, or use the sidebar template?
 * Need to reformat the style for the index page post summary  display, I really
   really don't like it! Probably the post detail display too.
 * ~~Dynamic page titles~~

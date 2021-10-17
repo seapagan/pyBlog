@@ -15,5 +15,7 @@
   {{ form.as_p }}
   <button class="btn btn_success" type="submit"><i
       class="fad fa-save"></i>&nbsp;Save</button>
+  <a class="btn" href="{{ view.get_success_url }}"><i
+      class="fad fa-ban"></i>&nbsp;Cancel</a>
 </form>
 {% endblock body %}

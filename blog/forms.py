@@ -32,12 +32,14 @@ class NewPostForm(forms.ModelForm):
         fields = (
             "title",
             "desc",
+            "image",
             "body",
         )
         labels = {
             "title": "Post Title",
             "desc": "Post Description",
             "body": "",
+            "image": "Post Header Image",
         }
 
 
@@ -51,9 +53,11 @@ class EditPostForm(forms.ModelForm):
 
         model = Blog
 
-        fields = ("body", "tags_list")
+        fields = ("desc", "body", "image", "tags_list")
         labels = {
+            "desc": "Description",
             "body": "",
+            "image": "Post Header Image",
         }
 
 

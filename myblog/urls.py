@@ -12,27 +12,31 @@ urlpatterns = []
 if settings.DEBUG:
     urlpatterns += [path("admin/", admin.site.urls)]
 
-urlpatterns += [
-    path("", include("blog.urls")),
-    path("register/", user_views.register, name="register"),
-    path(
-        "login/",
-        authentication_views.LoginView.as_view(
-            template_name="users/login.html"
+urlpatterns += (
+    [
+        path("", include("blog.urls")),
+        path("register/", user_views.register, name="register"),
+        path(
+            "login/",
+            authentication_views.LoginView.as_view(
+                template_name="users/login.html"
+            ),
+            name="login",
         ),
-        name="login",
-    ),
-    path(
-        "logout/",
-        authentication_views.LogoutView.as_view(
-            template_name="users/logout.html"
+        path(
+            "logout/",
+            authentication_views.LogoutView.as_view(
+                template_name="users/logout.html"
+            ),
+            name="logout",
         ),
-        name="logout",
-    ),
-    path(
-        "profile/<int:pk>/",
-        user_views.UserProfileView.as_view(),
-        name="user-profile",
-    ),
-    path("profile/", user_views.MyProfileView.as_view(), name="my-profile"),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+        path(
+            "profile/<int:pk>/",
+            user_views.UserProfileView.as_view(),
+            name="user-profile",
+        ),
+        path("profile/", user_views.MyProfileView.as_view(), name="my-profile"),
+    ]
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+)

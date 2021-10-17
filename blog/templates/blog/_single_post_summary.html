@@ -1,10 +1,17 @@
-<article class="blog_article">
-  <h2 class="blog_title">{{ blog.title|capfirst }}</h2>
-
-  <div class="blog_description">{{ blog.desc }}</div>
-
-  <div class="blog_buttons">
-    <a class="btn" href="{% url 'blog:detail' blog.slug %}">Read More ...</a>
+<article class="blog_summary">
+  <div class="blog_summary_image_wrapper">
+    {% if blog.image %}
+    <img class="blog_summary_image" src="{{ blog.image.url }}"
+      alt="{{ blog.title|capfirst}} ">
+    {% endif %}
+  </div>
+  <div class="blog_summary_meta">
+    <h2 class="blog_summary_title">{{ blog.title|capfirst }}</h2>
+    <div class="blog_summary_desc">{{ blog.desc }}</div>
+    <div class="blog_read_more">
+      <a class="btn" href="{% url 'blog:detail' blog.slug %}">Read
+        More ...</a>
+    </div>
   </div>
   <div class="blog_body_footer index">
     <div class="blog_body_footer_left">

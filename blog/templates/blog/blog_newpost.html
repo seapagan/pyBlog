@@ -4,7 +4,7 @@
 <div class="new_post_wrapper">
   <div class="new_post_user">You are Logged in as <b>{{ user.username }}</b>
   </div>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.media }}
     {% for field in form %}

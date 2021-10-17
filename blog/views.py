@@ -214,6 +214,8 @@ class AddCommentView(CreateView):
         context = super().get_context_data(**kwargs)
         slug = self.kwargs["slug"]
         context["post"] = Blog.objects.get(slug=slug)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
         context["form"].related_post = context["post"]
         context["page_title"] = "New Comment"
 
@@ -242,6 +244,19 @@ class EditCommentView(LoginRequiredMixin, UpdateView):
     model = Comment
     form_class = EditCommentForm
     template_name = "blog/comment_editcomment.html"
+
+    def get_context_data(self, **kwargs):
+        """Add extra context to the View.
+
+        This allows us to access Post-related stuff like the title from inside
+        our view.
+        """
+        context = super().get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+        context["page_title"] = "Edit Comment"
+
+        return context
 
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""

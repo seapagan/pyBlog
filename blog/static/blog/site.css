@@ -253,6 +253,10 @@ body {
   /* position: relative; */
 }
 
+.pinned_post_wrapper .blog_summary {
+  border: 1px solid var(--faded-text);
+}
+
 .pinned_icon {
   position: absolute;
   top: 0.2em;

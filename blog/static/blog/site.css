@@ -89,7 +89,7 @@ body {
   justify-content: flex-end;
   align-items: center;
   padding: 1em;
-  margin: 0 0.5em;
+  margin: 0;
   margin-top: 1em;
   border-top: 1px solid var(--faded-border);
 }
@@ -997,6 +997,13 @@ input#id_password2 {
 }
 
 @media screen and (max-width: 550px) {
+  .site_container {
+    width: 100%;
+    margin: 0.5em 0;
+    border: none;
+    border-radius: none;
+  }
+
   .main_container {
     margin-top: 0;
   }

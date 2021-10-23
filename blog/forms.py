@@ -1,7 +1,31 @@
 """Define any forms used in the Blogs app."""
 from django import forms
+from django.forms.widgets import ClearableFileInput
 
 from blog.models import Blog, Comment
+
+
+class CustomImageField(ClearableFileInput):
+    """Create our custom image upload widget."""
+
+    template_name = "blog/widgets/clearable_file_input.html"
+    initial_text = "Current Image"
+    input_text = "Change Image"
+    clear_checkbox_label = "Remove Image"
+    # our own custom context variables.
+    add_text_label = "Add an Image"
+    show_initial = False
+
+    def get_context(self, name, value, attrs):
+        """Add our new variables to the context."""
+        context = super().get_context(name, value, attrs)
+        context["widget"].update(
+            {
+                "add_text_label": self.add_text_label,
+                "show_initial": self.show_initial,
+            }
+        )
+        return context
 
 
 class NewCommentForm(forms.ModelForm):
@@ -23,6 +47,11 @@ class NewPostForm(forms.ModelForm):
     """Define the form to Create a Post."""
 
     tags_list = forms.CharField(required=False, label="Tags")
+    image = forms.ImageField(
+        label="Post Header Image",
+        widget=CustomImageField,
+        required=False,
+    )
 
     class Meta:
         """Metadata for this form."""
@@ -47,6 +76,11 @@ class EditPostForm(forms.ModelForm):
     """Define the form to Edit a Post."""
 
     tags_list = forms.CharField(required=False, label="Tags")
+    image = forms.ImageField(
+        label="Post Header Image",
+        widget=CustomImageField,
+        required=False,
+    )
 
     class Meta:
         """Metadata for this form."""
@@ -57,7 +91,6 @@ class EditPostForm(forms.ModelForm):
         labels = {
             "desc": "Description",
             "body": "",
-            "image": "Post Header Image",
         }
 
 

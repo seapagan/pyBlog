@@ -242,6 +242,28 @@ body {
   overflow: auto;
 }
 
+.pinned_post_outer {
+  position: relative;
+}
+
+.pinned_post_wrapper {
+  margin-bottom: 4em;
+  top: 0;
+  overflow: hidden;
+  /* position: relative; */
+}
+
+.pinned_icon {
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
+  font-size: 2em;
+}
+
+.pinned_icon svg {
+  filter: drop-shadow(0px 0px 1px rgb(235, 11, 11));
+}
+
 .blog_article {
   display: flex;
   flex-direction: column;

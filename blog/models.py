@@ -123,6 +123,9 @@ class SitePreferences(Preferences):
     heading = models.CharField(
         max_length=200, default="A blog of blogging blogosity."
     )
+    pinned_post = models.ForeignKey(
+        Blog, null=True, blank=True, on_delete=models.CASCADE
+    )
 
     class Meta:
         """class-specific configuration."""

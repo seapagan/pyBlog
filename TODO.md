@@ -45,12 +45,14 @@
 
 ### Misc Bugs / Fixes / Ideas
 
-* Style the image upload widget for new/edit post.
+* ~~Style the image upload widget for new/edit post.~~ Base work done for this,
+  will need further styling when we redo the entire app.
 * ~~make sure front page link in sidebar doesn't show on front page.~~
 * Add Emoji reactions to posts and comments
 * More work needed on the form styles for small mobile devices
-* Make a default post image to use if one is not specified. Also offer default
-  ones based on tag and predefined ones?
+* ~~Make a default post image to use if one is not specified~~ `functionality
+  complete with a dummy placeholder image which will need replaced before going
+  live`. Also offer default ones based on tag and predefined ones?
 * ~~Profile needs link back to main page, or use the sidebar template?~~
 * ~~Need to reformat the style for the index page post summary  display, I
   really really don't like it! Probably the post detail display too.~~
@@ -75,7 +77,7 @@
   do fancy styling to fade the last few lines etc too.~~ Just using the
   description for this `CLOSED`
 * ~~paginate the first page to say 5 or 10 etc latest post only.~~
-* show a pinned post?
+* ~~show a pinned post?~~
 * automatically create a google sitemap.xml on each new post. Also option to
   regenerate from the (coming) admin site.
 * ensure we don't have duplicate slugs. not too difficult in a single-user blog

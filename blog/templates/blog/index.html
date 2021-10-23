@@ -1,6 +1,19 @@
 {% extends 'blog/_base.html' %}
 
 {% block body %}
+
+{% if preferences.SitePreferences.pinned_post %}
+<div class="pinned_post_outer">
+  <div class="pinned_post_wrapper">
+    <div class="pinned_icon"><i class="fas fa-thumbtack"
+        data-fa-transform="rotate-20"></i></div>
+    {% with preferences.SitePreferences.pinned_post as blog %}
+    {% include 'blog/_single_post_summary.html' %}
+    {% endwith %}
+  </div>
+</div>
+{% endif %}
+
 {% for blog in blogs %}
 {% include 'blog/_single_post_summary.html' %}
 {% endfor %}

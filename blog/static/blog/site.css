@@ -1005,6 +1005,11 @@ input#id_password2 {
     margin-bottom: 0;
   }
 
+  .pinned_icon svg {
+    filter: drop-shadow(1px 1px 2px rgb(251, 251, 251))
+      drop-shadow(-1px -1px 2px rgb(251, 251, 251));
+  }
+
   .site_footer {
     justify-content: center;
   }

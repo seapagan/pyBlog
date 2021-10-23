@@ -3,6 +3,9 @@
     {% if blog.image %}
     <img class="blog_summary_image" src="{{ blog.image.url }}"
       alt="{{ blog.title|capfirst}} ">
+    {% else %}
+    <img class="blog_summary_image" src="/media/default_placeholder.png"
+      alt="{{ blog.title|capfirst}} ">
     {% endif %}
   </div>
   <div class="blog_summary_meta">

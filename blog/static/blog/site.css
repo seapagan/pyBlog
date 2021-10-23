@@ -207,6 +207,10 @@ body {
   margin-right: 5px;
 }
 
+.embedded_search {
+  display: none;
+}
+
 .sidebar_article_header {
   text-align: center;
   padding: 0.2em 0;
@@ -247,7 +251,7 @@ body {
 }
 
 .pinned_post_wrapper {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   top: 0;
   overflow: hidden;
   /* position: relative; */
@@ -985,6 +989,16 @@ input#id_password2 {
 @media screen and (max-width: 900px) {
   .content_container {
     display: block;
+  }
+
+  .embedded_search {
+    display: block;
+    padding: 1em 1em;
+  }
+
+  .embedded_search .sidebar_search_form {
+    padding: 0;
+    padding-bottom: 10px;
   }
 
   .sidebar_container {

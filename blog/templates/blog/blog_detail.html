@@ -7,6 +7,8 @@
 <article class="blog_article">
   <h2 class="blog_title">{{ blog.title|capfirst }}</h2>
   {% if blog.image %}
+  <img class="blog_heading_image" src="{{ blog.image.url}}"
+    alt="Post Heaeder Image">
   {% else %}
   <img class="blog_heading_image" src="/media/default_placeholder.png"
     alt="Post Heaeder Image">

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "preferences",
+    "django.forms",
     "django_gravatar",
     "mdeditor",
     "fontawesomepro",

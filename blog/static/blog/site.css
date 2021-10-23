@@ -425,6 +425,8 @@ body {
 .edit_post_field_label {
   display: block;
   margin-bottom: 0.3em;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .new_post_field_field input,
@@ -442,6 +444,27 @@ body {
 .new_post_buttons {
   display: flex;
   justify-content: flex-end;
+}
+
+.post_image_upload_wrapper {
+  margin-top: 0.5em;
+  display: flex;
+  row-gap: 0.5em;
+  flex-direction: column;
+}
+
+.post_image_upload_preview {
+  width: 30%;
+}
+
+.post_image_upload_checkbox > * {
+  display: inline;
+  width: unset !important;
+}
+
+.post_image_upload_selector > * {
+  display: inline;
+  width: unset !important;
 }
 
 .blog_comment_count {

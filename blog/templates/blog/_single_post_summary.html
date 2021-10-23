@@ -1,13 +1,15 @@
 <article class="blog_summary">
-  <div class="blog_summary_image_wrapper">
-    {% if blog.image %}
-    <img class="blog_summary_image" src="{{ blog.image.url }}"
-      alt="{{ blog.title|capfirst}} ">
-    {% else %}
-    <img class="blog_summary_image" src="/media/default_placeholder.png"
-      alt="{{ blog.title|capfirst}} ">
-    {% endif %}
-  </div>
+  <a href="{% url 'blog:detail' blog.slug %}">
+    <div class="blog_summary_image_wrapper">
+      {% if blog.image %}
+      <img class="blog_summary_image" src="{{ blog.image.url }}"
+        alt="{{ blog.title|capfirst}} ">
+      {% else %}
+      <img class="blog_summary_image" src="/media/default_placeholder.png"
+        alt="{{ blog.title|capfirst}} ">
+      {% endif %}
+    </div>
+  </a>
   <div class="blog_summary_meta">
     <h2 class="blog_summary_title">{{ blog.title|capfirst }}</h2>
     <div class="blog_summary_desc">{{ blog.desc }}</div>

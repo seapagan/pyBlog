@@ -989,8 +989,16 @@ input#id_password2 {
   text-decoration: none;
 }
 
+.tag_list_post_draft {
+  color: hsl(0, 100%, 40%);
+}
+
 .tag_list_post:hover {
   color: var(--sidebar-links-hover);
+}
+
+.tag_list_post_draft:hover {
+  color: hsl(0, 100%, 60%);
 }
 
 @media screen and (max-width: 900px) {

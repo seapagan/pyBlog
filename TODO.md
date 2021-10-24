@@ -12,9 +12,11 @@
 * Sensitive variables to ENV vars, using `python-dotenv`
 * add a 'like' option to a post
 * Implement the 'Popular Posts' sidebar section. This will need to wait until
-  the 'likes' functionality is complete.
+  the 'likes' functionality is complete. Also start logging unique page views
+  somehow to help with this.
 * Add draft mode for new posts, and a future post mode, also the ability to put
-  any post back into draft mode or a pending mode.
+  any post back into draft mode or a pending mode. Can use the background module
+  to daily check for any future published posts and publish them.
 * Add 'Series' functionality where a set of posts can be grouped numerically
   and accessed as such.
 * Add list of other recommended posts at the bottom of each post, calculated on
@@ -71,7 +73,9 @@
   HTML/Markup editor or a different Icon source.**
 * detect the users timezone and display date/time formats properly.
 * add user login/logout/register functionality, though register should be by
-  invitation not open to all. [`PARTIAL`]
+  invitation not open to all. [`Working. Register function currently allows
+  people to regisddter and make posts but this will need to be changed to
+  superusers or a new 'poster' permission before release.`]
 * ~~define tag on the body that can wrap the start of the article, which can be
   displayed on the main index page list, followed by a 'read more' button. Can
   do fancy styling to fade the last few lines etc too.~~ Just using the

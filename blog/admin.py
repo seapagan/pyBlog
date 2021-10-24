@@ -6,6 +6,13 @@ from preferences.admin import PreferencesAdmin
 from blog.models import Blog, Comment, SitePreferences, Tag
 
 
+class TagsInline(admin.TabularInline):
+    """Define an inline class to show tags on the Blog post in Admin site."""
+
+    model = Tag.posts.through
+    extra = 1
+
+
 class BlogAdmin(admin.ModelAdmin):
     """Define a custom admin class for the Blog model."""
 
@@ -15,6 +22,7 @@ class BlogAdmin(admin.ModelAdmin):
     ordering = ("-created_at",)
     search_fields = ["title"]
     readonly_fields = ["slug"]
+    inlines = [TagsInline]
 
 
 class CommentAdmin(admin.ModelAdmin):

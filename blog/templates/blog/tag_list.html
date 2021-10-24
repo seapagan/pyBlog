@@ -1,21 +1,22 @@
 {% extends 'blog/_base.html' %}
-
+{% load blog_extras %}
 {% block body %}
 
 <div class="tags_header">Posts grouped by Tags.</div>
 <div class="tag_list_container">
-  {% if tags %}
-  {% for tag in tags %}
+  {% if tag_list %}
+  {% for tag in tag_list %}
   <div>
     <span class="tag_list_tag"><a class="sidebar_tag"
         href="{% url 'blog:tag_detail' tag.slug %}">{{ tag }}</a></span>
     <div class="tag_list_post_list">
-      {% with tag.posts.all as posts %}
+      {% with tag.posts.all|no_draft:user as posts %}
       {% if posts %}
       <div>
         {% for post in posts %}
-        <a href="{% url 'blog:detail' post.slug %}"
-          class="tag_list_post">{{post.title|capfirst}}</a>
+        <a href="{% url 'blog:detail' post.slug %}" class="tag_list_post
+          {% if post.draft %} tag_list_post_draft
+          {% endif %}">{{post.title|capfirst}}</a>
         {% endfor %}
       </div>
       {% else %}

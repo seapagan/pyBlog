@@ -292,6 +292,11 @@ body {
   background-color: var(--block-background);
 }
 
+.blog_summary_draft,
+.blog_article_draft {
+  border: 2px dashed red;
+}
+
 .blog_summary_image {
   width: 100%;
   padding: 0.5em;
@@ -306,11 +311,6 @@ body {
   align-self: start;
   /* margin: 0.5em 0; */
 }
-
-/* .blog_summary_btn {
-  text-align: right;
-  width: max-content;
-} */
 
 .blog_read_more {
   justify-self: end;
@@ -474,6 +474,7 @@ body {
 .new_post_buttons {
   display: flex;
   justify-content: flex-end;
+  gap: 0.5em;
 }
 
 .post_image_upload_wrapper {
@@ -639,6 +640,12 @@ body {
   color: green;
   background-color: hsla(118, 100%, 50%, 0.2);
   border: 1px solid green;
+}
+
+.btn_alt {
+  color: blue;
+  background-color: rgba(0, 0, 255, 0.1);
+  border: 1px solid blue;
 }
 
 .btn-disabled,
@@ -982,8 +989,16 @@ input#id_password2 {
   text-decoration: none;
 }
 
+.tag_list_post_draft {
+  color: hsl(0, 100%, 40%);
+}
+
 .tag_list_post:hover {
   color: var(--sidebar-links-hover);
+}
+
+.tag_list_post_draft:hover {
+  color: hsl(0, 100%, 60%);
 }
 
 @media screen and (max-width: 900px) {
@@ -1050,7 +1065,6 @@ input#id_password2 {
   }
 
   .blog_summary_title {
-    /* justify-self: center; */
     text-align: center;
   }
 

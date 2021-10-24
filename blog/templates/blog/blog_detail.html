@@ -4,7 +4,7 @@
 
 {% block body %}
 <!-- Display the Blog Post, wrapped in an article tag -->
-<article class="blog_article">
+<article class="blog_article {% if blog.draft %}blog_article_draft{% endif %}">
   <h2 class="blog_title">{{ blog.title|capfirst }}</h2>
   {% if blog.image %}
   <img class="blog_heading_image" src="{{ blog.image.url}}"

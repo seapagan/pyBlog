@@ -43,12 +43,22 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         """Add every post to this context, so we can use in the sidebar."""
         context = super(PostDetailView, self).get_context_data(**kwargs)
-        context["blogs"] = Blog.objects.all().order_by("-created_at")
+        # below are required to get the sidebar working
+        context["blogs"] = (
+            Blog.objects.all().exclude(draft=True).order_by("-created_at")
+        )
         context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
-        context["page_title"] = preferences.SitePreferences.heading
+        # add post name to the page TITLE tag
         context["page_title"] = self.object.title.capitalize()
 
         return context
+
+    def get_object(self, queryset=None):
+        """Return 404 if the post is a draft."""
+        obj = super(PostDetailView, self).get_object()
+        if obj.draft is True and self.request.user != obj.user:
+            raise Http404("That Page does not exist")
+        return obj
 
 
 class NewPostView(LoginRequiredMixin, CreateView):
@@ -81,6 +91,14 @@ class NewPostView(LoginRequiredMixin, CreateView):
 
         # replace all the tag associations on this post with the new list
         form.instance.tag_set.set(new_tags)
+
+        # detect if we want this a draft or not.
+        if "draft" in self.request.POST:
+            print("This will be a draft")
+            form.instance.draft = True
+        else:
+            print("This is getting published")
+
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -123,6 +141,13 @@ class EditPostView(LoginRequiredMixin, UpdateView):
                 new_tags.append(existing_tag)
 
         form.instance.tag_set.set(new_tags)
+
+        if "publish" in self.request.POST:
+            print("This is getting published")
+            form.instance.draft = False
+        else:
+            print("This will be a draft")
+
         return super().form_valid(form)
 
     def get_initial(self):
@@ -314,6 +339,7 @@ class TagListView(ListView):
 
     model = Tag
     template_name = "blog/tag/list.html"
+    ordering = [Lower("tag_name")]
 
     def get_context_data(self, **kwargs):
         """Add posts ant tags to this context, so we can use in the sidebar."""

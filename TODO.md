@@ -14,9 +14,11 @@
 * Implement the 'Popular Posts' sidebar section. This will need to wait until
   the 'likes' functionality is complete. Also start logging unique page views
   somehow to help with this.
-* Add draft mode for new posts, and a future post mode, also the ability to put
-  any post back into draft mode or a pending mode. Can use the background module
-  to daily check for any future published posts and publish them.
+* ~~Add draft mode for new posts~~
+* Add a future post mode. Can use the background module to daily check for any
+  future published posts and publish them.
+* Add functionality to temporarily disable a post (transparently - it will not
+  be hidden, though will be replaced by a custom message)
 * Add 'Series' functionality where a set of posts can be grouped numerically
   and accessed as such.
 * Add list of other recommended posts at the bottom of each post, calculated on

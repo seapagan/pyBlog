@@ -20,8 +20,12 @@
       {% endfor %}
     </div>
     <div class="new_post_buttons">
+      <button class="btn btn_alt" type="submit" name="draft" value="Draft"><i
+          class="fad fa-save"></i>&nbsp;Save as DRAFT</button>
       <button class="btn btn_success" type="submit"><i
-          class="fad fa-save"></i>&nbsp;Save</button>
+          class="fad fa-comment-alt-check"></i>&nbsp;Publish!</button>
+      <a class="btn" href="{% url 'blog:index' %}"><i
+          class="fad fa-ban"></i>&nbsp;Cancel</a>
     </div>
   </form>
 </div>

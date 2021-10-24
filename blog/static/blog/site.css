@@ -474,6 +474,7 @@ body {
 .new_post_buttons {
   display: flex;
   justify-content: flex-end;
+  gap: 0.5em;
 }
 
 .post_image_upload_wrapper {

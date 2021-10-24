@@ -81,6 +81,13 @@ class NewPostView(LoginRequiredMixin, CreateView):
 
         # replace all the tag associations on this post with the new list
         form.instance.tag_set.set(new_tags)
+
+        # detect if we want this a draft or not.
+        if "draft" in self.request.POST:
+            print("This will be a draft")
+        else:
+            print("This is getting published")
+
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):

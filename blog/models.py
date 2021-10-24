@@ -56,6 +56,7 @@ class Blog(models.Model):
         storage=OverwriteStorage(),
         blank=True,
     )
+    draft = models.BooleanField(default=False)
 
     class Meta:
         """Meta configuration for the Blog model."""

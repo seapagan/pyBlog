@@ -332,6 +332,7 @@ class TagListView(ListView):
 
     model = Tag
     template_name = "blog/tag/list.html"
+    ordering = [Lower("tag_name")]
 
     def get_context_data(self, **kwargs):
         """Add posts ant tags to this context, so we can use in the sidebar."""

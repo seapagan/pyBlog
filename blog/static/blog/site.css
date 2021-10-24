@@ -292,6 +292,11 @@ body {
   background-color: var(--block-background);
 }
 
+.blog_summary_draft {
+  border-color: red;
+  border-width: 2px;
+}
+
 .blog_summary_image {
   width: 100%;
   padding: 0.5em;
@@ -306,11 +311,6 @@ body {
   align-self: start;
   /* margin: 0.5em 0; */
 }
-
-/* .blog_summary_btn {
-  text-align: right;
-  width: max-content;
-} */
 
 .blog_read_more {
   justify-self: end;
@@ -1051,7 +1051,6 @@ input#id_password2 {
   }
 
   .blog_summary_title {
-    /* justify-self: center; */
     text-align: center;
   }
 

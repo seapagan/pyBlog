@@ -292,9 +292,9 @@ body {
   background-color: var(--block-background);
 }
 
-.blog_summary_draft {
-  border-color: red;
-  border-width: 2px;
+.blog_summary_draft,
+.blog_article_draft {
+  border: 2px dashed red;
 }
 
 .blog_summary_image {
@@ -640,6 +640,12 @@ body {
   color: green;
   background-color: hsla(118, 100%, 50%, 0.2);
   border: 1px solid green;
+}
+
+.btn_alt {
+  color: blue;
+  background-color: rgba(0, 0, 255, 0.1);
+  border: 1px solid blue;
 }
 
 .btn-disabled,

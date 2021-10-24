@@ -56,7 +56,7 @@ class PostDetailView(DetailView):
     def get_object(self, queryset=None):
         """Return 404 if the post is a draft."""
         obj = super(PostDetailView, self).get_object()
-        if obj.draft is True:
+        if obj.draft is True and self.request.user != obj.user:
             raise Http404("That Page does not exist")
         return obj
 

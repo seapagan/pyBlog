@@ -1,5 +1,5 @@
-{% if not blog.draft %}
-<article class="blog_summary">
+{% if blog.draft and request.user == blog.user or not blog.draft %}
+<article class="blog_summary {% if blog.draft %}blog_summary_draft{% endif %}">
   <a href="{% url 'blog:detail' blog.slug %}">
     <div class="blog_summary_image_wrapper">
       {% if blog.image %}

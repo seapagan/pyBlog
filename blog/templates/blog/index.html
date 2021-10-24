@@ -2,7 +2,7 @@
 
 {% block body %}
 
-{% if preferences.SitePreferences.pinned_post %}
+{% if preferences.SitePreferences.pinned_post and not page_obj.has_previous %}
 <div class="pinned_post_outer">
   <div class="pinned_post_wrapper">
     <div class="pinned_icon"><i class="fas fa-thumbtack"

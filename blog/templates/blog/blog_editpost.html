@@ -23,8 +23,17 @@
       {% endfor %}
     </div>
     <div class="edit_post_buttons">
+
+      {% if blog.draft %}
+      <button class="btn btn_success" type="submit" name="publish"
+        value="Publish"><i
+          class="fad fa-comment-alt-check"></i>&nbsp;Publish!</button>
+      <button class="btn btn_alt" type="submit"><i
+          class="fad fa-save"></i>&nbsp;Save as Draft</button>
+      {% else %}
       <button class="btn btn_success" type="submit"><i
           class="fad fa-save"></i>&nbsp;Save</button>
+      {% endif %}
       <a class="btn" href="{{ view.get_success_url }}"><i
           class="fad fa-ban"></i>&nbsp;Cancel</a>
     </div>

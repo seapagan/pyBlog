@@ -141,6 +141,13 @@ class EditPostView(LoginRequiredMixin, UpdateView):
                 new_tags.append(existing_tag)
 
         form.instance.tag_set.set(new_tags)
+
+        if "publish" in self.request.POST:
+            print("This is getting published")
+            form.instance.draft = False
+        else:
+            print("This will be a draft")
+
         return super().form_valid(form)
 
     def get_initial(self):

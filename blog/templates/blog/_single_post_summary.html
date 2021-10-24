@@ -1,3 +1,4 @@
+{% if not blog.draft %}
 <article class="blog_summary">
   <a href="{% url 'blog:detail' blog.slug %}">
     <div class="blog_summary_image_wrapper">
@@ -44,3 +45,4 @@
     </div>
   </div>
 </article>
+{% endif %}

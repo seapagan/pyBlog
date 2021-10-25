@@ -12,8 +12,8 @@
 * Sensitive variables to ENV vars, using `python-dotenv`
 * Add a 'like' option to a post
 * Implement the 'Popular Posts' sidebar section. This will need to wait until
-  the 'likes' functionality is complete. Also start logging unique page views
-  somehow to help with this.
+  the 'likes' functionality is complete. ~~Also start logging unique page views
+  somehow to help with this.~~
 * ~~Add draft mode for new posts~~
 * Add a future post mode. Can use the background module to daily check for any
   future published posts and publish them.

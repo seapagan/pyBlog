@@ -1044,7 +1044,7 @@ input#id_password2 {
 nav {
   position: absolute;
   text-align: left;
-  top: 40px;
+  top: 45px;
   left: 10px;
   background: var(--block-title);
   border: 1px solid var(--faded-border);

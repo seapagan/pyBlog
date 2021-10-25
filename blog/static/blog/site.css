@@ -350,7 +350,7 @@ body {
   display: flex;
   gap: 10px;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   background-color: var(--block-title);
   border-top: 1px dotted var(--faded-border);

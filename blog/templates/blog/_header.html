@@ -1,6 +1,7 @@
 {% load gravatar %}
 
 <header class="site_header_container">
+  {% include 'blog/_navbar.html' %}
   <h1 class="site_header"><a
       href="{% url 'blog:index' %}">{{ preferences.SitePreferences.sitename }}</a>
   </h1>

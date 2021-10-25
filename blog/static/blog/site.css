@@ -55,6 +55,7 @@ body {
 
 .site_header_container {
   display: grid;
+  position: relative;
 }
 
 .site_header {
@@ -1001,6 +1002,108 @@ input#id_password2 {
   color: hsl(0, 100%, 60%);
 }
 
+/* Navigation menu for responsive sizes */
+
+.nav_toggle {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav {
+  /* put this in to avoid a flash of navbar or reload */
+  display: none;
+}
+
+.nav_toggle_label {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  margin-left: 1em;
+  align-items: center;
+  height: 1em;
+  display: none;
+}
+
+.nav_toggle_label span,
+.nav_toggle_label span::before,
+.nav_toggle_label span::after {
+  display: block;
+  background: black;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav_toggle_label span::before,
+.nav_toggle_label span::after {
+  content: "";
+  position: absolute;
+}
+
+.nav_toggle_label span::before {
+  bottom: 7px;
+}
+
+.nav_toggle_label span::after {
+  top: 7px;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 40px;
+  left: 5px;
+  background: var(--block-title);
+  border: 1px solid var(--faded-border);
+  border-radius: 5px;
+  margin: 0.2em;
+  /* width: calc(100% - 0.4em); */
+
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+  padding: 0.5em;
+  opacity: 0.95;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 0.7em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+.nav_toggle:checked ~ nav {
+  transform: scale(1, 1);
+  display: block;
+  z-index: 5;
+}
+
+.nav_toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
 @media screen and (max-width: 900px) {
   .content_container {
     display: block;
@@ -1026,6 +1129,10 @@ input#id_password2 {
 
   .site_header_heading {
     text-align: center;
+  }
+
+  .nav_toggle_label {
+    display: flex;
   }
 }
 
@@ -1096,6 +1203,25 @@ input#id_password2 {
 
   .blog_comment_footer_add {
     text-align: center;
+  }
+
+  .tags_header {
+    text-align: center;
+  }
+
+  .tag_list_tag {
+    /* font-size: 1.5em; */
+    /* display: block; */
+    /* width: 100%; */
+    text-align: left;
+  }
+
+  .tag_list_tag a {
+    margin-left: 0;
+  }
+
+  .tag_list_post_list {
+    margin-left: 0;
   }
 
   .profile_meta_wrapper {

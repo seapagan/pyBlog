@@ -523,6 +523,12 @@ body {
   font-size: 0.8em;
 }
 
+.blog_post_views {
+  align-self: center;
+  font-size: 0.8em;
+  color: var(--faded-text);
+}
+
 .blog_comment_badge a {
   text-decoration: none;
   color: var(--faded-text);

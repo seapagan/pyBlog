@@ -32,8 +32,8 @@
   </div>
 
   <div class="blog_body_footer">
-    <div class="blog_post_views">{% get_hit_count for blog %}
-      &nbsp;views</div>
+    <div class="blog_post_views">{% get_hit_count for blog as hits %}
+      {{ hits }}&nbsp;view{{ hits|pluralize}}</div>
     <div>
       <span class="blog_body_footer_like"><a class="btn" href=""><i
             class="fad fa-thumbs-up"></i>&nbsp;Like</a></span>

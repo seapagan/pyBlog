@@ -31,8 +31,9 @@
       </div>
       <span>|</span>
       <div class="blog_post_views">
-        {% get_hit_count for blog %}
-        &nbsp;views
+        {% get_hit_count for blog as hits %}
+        {{ hits }}
+        &nbsp;view{{ hits|pluralize}}
       </div>
       <div class="blog_tag_list">
         {% for tag in blog.tag_set.all %}

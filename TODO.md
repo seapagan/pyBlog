@@ -112,6 +112,10 @@
   pagainated pages as different
 * add site metadata, custom search tags eg for each post, generic ones for the
   others, tag with the n most used tags?
+* Allow ability to use non-pro version of FontAwesome - atm we use the duotone
+  icons which are pro only. I invisage a custom tag that will return the 'fad'
+  or 'fas' respectively depending on a setting in settings.py. The link in the
+  head will need changed for non-pro also.
 
 [djc]: https://github.com/django-compressor/django-compressor
 [djc-postcss]: https://github.com/Pithikos/django-compressor-postcss

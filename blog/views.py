@@ -5,6 +5,7 @@ from django.http.response import Http404
 from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
+from hitcount.views import HitCountDetailView
 from preferences import preferences
 
 from blog.forms import (
@@ -34,11 +35,12 @@ class IndexClassView(ListView):
         return context
 
 
-class PostDetailView(DetailView):
+class PostDetailView(HitCountDetailView):
     """Display an actual blog post."""
 
     model = Blog
     template = "blog/detail.html"
+    count_hit = True
 
     def get_context_data(self, **kwargs):
         """Add every post to this context, so we can use in the sidebar."""

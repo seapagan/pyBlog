@@ -2,10 +2,13 @@
 import os
 
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.fields import GenericRelation
 from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+from hitcount.conf import settings as hitcount_settings
+from hitcount.mixins import HitCountModelMixin
 from mdeditor.fields import MDTextField
 from preferences.models import Preferences
 
@@ -34,7 +37,7 @@ def get_upload_path(instance, filename):
     return os.path.join("posts", instance.slug, filename)
 
 
-class Blog(models.Model):
+class Blog(models.Model, HitCountModelMixin):
     """Define the blog model.
 
     This will contain individual blog entries.
@@ -57,6 +60,11 @@ class Blog(models.Model):
         blank=True,
     )
     draft = models.BooleanField(default=False)
+    hit_count_generic = GenericRelation(
+        hitcount_settings.HITCOUNT_HITCOUNT_MODEL,
+        object_id_field="object_pk",
+        related_query_name="hit_count_generic_relation",
+    )
 
     class Meta:
         """Meta configuration for the Blog model."""

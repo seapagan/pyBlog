@@ -1,6 +1,7 @@
 {% extends 'blog/_base.html' %}
 {% load markdown_extras %}
 {% load pagination_tags %}
+{% load hitcount_tags %}
 
 {% block body %}
 <!-- Display the Blog Post, wrapped in an article tag -->
@@ -13,6 +14,7 @@
   <img class="blog_heading_image" src="/media/default_placeholder.png"
     alt="Post Header Image">
   {% endif %}
+
   <div class="blog_date_wrapper"><span class="blog_date_posted">Posted
       {{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
     {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
@@ -20,22 +22,29 @@
       {{ blog.updated_at|date:"SHORT_DATETIME_FORMAT" }})</span>
     {% endif %}
   </div>
+
   <div class="blog_description">
     {{ blog.desc|capfirst }}
   </div>
+
   <div class="blog_body">
     {{ blog.body | markdown | safe }}
   </div>
+
   <div class="blog_body_footer">
-    <span class="blog_body_footer_like"><a class="btn" href=""><i
-          class="fad fa-thumbs-up"></i>&nbsp;Like</a></span>
-    {% if blog.user.username == user.username or user.is_superuser %}
-    <span class="blog_body_footer_edit"><a class="btn"
-        href="{% url 'blog:edit_post' blog.slug %}"><i
-          class="fad fa-edit"></i>&nbsp;Edit</a></span>
-    <span class="blog_body_footer_delete"><a class="btn btn_danger"
-        href="{% url 'blog:delete_post' blog.slug %}"><i
-          class="fad fa-trash-alt"></i>&nbsp;Delete</a></span>
+    <div class="blog_post_views">{% get_hit_count for blog as hits %}
+      {{ hits }}&nbsp;view{{ hits|pluralize}}</div>
+    <div>
+      <span class="blog_body_footer_like"><a class="btn" href=""><i
+            class="fad fa-thumbs-up"></i>&nbsp;Like</a></span>
+      {% if blog.user.username == user.username or user.is_superuser %}
+      <span class="blog_body_footer_edit"><a class="btn"
+          href="{% url 'blog:edit_post' blog.slug %}"><i
+            class="fad fa-edit"></i>&nbsp;Edit</a></span>
+      <span class="blog_body_footer_delete"><a class="btn btn_danger"
+          href="{% url 'blog:delete_post' blog.slug %}"><i
+            class="fad fa-trash-alt"></i>&nbsp;Delete</a></span>
+    </div>
     {% endif %}
   </div>
 </article>

@@ -5,6 +5,7 @@ from django.http.response import Http404
 from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
+from hitcount.views import HitCountDetailView
 from preferences import preferences
 
 from blog.forms import (
@@ -34,11 +35,12 @@ class IndexClassView(ListView):
         return context
 
 
-class PostDetailView(DetailView):
+class PostDetailView(HitCountDetailView):
     """Display an actual blog post."""
 
     model = Blog
     template = "blog/detail.html"
+    count_hit = True
 
     def get_context_data(self, **kwargs):
         """Add every post to this context, so we can use in the sidebar."""
@@ -94,10 +96,10 @@ class NewPostView(LoginRequiredMixin, CreateView):
 
         # detect if we want this a draft or not.
         if "draft" in self.request.POST:
-            print("This will be a draft")
             form.instance.draft = True
-        else:
-            print("This is getting published")
+
+        # make sure we have the correct user tagged to this post
+        form.instance.user = self.request.user
 
         return super().form_valid(form)
 
@@ -143,10 +145,10 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         form.instance.tag_set.set(new_tags)
 
         if "publish" in self.request.POST:
-            print("This is getting published")
+            # turn off the draft flag
             form.instance.draft = False
-        else:
-            print("This will be a draft")
+            # zero page view count
+            form.instance.hit_count_generic.clear()
 
         return super().form_valid(form)
 

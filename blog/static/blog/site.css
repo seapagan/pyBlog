@@ -350,7 +350,7 @@ body {
   display: flex;
   gap: 10px;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   background-color: var(--block-title);
   border-top: 1px dotted var(--faded-border);
@@ -521,6 +521,12 @@ body {
 .blog_comment_badge {
   align-self: center;
   font-size: 0.8em;
+}
+
+.blog_post_views {
+  align-self: center;
+  font-size: 0.8em;
+  color: var(--faded-text);
 }
 
 .blog_comment_badge a {

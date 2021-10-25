@@ -12,8 +12,8 @@
 * Sensitive variables to ENV vars, using `python-dotenv`
 * Add a 'like' option to a post
 * Implement the 'Popular Posts' sidebar section. This will need to wait until
-  the 'likes' functionality is complete. Also start logging unique page views
-  somehow to help with this.
+  the 'likes' functionality is complete. ~~Also start logging unique page views
+  somehow to help with this.~~
 * ~~Add draft mode for new posts~~
 * Add a future post mode. Can use the background module to daily check for any
   future published posts and publish them.
@@ -35,6 +35,10 @@
 
 ### Comments
 
+* Cannot edit the title of a blog post. Add functionality to do this, while
+  either keeping the slug or generating a new slug but keeping the old one
+  pointing at this post for external link security. Offer a choice? (If post is
+  draft we should defo just change the slug)
 * Offer to remember commenter for next visit, or use credentials from logged in
   user.
 * ~~Integrate an HTML editor. Could use markdown but it gives unexpected results

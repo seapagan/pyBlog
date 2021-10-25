@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "dj_pagination",
     "blog",
     "users",
+    "hitcount",
 ]
 
 # only include the Admin paths if we are in DEBUG mode
@@ -170,3 +171,7 @@ PAGINATION_DISPLAY_DISABLED_PREVIOUS_LINK = True
 PAGINATION_DISPLAY_DISABLED_NEXT_LINK = True
 PAGINATION_DEFAULT_WINDOW = 1
 PAGINATION_DEFAULT_MARGIN = 0
+
+# settings for dh-hitcount application
+HITCOUNT_HITS_PER_IP_LIMIT = 0
+HITCOUNT_USE_IP = True

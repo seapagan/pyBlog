@@ -1,3 +1,4 @@
+{% load hitcount_tags %}
 {% if blog.draft and request.user == blog.user or not blog.draft %}
 <article class="blog_summary {% if blog.draft %}blog_summary_draft{% endif %}">
   <a href="{% url 'blog:detail' blog.slug %}">
@@ -27,6 +28,12 @@
               class="fal fa-comment"></i></a>
           {% endwith %}
         </span>
+      </div>
+      <span>|</span>
+      <div class="blog_post_views">
+        {% get_hit_count for blog as hits %}
+        {{ hits }}
+        &nbsp;view{{ hits|pluralize}}
       </div>
       <div class="blog_tag_list">
         {% for tag in blog.tag_set.all %}

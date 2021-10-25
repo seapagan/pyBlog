@@ -96,10 +96,10 @@ class NewPostView(LoginRequiredMixin, CreateView):
 
         # detect if we want this a draft or not.
         if "draft" in self.request.POST:
-            print("This will be a draft")
             form.instance.draft = True
-        else:
-            print("This is getting published")
+
+        # make sure we have the correct user tagged to this post
+        form.instance.user = self.request.user
 
         return super().form_valid(form)
 

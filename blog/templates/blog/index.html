@@ -20,10 +20,10 @@
 <div class="pagination">
   <span class="step-links">
     {% if page_obj.has_previous %}
-    <a class="btn" href="?page=1">&laquo; first</a>
+    <a class="btn hide_on_xs" href="?page=1">&laquo; first</a>
     <a class="btn" href="?page={{ page_obj.previous_page_number }}">previous</a>
     {% else %}
-    <span class="btn btn-disabled">&laquo; first</span>
+    <span class="btn btn-disabled hide_on_xs">&laquo; first</span>
     <span class="btn btn-disabled">previous</span>
     {% endif %}
 
@@ -33,11 +33,12 @@
 
     {% if page_obj.has_next %}
     <a class="btn" href="?page={{ page_obj.next_page_number }}">next</a>
-    <a class="btn" href="?page={{ page_obj.paginator.num_pages }}">last
+    <a class="btn hide_on_xs"
+      href="?page={{ page_obj.paginator.num_pages }}">last
       &raquo;</a>
     {% else %}
     <span class="btn btn-disabled">next</span>
-    <span class="btn btn-disabled">last &raquo;</span>
+    <span class="btn btn-disabled hide_on_xs">last &raquo;</span>
     {% endif %}
   </span>
 </div>

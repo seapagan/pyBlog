@@ -1139,4 +1139,8 @@ input#id_password2 {
   .profile_section_title {
     text-align: center;
   }
+
+  .hide_on_xs {
+    display: none;
+  }
 }

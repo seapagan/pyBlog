@@ -35,12 +35,6 @@
 
 ### Comments
 
-* When a draft post is published, the created_at date should be set to current
-  date/time, not left at the original creation time.
-* Cannot edit the title of a blog post. Add functionality to do this, while
-  either keeping the slug or generating a new slug but keeping the old one
-  pointing at this post for external link security. Offer a choice? (If post is
-  draft we should defo just change the slug)
 * Offer to remember commenter for next visit, or use credentials from logged in
   user.
 * ~~Integrate an HTML editor. Could use markdown but it gives unexpected results
@@ -55,6 +49,12 @@
 
 ### Misc Bugs / Fixes / Ideas
 
+* When a draft post is published, the created_at date should be set to current
+  date/time, not left at the original creation time.
+* Cannot edit the title of a blog post. Add functionality to do this, while
+  either keeping the slug or generating a new slug but keeping the old one
+  pointing at this post for external link security. Offer a choice? (If post is
+  draft we should defo just change the slug)
 * ~~Style the image upload widget for new/edit post.~~ Base work done for this,
   will need further styling when we redo the entire app.
 * ~~make sure front page link in sidebar doesn't show on front page.~~

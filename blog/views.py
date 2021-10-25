@@ -145,10 +145,10 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         form.instance.tag_set.set(new_tags)
 
         if "publish" in self.request.POST:
-            print("This is getting published")
+            # turn off the draft flag
             form.instance.draft = False
-        else:
-            print("This will be a draft")
+            # zero page view count
+            form.instance.hit_count_generic.clear()
 
         return super().form_valid(form)
 

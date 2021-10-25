@@ -1,0 +1,26 @@
+<label for="nav-toggle" class="nav_toggle_label">
+  <span></span>
+</label>
+<input type="checkbox" id="nav-toggle" class="nav_toggle">
+<nav class="nav">
+  <ul>
+    <li class="nav-link"><a href="{% url 'blog:index' %}">Index</a></li>
+    <hr>
+    <li class="nav-link"><a href="">Recent Posts</a></li>
+    <li class="nav-link"><a href="">Popular Posts</a></li>
+    <li class="nav-link"><a href="{% url 'blog:tag_list' %}">Tags</a></li>
+    <hr>
+
+    {% if user.is_authenticated %}
+    <li class="nav-link"><a href="{% url 'logout' %}">Logout</a></li>
+    <li class="nav-link"><a href="{% url 'my-profile' %}">Profile</a></li>
+    {% else %}
+    <li class="nav-link"><a href="{% url 'login' %}">Login</a></li>
+    <li class="nav-link"><a href="{% url 'register' %}">Register</a></li>
+    {% endif %}
+    {% if user.is_superuser %}
+    <hr>
+    <li class="nav-link"><a href="">Site Admin</a></li>
+    {% endif %}
+  </ul>
+</nav>

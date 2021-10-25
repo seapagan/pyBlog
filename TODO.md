@@ -2,7 +2,7 @@
 
 ## Important functionality
 
-* Responsive menu, replace the sidebar for smaller screens.
+* ~~Responsive menu, replace the sidebar for smaller screens.~~ `DONE`
 * Comments - `Basic functionality complete`
 * Tags - `Basic functionality complete`
 * Sidebar - `Basic functionality complete`. Sections need more coding as the
@@ -10,7 +10,7 @@
 * API to read / post Blog Posts and Comments, allowing a completely separate
   front end to be written and used.
 * Sensitive variables to ENV vars, using `python-dotenv`
-* add a 'like' option to a post
+* Add a 'like' option to a post
 * Implement the 'Popular Posts' sidebar section. This will need to wait until
   the 'likes' functionality is complete. Also start logging unique page views
   somehow to help with this.
@@ -76,8 +76,8 @@
 * detect the users timezone and display date/time formats properly.
 * add user login/logout/register functionality, though register should be by
   invitation not open to all. [`Working. Register function currently allows
-  people to regisddter and make posts but this will need to be changed to
-  superusers or a new 'poster' permission before release.`]
+  people to register and make posts but this will need to be changed to only
+  superusers can make posts or a new 'poster' permission before release.`]
 * ~~define tag on the body that can wrap the start of the article, which can be
   displayed on the main index page list, followed by a 'read more' button. Can
   do fancy styling to fade the last few lines etc too.~~ Just using the

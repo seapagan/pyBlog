@@ -35,6 +35,8 @@
 
 ### Comments
 
+* When a draft post is published, the created_at date should be set to current
+  date/time, not left at the original creation time.
 * Cannot edit the title of a blog post. Add functionality to do this, while
   either keeping the slug or generating a new slug but keeping the old one
   pointing at this post for external link security. Offer a choice? (If post is

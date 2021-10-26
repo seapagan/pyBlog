@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "preferences",
     "django.forms",
     "django_gravatar",
-    "mdeditor",
     "ckeditor",
     "ckeditor_uploader",
     "fontawesomepro",

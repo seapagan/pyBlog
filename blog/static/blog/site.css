@@ -674,26 +674,13 @@ p {
   margin: 0.3em 0;
 }
 
-pre {
-  overflow-x: auto;
-  padding: 1em 1em;
+/* pre {
+  padding: 1em 1em !important;
   margin: 0;
-}
+} */
 
 code {
-  font-family: "JetBrains Mono", monospace;
-}
-
-.highlight {
-  padding-right: 1em;
-  border: 1px solid var(--faded-border);
-  border-radius: 5px;
-  background-color: var(--code-background);
-  margin: 1em 0;
-}
-
-[data-linenos]:before {
-  content: attr(data-linenos);
+  font-family: "JetBrains Mono", monospace !important;
 }
 
 .pagination {

@@ -1,6 +1,7 @@
 """Define the Database models for this application."""
 import os
 
+from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.files.storage import FileSystemStorage
@@ -9,7 +10,6 @@ from django.template.defaultfilters import slugify
 from django.urls import reverse
 from hitcount.conf import settings as hitcount_settings
 from hitcount.mixins import HitCountModelMixin
-from mdeditor.fields import MDTextField
 from preferences.models import Preferences
 
 
@@ -50,8 +50,7 @@ class Blog(models.Model, HitCountModelMixin):
     desc = models.CharField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # body = models.TextField()
-    body = MDTextField()
+    body = RichTextField()
     slug = models.SlugField(default="", unique=True)
     image = models.ImageField(
         upload_to=get_upload_path,
@@ -105,8 +104,7 @@ class Comment(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # body = models.TextField()
-    body = MDTextField()
+    body = RichTextField()
 
     def __str__(self):
         """Return string representation of the Comment object."""
@@ -151,7 +149,6 @@ class Tag(models.Model):
     """Define the Tags model."""
 
     tag_name = models.CharField(max_length=15)
-    # tag_count = models.PositiveIntegerField(default=1)
     tag_count = post_count
     tag_creator = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="tags"

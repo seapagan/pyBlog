@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.forms",
     "django_gravatar",
     "mdeditor",
+    "ckeditor",
     "fontawesomepro",
     "dj_pagination",
     "blog",
@@ -175,3 +176,42 @@ PAGINATION_DEFAULT_MARGIN = 0
 # settings for dh-hitcount application
 HITCOUNT_HITS_PER_IP_LIMIT = 0
 HITCOUNT_USE_IP = True
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        "width": "auto",
+        "height": "250px",
+        "tabSpaces": 4,
+        "toolbar": "Custom",
+        # "toolbar": "full",
+        "toolbar_Custom": [
+            ["CodeSnippet"],
+            ["Format"],
+            [
+                "Bold",
+                "Italic",
+                "Underline",
+                "Strike",
+                "RemoveFormat",
+                "Blockquote",
+            ],
+            ["Smiley", "SpecialChar"],
+            ["TextColor", "BGColor"],
+            ["Image"],
+            ["Link", "Unlink"],
+            ["Table", "HorizontalRule"],
+            ["NumberedList", "BulletedList"],
+            ["Maximize"],
+            ["Preview"],
+            ["Source"],
+        ],
+        "extraPlugins": ",".join(
+            [
+                "codesnippet",
+                "prism",
+                "widget",
+                "lineutils",
+            ]
+        ),
+    }
+}

@@ -367,6 +367,10 @@ body {
   grid-column: 1/3;
 }
 
+.blog_body_footer_vertical_divider {
+  color: var(--faded-border);
+}
+
 .blog_user {
   font-weight: bold;
   text-decoration: none;

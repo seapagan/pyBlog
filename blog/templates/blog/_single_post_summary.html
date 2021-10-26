@@ -29,17 +29,22 @@
           {% endwith %}
         </span>
       </div>
-      <span>|</span>
+      <span class="blog_body_footer_vertical_divider">|</span>
       <div class="blog_post_views">
         {% get_hit_count for blog as hits %}
         {{ hits }}
         &nbsp;view{{ hits|pluralize}}
       </div>
       <div class="blog_tag_list">
-        {% for tag in blog.tag_set.all %}
+        {% with blog.tag_set.all as tag_list %}
+        {% if tag_list %}
+        <span class="blog_body_footer_vertical_divider">|</span>
+        {% endif %}
+        {% for tag in tag_list %}
         <a href="{% url 'blog:tag_detail' tag.slug %}"
           class="sidebar_tag">{{tag.tag_name}}</a>
         {% endfor %}
+        {% endwith %}
       </div>
     </div>
     <div class="blog_date_wrapper"><span class="blog_date_posted">Posted by <a

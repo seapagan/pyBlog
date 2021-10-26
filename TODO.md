@@ -39,7 +39,8 @@
   user.
 * ~~Integrate an HTML editor. Could use markdown but it gives unexpected results
   to those not used to it (ie missing linebreaks). Comments saved as HTML and
-  filtered through 'safe'~~ Using Markdown with WYSIWYG functionality for now.
+  filtered through 'safe'. Using Markdown with WYSIWYG functionality for now.~~
+  [`Done`] Using CKEditor same as Posts.
 * ~~profile links for registered users need to be switched to specific links,
   once that functionality is added~~
 * add ReCapcha to the comment entry form
@@ -51,15 +52,18 @@
 
 * When a draft post is published, the created_at date should be set to current
   date/time, not left at the original creation time.
+  [[#24](https://github.com/seapagan/myblog/issues/24)]
 * Cannot edit the title of a blog post. Add functionality to do this, while
   either keeping the slug or generating a new slug but keeping the old one
   pointing at this post for external link security. Offer a choice? (If post is
   draft we should defo just change the slug)
+  [[#25](https://github.com/seapagan/myblog/issues/25)]
 * ~~Style the image upload widget for new/edit post.~~ Base work done for this,
   will need further styling when we redo the entire app.
 * ~~make sure front page link in sidebar doesn't show on front page.~~
 * Add Emoji reactions to posts and comments
-* More work needed on the form styles for small mobile devices
+* More work needed on the form styles for small mobile devices.
+  [[#19](https://github.com/seapagan/myblog/issues/19)]
 * ~~Make a default post image to use if one is not specified~~ `functionality
   complete with a dummy placeholder image which will need replaced before going
   live`. Also offer default ones based on tag and predefined ones?

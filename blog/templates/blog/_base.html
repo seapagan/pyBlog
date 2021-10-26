@@ -29,6 +29,13 @@
       </div>
       {% include 'blog/_footer.html' %}
     </div>
+    <script>
+      let attr = document.querySelector(".django-ckeditor-widget");
+      if (attr) {
+        attr.removeAttribute('style');
+      }
+
+    </script>
   </body>
 
 </html>

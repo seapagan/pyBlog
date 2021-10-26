@@ -201,6 +201,12 @@ CKEDITOR_CONFIGS = {
                 "RemoveFormat",
                 "Blockquote",
             ],
+            [
+                "JustifyLeft",
+                "JustifyCenter",
+                "JustifyRight",
+                "JustifyBlock",
+            ],
             ["Smiley", "SpecialChar"],
             ["TextColor", "BGColor"],
             ["Image"],
@@ -209,7 +215,7 @@ CKEDITOR_CONFIGS = {
             ["NumberedList", "BulletedList"],
             ["Maximize"],
             ["Preview"],
-            ["Source"],
+            # ["Source"],
         ],
         "extraPlugins": ",".join(
             [

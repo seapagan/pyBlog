@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django_gravatar",
     "mdeditor",
     "ckeditor",
+    "ckeditor_uploader",
     "fontawesomepro",
     "dj_pagination",
     "blog",
@@ -177,6 +178,11 @@ PAGINATION_DEFAULT_MARGIN = 0
 HITCOUNT_HITS_PER_IP_LIMIT = 0
 HITCOUNT_USE_IP = True
 
+# settings for CKEditor Rich-text editor plugin
+CKEDITOR_UPLOAD_PATH = "image/uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_ALLOW_NONIMAGE_FILES = False
+CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_CONFIGS = {
     "default": {
         "width": "auto",

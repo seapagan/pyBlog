@@ -2,6 +2,7 @@
 import os
 
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.files.storage import FileSystemStorage
@@ -50,7 +51,7 @@ class Blog(models.Model, HitCountModelMixin):
     desc = models.CharField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    body = RichTextField()
+    body = RichTextUploadingField()
     slug = models.SlugField(default="", unique=True)
     image = models.ImageField(
         upload_to=get_upload_path,

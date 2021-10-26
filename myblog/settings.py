@@ -213,5 +213,6 @@ CKEDITOR_CONFIGS = {
                 "lineutils",
             ]
         ),
+        "format_tags": "p;h2;h3;h4;pre;address;div",
     }
 }

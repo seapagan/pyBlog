@@ -683,6 +683,14 @@ code {
   font-family: "JetBrains Mono", monospace !important;
 }
 
+/* set a class we should use for any uploaded images */
+.blog_post_image {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid var(--faded-border);
+  border-radius: 5px;
+}
+
 .pagination {
   padding: 1em 0;
   text-align: center;

@@ -76,7 +76,7 @@
         <a href="{% url 'user-profile' comment.related_post.user.id %}"
           class="profile_comments_user">{{ comment.related_post.user }}</a>
       </div>
-      <div class="profile_comments_body">{{ comment.body|markdown|safe }}</div>
+      <div class="profile_comments_body">{{ comment.body|safe }}</div>
       <div class="profile_comments_date">
         {% comment %} {{ comment.created_at|date:"d M Y, G:H:s" }}
         {% endcomment %}

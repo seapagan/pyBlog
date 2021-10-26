@@ -1,5 +1,4 @@
 {% extends 'blog/_base.html' %}
-{% load markdown_extras %}
 {% load pagination_tags %}
 {% load hitcount_tags %}
 
@@ -28,7 +27,7 @@
   </div>
 
   <div class="blog_body">
-    {{ blog.body | markdown | safe }}
+    {{ blog.body | safe }}
   </div>
 
   <div class="blog_body_footer">
@@ -63,7 +62,6 @@
   {% endif %}
   {% endwith %}
 </section>
-
 
 
 <!-- This section displays the comments (if any) -->
@@ -103,7 +101,7 @@
       <div class="blog_comment_date">Commented {{comment.created_at}}</div>
     </div>
     <div class="blog_comment_body">
-      {{comment.body|markdown|safe}}
+      {{comment.body|safe}}
     </div>
     {% if comment.get_commenter == user.username or user.is_superuser %}
     <div class="blog_comment_footer">

@@ -51,7 +51,7 @@ class Blog(models.Model, HitCountModelMixin):
     desc = models.CharField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    body = RichTextUploadingField()
+    body = RichTextUploadingField(config_name="post")
     slug = models.SlugField(default="", unique=True)
     image = models.ImageField(
         upload_to=get_upload_path,
@@ -105,7 +105,7 @@ class Comment(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    body = RichTextField()
+    body = RichTextField(config_name="comment")
 
     def __str__(self):
         """Return string representation of the Comment object."""

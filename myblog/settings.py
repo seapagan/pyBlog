@@ -184,12 +184,12 @@ CKEDITOR_ALLOW_NONIMAGE_FILES = False
 CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_CONFIGS = {
-    "default": {
+    "default": {},
+    "post": {
         "width": "auto",
         "height": "450px",
         "tabSpaces": 4,
         "toolbar": "Custom",
-        # "toolbar": "full",
         "toolbar_Custom": [
             ["CodeSnippet"],
             ["Format"],
@@ -215,7 +215,6 @@ CKEDITOR_CONFIGS = {
             ["NumberedList", "BulletedList"],
             ["Maximize"],
             ["Preview"],
-            # ["Source"],
         ],
         "extraPlugins": ",".join(
             [
@@ -226,5 +225,39 @@ CKEDITOR_CONFIGS = {
             ]
         ),
         "format_tags": "p;h2;h3;h4;pre;address;div",
-    }
+    },
+    "comment": {
+        "width": "auto",
+        "height": "450px",
+        "tabSpaces": 4,
+        "toolbar": "Custom",
+        "toolbar_Custom": [
+            ["CodeSnippet"],
+            ["Format"],
+            [
+                "Bold",
+                "Italic",
+                "Underline",
+                "Strike",
+                "RemoveFormat",
+                "Blockquote",
+            ],
+            ["Smiley", "SpecialChar"],
+            ["TextColor"],
+            ["Link", "Unlink"],
+            ["Table", "HorizontalRule"],
+            ["NumberedList", "BulletedList"],
+            ["Maximize"],
+            ["Preview"],
+        ],
+        "extraPlugins": ",".join(
+            [
+                "codesnippet",
+                "prism",
+                "widget",
+                "lineutils",
+            ]
+        ),
+        "format_tags": "p;h2;h3;h4;pre;address;div",
+    },
 }

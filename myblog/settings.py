@@ -182,11 +182,12 @@ HITCOUNT_USE_IP = True
 CKEDITOR_UPLOAD_PATH = "image/uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_ALLOW_NONIMAGE_FILES = False
+CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_CONFIGS = {
     "default": {
         "width": "auto",
-        "height": "250px",
+        "height": "450px",
         "tabSpaces": 4,
         "toolbar": "Custom",
         # "toolbar": "full",

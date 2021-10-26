@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     "preferences",
     "django.forms",
     "django_gravatar",
-    "mdeditor",
+    "ckeditor",
+    "ckeditor_uploader",
     "fontawesomepro",
     "dj_pagination",
     "blog",
@@ -175,3 +176,88 @@ PAGINATION_DEFAULT_MARGIN = 0
 # settings for dh-hitcount application
 HITCOUNT_HITS_PER_IP_LIMIT = 0
 HITCOUNT_USE_IP = True
+
+# settings for CKEditor Rich-text editor plugin
+CKEDITOR_UPLOAD_PATH = "image/uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_ALLOW_NONIMAGE_FILES = False
+CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_CONFIGS = {
+    "default": {},
+    "post": {
+        "width": "auto",
+        "height": "450px",
+        "tabSpaces": 4,
+        "toolbar": "Custom",
+        "toolbar_Custom": [
+            ["CodeSnippet"],
+            ["Format"],
+            [
+                "Bold",
+                "Italic",
+                "Underline",
+                "Strike",
+                "RemoveFormat",
+                "Blockquote",
+            ],
+            [
+                "JustifyLeft",
+                "JustifyCenter",
+                "JustifyRight",
+                "JustifyBlock",
+            ],
+            ["Smiley", "SpecialChar"],
+            ["TextColor", "BGColor"],
+            ["Image"],
+            ["Link", "Unlink"],
+            ["Table", "HorizontalRule"],
+            ["NumberedList", "BulletedList"],
+            ["Maximize"],
+            ["Preview"],
+        ],
+        "extraPlugins": ",".join(
+            [
+                "codesnippet",
+                "prism",
+                "widget",
+                "lineutils",
+            ]
+        ),
+        "format_tags": "p;h2;h3;h4;pre;address;div",
+    },
+    "comment": {
+        "width": "auto",
+        "height": "450px",
+        "tabSpaces": 4,
+        "toolbar": "Custom",
+        "toolbar_Custom": [
+            ["CodeSnippet"],
+            ["Format"],
+            [
+                "Bold",
+                "Italic",
+                "Underline",
+                "Strike",
+                "RemoveFormat",
+                "Blockquote",
+            ],
+            ["Smiley", "SpecialChar"],
+            ["TextColor"],
+            ["Link", "Unlink"],
+            ["Table", "HorizontalRule"],
+            ["NumberedList", "BulletedList"],
+            ["Maximize"],
+            ["Preview"],
+        ],
+        "extraPlugins": ",".join(
+            [
+                "codesnippet",
+                "prism",
+                "widget",
+                "lineutils",
+            ]
+        ),
+        "format_tags": "p;h2;h3;h4;pre;address;div",
+    },
+}

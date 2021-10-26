@@ -36,6 +36,7 @@ urlpatterns += (
             name="user-profile",
         ),
         path("profile/", user_views.MyProfileView.as_view(), name="my-profile"),
+        path("ckeditor/", include("ckeditor_uploader.urls")),
     ]
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

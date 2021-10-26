@@ -76,11 +76,14 @@
   avatar and logout display)~~
 * ~~redundant code in `blog_edit_post.html` to check if logged in. If not logged
   in, this page is inaccesible anyway d/t view permissions.~~
-* buttons missing or not working in the markdown WYSIWYG editor **UPDATE This is
+* ~~buttons missing or not working in the markdown WYSIWYG editor **UPDATE This is
   due to incompatibility with FontAwesome. Need to find an alternative
-  HTML/Markup editor or a different Icon source.**
-* detect the users timezone and display date/time formats properly.
-* add user login/logout/register functionality, though register should be by
+  HTML/Markup editor or a different Icon source.**~~ [`FIXED`] - swapped to HTML
+  and CKEditor plugin. Removed all Markdown support from the applciation.
+* Image upload support is working, however I would like to be able to save the
+  images under the `/media/posts/[slug]` folder like the post header image.
+* Detect the users timezone and display date/time formats properly.
+* Add user login/logout/register functionality, though register should be by
   invitation not open to all. [`Working. Register function currently allows
   people to register and make posts but this will need to be changed to only
   superusers can make posts or a new 'poster' permission before release.`]

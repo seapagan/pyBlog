@@ -674,26 +674,21 @@ p {
   margin: 0.3em 0;
 }
 
-pre {
-  overflow-x: auto;
-  padding: 1em 1em;
+/* pre {
+  padding: 1em 1em !important;
   margin: 0;
-}
+} */
 
 code {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", monospace !important;
 }
 
-.highlight {
-  padding-right: 1em;
+/* set a class we should use for any uploaded images */
+.blog_post_image {
+  width: 100%;
+  padding: 0.5em;
   border: 1px solid var(--faded-border);
   border-radius: 5px;
-  background-color: var(--code-background);
-  margin: 1em 0;
-}
-
-[data-linenos]:before {
-  content: attr(data-linenos);
 }
 
 .pagination {

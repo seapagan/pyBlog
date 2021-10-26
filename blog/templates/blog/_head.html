@@ -16,7 +16,10 @@
   <link rel="shortcut icon" href="{% static 'blog/favicon.png' %}"
     type="image/x-icon">
   <script src="{% static 'fontawesomepro/js/all.min.js' %}"></script>
-  <link rel="stylesheet" href="{% static 'blog/default.css' %}" />
+  <script
+    src="{% static 'ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js' %}">
+  </script>
+  <link rel="stylesheet" href="{% static 'prism/prism.css' %}">
   <link rel="stylesheet" href="{% static 'blog/site.css' %}" />
   <title>
     {{ preferences.SitePreferences.title }}

@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "fontawesomepro",
     "dj_pagination",
     "maintenancemode",
+    "secretballot",
+    "likes",
     "blog",
     "users",
     "hitcount",
@@ -68,6 +70,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "dj_pagination.middleware.PaginationMiddleware",
+    "likes.middleware.SecretBallotUserIpUseragentMiddleware",
 ]
 
 ROOT_URLCONF = "myblog.urls"
@@ -264,4 +267,11 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+# Settings for Maintenance Mode. We will actually control it from the managment
+# command, but setting th ebelow to True will do the same.
 MAINTENANCE_MODE = False
+
+# Secret Ballot settings.
+SECRETBALLOT_FOR_MODELS = {
+    "blog.Blog": {},
+}

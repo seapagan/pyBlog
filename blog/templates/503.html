@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1 maximum-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@400;700&family=Architects+Daughter&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet" />
+    <link rel="shortcut icon" href="{% static 'blog/favicon.png' %}"
+      type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'blog/site.css' %}" />
+    <title>{{ preferences.SitePreferences.title }} | Under Maintenance</title>
+  </head>
+
+  <body>
+    <h1 class="maintenance_site_header">
+      {{ preferences.SitePreferences.sitename }}
+    </h1>
+    <div class="maintenance_site_heading">
+      {{ preferences.SitePreferences.heading }}
+    </div>
+    <p class="maintenance_info">Sorry the site is Closed For Maintenance right
+      now.</p>
+    <p class="maintenance_info">We hope to be back very shortly!</p>
+  </body>
+
+</html>

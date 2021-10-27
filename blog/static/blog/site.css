@@ -76,6 +76,33 @@ body {
   color: hsl(162, 16%, 13%);
 }
 
+.maintenance_site_header {
+  text-align: center;
+  font-family: "Big Shoulders Stencil Display", cursive;
+  font-size: 4em;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: hsl(162, 16%, 13%);
+  margin-bottom: 0;
+}
+
+.maintenance_site_heading {
+  font-family: "Architects Daughter", cursive;
+  text-align: center;
+  width: 70%;
+  letter-spacing: 2px;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 0.5em;
+  margin: 0 auto;
+}
+
+.maintenance_info {
+  text-align: center;
+  width: 70%;
+  margin: 2em auto;
+}
+
 .site_header_heading {
   font-family: "Architects Daughter", cursive;
   letter-spacing: 2px;

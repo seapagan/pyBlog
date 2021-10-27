@@ -12,6 +12,8 @@ urlpatterns = []
 if settings.DEBUG:
     urlpatterns += [path("admin/", admin.site.urls)]
 
+handler503 = "myblog.views.maintenance_mode"
+
 urlpatterns += (
     [
         path("", include("blog.urls")),

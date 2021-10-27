@@ -21,17 +21,12 @@ def no_draft(tag_posts, user=None):
     return filtered
 
 
-# the below 2 tags are used in the sidebar to pass extra context that is
-# required to properly display Latest Post and Tags.
+# the below tag is used in the sidebar to pass extra context that is needed to
+# get the sidebar to work.
 @register.simple_tag
-def sidebar_posts():
-    """Return first 5 posts in the database."""
-    return Blog.objects.all().order_by("-created_at")[:5]
-
-
-@register.simple_tag
-def sidebar_tags():
-    """Return all Tags in the database."""
-    # will later most likely restrict this to the top 20 or so tags sorted by
-    # number of related posts.
-    return Tag.objects.all().order_by(Lower("tag_name"))
+def sidebar():
+    """Provide extra information needed for the sidebar"""
+    context = {}
+    context["posts"] = Blog.objects.all().order_by("-created_at")[:5]
+    context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+    return context

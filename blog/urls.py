@@ -1,30 +1,61 @@
 """Define URL patterns for the Blog app."""
 from django.urls import path
 
-from blog import views
+from blog.views import blog_views, comment_views, tag_views
 
 app_name = "blog"
 urlpatterns = [
-    path("", views.IndexClassView.as_view(), name="index"),
-    path("<str:slug>", views.PostDetailView.as_view(), name="detail"),
-    path("new/", views.NewPostView.as_view(), name="add_post"),
+    # Blog Views
     path(
-        "<str:slug>/comment", views.AddCommentView.as_view(), name="add_comment"
+        "",
+        blog_views.IndexClassView.as_view(),
+        name="index",
     ),
-    path("<str:slug>/edit", views.EditPostView.as_view(), name="edit_post"),
     path(
-        "<str:slug>/delete", views.DeletePostView.as_view(), name="delete_post"
+        "<str:slug>",
+        blog_views.PostDetailView.as_view(),
+        name="detail",
+    ),
+    path(
+        "new/",
+        blog_views.NewPostView.as_view(),
+        name="add_post",
+    ),
+    path(
+        "<str:slug>/edit",
+        blog_views.EditPostView.as_view(),
+        name="edit_post",
+    ),
+    path(
+        "<str:slug>/delete",
+        blog_views.DeletePostView.as_view(),
+        name="delete_post",
+    ),
+    # Comment Views
+    path(
+        "<str:slug>/comment",
+        comment_views.AddCommentView.as_view(),
+        name="add_comment",
     ),
     path(
         "comment/<int:pk>/edit",
-        views.EditCommentView.as_view(),
+        comment_views.EditCommentView.as_view(),
         name="edit_comment",
     ),
     path(
         "comment/<int:pk>/delete",
-        views.DeleteCommentView.as_view(),
+        comment_views.DeleteCommentView.as_view(),
         name="delete_comment",
     ),
-    path("tags/<str:slug>/", views.TagDetailView.as_view(), name="tag_detail"),
-    path("tags/", views.TagListView.as_view(), name="tag_list"),
+    # Tag Views
+    path(
+        "tags/<str:slug>/",
+        tag_views.TagDetailView.as_view(),
+        name="tag_detail",
+    ),
+    path(
+        "tags/",
+        tag_views.TagListView.as_view(),
+        name="tag_list",
+    ),
 ]

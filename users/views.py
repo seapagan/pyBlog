@@ -62,14 +62,13 @@ def get_profile_context(profile_object):
         },
     }
 
-    # add the link to the disctionary above.
+    # add the link to the dictionary above.
     for item, value in my_profile.items():
         final[item]["value"] = value
 
     return final
 
 
-# Create your views here.
 def register(request):
     """Register a new user."""
     if request.method == "POST":

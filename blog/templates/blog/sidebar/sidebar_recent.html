@@ -1,9 +1,12 @@
+{% load blog_extras %}
+{% sidebar_posts as posts %}
+
 <div class="sidebar_article_header">Recent Posts</div>
 <div class="sidebar_article_content">
-  {% for blog in blogs|slice:":5" %}
-  {% if not blog.draft %}
-  <a href="{% url 'blog:detail' blog.slug %}"
-    class="sidebar_link">{{ blog.title|capfirst}}</a>
+  {% for post in posts %}
+  {% if not post.draft %}
+  <a href="{% url 'blog:detail' post.slug %}"
+    class="sidebar_link">{{ post.title|capfirst}}</a>
   {% endif %}
   {% endfor %}
 </div>

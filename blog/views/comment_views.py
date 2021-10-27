@@ -1,13 +1,12 @@
 """Define the views for the Comment Model."""
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models.functions import Lower
 from django.http.response import Http404
 from django.urls.base import reverse
 from django.views.generic import CreateView
 from django.views.generic.edit import DeleteView, UpdateView
 
 from blog.forms import EditCommentForm, NewCommentForm
-from blog.models import Blog, Comment, Tag
+from blog.models import Blog, Comment
 
 
 class AddCommentView(CreateView):
@@ -26,8 +25,6 @@ class AddCommentView(CreateView):
         context = super().get_context_data(**kwargs)
         slug = self.kwargs["slug"]
         context["post"] = Blog.objects.get(slug=slug)
-        context["blogs"] = Blog.objects.all().order_by("-created_at")
-        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
         context["form"].related_post = context["post"]
         context["page_title"] = "New Comment"
 
@@ -58,14 +55,8 @@ class EditCommentView(LoginRequiredMixin, UpdateView):
     template_name = "blog/comment_editcomment.html"
 
     def get_context_data(self, **kwargs):
-        """Add extra context to the View.
-
-        This allows us to access Post-related stuff like the title from inside
-        our view.
-        """
+        """Add extra context to the View."""
         context = super().get_context_data(**kwargs)
-        context["blogs"] = Blog.objects.all().order_by("-created_at")
-        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
         context["page_title"] = "Edit Comment"
 
         return context
@@ -90,6 +81,13 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
     """Delete an existing comment."""
 
     model = Comment
+
+    def get_context_data(self, **kwargs):
+        """Add extra context to the View."""
+        context = super().get_context_data(**kwargs)
+        context["page_title"] = "Delete Comment"
+
+        return context
 
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""

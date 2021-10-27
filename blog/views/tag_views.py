@@ -2,7 +2,7 @@
 from django.db.models.functions import Lower
 from django.views.generic import DetailView, ListView
 
-from blog.models import Blog, Tag
+from blog.models import Tag
 
 
 class TagDetailView(DetailView):
@@ -14,8 +14,6 @@ class TagDetailView(DetailView):
     def get_context_data(self, **kwargs):
         """Add posts ant tags to this context, so we can use in the sidebar."""
         context = super(TagDetailView, self).get_context_data(**kwargs)
-        context["blogs"] = Blog.objects.all().order_by("-created_at")
-        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
         context["page_title"] = f"Posts tagged as '{self.object.tag_name}'"
 
         return context
@@ -31,8 +29,6 @@ class TagListView(ListView):
     def get_context_data(self, **kwargs):
         """Add posts ant tags to this context, so we can use in the sidebar."""
         context = super(TagListView, self).get_context_data(**kwargs)
-        context["blogs"] = Blog.objects.all().order_by("-created_at")
-        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
         context["page_title"] = "Tags"
 
         return context

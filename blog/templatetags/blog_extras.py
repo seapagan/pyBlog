@@ -25,8 +25,11 @@ def no_draft(tag_posts, user=None):
 # get the sidebar to work.
 @register.simple_tag
 def sidebar():
-    """Provide extra information needed for the sidebar"""
+    """Provide extra information needed for the sidebar."""
     context = {}
+    # Return first 5 posts in the database.
     context["posts"] = Blog.objects.all().order_by("-created_at")[:5]
+    # will later most likely restrict tags to the top 20 or so tags sorted by
+    # number of related posts, for now send all.
     context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
     return context

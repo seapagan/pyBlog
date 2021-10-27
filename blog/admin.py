@@ -17,11 +17,32 @@ class BlogAdmin(admin.ModelAdmin):
     """Define a custom admin class for the Blog model."""
 
     date_hierarchy = "created_at"
-    list_display = ["title", "created_at", "updated_at", "slug", "user"]
+    list_display = [
+        "title",
+        "created_at",
+        "updated_at",
+        "slug",
+        "user",
+    ]
     list_filter = ["created_at", "updated_at"]
     ordering = ("-created_at",)
     search_fields = ["title"]
-    readonly_fields = ["slug"]
+    fields = [
+        "user",
+        "title",
+        "desc",
+        "created_at",
+        "updated_at",
+        "body",
+        "image",
+        "draft",
+        "slug",
+    ]
+    readonly_fields = [
+        "created_at",
+        "updated_at",
+        "slug",
+    ]
     inlines = [TagsInline]
 
 

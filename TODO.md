@@ -27,10 +27,9 @@
   specific to administrating just the Blog.
 * Add the ability for Admin user to Moderate Comments and Tags, or even a Post
   (if we have guest posters for example)
-* Implement a maintenance mode to temporarily disable the whole app if needed.
-  Admin pages would still be available. Add option to totally lock down the
-  site, eg if under attack so all routes are disabled. This would require manual
-  access of the server to undo (ie delete a flag file or similar)
+* ~~Implement a maintenance mode to temporarily disable the whole app if
+  needed.~~ [`Done`] Logged in users of staff or higher can still see the site,
+  and the admin. Logged out or lower get the 503 page.
 * Testing. Seriously, lots and lots of testing. Just DO It.
 
 ### Comments

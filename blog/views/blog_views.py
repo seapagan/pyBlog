@@ -1,4 +1,6 @@
 """Define the views for the Blog Model."""
+from datetime import datetime
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models.functions import Lower
 from django.http.response import Http404
@@ -135,6 +137,9 @@ class EditPostView(LoginRequiredMixin, UpdateView):
             form.instance.draft = False
             # zero page view count
             form.instance.hit_count_generic.clear()
+            # reset the created_at and updated_at time to right now
+            form.instance.created_at = datetime.now()
+            form.instance.updated_at = datetime.now()
 
         return super().form_valid(form)
 

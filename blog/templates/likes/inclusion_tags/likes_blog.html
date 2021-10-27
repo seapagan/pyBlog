@@ -1,0 +1,24 @@
+{% load i18n %}
+{% load static %}
+
+{% if import_js %}
+<script type="text/javascript"
+  src="{% static "likes/includes/likes_custom.js" %}">
+</script>
+{% endif %}
+
+{% if likes_enabled %}
+<div class="likes">
+  {% comment %} {{ content_obj.vote_total }} {% endcomment %}
+  {% if can_vote %}
+  <a class="liker" href="{% url "like" content_type content_obj.id 1 %}"
+    rel="nofollow"><i class="fal fa-heart"></i></a>
+  {% else %}
+  {% comment %} {% trans "Like" %}{{ content_obj.vote_total|pluralize }}
+  {% endcomment %}
+  <i class="fas fa-heart like_yes"></i>
+  {% endif %}
+</div>
+<div id="like_count" style="display:none;">{{ content_obj.vote_total }}
+  like{{ content_obj.vote_total|pluralize }}</div>
+{% endif %}

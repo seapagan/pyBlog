@@ -981,7 +981,8 @@ input#id_password2 {
 
 .tag_list_post,
 .notag_list_post {
-  padding: 0.5em 0.5em;
+  padding: 0 0.5em;
+  padding-top: 0.5em;
   display: block;
   color: var(--sidebar-links);
   text-decoration: none;
@@ -997,6 +998,16 @@ input#id_password2 {
 
 .tag_list_post_draft:hover {
   color: hsl(0, 100%, 60%);
+}
+
+.tag_list_more {
+  display: block;
+  text-align: right;
+  padding: 0 0.5em;
+  display: block;
+  color: var(--sidebar-links);
+  text-decoration: none;
+  font-size: 0.9em;
 }
 
 /* Navigation menu for responsive sizes */

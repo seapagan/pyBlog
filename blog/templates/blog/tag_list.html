@@ -13,11 +13,17 @@
       {% with tag.posts.all|no_draft:user as posts %}
       {% if posts %}
       <div>
-        {% for post in posts %}
+        {% for post in posts|slice:":6" %}
         <a href="{% url 'blog:detail' post.slug %}" class="tag_list_post
           {% if post.draft %} tag_list_post_draft
           {% endif %}">{{post.title|capfirst}}</a>
         {% endfor %}
+
+        {% if posts.count > 6 %}
+        <a class="tag_list_more" href="{% url 'blog:tag_detail' tag.slug %}">
+          see more ...</a>
+        {% endif %}
+
       </div>
       {% else %}
       <div class="notag_list_post">No tagged posts.</div>

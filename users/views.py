@@ -3,11 +3,9 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.db.models.functions import Lower
 from django.shortcuts import redirect, render
 from django.views.generic import DetailView, ListView
 
-from blog.models import Blog, Tag
 from users.forms import RegisterForm
 from users.models import Profile
 
@@ -101,8 +99,6 @@ class MyProfileView(LoginRequiredMixin, ListView):
         context = super(MyProfileView, self).get_context_data(**kwargs)
         context["links"] = get_profile_context(self.object_list)
         context["page_title"] = self.object_list.username.capitalize()
-        context["blogs"] = Blog.objects.all().order_by("-created_at")
-        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
         return context
 
 
@@ -118,6 +114,4 @@ class UserProfileView(DetailView):
         context = super(UserProfileView, self).get_context_data(**kwargs)
         context["links"] = get_profile_context(self.object)
         context["page_title"] = self.object.username.capitalize()
-        context["blogs"] = Blog.objects.all().order_by("-created_at")
-        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
         return context

@@ -24,7 +24,6 @@ class IndexClassView(ListView):
     def get_context_data(self, **kwargs):
         """Add tags to this context, so we can use in the sidebar."""
         context = super(IndexClassView, self).get_context_data(**kwargs)
-        context["tags"] = Tag.objects.all().order_by("tag_name")
         context["page_title"] = preferences.SitePreferences.heading
 
         return context
@@ -40,12 +39,6 @@ class PostDetailView(HitCountDetailView):
     def get_context_data(self, **kwargs):
         """Add every post to this context, so we can use in the sidebar."""
         context = super(PostDetailView, self).get_context_data(**kwargs)
-        # below are required to get the sidebar working
-        context["blogs"] = (
-            Blog.objects.all().exclude(draft=True).order_by("-created_at")
-        )
-        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
-        # add post name to the page TITLE tag
         context["page_title"] = self.object.title.capitalize()
 
         return context
@@ -101,8 +94,6 @@ class NewPostView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         """Add every post and tag to context, so we can use in the sidebar."""
         context = super(NewPostView, self).get_context_data(**kwargs)
-        context["blogs"] = Blog.objects.all().order_by("-created_at")
-        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
         context["page_title"] = "New Post"
 
         return context
@@ -162,8 +153,6 @@ class EditPostView(LoginRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         """Add every post and tag to context, so we can use in the sidebar."""
         context = super(EditPostView, self).get_context_data(**kwargs)
-        context["blogs"] = Blog.objects.all().order_by("-created_at")
-        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
         context["page_title"] = self.object.title.capitalize()
 
         return context
@@ -198,8 +187,6 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
     def get_context_data(self, **kwargs):
         """Add every post to this context, so we can use in the sidebar."""
         context = super(DeletePostView, self).get_context_data(**kwargs)
-        context["blogs"] = Blog.objects.all().order_by("-created_at")
-        context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
         context["page_title"] = self.object.title.capitalize()
 
         return context

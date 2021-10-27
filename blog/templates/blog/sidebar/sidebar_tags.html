@@ -1,8 +1,13 @@
+{% load blog_extras %}
+{% comment %} {% sidebar as sb %} {% endcomment %}
+
+{% sidebar as sb %}
+
 <div class="sidebar_article_header"><a class="sidebar_article_header_link"
     href="{% url 'blog:tag_list' %}">Tags</a>
 </div>
 <div class="sidebar_article_content sidebar_tags_content">
-  {% for tag in tags %}
+  {% for tag in sb.tags %}
   <a href="{% url 'blog:tag_detail' tag.slug %}"
     class="sidebar_tag">{{ tag.tag_name}}</a>
   {% endfor %}

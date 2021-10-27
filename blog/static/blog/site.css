@@ -398,6 +398,26 @@ body {
   color: var(--faded-border);
 }
 
+.blog_body_footer_like {
+  font-style: normal;
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid var(--faded-border);
+  border-radius: 5px;
+  background-color: var(--button-background-color);
+  padding: 0.1em 0.4em;
+  color: black;
+}
+
+.liker {
+  text-decoration: none;
+  color: black;
+}
+
+.like_yes {
+  color: red;
+}
+
 .blog_user {
   font-weight: bold;
   text-decoration: none;

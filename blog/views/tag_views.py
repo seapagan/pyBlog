@@ -27,7 +27,7 @@ class TagListView(ListView):
     ordering = [Lower("tag_name")]
 
     def get_context_data(self, **kwargs):
-        """Add posts ant tags to this context, so we can use in the sidebar."""
+        """Add posts and tags to this context, so we can use in the sidebar."""
         context = super(TagListView, self).get_context_data(**kwargs)
         context["page_title"] = "Tags"
 

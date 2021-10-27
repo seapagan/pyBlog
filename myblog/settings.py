@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "ckeditor_uploader",
     "fontawesomepro",
     "dj_pagination",
+    "maintenancemode",
     "blog",
     "users",
     "hitcount",
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "maintenancemode.middleware.MaintenanceModeMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "dj_pagination.middleware.PaginationMiddleware",
@@ -261,3 +263,5 @@ CKEDITOR_CONFIGS = {
         "format_tags": "p;h2;h3;h4;pre;address;div",
     },
 }
+
+MAINTENANCE_MODE = False

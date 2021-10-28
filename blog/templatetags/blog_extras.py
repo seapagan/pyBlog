@@ -46,7 +46,9 @@ def sidebar():
             | Q(hit_count_generic__hits=0)
             | Q(hit_count_generic__hits=None)
         )
-        .order_by("-hit_count_generic__hits", "-total_upvotes", "-created_at")
+        .order_by("-hit_count_generic__hits", "-total_upvotes", "-created_at")[
+            :6
+        ]
     )
     context["popular"] = popular_posts
 

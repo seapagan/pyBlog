@@ -2,8 +2,12 @@
 from django.contrib import admin
 from django.db.models.functions import Lower
 from preferences.admin import PreferencesAdmin
+from secretballot.utils import get_vote_model
 
 from blog.models import Blog, Comment, SitePreferences, Tag
+
+Vote = get_vote_model()
+admin.site.register(Vote)
 
 
 class TagsInline(admin.TabularInline):

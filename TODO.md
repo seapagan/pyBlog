@@ -10,7 +10,8 @@
 * API to read / post Blog Posts and Comments, allowing a completely separate
   front end to be written and used.
 * Sensitive variables to ENV vars, using `python-dotenv`
-* Add a 'like' option to a post
+* ~~Add a 'like' option to a post~~ `Functionality added, no option to 'unlike'
+  post (yet)
 * Implement the 'Popular Posts' sidebar section. This will need to wait until
   the 'likes' functionality is complete. ~~Also start logging unique page views
   somehow to help with this.~~

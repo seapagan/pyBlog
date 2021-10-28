@@ -1157,6 +1157,20 @@ nav a {
   transition: opacity 250ms ease-in-out 250ms;
 }
 
+.custom_error_code {
+  /* width: 70%; */
+  text-align: center;
+  font-family: "Special Elite", cursive;
+}
+
+.custom_error_text {
+  margin: 1px auto;
+  text-align: center;
+  font-size: 4em;
+  width: 70%;
+  font-family: "Special Elite", cursive;
+}
+
 @media screen and (max-width: 900px) {
   .content_container {
     display: block;
@@ -1318,5 +1332,9 @@ nav a {
 
   .hide_on_xs {
     display: none;
+  }
+
+  .custom_error_text {
+    font-size: 2em;
   }
 }

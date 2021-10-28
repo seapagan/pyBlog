@@ -171,6 +171,10 @@ body {
   text-align: center;
 }
 
+.sidebar_no_content {
+  text-align: center;
+}
+
 .sidebar_tag {
   display: inline-block;
   margin: 0.2em 0.2em;

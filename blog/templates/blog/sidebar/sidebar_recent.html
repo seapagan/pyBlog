@@ -3,8 +3,12 @@
 
 <div class="sidebar_article_header">Recent Posts</div>
 <div class="sidebar_article_content">
+  {% if sb.posts %}
   {% for post in sb.posts %}
   <a href="{% url 'blog:detail' post.slug %}"
     class="sidebar_link">{{ post.title|capfirst}}</a>
   {% endfor %}
+  {% else %}
+  <div class="sidebar_no_content">No Posts yet</div>
+  {% endif %}
 </div>

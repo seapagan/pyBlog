@@ -12,7 +12,9 @@ urlpatterns = []
 if settings.DEBUG:
     urlpatterns += [path("admin/", admin.site.urls)]
 
-handler503 = "myblog.views.maintenance_mode"
+handler503 = "myblog.errors.views.maintenance_mode"
+handler403 = "myblog.errors.views.custom403"
+handler404 = "myblog.errors.views.custom404"
 
 urlpatterns += (
     [

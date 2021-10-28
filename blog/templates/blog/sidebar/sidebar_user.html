@@ -1,16 +1,22 @@
-<div class="sidebar_article_header">User</div>
-<div class="sidebar_article_content sidebar_user">
+<div class="sidebar_article_header">User
   {% if user.is_authenticated %}
+  {{user.username|capfirst}}
+  {% endif %}
+</div>
+<div class="sidebar_article_content sidebar_user">
+  <a href="{% url 'blog:add_post' %}" class="sidebar_link"><i
+      class="fad fa-file-alt"></i>&nbsp;New Post</a>
+  {% if user.is_authenticated %}
+  <hr class="sidebar_separator">
   {% if not request.get_full_path == '/' %}
   <a class="sidebar_link" href="{% url 'blog:index' %}"><i
-      class="fad fa-home"></i>&nbsp;Front Page</a>
+      class="fad fa-home"></i>&nbsp;Home</a>
   {% endif %}
   {% if not request.get_full_path == '/profile/' %}
   <a class="sidebar_link" href="{% url 'my-profile' %}"><i
       class="fad fa-id-card"></i>&nbsp;View Profile</a>
   {% endif %}
-  <a href="{% url 'blog:add_post' %}" class="sidebar_link"><i
-      class="fad fa-file-alt"></i>&nbsp;New Post</a>
+
 
   <hr class="sidebar_separator">
   <a class="sidebar_link" href="{% url 'logout' %}"><i

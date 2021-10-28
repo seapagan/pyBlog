@@ -51,8 +51,8 @@
 
 ### Misc Bugs / Fixes / Ideas
 
-* Move the 'New post' above 'Profile' in the User sidebar, in fact make it top,
-  with a spaced below?
+* ~~Move the 'New post' above 'Profile' in the User sidebar, in fact make it top,
+  with a spaced below?~~
 * ~~When a draft post is published, the created_at date should be set to current
   date/time, not left at the original creation time.
   [[#24](https://github.com/seapagan/myblog/issues/24)]~~ [`Fixed`]

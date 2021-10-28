@@ -42,7 +42,7 @@
     <div>
       <span
         class="blog_body_footer_like">{% likes blog 'likes/inclusion_tags/likes_blog.html' %}</span>
-      {% if blog.user.username == user.username or user.is_superuser %}
+      {% if blog.user.username == user.username and user.profile.author or user.is_superuser %}
       <span class="blog_body_footer_edit"><a class="btn"
           href="{% url 'blog:edit_post' blog.slug %}"><i
             class="fad fa-edit"></i>&nbsp;Edit</a></span>

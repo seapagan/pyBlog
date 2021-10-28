@@ -182,6 +182,7 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         obj = super(EditPostView, self).get_object()
         if (
             not obj.user == self.request.user
+            or not obj.user.profile.author
             and not self.request.user.is_superuser
         ):
             # raise Http404("You Dont have permission to do that!")
@@ -212,7 +213,9 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
         obj = super(DeletePostView, self).get_object()
         if (
             not obj.user == self.request.user
+            or not obj.user.profile.author
             and not self.request.user.is_superuser
         ):
-            raise Http404("You Dont have permission to do that!")
+            # raise Http404("You Dont have permission to do that!")
+            raise PermissionDenied
         return obj

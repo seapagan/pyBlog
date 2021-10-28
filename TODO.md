@@ -12,9 +12,10 @@
 * Sensitive variables to ENV vars, using `python-dotenv`
 * ~~Add a 'like' option to a post~~ `Functionality added, no option to 'unlike'
   post (yet)
-* Implement the 'Popular Posts' sidebar section. This will need to wait until
-  the 'likes' functionality is complete. ~~Also start logging unique page views
-  somehow to help with this.~~
+* ~~Implement the 'Popular Posts' sidebar section
+  [[#32](https://github.com/seapagan/myblog/issues/32)]. This will need to wait
+  until the 'likes' functionality is complete. Also start logging unique page
+  views somehow to help with this.~~
 * ~~Add draft mode for new posts~~
 * Add a future post mode. Can use the background module to daily check for any
   future published posts and publish them.
@@ -50,6 +51,8 @@
 
 ### Misc Bugs / Fixes / Ideas
 
+* Move the 'New post' above 'Profile' in the User sidebar, in fact make it top,
+  with a spaced below?
 * ~~When a draft post is published, the created_at date should be set to current
   date/time, not left at the original creation time.
   [[#24](https://github.com/seapagan/myblog/issues/24)]~~ [`Fixed`]

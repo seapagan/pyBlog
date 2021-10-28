@@ -54,7 +54,7 @@ class PostDetailView(HitCountDetailView):
         return obj
 
 
-class NewPostView(UserPassesTestMixin, LoginRequiredMixin, CreateView):
+class NewPostView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     """Add a new post to the Blog."""
 
     model = Blog

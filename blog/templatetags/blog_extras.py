@@ -42,7 +42,9 @@ def sidebar():
     popular_posts = (
         Blog.objects.all()
         .exclude(draft=True)
-        .order_by("-hit_count_generic__hits", "-total_upvotes")[:6]
+        .order_by("-hit_count_generic__hits", "-total_upvotes", "-created_at")[
+            :6
+        ]
     )
     context["popular"] = popular_posts
     return context

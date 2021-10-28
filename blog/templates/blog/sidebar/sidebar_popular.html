@@ -1,2 +1,16 @@
+{% load blog_extras %}
+{% sidebar as sb %}
+
 <div class="sidebar_article_header">Popular Posts</div>
-<div class="sidebar_article_content">Content</div>
+<div class="sidebar_article_content">
+
+  {% if sb.popular %}
+  {% for post in sb.popular %}
+  <a href="{% url 'blog:detail' post.slug %}"
+    class="sidebar_link">{{ post.title|capfirst}}</a>
+  {% endfor %}
+  {% else %}
+  <div class="sidebar_no_content">None Yet!</div>
+  {% endif %}
+
+</div>

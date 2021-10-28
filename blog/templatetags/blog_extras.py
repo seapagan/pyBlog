@@ -1,4 +1,4 @@
-"""Custom tag to remove draft posts in a template."""
+"""Several custom Template tags to make things easier."""
 from django import template
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -27,9 +27,31 @@ def no_draft(tag_posts, user=None):
 def sidebar():
     """Provide extra information needed for the sidebar."""
     context = {}
+
     # Return first 5 posts in the database.
-    context["posts"] = Blog.objects.all().order_by("-created_at")[:5]
+    context["posts"] = (
+        Blog.objects.all().exclude(draft=True).order_by("-created_at")[:6]
+    )
+
+    # Return all Tags.
     # will later most likely restrict tags to the top 20 or so tags sorted by
     # number of related posts, for now send all.
     context["tags"] = Tag.objects.all().order_by(Lower("tag_name"))
+
+    # set a filtered context for popular posts, sorted by views then likes.
+    popular_posts = (
+        Blog.objects.all()
+        .exclude(
+            Q(draft=True)
+            | Q(hit_count_generic__hits=0)
+            | Q(hit_count_generic__hits=None)
+        )
+        .order_by("-hit_count_generic__hits", "-total_upvotes", "-created_at")
+    )
+    context["popular"] = popular_posts
+
+    #  empty each context (for troubleshooting)
+    # context["posts"] = ()
+    # context["tags"] = ()
+    # context["popular"] = ()
     return context

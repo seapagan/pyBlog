@@ -3,10 +3,12 @@
 
 <div class="sidebar_article_header">Recent Posts</div>
 <div class="sidebar_article_content">
+  {% if sb.posts %}
   {% for post in sb.posts %}
-  {% if not post.draft %}
   <a href="{% url 'blog:detail' post.slug %}"
     class="sidebar_link">{{ post.title|capfirst}}</a>
-  {% endif %}
   {% endfor %}
+  {% else %}
+  <div class="sidebar_no_content">No Posts yet</div>
+  {% endif %}
 </div>

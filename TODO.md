@@ -90,10 +90,12 @@
 * Image upload support is working, however I would like to be able to save the
   images under the `/media/posts/[slug]` folder like the post header image.
 * Detect the users timezone and display date/time formats properly.
-* Add user login/logout/register functionality, though register should be by
+* ~~Add user login/logout/register functionality, though register should be by
   invitation not open to all. [`Working. Register function currently allows
   people to register and make posts but this will need to be changed to only
-  superusers can make posts or a new 'poster' permission before release.`]
+  superusers can make posts or a new 'poster' permission before release.`]~~
+  [`Done`] Only superusers or users with the 'author' flag in their profile can
+  create New posts.
 * ~~define tag on the body that can wrap the start of the article, which can be
   displayed on the main index page list, followed by a 'read more' button. Can
   do fancy styling to fade the last few lines etc too.~~ Just using the
@@ -116,8 +118,8 @@
   Facebook etc to give proper share summarys
 * Toggle (from manage.py) to disable the native Django front end completely if
   required, so an external one can use the API (maybe make into a plugin app?)
-* sort out different WYSIWYG editor placeholders depending if we are creating
-  a post or a comment
+* ~~sort out different WYSIWYG editor placeholders depending if we are creating
+  a post or a comment~~
 * add `rel=canonical` to \<head\> where it fits, to avoid google tagging ie
   pagainated pages as different
 * add site metadata, custom search tags eg for each post, generic ones for the

@@ -230,6 +230,7 @@ CKEDITOR_CONFIGS = {
             ]
         ),
         "format_tags": "p;h2;h3;h4;pre;address;div",
+        "editorplaceholder": "Start typing something great!",
     },
     "comment": {
         "width": "auto",
@@ -264,6 +265,7 @@ CKEDITOR_CONFIGS = {
             ]
         ),
         "format_tags": "p;h2;h3;h4;pre;address;div",
+        "editorplaceholder": "Enter your Comment. Please be polite and thoughtful to others.",
     },
 }
 

@@ -41,10 +41,15 @@ def sidebar():
     # set a filtered context for popular posts, sorted by views then likes.
     popular_posts = (
         Blog.objects.all()
-        .exclude(draft=True)
+        .exclude(Q(draft=True) | Q(hit_count_generic__hits=0))
         .order_by("-hit_count_generic__hits", "-total_upvotes", "-created_at")[
             :6
         ]
     )
     context["popular"] = popular_posts
+
+    #  empty each context (for troubleshooting)
+    # context["posts"] = ()
+    # context["tags"] = ()
+    # context["popular"] = ()
     return context

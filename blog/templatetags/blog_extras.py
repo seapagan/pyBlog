@@ -21,6 +21,15 @@ def no_draft(tag_posts, user=None):
     return filtered
 
 
+@register.filter()
+def by_hits(posts):
+    """Sort the posts Queryset by hits."""
+    print("in hits filter")
+    return posts.order_by(
+        "-hit_count_generic__hits", "-total_upvotes", "-created_at"
+    )
+
+
 # the below tag is used in the sidebar to pass extra context that is needed to
 # get the sidebar to work.
 @register.simple_tag

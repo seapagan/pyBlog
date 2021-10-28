@@ -1,7 +1,9 @@
 {% extends 'blog/_base.html' %}
+{% load blog_extras %}
+
 
 {% block body %}
-{% with tag.posts.all as posts %}
+{% with tag.posts.all|by_hits as posts %}
 {% if posts %}
 <div class="tags_header"><span>The following Posts are tagged
     as</span><span class="sidebar_tag">{{ tag.tag_name }}</span>

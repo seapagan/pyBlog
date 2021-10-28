@@ -10,7 +10,7 @@
     <span class="tag_list_tag"><a class="sidebar_tag"
         href="{% url 'blog:tag_detail' tag.slug %}">{{ tag }}</a></span>
     <div class="tag_list_post_list">
-      {% with tag.posts.all|no_draft:user as posts %}
+      {% with tag.posts.all|no_draft:user|by_hits as posts %}
       {% if posts %}
       <div>
         {% for post in posts|slice:":6" %}

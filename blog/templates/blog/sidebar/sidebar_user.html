@@ -4,10 +4,12 @@
   {% endif %}
 </div>
 <div class="sidebar_article_content sidebar_user">
+  {% if user.is_staff %}
   <a href="{% url 'blog:add_post' %}" class="sidebar_link"><i
       class="fad fa-file-alt"></i>&nbsp;New Post</a>
-  {% if user.is_authenticated %}
   <hr class="sidebar_separator">
+  {% endif %}
+  {% if user.is_authenticated %}
   {% if not request.get_full_path == '/' %}
   <a class="sidebar_link" href="{% url 'blog:index' %}"><i
       class="fad fa-home"></i>&nbsp;Home</a>

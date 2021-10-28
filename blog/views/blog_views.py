@@ -1,7 +1,7 @@
 """Define the views for the Blog Model."""
 from datetime import datetime
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models.functions import Lower
 from django.http.response import Http404
 from django.urls.base import reverse, reverse_lazy
@@ -53,7 +53,7 @@ class PostDetailView(HitCountDetailView):
         return obj
 
 
-class NewPostView(LoginRequiredMixin, CreateView):
+class NewPostView(UserPassesTestMixin, LoginRequiredMixin, CreateView):
     """Add a new post to the Blog."""
 
     model = Blog
@@ -99,6 +99,9 @@ class NewPostView(LoginRequiredMixin, CreateView):
         context["page_title"] = "New Post"
 
         return context
+
+    def test_func(self):
+        return self.request.user.is_staff
 
 
 class EditPostView(LoginRequiredMixin, UpdateView):

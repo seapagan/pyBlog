@@ -14,7 +14,7 @@ def get_profile_context(profile_object):
     """Take the profile links and return a fuller dictionary."""
     my_profile = Profile.objects.filter(user=profile_object).values()[0]
     # remove certain fields that we dont want
-    unwanted = ["id", "user_id", "user", "image", "location"]
+    unwanted = ["id", "user_id", "user", "image", "location", "author"]
     my_copy = my_profile.copy()
     for item in my_copy:
         if item in unwanted:

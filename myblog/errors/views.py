@@ -22,7 +22,6 @@ def custom403(request, exception=None):
     """Create a custom 403 view, so we can add the page title context."""
     context = {"page_title": "Permission Denied!"}
     return render(request, "403.html", context, status=403)
-    return
 
 
 def custom404(request, exception=None):

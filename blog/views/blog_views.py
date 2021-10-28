@@ -2,8 +2,9 @@
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.exceptions import PermissionDenied
 from django.db.models.functions import Lower
-from django.http.response import Http404
+from django.http import Http404
 from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
@@ -101,7 +102,10 @@ class NewPostView(UserPassesTestMixin, LoginRequiredMixin, CreateView):
         return context
 
     def test_func(self):
-        return self.request.user.is_staff
+        """Determine if we have the author permission or are superuser."""
+        return (
+            self.request.user.profile.author or self.request.user.is_superuser
+        )
 
 
 class EditPostView(LoginRequiredMixin, UpdateView):
@@ -178,9 +182,11 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         obj = super(EditPostView, self).get_object()
         if (
             not obj.user == self.request.user
+            or not obj.user.profile.author
             and not self.request.user.is_superuser
         ):
-            raise Http404("You Dont have permission to do that!")
+            # raise Http404("You Dont have permission to do that!")
+            raise PermissionDenied
         return obj
 
 
@@ -207,7 +213,9 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
         obj = super(DeletePostView, self).get_object()
         if (
             not obj.user == self.request.user
+            or not obj.user.profile.author
             and not self.request.user.is_superuser
         ):
-            raise Http404("You Dont have permission to do that!")
+            # raise Http404("You Dont have permission to do that!")
+            raise PermissionDenied
         return obj

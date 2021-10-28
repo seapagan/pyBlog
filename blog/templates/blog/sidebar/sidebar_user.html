@@ -4,7 +4,7 @@
   {% endif %}
 </div>
 <div class="sidebar_article_content sidebar_user">
-  {% if user.is_staff %}
+  {% if user.profile.author or user.is_superuser %}
   <a href="{% url 'blog:add_post' %}" class="sidebar_link"><i
       class="fad fa-file-alt"></i>&nbsp;New Post</a>
   <hr class="sidebar_separator">

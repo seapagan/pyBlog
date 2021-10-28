@@ -26,6 +26,9 @@ class Profile(models.Model):
     youtube_user = models.CharField(max_length=50, blank=True, default="")
     twitter_user = models.CharField(max_length=50, blank=True, default="")
 
+    # set to true if the user can Author posts.
+    author = models.BooleanField(default=False)
+
     def __str__(self):
         """Return the string representation of this model."""
         return self.user.username

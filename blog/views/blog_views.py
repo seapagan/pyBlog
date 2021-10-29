@@ -25,7 +25,7 @@ class IndexClassView(ListView):
     model = Blog
 
     def get_context_data(self, **kwargs):
-        """Add tags to this context, so we can use in the sidebar."""
+        """Add page title to the context."""
         context = super(IndexClassView, self).get_context_data(**kwargs)
         context["page_title"] = preferences.SitePreferences.heading
 
@@ -40,7 +40,7 @@ class PostDetailView(HitCountDetailView):
     count_hit = True
 
     def get_context_data(self, **kwargs):
-        """Add every post to this context, so we can use in the sidebar."""
+        """Add page title to the context."""
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context["page_title"] = self.object.title.capitalize()
 
@@ -95,7 +95,7 @@ class NewPostView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
-        """Add every post and tag to context, so we can use in the sidebar."""
+        """Add page title to the context."""
         context = super(NewPostView, self).get_context_data(**kwargs)
         context["page_title"] = "New Post"
 
@@ -163,7 +163,7 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         return initial
 
     def get_context_data(self, **kwargs):
-        """Add every post and tag to context, so we can use in the sidebar."""
+        """Add page title to the context."""
         context = super(EditPostView, self).get_context_data(**kwargs)
         context["page_title"] = self.object.title.capitalize()
 
@@ -200,7 +200,7 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("blog:index")
 
     def get_context_data(self, **kwargs):
-        """Add every post to this context, so we can use in the sidebar."""
+        """Add page title to the context."""
         context = super(DeletePostView, self).get_context_data(**kwargs)
         context["page_title"] = self.object.title.capitalize()
 

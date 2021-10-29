@@ -221,6 +221,7 @@ CKEDITOR_CONFIGS = {
             ["Maximize"],
             ["Preview"],
         ],
+        "removePlugins": "exportpdf",
         "extraPlugins": ",".join(
             [
                 "codesnippet",
@@ -256,6 +257,7 @@ CKEDITOR_CONFIGS = {
             ["Maximize"],
             ["Preview"],
         ],
+        "removePlugins": "exportpdf",
         "extraPlugins": ",".join(
             [
                 "codesnippet",

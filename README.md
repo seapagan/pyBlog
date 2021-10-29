@@ -49,6 +49,8 @@ into the project.
   post and more through the Database. This allows very easy customisation
   without needing to change the code. All styling is through CSS classes so easy
   to change the look too.
+- Sensitive variables (Secret, database credentials etc) are taken from ENV
+  variables or `.env` file if it exists
 
 ### Minimum required before Release
 
@@ -57,11 +59,10 @@ into the project.
 - ReCaptcha or similar on the new comment form.
 - Tidy up new comment form for anonymous users.
 - Add Timezone support so the user sees all times in his local timezone.
-- Disable Django own admin in Production mode - remove the app and urls. This is
-  already done, though I may want to add the ability for certain trusted IP to
-  still access if needed.
-- Sensitive variables (Secret, database login etc) moved to ENV variables and
-  taken out the code.
+- Disable Django's own admin in Production mode - (completely - the admin app
+  and urls are not even loaded). `This is already done`, though I may want to
+  add the ability for certain trusted IP to still access if needed.
+
 - Some small tweaks needed to the CSS on smaller screens
 - Implement code minimization and tidy up the CSS, probably refactor as PostCSS
 

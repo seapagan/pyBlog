@@ -54,6 +54,8 @@
 
 * ~~Move the 'New post' above 'Profile' in the User sidebar, in fact make it top,
   with a spaced below?~~
+* On new/edit post if no existing tags, say 'None'. Also, curently the New and
+  Edit post pages dont show any tags(will be due to the sidbar context change.)
 * ~~When a draft post is published, the created_at date should be set to current
   date/time, not left at the original creation time.
   [[#24](https://github.com/seapagan/myblog/issues/24)]~~ [`Fixed`]

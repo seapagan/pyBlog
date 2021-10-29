@@ -34,8 +34,6 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.0.10"]
 
 # Application definition
 INSTALLED_APPS = [
-    # "django.contrib.admin",
-    # "myblog.apps.MyAdminConfig",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",

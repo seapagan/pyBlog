@@ -7,16 +7,11 @@ from django.urls import include, path
 
 from users import views as user_views
 
-urlpatterns = []
-# only include the Admin paths if we are in DEBUG mode
-if settings.DEBUG:
-    urlpatterns += [path("admin/", admin.site.urls)]
-
 handler503 = "myblog.errors.views.maintenance_mode"
 handler403 = "myblog.errors.views.custom403"
 handler404 = "myblog.errors.views.custom404"
 
-urlpatterns += (
+urlpatterns = (
     [
         path("", include("blog.urls")),
         path("register/", user_views.register, name="register"),
@@ -46,3 +41,7 @@ urlpatterns += (
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 )
+
+# only include the Admin paths if we are in DEBUG mode
+if settings.DEBUG:
+    urlpatterns = [path("admin/", admin.site.urls)] + urlpatterns

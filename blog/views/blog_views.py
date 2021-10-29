@@ -180,14 +180,15 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         Also can edit if they are a superuser.
         """
         obj = super(EditPostView, self).get_object()
+        # if obj.user == self.request.user or self.request.user.is_superuser:
+        #     return obj
+
         if (
-            not obj.user == self.request.user
-            or not obj.user.profile.author
-            and not self.request.user.is_superuser
-        ):
-            # raise Http404("You Dont have permission to do that!")
-            raise PermissionDenied
-        return obj
+            obj.user == self.request.user and self.request.user.profile.author
+        ) or self.request.user.is_superuser:
+            return obj
+
+        raise PermissionDenied
 
 
 class DeletePostView(LoginRequiredMixin, DeleteView):
@@ -208,14 +209,13 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
     def get_object(self, queryset=None):
         """Ensure that the current logged in user owns the post.
 
+        They must also still be tagged as an Author in their profile.
         Also can delete if they are a superuser.
         """
         obj = super(DeletePostView, self).get_object()
         if (
-            not obj.user == self.request.user
-            or not obj.user.profile.author
-            and not self.request.user.is_superuser
-        ):
-            # raise Http404("You Dont have permission to do that!")
-            raise PermissionDenied
-        return obj
+            obj.user == self.request.user and self.request.user.profile.author
+        ) or self.request.user.is_superuser:
+            return obj
+
+        raise PermissionDenied

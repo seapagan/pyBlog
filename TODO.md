@@ -32,6 +32,7 @@
 * ~~Implement a maintenance mode to temporarily disable the whole app if
   needed.~~ [`Done`] Logged in users of staff or higher can still see the site,
   and the admin. Logged out or lower get the 503 page.
+* Add search fuinctionality
 * Testing. Seriously, lots and lots of testing. Just DO It.
 
 ### Comments

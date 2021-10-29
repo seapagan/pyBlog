@@ -1,6 +1,8 @@
 {% extends 'blog/_base.html' %}
 
 {% block body %}
+{% load blog_extras %}
+{% sidebar as sb %}
 <div class="new_post_wrapper">
   <div class="new_post_user">You are Logged in as <b>{{ user.username }}</b>
   </div>
@@ -15,9 +17,13 @@
     {% endfor %}
     <div class="new_post_tags">
       Existing Tags :&nbsp;
-      {% for tag in tags %}
+      {% if sb.tags %}
+      {% for tag in sb.tags %}
       <span class="sidebar_tag">{{ tag.tag_name}}</span>
       {% endfor %}
+      {% else %}
+      No Tags Defined yet
+      {% endif %}
     </div>
     <div class="new_post_buttons">
       <button class="btn btn_alt" type="submit" name="draft" value="Draft"><i

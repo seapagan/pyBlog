@@ -1,11 +1,12 @@
 {% extends 'blog/_base.html' %}
 
-{% block body %}
 
+{% block body %}
+{% load blog_extras %}
+{% sidebar as sb %}
 <div class="edit_post_wrapper">
   <div class="edit_post_user">You are Logged in as <b>{{ user.username }}</b>
   </div>
-
   <div class="edit_post_title">Editing Post : <i>"{{ blog.title }}"</i></div>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -18,12 +19,15 @@
     {% endfor %}
     <div class="edit_post_tags">
       Existing Tags :&nbsp;
-      {% for tag in tags %}
+      {% if sb.tags %}
+      {% for tag in sb.tags %}
       <span class="sidebar_tag">{{ tag.tag_name}}</span>
       {% endfor %}
+      {% else %}
+      No Tags Defined yet
+      {% endif %}
     </div>
     <div class="edit_post_buttons">
-
       {% if blog.draft %}
       <button class="btn btn_success" type="submit" name="publish"
         value="Publish"><i
@@ -38,6 +42,5 @@
           class="fad fa-ban"></i>&nbsp;Cancel</a>
     </div>
   </form>
-
 </div>
 {% endblock body %}

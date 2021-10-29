@@ -52,6 +52,8 @@
 
 ### Misc Bugs / Fixes / Ideas
 
+* If no posts, produce a 'holding pattern' screen instead of empty pagination
+  controls.
 * ~~Move the 'New post' above 'Profile' in the User sidebar, in fact make it
   top, with a spacer below?~~
 * ~~On new/edit post if no existing tags, say 'None'. Also, curently the New and

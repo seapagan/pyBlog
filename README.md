@@ -91,10 +91,27 @@ From the root of the checked out repository.
 pip install -r requirements.txt
 ```
 
+### Set up the .env file
+
+Some of the more secret settings are kept in a .env file which will not be
+placed in source control. There is a file `.env.example` in the project root -
+rename this to `.env` and set the values as you need. First you definately want
+to generate a new SECRET_KEY!
+This layout is fine for developement mode.
+
+In Production, If you are self hosting your app, and the server is secure you
+can keep the .env file and it will be used in Production. However, with services
+that support ENV variables (eg Heroku, Netlify and more) it is better to define
+the variables in their own interfaces. Also make sure that the .env file CANNOT
+simply be loaded using a web browser! It is possible to use the AWS 'Parameter
+Store', GCS 'Secret Manager', Hashicorp 'Vault' or others for your production
+env.
+
 ### Migrate the database
 
 You will need to adjust the database settings to your own needs, the application
-defaults to using a file-based `SQLite` database.
+currently defaults to using a file-based `SQLite` database, though this will be
+changed to Postgresql when development is complete.
 
 ```bash
 python manage.py migrate
@@ -103,7 +120,7 @@ python manage.py migrate
 ### Run the Development server
 
 The application defaults to **Production** mode unless the `DEBUG` variable is set
-to 1
+to 1 (you can also set this in the .env file)
 
 ```bash
 DEBUG=1 python manage.py runserver

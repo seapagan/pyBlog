@@ -38,13 +38,23 @@ into the project.
   sumary and each posts detail page. If the image is not specified, a default
   will be used.
 - Pagination of posts and Comments
-- Ability to 'Pin' a single post at the top of the first page to give it exposure.
+- Ability to 'Pin' a single post at the top of the first page to give it
+  exposure.
 - Post URL's use a 'slug' created from the post title, helping with SEO.
+- URLS's are protected by Authentication/Authorization and custom 403/404 views
+  have been implemented.
+- Site maintenance functionality - the whole site will be blocked with an
+  informative page when enabled, except for logged in 'Staff' user or above.
+- Site preferences module integrated, which sets the site Name, Tagline, Pinned
+  post and more through the Database. This allows very easy customisation
+  without needing to change the code. All styling is through CSS classes so easy
+  to change the look too.
 
 ### Minimum required before Release
 
 - Implement site search functionality - the search UI is already there.
 - Add proper Testing.
+- ReCaptcha or similar on the new comment form.
 - Tidy up new comment form for anonymous users.
 - Add Timezone support so the user sees all times in his local timezone.
 - Disable Django own admin in Production mode - remove the app and urls. This is
@@ -61,6 +71,8 @@ into the project.
   only be able to access Blog admin, not the Django admin site.)
 - Add 'Series' functionality where a set of posts can be grouped numerically and
   accessed as such.
+- API to allow this backend to be used by totally separate frontend, Token Auth
+  where needed.
 - Add list of other recommended posts at the bottom of each post, calculated on
   post tags and popularity.
 - Add a future post mode. Can use the background module to daily check for any

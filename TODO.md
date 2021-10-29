@@ -52,10 +52,11 @@
 
 ### Misc Bugs / Fixes / Ideas
 
-* ~~Move the 'New post' above 'Profile' in the User sidebar, in fact make it top,
-  with a spaced below?~~
-* On new/edit post if no existing tags, say 'None'. Also, curently the New and
-  Edit post pages dont show any tags(will be due to the sidbar context change.)
+* ~~Move the 'New post' above 'Profile' in the User sidebar, in fact make it
+  top, with a spacer below?~~
+* ~~On new/edit post if no existing tags, say 'None'. Also, curently the New and
+  Edit post pages dont show any tags(will be due to the sidebar context
+  change.)~~
 * ~~When a draft post is published, the created_at date should be set to current
   date/time, not left at the original creation time.
   [[#24](https://github.com/seapagan/myblog/issues/24)]~~ [`Fixed`]
@@ -79,15 +80,15 @@
 * ~~Dynamic page titles~~
 * ~~Add a user section in the sidebar (also holding login/register links if not
   logged in). Will allow to create a new post, edit profile etc.~~
-* zap up the profile, allow ~~display of social links, and~~ to edit User settings
-  etc.
+* zap up the profile, allow ~~display of social links, and~~ to edit User
+  settings etc.
 * ~~Header is messed up when looking at someone else profile when you are logged
   in or out, it displays the header as if you are logged in as that user (ie the
   avatar and logout display)~~
 * ~~redundant code in `blog_edit_post.html` to check if logged in. If not logged
   in, this page is inaccesible anyway d/t view permissions.~~
-* ~~buttons missing or not working in the markdown WYSIWYG editor **UPDATE This is
-  due to incompatibility with FontAwesome. Need to find an alternative
+* ~~buttons missing or not working in the markdown WYSIWYG editor **UPDATE This
+  is due to incompatibility with FontAwesome. Need to find an alternative
   HTML/Markup editor or a different Icon source.**~~ [`FIXED`] - swapped to HTML
   and CKEditor plugin. Removed all Markdown support from the applciation.
 * Image upload support is working, however I would like to be able to save the

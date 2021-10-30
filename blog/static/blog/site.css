@@ -1247,7 +1247,7 @@ nav a {
     width: 100%;
     margin: 0.5em 0;
     border: none;
-    border-radius: none;
+    border-radius: 0;
   }
 
   .main_container {

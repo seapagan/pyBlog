@@ -152,6 +152,28 @@ body {
   padding: 0 1em;
 }
 
+.no_posts_yet {
+  display: grid;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 40%;
+  font-size: 3em;
+  margin: 0 auto;
+}
+
+.no_posts_strong {
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+.no_posts_site {
+  font-family: "Big Shoulders Stencil Display", cursive;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+}
+
 .sidebar_container {
   display: flex;
   flex-direction: column;
@@ -1201,6 +1223,12 @@ nav a {
 
   .nav_toggle_label {
     display: flex;
+  }
+
+  .no_posts_yet {
+    font-size: 2em;
+    width: 70%;
+    height: 50vh;
   }
 }
 

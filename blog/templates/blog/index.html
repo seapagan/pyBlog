@@ -14,6 +14,9 @@
 </div>
 {% endif %}
 
+
+{% if blogs %}
+
 {% for blog in blogs %}
 {% include 'blog/_single_post_summary.html' %}
 {% endfor %}
@@ -42,6 +45,16 @@
     {% endif %}
   </span>
 </div>
-
+{% else %}
+<div class="no_posts_yet">
+  <div>
+    There have been <span class="no_posts_strong">No
+      Posts</span> made to
+    <span
+      class="no_posts_site">{{ preferences.SitePreferences.sitename }}</span>
+    (yet!).
+  </div>
+</div>
+{% endif %}
 
 {% endblock body %}

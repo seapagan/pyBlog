@@ -40,6 +40,14 @@ body {
   font-size: 1.2em;
 }
 
+.maintenance_wrapper {
+  padding: 1em;
+  background-color: pink;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
 .noscript_strong {
   font-weight: bold;
 }

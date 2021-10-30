@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     "ckeditor",
     "ckeditor_uploader",
     "dj_pagination",
-    "maintenancemode",
+    "maintenance_mode",
     "secretballot",
     "likes",
     "blog",
@@ -65,7 +65,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "maintenancemode.middleware.MaintenanceModeMiddleware",
+    "maintenance_mode.middleware.MaintenanceModeMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "dj_pagination.middleware.PaginationMiddleware",
@@ -84,6 +84,7 @@ TEMPLATES = [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
+                "maintenance_mode.context_processors.maintenance_mode",
                 "django.contrib.messages.context_processors.messages",
                 "preferences.context_processors.preferences_cp",
             ],
@@ -274,11 +275,14 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-# Settings for Maintenance Mode. We will actually control it from the managment
-# command, but setting th ebelow to True will do the same.
-MAINTENANCE_MODE = False
-
 # Secret Ballot settings.
 SECRETBALLOT_FOR_MODELS = {
     "blog.Blog": {},
 }
+
+# Settings for the maintenance_mode plugin
+MAINTENANCE_MODE_IGNORE_STAFF = True
+MAINTENANCE_MODE_IGNORE_SUPERUSER = True
+MAINTENANCE_MODE_STATE_BACKEND = (
+    "maintenance_mode.backends.DefaultStorageBackend"
+)

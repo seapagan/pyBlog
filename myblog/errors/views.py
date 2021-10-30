@@ -2,7 +2,8 @@
 
 from django.shortcuts import render
 from django.template.loader import render_to_string
-from maintenancemode import http
+from maintenance_mode import http
+from maintenance_mode.core import get_maintenance_mode, set_maintenance_mode
 from preferences import preferences
 
 
@@ -16,6 +17,13 @@ def maintenance_mode(request, template_name="503.html"):
     return http.HttpResponseTemporaryUnavailable(
         render_to_string(template_name, context)
     )
+
+
+def toggle_maintenance(request):
+    if get_maintenance_mode():
+        set_maintenance_mode(False)
+    else:
+        set_maintenance_mode(True)
 
 
 def custom403(request, exception=None):

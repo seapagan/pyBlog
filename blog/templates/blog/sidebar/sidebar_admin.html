@@ -11,5 +11,13 @@
   <a class="sidebar_link" href="">Moderate Tags</a>
   {% endif %}
   <hr class="sidebar_separator">
-  <a class="sidebar_link sidebar_danger" href="">Maintenance Mode</a>
+  {% if maintenance_mode %}
+  <a class="sidebar_link sidebar_danger" href="/maintenance-mode/off/"
+    data-no-instant>Exit
+    Maintenance</a>
+  {% else %}
+  <a class="sidebar_link sidebar_danger" href="/maintenance-mode/on/"
+    data-no-instant>Maintenance Mode</a>
+
+  {% endif %}
 </div>

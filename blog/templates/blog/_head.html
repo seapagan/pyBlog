@@ -7,6 +7,7 @@
     content="width=device-width, initial-scale=1 maximum-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://code.jquery.com">
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
@@ -17,10 +18,10 @@
   <link rel="shortcut icon" href="{% static 'blog/favicon.png' %}"
     type="image/x-icon">
   <script type="text/javascript"
-    src="https://code.jquery.com/jquery-3.6.0.min.js">
+    src="https://code.jquery.com/jquery-3.6.0.min.js" defer>
   </script>
-  <script src="{% static 'fontawesomepro/js/all.min.js' %}"></script>
-  <script
+  <script defer src="{% static 'fontawesomepro/js/all.min.js' %}"></script>
+  <script defer
     src="{% static 'ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js' %}">
   </script>
   <link rel="stylesheet" href="{% static 'prism/prism.css' %}">

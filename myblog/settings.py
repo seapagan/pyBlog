@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     "django_gravatar",
     "ckeditor",
     "ckeditor_uploader",
-    "fontawesomepro",
     "dj_pagination",
     "maintenancemode",
     "secretballot",

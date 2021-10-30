@@ -97,8 +97,20 @@ pip install -r requirements.txt
 Some of the more secret settings are kept in a .env file which will not be
 placed in source control. There is a file `.env.example` in the project root -
 rename this to `.env` and set the values as you need. First you definately want
-to generate a new SECRET_KEY!
-This layout is fine for developement mode.
+to generate a new SECRET_KEY and set up the database login details :
+
+```
+# set our secret key. Go to https://djecrety.ir/ to generate a good one
+SECRET_KEY="this_is_not_very_secret"
+
+# set up Database Users. We will be using Postgresql and this should already
+# exist with the correct user and password
+BLOG_DB_USER=
+BLOG_DB_PASSWORD=
+BLOG_DB_NAME=
+BLOG_DB_HOST=
+BLOG_DB_PORT=
+```
 
 In Production, If you are self hosting your app, and the server is secure you
 can keep the .env file and it will be used in Production. However, with services

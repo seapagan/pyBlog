@@ -52,6 +52,7 @@
 
 ### Misc Bugs / Fixes / Ideas
 
+* ~~profile has double scrollbar on small screens~~
 * If the user has no custom User image, the profile page should show the
   gravatar of the user if it exists, then show the default user image. At the
   moment it wont check for a gravatar.

@@ -820,6 +820,7 @@ input#id_password1,
 input#id_password2 {
   border-radius: 5px;
   padding: 5px;
+  background-color: rgba(250, 250, 210, 0.548);
 }
 
 .profile_page_wrapper {

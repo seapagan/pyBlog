@@ -18,9 +18,14 @@
 <div class="embedded_search">
   {% include 'blog/sidebar/sidebar_search.html' %}
 </div>
+{% with preferences.SitePreferences.pinned_post as pinned %}
 {% for blog in blogs %}
+{% if not page_obj.has_previous and blog != pinned %}
 {% include 'blog/_single_post_summary.html' %}
+{% endif %}
 {% endfor %}
+{% endwith %}
+
 <div class="pagination">
   <span class="step-links">
     {% if page_obj.has_previous %}

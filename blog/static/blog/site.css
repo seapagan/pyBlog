@@ -1201,7 +1201,7 @@ nav a {
 
   .embedded_search {
     display: block;
-    padding: 1em 1em;
+    padding: 0.5em 0;
   }
 
   .embedded_search .sidebar_search_form {

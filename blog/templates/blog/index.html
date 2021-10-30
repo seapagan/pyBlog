@@ -14,9 +14,10 @@
 </div>
 {% endif %}
 
-
 {% if blogs %}
-
+<div class="embedded_search">
+  {% include 'blog/sidebar/sidebar_search.html' %}
+</div>
 {% for blog in blogs %}
 {% include 'blog/_single_post_summary.html' %}
 {% endfor %}

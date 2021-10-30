@@ -82,8 +82,6 @@
       </div>
       <div class="profile_comments_body">{{ comment.body|safe }}</div>
       <div class="profile_comments_date">
-        {% comment %} {{ comment.created_at|date:"d M Y, G:H:s" }}
-        {% endcomment %}
         {{ comment.created_at}}
       </div>
     </div>
@@ -92,5 +90,4 @@
     {% endif %}
     {% endwith %}
   </div>
-</div>
-{% endblock body %}
+  {% endblock body %}

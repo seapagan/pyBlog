@@ -1368,4 +1368,10 @@ nav a {
   .custom_error_text {
     font-size: 2em;
   }
+
+  .tags_header,
+  .tags_no_tags_text {
+    display: block;
+    text-align: center;
+  }
 }

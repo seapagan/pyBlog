@@ -15,9 +15,6 @@
       </div>
       {% endfor %}
       {% endif %}
-      <div class="embedded_search">
-        {% include 'blog/sidebar/sidebar_search.html' %}
-      </div>
       <div class="content_container">
         <main class="main_container">
           {% block body %}
@@ -35,6 +32,9 @@
         attr.removeAttribute('style');
       }
 
+    </script>
+    <script src="https://instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw">
     </script>
   </body>
 

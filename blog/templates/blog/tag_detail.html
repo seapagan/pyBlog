@@ -1,7 +1,6 @@
 {% extends 'blog/_base.html' %}
 {% load blog_extras %}
 
-
 {% block body %}
 {% with tag.posts.all|by_hits as posts %}
 {% if posts %}

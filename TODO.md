@@ -52,6 +52,12 @@
 
 ### Misc Bugs / Fixes / Ideas
 
+* ~~if we are on the first page, dont also display a post in the standard list if
+  it is also pinned.~~
+* ~~profile has double scrollbar on small screens~~
+* If the user has no custom User image, the profile page should show the
+  gravatar of the user if it exists, then show the default user image. At the
+  moment it wont check for a gravatar.
 * If no posts, produce a 'holding pattern' screen instead of empty pagination
   controls.
 * ~~Move the 'New post' above 'Profile' in the User sidebar, in fact make it

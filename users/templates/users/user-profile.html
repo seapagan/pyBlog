@@ -33,10 +33,11 @@
       </div>
     </div>
   </div>
+  {% with person.blog_posts.all as posts %}
+  {% if posts %}
   <div class="profile_post_wrapper">
     <div class="profile_post_section_title">Posts by
       {{ person.username|capfirst }}.</div>
-    {% with person.blog_posts.all as posts %}
     {% autopaginate posts 8 %}
     {% for post in posts %}
     <article>
@@ -58,18 +59,21 @@
     {% endfor %}
   </div>
   {% paginate %}
+  {% endif %}
   {% endwith %}
 
-  <hr class="profile_separator">
 
+  {% with person.comments.all as comments %}
+  {% if comments %}
+  <hr class="profile_separator">
   <div class="profile_comments_section">
     <div class="profile_section_title">Comments by
       {{ person.username|capfirst }}.</div>
-    {% with person.comments.all as comments %}
     {% autopaginate comments 4 %}
     {% for comment in comments %}
     <div class="profile_comments_wrapper">
       <div class="profile_comments_header">
+        On
         '<a class="profile_comments_title"
           href="{% url 'blog:detail' comment.related_post.slug%}">{{ comment.related_post.title|capfirst }}</a>'
         by
@@ -85,6 +89,7 @@
     </div>
     {% endfor %}
     {% paginate %}
+    {% endif %}
     {% endwith %}
   </div>
 </div>

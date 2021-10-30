@@ -152,6 +152,28 @@ body {
   padding: 0 1em;
 }
 
+.no_posts_yet {
+  display: grid;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 40%;
+  font-size: 3em;
+  margin: 0 auto;
+}
+
+.no_posts_strong {
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+.no_posts_site {
+  font-family: "Big Shoulders Stencil Display", cursive;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+}
+
 .sidebar_container {
   display: flex;
   flex-direction: column;
@@ -390,7 +412,7 @@ body {
 .blog_body_footer_left {
   display: flex;
   flex-direction: row;
-  gap: 0.5em;
+  gap: 0.1em;
 }
 
 .blog_body_footer.index {
@@ -576,12 +598,14 @@ body {
 .blog_comment_badge {
   align-self: center;
   font-size: 0.8em;
+  flex-shrink: 0;
 }
 
 .blog_post_views {
   align-self: center;
   font-size: 0.8em;
   color: var(--faded-text);
+  flex-shrink: 0;
 }
 
 .blog_comment_badge a {
@@ -820,6 +844,7 @@ input#id_password1,
 input#id_password2 {
   border-radius: 5px;
   padding: 5px;
+  background-color: rgba(250, 250, 210, 0.548);
 }
 
 .profile_page_wrapper {
@@ -1178,7 +1203,7 @@ nav a {
 
   .embedded_search {
     display: block;
-    padding: 1em 1em;
+    padding: 0.5em 0;
   }
 
   .embedded_search .sidebar_search_form {
@@ -1200,6 +1225,12 @@ nav a {
 
   .nav_toggle_label {
     display: flex;
+  }
+
+  .no_posts_yet {
+    font-size: 2em;
+    width: 70%;
+    height: 50vh;
   }
 }
 
@@ -1336,5 +1367,11 @@ nav a {
 
   .custom_error_text {
     font-size: 2em;
+  }
+
+  .tags_header,
+  .tags_no_tags_text {
+    display: block;
+    text-align: center;
   }
 }

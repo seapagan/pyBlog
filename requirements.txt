@@ -9,8 +9,8 @@ django-preferences>=1.0.0,<1.1.0
 # markdown-headdown>=0.1.3,<0.2.0
 django-doctor>=2.6.0,<2.7.0
 django-gravatar2>=1.4.4,<1.5.0
---extra-index-url https://dl.fontawesome.com/2691A127-5CA3-4D12-9472-192F1F9D4BFD/fontawesome-pro/python/simple/
-fontawesomepro>=5.15.4,<6.0.0
+# --extra-index-url https://dl.fontawesome.com/2691A127-5CA3-4D12-9472-192F1F9D4BFD/fontawesome-pro/python/simple/
+# fontawesomepro>=5.15.4,<6.0.0
 dj-pagination>=2.5.0,<2.6.0
 dj-hitcount>=1.1.0,<1.2.0
 django-ckeditor>=6.1.0,<6.2.0
@@ -18,3 +18,5 @@ django-maintenancemode>=0.11.7,<0.12.0
 django-secretballot>=2.0.0,<2.1.0
 django-likes>=2.0.1,<2.1.0
 python-dotenv>=0.19.1,<0.20.0
+gunicorn>=20.1.0,<20.2.0
+psycopg2>=2.9.1,<2.10.0

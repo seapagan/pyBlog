@@ -1,6 +1,11 @@
+{% load blog_extras %}
+{% sidebar as sb %}
+
+{% if sb.posts %}
 <article class="sidebar_article">
   {% include 'blog/sidebar/sidebar_search.html' %}
 </article>
+{% endif %}
 <article class="sidebar_article">
   {% include 'blog/sidebar/sidebar_recent.html' %}
 </article>

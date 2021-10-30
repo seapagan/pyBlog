@@ -25,6 +25,16 @@
     {% if user.is_superuser %}
     <hr>
     <li class="nav-link"><a href="">Site Admin</a></li>
+    {% if maintenance_mode %}
+    <li class="nav-link">
+      <a href="/maintenance-mode/off/" data-no-instant>Exit Maintenance</a>
+    </li>
+    {% else %}
+    <li class="nav-link">
+      <a class="nav-link" href="/maintenance-mode/on/"
+        data-no-instant>Maintenance Mode</a>
+    </li>
+    {% endif %}
     {% endif %}
   </ul>
 </nav>

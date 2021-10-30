@@ -9,7 +9,7 @@
   relevant functionality is written.
 * API to read / post Blog Posts and Comments, allowing a completely separate
   front end to be written and used.
-* Sensitive variables to ENV vars, using `python-dotenv`
+* ~~Sensitive variables to ENV vars, using `python-dotenv`~~
 * ~~Add a 'like' option to a post~~ `Functionality added, no option to 'unlike'
   post (yet)
 * ~~Implement the 'Popular Posts' sidebar section
@@ -31,7 +31,8 @@
   (if we have guest posters for example)
 * ~~Implement a maintenance mode to temporarily disable the whole app if
   needed.~~ [`Done`] Logged in users of staff or higher can still see the site,
-  and the admin. Logged out or lower get the 503 page.
+  and the admin. Logged out or lower get the 503 page. Need to link this to the
+  option in the sidebar.
 * Add search fuinctionality
 * Testing. Seriously, lots and lots of testing. Just DO It.
 
@@ -58,8 +59,8 @@
 * If the user has no custom User image, the profile page should show the
   gravatar of the user if it exists, then show the default user image. At the
   moment it wont check for a gravatar.
-* If no posts, produce a 'holding pattern' screen instead of empty pagination
-  controls.
+* ~~If no posts, produce a 'holding pattern' screen instead of empty pagination
+  controls.~~
 * ~~Move the 'New post' above 'Profile' in the User sidebar, in fact make it
   top, with a spacer below?~~
 * ~~On new/edit post if no existing tags, say 'None'. Also, curently the New and
@@ -77,8 +78,8 @@
   will need further styling when we redo the entire app.
 * ~~make sure front page link in sidebar doesn't show on front page.~~
 * Add Emoji reactions to posts and comments
-* More work needed on the form styles for small mobile devices.
-  [[#19](https://github.com/seapagan/myblog/issues/19)]
+* ~~More work needed on the form styles for small mobile devices.
+  [[#19](https://github.com/seapagan/myblog/issues/19)]~~
 * ~~Make a default post image to use if one is not specified~~ `functionality
   complete with a dummy placeholder image which will need replaced before going
   live`. Also offer default ones based on tag and predefined ones?

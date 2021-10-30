@@ -7,7 +7,6 @@ from django.urls import include, path
 
 from users import views as user_views
 
-handler503 = "myblog.errors.views.maintenance_mode"
 handler403 = "myblog.errors.views.custom403"
 handler404 = "myblog.errors.views.custom404"
 

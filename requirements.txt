@@ -20,3 +20,5 @@ django-likes>=2.0.1,<2.1.0
 python-dotenv>=0.19.1,<0.20.0
 gunicorn>=20.1.0,<20.2.0
 psycopg2>=2.9.1,<2.10.0
+django-user-sessions>=1.7.1,<1.8.0
+geoip2>=4.4.0,<4.5.0

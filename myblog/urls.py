@@ -37,6 +37,7 @@ urlpatterns = (
         path("ckeditor/", include("ckeditor_uploader.urls")),
         path("likes/", include("likes.urls")),
         path("maintenance-mode/", include("maintenance_mode.urls")),
+        path("", include("user_sessions.urls", "user_sessions")),
     ]
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -62,8 +62,6 @@ into the project.
 - Disable Django's own admin in Production mode - (completely - the admin app
   and urls are not even loaded). `This is already done`, though I may want to
   add the ability for certain trusted IP to still access if needed.
-
-- Some small tweaks needed to the CSS on smaller screens
 - Implement code minimization and tidy up the CSS, probably refactor as PostCSS
 
 ### Good to Have
@@ -78,11 +76,13 @@ into the project.
   post tags and popularity.
 - Add a future post mode. Can use the background module to daily check for any
   future published posts and publish them.
+- Two factor Authentication. Optional for normal users, compulsory for Staff,
+  Authors and Superuser.
 
 See the [TODO.md](TODO.md) in the root of this repository for full details of
 outstanding bugs and future plans.
 
-## Development
+## Installation and Usage
 
 From the root of the checked out repository.
 
@@ -99,7 +99,7 @@ placed in source control. There is a file `.env.example` in the project root -
 rename this to `.env` and set the values as you need. First you definately want
 to generate a new SECRET_KEY and set up the database login details :
 
-```
+```python
 # set our secret key. Go to https://djecrety.ir/ to generate a good one
 SECRET_KEY="this_is_not_very_secret"
 
@@ -130,6 +130,27 @@ changed to Postgresql when development is complete.
 python manage.py migrate
 ```
 
+### Create a Superuser
+
+The superuser will automatically have Author rights, which normal users
+registered to the app will not, so we need at least one. The Django default
+admin site is completely removed in a non-DEBUG setting.
+
+```bash
+python manage.py createsuperuser
+```
+
+### Download GeoIP data if required
+
+The sessions package can list the GeoIP data of your logged in users, however it
+needs you to download a couple of files that cannot be redistributed. See [This
+website][geo_data] for details. These 2 `.mmdb` files should be put in the
+`/geoip` directory of this repository. Without them, the sessions will simply
+not return location data.
+
+This option may also be used for later (anonymous) visitor profiling, nothing
+planned yet.
+
 ### Run the Development server
 
 The application defaults to **Production** mode unless the `DEBUG` variable is set
@@ -140,3 +161,33 @@ DEBUG=1 python manage.py runserver
 ```
 
 You can now access the application in your browser at `http://localhost:8000`
+
+### Maintenance mode
+
+The entire site can be locked down, returning a `503 Service Unavailable` error
+for all anonymous users, or any registered users below 'Staff' level. This can
+be done by the **Superuser only** from the sidebar or menu. It can also be done
+from the local teminal, in the Django project directory using the below
+managemnt commands :
+
+```bash
+python manage.py maintenance_mode <on|off>
+```
+
+During Maintenence mode, a banner is shown at the top of the screen to remind
+any logged in users that the site is unavailable to the public in general.
+
+[geo_data]: https://dev.maxmind.com/geoip/geolite2-free-geolocation-data
+
+### Running behind a Proxy
+
+If you are running the site behind an HTTP proxy (`Nginx` for example), it is
+posible the Geo-location wil not work, as the IP address will be blank or wrong.
+We would need to modify the `REMOTE_ADDR` HTTP header to use the address from
+`HTTP_X_FORWARDED_FOR`. There is a middleware installed in the application to do
+this, however it is disabled by default. Try without first (this is a security
+risk UNLESS you are running behind a proxy you control), but if your sessions
+cannot get the IP, or Geo-location does not work, change the
+`FIX_PROXY_IP` in `settings.py` to be True, by default it is False:
+
+`FIX_PROXY_IP=False`

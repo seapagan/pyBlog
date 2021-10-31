@@ -36,7 +36,8 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.0.10"]
 INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    "django.contrib.sessions",
+    # "django.contrib.sessions",
+    "user_sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
@@ -58,10 +59,12 @@ INSTALLED_APPS = [
 if DEBUG:
     INSTALLED_APPS = ["myblog.apps.MyAdminConfig"] + INSTALLED_APPS
 
+FIX_PROXY_IP = False
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
+    # "django.contrib.sessions.middleware.SessionMiddleware",
+    "user_sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -71,6 +74,18 @@ MIDDLEWARE = [
     "dj_pagination.middleware.PaginationMiddleware",
     "likes.middleware.SecretBallotUserIpUseragentMiddleware",
 ]
+
+if FIX_PROXY_IP:
+    MIDDLEWARE = [
+        "x_forwarded_for.middleware.XForwardedForMiddleware"
+    ] + MIDDLEWARE
+
+print(MIDDLEWARE)
+
+SESSION_ENGINE = "user_sessions.backends.db"
+SILENCED_SYSTEM_CHECKS = ["admin.E410"]
+
+GEOIP_PATH = BASE_DIR / "geoip"
 
 ROOT_URLCONF = "myblog.urls"
 

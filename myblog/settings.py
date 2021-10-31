@@ -36,7 +36,6 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.0.10"]
 INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    # "django.contrib.sessions",
     "user_sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
@@ -59,7 +58,8 @@ INSTALLED_APPS = [
 if DEBUG:
     INSTALLED_APPS = ["myblog.apps.MyAdminConfig"] + INSTALLED_APPS
 
-FIX_PROXY_IP = False
+# Change this IF needed AND running the server behind a proxy.
+FIX_PROXY_IP = bool(int(os.getenv("FIX_PROXY_IP", 0)))
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -75,16 +75,18 @@ MIDDLEWARE = [
     "likes.middleware.SecretBallotUserIpUseragentMiddleware",
 ]
 
+# Only load the XFowraded fix if explicitly required
 if FIX_PROXY_IP:
     MIDDLEWARE = [
         "x_forwarded_for.middleware.XForwardedForMiddleware"
     ] + MIDDLEWARE
 
-print(MIDDLEWARE)
 
+# configure the user_sessions engine
 SESSION_ENGINE = "user_sessions.backends.db"
 SILENCED_SYSTEM_CHECKS = ["admin.E410"]
 
+# location of GeoIP data
 GEOIP_PATH = BASE_DIR / "geoip"
 
 ROOT_URLCONF = "myblog.urls"

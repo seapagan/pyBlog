@@ -188,6 +188,9 @@ We would need to modify the `REMOTE_ADDR` HTTP header to use the address from
 this, however it is disabled by default. Try without first (this is a security
 risk UNLESS you are running behind a proxy you control), but if your sessions
 cannot get the IP, or Geo-location does not work, change the
-`FIX_PROXY_IP` in `settings.py` to be True, by default it is False:
+`FIX_PROXY_IP` in `.env` to be 1, by default it is False (0):
 
-`FIX_PROXY_IP=False`
+```python
+# Set to 1 IF NEEDED AND BEHIND A PROXY. See README!!
+FIX_PROXY_IP=0
+```

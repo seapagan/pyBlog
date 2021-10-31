@@ -59,6 +59,7 @@ INSTALLED_APPS = [
 if DEBUG:
     INSTALLED_APPS = ["myblog.apps.MyAdminConfig"] + INSTALLED_APPS
 
+FIX_PROXY_IP = False
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -73,6 +74,13 @@ MIDDLEWARE = [
     "dj_pagination.middleware.PaginationMiddleware",
     "likes.middleware.SecretBallotUserIpUseragentMiddleware",
 ]
+
+if FIX_PROXY_IP:
+    MIDDLEWARE = [
+        "x_forwarded_for.middleware.XForwardedForMiddleware"
+    ] + MIDDLEWARE
+
+print(MIDDLEWARE)
 
 SESSION_ENGINE = "user_sessions.backends.db"
 SILENCED_SYSTEM_CHECKS = ["admin.E410"]

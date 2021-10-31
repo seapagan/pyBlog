@@ -178,3 +178,16 @@ During Maintenence mode, a banner is shown at the top of the screen to remind
 any logged in users that the site is unavailable to the public in general.
 
 [geo_data]: https://dev.maxmind.com/geoip/geolite2-free-geolocation-data
+
+### Running behind a Proxy
+
+If you are running the site behind an HTTP proxy (`Nginx` for example), it is
+posible the Geo-location wil not work, as the IP address will be blank or wrong.
+We would need to modify the `REMOTE_ADDR` HTTP header to use the address from
+`HTTP_X_FORWARDED_FOR`. There is a middleware installed in the application to do
+this, however it is disabled by default. Try without first (this is a security
+risk UNLESS you are running behind a proxy you control), but if your sessions
+cannot get the IP, or Geo-location does not work, change the
+`FIX_PROXY_IP` in `settings.py` to be True, by default it is False:
+
+`FIX_PROXY_IP=False`

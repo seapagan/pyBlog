@@ -1,0 +1,7 @@
+[run]
+omit =
+  myblog/asgi.py
+  myblog/wsgi.py
+[report]
+show_missing = True
+# fail_under = 100

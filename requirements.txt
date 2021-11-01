@@ -1,5 +1,5 @@
 django>=3.2.6,<3.3.0
-ipython>=7.27.0,<7.29.0
+ipython>=7.27.0,<7.30.0
 pillow>=8.3.1,<8.5.0
 djangorestframework>=3.12.4,<3.13.0
 django-preferences>=1.0.0,<1.1.0

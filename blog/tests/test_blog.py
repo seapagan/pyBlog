@@ -1,1 +1,1 @@
-"""Until tests for the Blog Model."""
+"""Unit tests for the Blog Model."""

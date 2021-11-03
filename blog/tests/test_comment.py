@@ -1,1 +1,1 @@
-"""Until tests for the Comment Model."""
+"""Unit tests for the Comment Model."""

@@ -1,7 +1,20 @@
 [run]
+branch = True
+; the below plugin will check test  coverage of our templates also. Currently
+; disabled
+; plugins = django_coverage_plugin
+source= .
 omit =
+  htmlcov/*
+  */migrations/*
+  */static/*
+  manage.py
   myblog/asgi.py
   myblog/wsgi.py
 [report]
 show_missing = True
-# fail_under = 100
+skip_covered = True
+; fail_under = 100
+
+[django_coverage_plugin]
+template_extensions = html

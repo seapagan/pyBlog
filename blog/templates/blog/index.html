@@ -21,12 +21,13 @@
 
 {% with preferences.SitePreferences.pinned_post as pinned %}
 {% for blog in blogs %}
-{% if not page_obj.has_previous and blog != pinned %}
+{% comment %} {% if page_obj.number != 1 and blog != pinned %} {% endcomment %}
 {% include 'blog/_single_post_summary.html' %}
-{% endif %}
+{% comment %} {% endif %} {% endcomment %}
 {% endfor %}
 {% endwith %}
 
+{% if page_obj.paginator.num_pages != 1 %}
 <div class="pagination">
   <span class="step-links">
     {% if page_obj.has_previous %}
@@ -52,6 +53,8 @@
     {% endif %}
   </span>
 </div>
+{% endif %}
+
 {% else %}
 <div class="no_posts_yet">
   <div>

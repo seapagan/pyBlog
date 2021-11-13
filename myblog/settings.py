@@ -179,7 +179,7 @@ LOGIN_URL = "login"
 
 # set a SITE_ID, due to the (3rd party) 'preferences' app using the sites
 # functionality. long term, rewrite the addon to remove this need.
-SITE_ID = 2
+SITE_ID = 1
 
 
 X_FRAME_OPTIONS = "SAMEORIGIN"

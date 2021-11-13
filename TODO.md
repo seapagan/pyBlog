@@ -7,6 +7,8 @@
 * ~~Responsive menu, replace the sidebar for smaller screens.~~ `DONE`
 * Comments - `Basic functionality complete`
 * Tags - `Basic functionality complete`
+* Add 'Category' functionality to categorise posts under specific categorise and
+  allow to sort/list by same.
 * Sidebar - `Basic functionality complete`. Sections need more coding as the
   relevant functionality is written.
 * API to read / post Blog Posts and Comments, allowing a completely separate

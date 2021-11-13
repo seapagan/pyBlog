@@ -3,10 +3,11 @@ branch = True
 ; the below plugin will check test  coverage of our templates also. Currently
 ; disabled
 ; plugins = django_coverage_plugin
-source= .
+; source= .
 omit =
   htmlcov/*
   */migrations/*
+  */tests/*
   */static/*
   manage.py
   myblog/asgi.py

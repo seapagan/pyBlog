@@ -12,11 +12,11 @@
   {% endif %}
   <hr class="sidebar_separator">
   {% if maintenance_mode %}
-  <a class="sidebar_link sidebar_danger" href="/maintenance-mode/off/"
+  <a class="sidebar_link sidebar_danger" href="{% url 'maintenance_mode_off' %}"
     data-no-instant>Exit
     Maintenance</a>
   {% else %}
-  <a class="sidebar_link sidebar_danger" href="/maintenance-mode/on/"
+  <a class="sidebar_link sidebar_danger" href="{% url 'maintenance_mode_on' %}"
     data-no-instant>Maintenance Mode</a>
 
   {% endif %}

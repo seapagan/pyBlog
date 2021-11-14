@@ -27,11 +27,12 @@
     <li class="nav-link"><a href="">Site Admin</a></li>
     {% if maintenance_mode %}
     <li class="nav-link">
-      <a href="/maintenance-mode/off/" data-no-instant>Exit Maintenance</a>
+      <a href="{% url 'maintenance_mode_off' %}" data-no-instant>Exit
+        Maintenance</a>
     </li>
     {% else %}
     <li class="nav-link">
-      <a class="nav-link" href="/maintenance-mode/on/"
+      <a class="nav-link" href="{% url 'maintenance_mode_on' %}"
         data-no-instant>Maintenance Mode</a>
     </li>
     {% endif %}

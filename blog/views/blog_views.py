@@ -3,6 +3,7 @@ from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
+from django.db.models import Q
 from django.db.models.functions import Lower
 from django.http import Http404
 from django.urls.base import reverse, reverse_lazy
@@ -13,6 +14,8 @@ from preferences import preferences
 
 from blog.forms import EditPostForm, NewPostForm
 from blog.models import Blog, Tag
+
+# from itertools import chain
 
 
 class IndexClassView(ListView):
@@ -219,3 +222,32 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
             return obj
 
         raise PermissionDenied
+
+
+class SearchView(ListView):
+    """Search for a post by title."""
+
+    model = Blog
+    template_name = "blog/blog_search.html"
+
+    def get_queryset(self):
+        """Search for a post by title and content."""
+        query = self.request.GET.get("q")
+        if query:
+            blog_result = Blog.objects.filter(
+                Q(title__icontains=query) | Q(desc__icontains=query)
+            )
+            # will want to include tag names in this search, but they need to
+            # return posts not tags. Further work needed.
+            # tag_result =Tag.objects.filter(tag_name__icontains=query)
+            # object_list = chain(blog_result)
+            object_list = blog_result
+            return object_list
+
+    def get_context_data(self, **kwargs):
+        """Add page title to the context."""
+        context = super(SearchView, self).get_context_data(**kwargs)
+        context["page_title"] = "Search Results"
+        context["query"] = self.request.GET.get("q")
+
+        return context

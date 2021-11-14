@@ -107,6 +107,11 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     body = RichTextField(config_name="comment")
 
+    class Meta:
+        """Meta configuration for the Blog model."""
+
+        ordering = ["created_at"]
+
     def __str__(self):
         """Return string representation of the Comment object."""
         return (

@@ -1,11 +1,15 @@
 {% extends 'blog/_base.html' %}
+{% load pagination_tags %}
+
 
 {% block body %}
 {% if object_list %}
 <div class="tags_header">Search results for &ldquo;{{ query }}&rdquo;</div>
+{% autopaginate object_list 2 %}
 {% for blog in object_list %}
 {% include 'blog/_single_post_summary.html' %}
 {% endfor %}
+{% paginate %}
 {% elif object_list == None %}
 <div class="tags_header">No search term provided</div>
 {% else%}

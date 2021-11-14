@@ -1016,7 +1016,8 @@ input#id_password2 {
   margin-top: 0.5em;
 }
 
-.tags_header {
+.tags_header,
+.search_header {
   display: flex;
   margin-bottom: 0.5em;
   flex-direction: row;
@@ -1035,7 +1036,8 @@ input#id_password2 {
 }
 
 .tags_home_btn,
-.detail_home_btn {
+.detail_home_btn,
+.search_home_btn {
   margin-top: 1.5em;
   text-align: center;
 }
@@ -1311,7 +1313,8 @@ nav a {
     text-align: center;
   }
 
-  .tags_header {
+  .tags_header,
+  .search_header {
     text-align: center;
   }
 

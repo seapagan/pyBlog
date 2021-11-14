@@ -302,6 +302,3 @@ SECRETBALLOT_FOR_MODELS = {
 # Settings for the maintenance_mode plugin
 MAINTENANCE_MODE_IGNORE_STAFF = True
 MAINTENANCE_MODE_IGNORE_SUPERUSER = True
-MAINTENANCE_MODE_STATE_BACKEND = (
-    "maintenance_mode.backends.DefaultStorageBackend"
-)

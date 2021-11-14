@@ -68,7 +68,7 @@
   <div class="profile_comments_section">
     <div class="profile_section_title">Comments by
       {{ person.username|capfirst }}.</div>
-    {% autopaginate comments 4 %}
+    {% autopaginate comments 8 %}
     {% for comment in comments %}
     <div class="profile_comments_wrapper">
       <div class="profile_comments_header">

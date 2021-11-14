@@ -1,0 +1,23 @@
+{% extends 'blog/_base.html' %}
+{% load pagination_tags %}
+
+
+{% block body %}
+{% if object_list %}
+<div class="search_header">{{ object_list.count }} Search results for
+  &ldquo;{{ query }}&rdquo;</div>
+{% autopaginate object_list 8 %}
+{% for blog in object_list %}
+{% include 'blog/_single_post_summary.html' %}
+{% endfor %}
+{% paginate %}
+{% elif object_list == None %}
+<div class="tags_header">No search term provided</div>
+{% else%}
+<div class="tags_header">No results for &ldquo;{{ query }}&rdquo;</div>
+{% endif %}
+<div class=search_home_btn>
+  <a class="btn" href="{% url 'blog:index' %}"><i
+      class="fad fa-home"></i>&nbsp;Back to Index</a>
+</div>
+{% endblock body %}

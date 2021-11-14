@@ -37,7 +37,9 @@
   needed.~~ [`Done`] Logged in users of staff or higher can still see the site,
   and the admin. Logged out or lower get the 503 page. Need to link this to the
   option in the sidebar.
-* Add search fuinctionality
+* ~~Add search functionality~~ [`DONE`]. Currently just searches on the title
+  and description, perhaps need to add tags too but that is a little more
+  complicated. Future update maybe :)
 * Testing. Seriously, lots and lots of testing. Just DO It.
 
 ### Comments

@@ -99,7 +99,8 @@ class Comment(models.Model):
         null=True,
         related_name="comments",
     )
-    created_by_guest = models.CharField(max_length=50, blank=True)
+    created_by_guest = models.CharField(max_length=50, blank=False)
+    guest_email = models.EmailField(blank=False)
     related_post = models.ForeignKey(
         Blog, on_delete=models.CASCADE, related_name="comments"
     )

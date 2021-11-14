@@ -57,6 +57,9 @@
 
 ### Misc Bugs / Fixes / Ideas
 
+* Seems to be a bug now in the 'like' function - it redirects to 'vote was
+  forbidden' but records the vote anyway.
+  [#54](https://github.com/seapagan/myblog/issues/54)
 * ~~if we are on the first page, dont also display a post in the standard list if
   it is also pinned.~~
 * ~~profile has double scrollbar on small screens~~

@@ -31,6 +31,8 @@ urlpatterns = [
         blog_views.DeletePostView.as_view(),
         name="delete_post",
     ),
+    # search
+    path("search/", blog_views.SearchView.as_view(), name="search"),
     # Comment Views
     path(
         "<str:slug>/comment",

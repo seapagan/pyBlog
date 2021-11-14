@@ -37,8 +37,6 @@ class AddCommentView(CreateView):
         ).id
         if self.request.user:
             form.instance.created_by_user_id = self.request.user.id
-        # else:
-        #     form.instance.created_by_guest = "Guest User"
 
         return super().form_valid(form)
 

@@ -1,0 +1,14 @@
+{% extends 'blog/_base.html' %}
+
+{% block body %}
+{% if object_list %}
+<div class="tags_header">Search results for &ldquo;{{ query }}&rdquo;</div>
+{% for blog in object_list %}
+{% include 'blog/_single_post_summary.html' %}
+{% endfor %}
+{% elif object_list == None %}
+<div class="tags_header">No search term provided</div>
+{% else%}
+<div class="tags_header">No results for &ldquo;{{ query }}&rdquo;</div>
+{% endif %}
+{% endblock body %}

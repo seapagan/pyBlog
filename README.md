@@ -51,10 +51,11 @@ into the project.
   to change the look too.
 - Sensitive variables (Secret, database credentials etc) are taken from ENV
   variables or `.env` file if it exists
+- Post search functionality - currently only searches by post Title and
+  Description.
 
 ### Minimum required before Release
 
-- Implement site search functionality - the search UI is already there.
 - Add proper Testing.
 - ReCaptcha or similar on the new comment form.
 - Tidy up new comment form for anonymous users.

@@ -14,7 +14,7 @@ from hitcount.views import HitCountDetailView
 from preferences import preferences
 
 from blog.forms import EditPostForm, NewPostForm
-from blog.models import Blog, Tag
+from blog.models import Blog, Redirect, Tag
 
 # from itertools import chain
 
@@ -121,7 +121,16 @@ class EditPostView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         """Validate the form."""
+
+        # get the original slug before any edits.
+        original_slug = self.object.slug
         form.save()
+        # if the slug has changed, add this to a redirect table
+        new_slug = self.object.slug
+        if not original_slug == new_slug:
+            redirect = Redirect(old_slug=original_slug, old_post=self.object)
+            redirect.save()
+
         tag_list = [
             tag.strip() for tag in form.cleaned_data["tags_list"].split(",")
         ]
@@ -185,8 +194,6 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         Also can edit if they are a superuser.
         """
         obj = super(EditPostView, self).get_object()
-        # if obj.user == self.request.user or self.request.user.is_superuser:
-        #     return obj
 
         if (
             obj.user == self.request.user and self.request.user.profile.author

@@ -99,14 +99,14 @@ class Comment(models.Model):
         null=True,
         related_name="comments",
     )
-    created_by_guest = models.CharField(max_length=50, blank=False)
-    guest_email = models.EmailField(blank=False)
+    created_by_guest = models.CharField(max_length=50, blank=True)
+    guest_email = models.EmailField(blank=True)
     related_post = models.ForeignKey(
         Blog, on_delete=models.CASCADE, related_name="comments"
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    body = RichTextField(config_name="comment")
+    body = RichTextField(config_name="comment", blank=True)
 
     class Meta:
         """Meta configuration for the Blog model."""

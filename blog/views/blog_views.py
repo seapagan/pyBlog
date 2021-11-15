@@ -51,8 +51,22 @@ class PostDetailView(HitCountDetailView):
         return context
 
     def get_object(self, queryset=None):
-        """Return 404 if the post is a draft."""
-        obj = super(PostDetailView, self).get_object()
+        """Get the correct post object.
+
+        Return 404 if the post is a draft.
+        If we have an old slug with a redirect value, go to the new slug.
+        Rreturn 404 if the slug is not found.
+        """
+        try:
+            obj = super(PostDetailView, self).get_object()
+            print(obj, type(obj))
+        except Http404:
+            slug_wanted = self.kwargs.get("slug")
+            try:
+                redirect = Redirect.objects.get(old_slug=slug_wanted)
+            except Redirect.DoesNotExist:
+                raise Http404("Post does not exist")
+            obj = Blog.objects.get(pk=redirect.old_post.pk)
         if obj.draft is True and self.request.user != obj.user:
             raise Http404("That Page does not exist")
         return obj

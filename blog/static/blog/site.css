@@ -586,10 +586,17 @@ body {
   padding: 0.5em 0;
 }
 
-.new_post_buttons {
+.new_post_buttons,
+.new_comment_buttons,
+.edit_comment_buttons {
   display: flex;
   justify-content: flex-end;
   gap: 0.5em;
+}
+
+.new_comment_buttons,
+.edit_comment_buttons {
+  margin-top: 0.5em;
 }
 
 .post_image_upload_wrapper {

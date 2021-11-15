@@ -128,8 +128,19 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         # if the slug has changed, add this to a redirect table
         new_slug = self.object.slug
         if (not original_slug == new_slug) and not self.object.draft:
-            redirect = Redirect(old_slug=original_slug, old_post=self.object)
-            redirect.save()
+            # the redirect may exist and should be unique, so we need to check
+            # and update the existing in that case.
+            try:
+                redirect = Redirect.objects.get(old_slug=original_slug)
+            except Redirect.DoesNotExist:
+                # would be good in here to have logic to remove any surplus
+                # redirect, for example when its redirected back to a previous
+                # slug.
+                print("creating redirect")
+                redirect = Redirect(
+                    old_slug=original_slug, old_post=self.object
+                )
+                redirect.save()
 
         tag_list = [
             tag.strip() for tag in form.cleaned_data["tags_list"].split(",")

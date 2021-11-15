@@ -56,14 +56,19 @@
 * Nested comments
 * Record visitors IP address with the comment. Can be used for moderation or in
   case of spamming / abuse. Can use `django-ipware` package.
+* humanize the dates and time? (ie '10 minutes ago', 'last month' etc)
 
 ### Misc Bugs / Fixes / Ideas
 
-* Seems to be a bug now in the 'like' function - it redirects to 'vote was
+* After login, redirect to the same page user was on.
+* Sort out styles on small screen for new comment when not logged in -
+  name/email fields need to be stacked.
+* ~~Seems to be a bug now in the 'like' function - it redirects to 'vote was
   forbidden' but records the vote anyway.
-  [#54](https://github.com/seapagan/myblog/issues/54)
-* ~~if we are on the first page, dont also display a post in the standard list if
-  it is also pinned.~~
+  [#54](https://github.com/seapagan/myblog/issues/54)~~ [`FIXED`] but now the
+  Ajax functionality does not work. To be investigated.
+* if we are on the first page, dont also display a post in the standard list if
+  it is also pinned.
 * ~~profile has double scrollbar on small screens~~
 * If the user has no custom User image, the profile page should show the
   gravatar of the user if it exists, then show the default user image. At the

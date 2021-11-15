@@ -36,8 +36,45 @@ class NewCommentForm(forms.ModelForm):
 
         model = Comment
 
-        fields = ("created_by_guest", "body")
+        fields = ("created_by_guest", "guest_email", "body")
 
+        labels = {
+            "body": "Comment",
+            "created_by_guest": "your name",
+            "guest_email": "your email",
+        }
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop("user", None)
+        super(NewCommentForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        """Overload the clean function to set validate comment fields."""
+        super().clean()
+
+        if self.user.is_authenticated:
+            self.cleaned_data["created_by_guest"] = False
+            self.cleaned_data["guest_email"] = ""
+        else:
+            if self.cleaned_data["created_by_guest"] == "":
+                self.add_error("created_by_guest", "You must supply a Name.")
+            if self.cleaned_data["guest_email"] == "":
+                self.add_error("guest_email", "You must supply an email.")
+        if self.cleaned_data["body"] == "":
+            self.add_error("guest_email", "Please enter a comment!")
+
+        return self.cleaned_data
+
+
+class EditCommentForm(forms.ModelForm):
+    """Define the form to Edit a comment."""
+
+    class Meta:
+        """Metadata for this form."""
+
+        model = Comment
+
+        fields = ("body",)
         labels = {
             "body": "",
         }
@@ -90,19 +127,5 @@ class EditPostForm(forms.ModelForm):
         fields = ("desc", "body", "image", "tags_list")
         labels = {
             "desc": "Description",
-            "body": "",
-        }
-
-
-class EditCommentForm(forms.ModelForm):
-    """Define the form to Edit a comment."""
-
-    class Meta:
-        """Metadata for this form."""
-
-        model = Comment
-
-        fields = ("body",)
-        labels = {
             "body": "",
         }

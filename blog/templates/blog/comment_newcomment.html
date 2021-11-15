@@ -1,21 +1,61 @@
 {% extends 'blog/_base.html' %}
 
 {% block body %}
+<div class="new_comment_user">
+  {% if user.is_authenticated %}
+  <b>{{ user.username }}</b>, you are
+  {% else %}
+  <b>You are not logged in</b> and are
+  {% endif %}
+  commenting on post <b>&ldquo;{{ post.title }}&rdquo;</b>
+</div>
 
-{% if user.is_authenticated %}
-<div>You are Logged in as <b>{{ user.username }}</b></div>
-{% else %}
-<div>You are not logged in.</div>
-{% endif %}
-
-<div>Commenting on Post : {{ post.title }}</div>
 <form method="post">
+
+
   {% csrf_token %}
   {{ form.media }}
-  {{ form.as_p }}
-  <button class="btn btn_success" type="submit"><i
-      class="fad fa-save"></i>&nbsp;Save</button>
-  <a class="btn" href="{{ view.get_success_url }}"><i
-      class="fad fa-ban"></i>&nbsp;Cancel</a>
+
+  {% if not user.is_authenticated %}
+  <div class="comment_anonymous_details">
+    <div>
+
+      <span
+        class="form_field_label">{{form.created_by_guest.label|capfirst}}</span><span
+        class="comment_input">{{form.created_by_guest}}</span>
+    </div>
+    <div>
+      <span
+        class="form_field_label">{{form.guest_email.label|capfirst}}</span><span
+        class="comment_input">{{form.guest_email}}</span>
+    </div>
+  </div>
+  <div class="comment_email_disclaimer">Your email will only be used to notify
+    you of any replies and not
+    displayed anywhere</div>
+  {% endif %}
+
+  {% if form.errors %}
+  {% for field in form %}
+  {% for error in field.errors %}
+  <div class="comment_form_error">
+    <strong>{{ error|escape }}</strong>
+  </div>
+  {% endfor %}
+  {% endfor %}
+  {% endif %}
+
+  {% for error in form.non_field_errors %}
+  <div class="comment_form_error"><strong>{{error|escape}}</strong></div>
+  {% endfor %}
+
+  {{form.body}}
+
+  <div class="new_comment_buttons">
+    <button class="btn btn_success" type="submit"><i
+        class="fad fa-save"></i>&nbsp;Publish</button>
+    <a class="btn" href="{{ view.get_success_url }}"><i
+        class="fad fa-ban"></i>&nbsp;Cancel</a>
+  </div>
 </form>
 {% endblock body %}

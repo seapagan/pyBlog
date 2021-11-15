@@ -1,5 +1,4 @@
 {% extends 'blog/_base.html' %}
-{% load markdown_extras %}
 
 {% block body %}
 
@@ -11,7 +10,7 @@
 
   <div class="delete_content_body">
     <h2 class="delete_content_title">{{ object.related_post.title }}</h2>
-    <div class="delete_content_content">{{object.body|markdown|safe}}</div>
+    <div class="delete_content_content">{{object.body|safe}}</div>
   </div>
   <div class="delete_content_footer">
     <p>This operation CANNOT BE UNDONE!</p>

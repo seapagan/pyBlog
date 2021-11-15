@@ -30,15 +30,20 @@ class AddCommentView(CreateView):
 
         return context
 
+    def get_form_kwargs(self):
+        """Add the User to the form kwargs."""
+        kwargs = super(AddCommentView, self).get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
+
     def form_valid(self, form):
         """Validate the form."""
+        print("form_valid()")
         form.instance.related_post_id = Blog.objects.get(
             slug=self.kwargs["slug"]
         ).id
-        if self.request.user:
+        if self.request.user.is_authenticated:
             form.instance.created_by_user_id = self.request.user.id
-        # else:
-        #     form.instance.created_by_guest = "Guest User"
 
         return super().form_valid(form)
 

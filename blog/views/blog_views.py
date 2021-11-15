@@ -66,7 +66,7 @@ class PostDetailView(HitCountDetailView):
                 redirect = Redirect.objects.get(old_slug=slug_wanted)
             except Redirect.DoesNotExist:
                 raise Http404("Post does not exist")
-            obj = Blog.objects.get(pk=redirect.old_post.pk)
+            obj = Blog.objects.get(pk=redirect.old_post_id)
         if obj.draft is True and self.request.user != obj.user:
             raise Http404("That Page does not exist")
         return obj

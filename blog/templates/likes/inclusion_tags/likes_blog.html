@@ -11,7 +11,7 @@
 <div class="likes">
   {% if can_vote %}
   <a class="liker" href="{% url 'like' content_type content_obj.id 1 %}"
-    rel="nofollow"><i class="fal fa-heart"></i></a>
+    rel="nofollow" data-no-instant><i class="fal fa-heart"></i></a>
   {% else %}
   <i class="fas fa-heart like_yes"></i>
   {% endif %}

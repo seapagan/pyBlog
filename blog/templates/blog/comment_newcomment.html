@@ -11,15 +11,7 @@
 </div>
 
 <form method="post">
-    {% if form.errors %}
-    {% for field in form %}
-    {% for error in field.errors %}
-    <div class="comment_form_error">
-        <strong>{{ field.label|capfirst }} - {{ error|escape }}</strong>
-    </div>
-    {% endfor %}
-    {% endfor %}
-    {% endif %}
+
 
     {% csrf_token %}
     {{ form.media }}
@@ -42,6 +34,21 @@
         you of any replies and not
         displayed anywhere</div>
     {% endif %}
+
+    {% if form.errors %}
+    {% for field in form %}
+    {% for error in field.errors %}
+    <div class="comment_form_error">
+        <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+
+    {% for error in form.non_field_errors %}
+    <div class="comment_form_error"><strong>{{error|escape}}</strong></div>
+    {% endfor %}
+
     {{form.body}}
 
     <button class="btn btn_success" type="submit"><i

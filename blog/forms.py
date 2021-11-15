@@ -46,26 +46,19 @@ class NewCommentForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user", None)
-        print(self.user)
         super(NewCommentForm, self).__init__(*args, **kwargs)
 
     def clean(self):
         """Overload the clean function to set validate comment fields."""
         super().clean()
-        print(self.cleaned_data)
-        print(f"In form clean() as {self.user}")
-        print(f"Authenticated? : {self.user.is_authenticated}")
+
         if self.user.is_authenticated:
             self.cleaned_data["created_by_guest"] = False
             self.cleaned_data["guest_email"] = ""
         else:
             if self.cleaned_data["created_by_guest"] == "":
-                # raise forms.ValidationError(
-                #     "You must supply a Name to comment."
-                # )
                 self.add_error("created_by_guest", "You must supply a Name.")
             if self.cleaned_data["guest_email"] == "":
-                # raise forms.ValidationError("You must supply an email.")
                 self.add_error("guest_email", "You must supply an email.")
         if self.cleaned_data["body"] == "":
             self.add_error("guest_email", "Please enter a comment!")

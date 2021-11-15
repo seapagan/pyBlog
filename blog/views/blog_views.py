@@ -6,6 +6,7 @@ from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.http import Http404
+from django.template.defaultfilters import slugify
 from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
@@ -174,7 +175,8 @@ class EditPostView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""
-        post_slug = Blog.objects.get(slug=self.kwargs["slug"]).slug
+        post_slug = slugify(self.object.title)
+        # post_slug = Blog.objects.get(slug=self.kwargs["slug"]).slug
         return reverse("blog:detail", kwargs={"slug": post_slug})
 
     def get_object(self, queryset=None):

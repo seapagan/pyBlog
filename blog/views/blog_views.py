@@ -127,7 +127,7 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         form.save()
         # if the slug has changed, add this to a redirect table
         new_slug = self.object.slug
-        if not original_slug == new_slug:
+        if (not original_slug == new_slug) and not self.object.draft:
             redirect = Redirect(old_slug=original_slug, old_post=self.object)
             redirect.save()
 

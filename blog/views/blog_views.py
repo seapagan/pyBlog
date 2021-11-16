@@ -55,11 +55,10 @@ class PostDetailView(HitCountDetailView):
 
         Return 404 if the post is a draft.
         If we have an old slug with a redirect value, go to the new slug.
-        Rreturn 404 if the slug is not found.
+        Return 404 if the slug is not found.
         """
         try:
             obj = super(PostDetailView, self).get_object()
-            print(obj, type(obj))
         except Http404:
             slug_wanted = self.kwargs.get("slug")
             try:
@@ -150,7 +149,6 @@ class EditPostView(LoginRequiredMixin, UpdateView):
                 # would be good in here to have logic to remove any surplus
                 # redirect, for example when its redirected back to a previous
                 # slug.
-                print("creating redirect")
                 redirect = Redirect(
                     old_slug=original_slug, old_post=self.object
                 )

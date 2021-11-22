@@ -124,7 +124,7 @@ class EditPostForm(forms.ModelForm):
 
         model = Blog
 
-        fields = ("desc", "body", "image", "tags_list")
+        fields = ("title", "desc", "body", "image", "tags_list")
         labels = {
             "desc": "Description",
             "body": "",

@@ -171,3 +171,14 @@ class Tag(models.Model):
         """Override the save function, so we can generate the slug."""
         self.slug = slugify(self.tag_name)
         super(Tag, self).save(*args, **kwargs)
+
+
+class Redirect(models.Model):
+    """Define the Redirect model."""
+
+    old_slug = models.SlugField(default="", unique=True)
+    old_post = models.ForeignKey(Blog, on_delete=models.CASCADE)
+
+    def __str__(self):
+        """Define the Text version of this object."""
+        return f"{self.old_slug} -> {self.old_post}"

@@ -6,6 +6,7 @@ from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.http import Http404
+from django.template.defaultfilters import slugify
 from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
@@ -13,7 +14,7 @@ from hitcount.views import HitCountDetailView
 from preferences import preferences
 
 from blog.forms import EditPostForm, NewPostForm
-from blog.models import Blog, Tag
+from blog.models import Blog, Redirect, Tag
 
 # from itertools import chain
 
@@ -50,8 +51,21 @@ class PostDetailView(HitCountDetailView):
         return context
 
     def get_object(self, queryset=None):
-        """Return 404 if the post is a draft."""
-        obj = super(PostDetailView, self).get_object()
+        """Get the correct post object.
+
+        Return 404 if the post is a draft.
+        If we have an old slug with a redirect value, go to the new slug.
+        Return 404 if the slug is not found.
+        """
+        try:
+            obj = super(PostDetailView, self).get_object()
+        except Http404:
+            slug_wanted = self.kwargs.get("slug")
+            try:
+                redirect = Redirect.objects.get(old_slug=slug_wanted)
+            except Redirect.DoesNotExist:
+                raise Http404("Post does not exist")
+            obj = Blog.objects.get(pk=redirect.old_post_id)
         if obj.draft is True and self.request.user != obj.user:
             raise Http404("That Page does not exist")
         return obj
@@ -120,7 +134,26 @@ class EditPostView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         """Validate the form."""
+
+        # get the original slug before any edits.
+        original_slug = self.object.slug
         form.save()
+        # if the slug has changed, add this to a redirect table
+        new_slug = self.object.slug
+        if (not original_slug == new_slug) and not self.object.draft:
+            # the redirect may exist and should be unique, so we need to check
+            # and update the existing in that case.
+            try:
+                redirect = Redirect.objects.get(old_slug=original_slug)
+            except Redirect.DoesNotExist:
+                # would be good in here to have logic to remove any surplus
+                # redirect, for example when its redirected back to a previous
+                # slug.
+                redirect = Redirect(
+                    old_slug=original_slug, old_post=self.object
+                )
+                redirect.save()
+
         tag_list = [
             tag.strip() for tag in form.cleaned_data["tags_list"].split(",")
         ]
@@ -174,7 +207,8 @@ class EditPostView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""
-        post_slug = Blog.objects.get(slug=self.kwargs["slug"]).slug
+        post_slug = slugify(self.object.title)
+        # post_slug = Blog.objects.get(slug=self.kwargs["slug"]).slug
         return reverse("blog:detail", kwargs={"slug": post_slug})
 
     def get_object(self, queryset=None):
@@ -183,8 +217,6 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         Also can edit if they are a superuser.
         """
         obj = super(EditPostView, self).get_object()
-        # if obj.user == self.request.user or self.request.user.is_superuser:
-        #     return obj
 
         if (
             obj.user == self.request.user and self.request.user.profile.author

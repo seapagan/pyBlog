@@ -48,5 +48,6 @@
   "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "*_test.py"],
   "python.testing.unittestEnabled": false,
   "testExplorer.addToEditorContextMenu": true,
-  "cornflakes.linter.executablePath": "/home/seapagan/.pyenv/versions/myblog/bin/flake8"
+  "cornflakes.linter.executablePath": "/home/seapagan/.pyenv/versions/myblog/bin/flake8",
+  "git.enableCommitSigning": true
 }

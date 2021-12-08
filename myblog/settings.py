@@ -175,6 +175,7 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "blog:index"
+LOGOUT_REDIRECT_URL = "blog:index"
 LOGIN_URL = "login"
 
 # set a SITE_ID, due to the (3rd party) 'preferences' app using the sites

@@ -2,8 +2,9 @@
 
 ## Important functionality
 
-* on logout, check if in maintenance mode and if so, redirect directly to the
-  index page, dont show the login/register links.
+* ~~on logout, check if in maintenance mode and if so, redirect directly to the
+  index page, dont show the login/register links.~~ Always redirect to the index
+  page.
 * ~~Responsive menu, replace the sidebar for smaller screens.~~ `DONE`
 * Comments - `Basic functionality complete`
 * Tags - `Basic functionality complete`

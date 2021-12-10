@@ -63,8 +63,8 @@
 
 * ~~Update settings.ALLOWED_HOSTS to take extra hosts from the .env file.~~
 * After login, redirect to the same page user was on.
-* Sort out styles on small screen for new comment when not logged in -
-  name/email fields need to be stacked.
+* ~~Sort out styles on small screen for new comment when not logged in -
+  name/email fields need to be stacked.~~
 * ~~Seems to be a bug now in the 'like' function - it redirects to 'vote was
   forbidden' but records the vote anyway.
   [#54](https://github.com/seapagan/myblog/issues/54) [`FIXED`] but now the

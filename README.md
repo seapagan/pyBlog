@@ -66,7 +66,6 @@ into the project.
 
 ### Good to Have
 
-- Tidy up new comment form for anonymous users.
 - Dedicated Admin site for superusers and potentially an 'admin' user (who will
   only be able to access Blog admin, not the Django admin site.)
 - Add 'Series' functionality where a set of posts can be grouped numerically and

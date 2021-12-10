@@ -1427,4 +1427,9 @@ nav a {
     display: block;
     text-align: center;
   }
+
+  .comment_anonymous_details {
+    flex-direction: column;
+    gap: 0.5em;
+  }
 }

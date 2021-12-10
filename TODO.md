@@ -61,7 +61,7 @@
 
 ### Misc Bugs / Fixes / Ideas
 
-* Update settings.ALLOWED_HOSTS to take extra hosts from the .env file.
+* ~~Update settings.ALLOWED_HOSTS to take extra hosts from the .env file.~~
 * After login, redirect to the same page user was on.
 * Sort out styles on small screen for new comment when not logged in -
   name/email fields need to be stacked.

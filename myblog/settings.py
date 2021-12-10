@@ -29,8 +29,9 @@ SECRET_KEY = str(os.getenv("SECRET_KEY"))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.getenv("DEBUG", 0)))
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.0.10"]
-
+# Add extra hosts from the .env file if specified
+EXTRA_HOSTS = list(filter(None, str(os.getenv("ALLOWED_HOSTS", "")).split(",")))
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"] + EXTRA_HOSTS
 
 # Application definition
 INSTALLED_APPS = [
@@ -75,7 +76,7 @@ MIDDLEWARE = [
     "likes.middleware.SecretBallotUserIpUseragentMiddleware",
 ]
 
-# Only load the XFowraded fix if explicitly required
+# Only load the XForwarded fix if explicitly required
 if FIX_PROXY_IP:
     MIDDLEWARE = [
         "x_forwarded_for.middleware.XForwardedForMiddleware"
@@ -84,6 +85,7 @@ if FIX_PROXY_IP:
 
 # configure the user_sessions engine
 SESSION_ENGINE = "user_sessions.backends.db"
+# silence the warning about the session engine, we have a third party one.
 SILENCED_SYSTEM_CHECKS = ["admin.E410"]
 
 # location of GeoIP data

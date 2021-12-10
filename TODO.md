@@ -67,8 +67,8 @@
   name/email fields need to be stacked.
 * ~~Seems to be a bug now in the 'like' function - it redirects to 'vote was
   forbidden' but records the vote anyway.
-  [#54](https://github.com/seapagan/myblog/issues/54)~~ [`FIXED`] but now the
-  Ajax functionality does not work. To be investigated.
+  [#54](https://github.com/seapagan/myblog/issues/54) [`FIXED`] but now the
+  Ajax functionality does not work. To be investigated.~~ [`FIXED`]
 * if we are on the first page, dont also display a post in the standard list if
   it is also pinned.
 * ~~profile has double scrollbar on small screens~~

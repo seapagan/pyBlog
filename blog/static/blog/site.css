@@ -468,6 +468,12 @@ body {
   margin: 0.5em 0;
 }
 
+.g-recaptcha {
+  margin: 0.5em 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .comment_form_error {
   width: 100%;
   text-align: center;
@@ -1431,5 +1437,9 @@ nav a {
   .comment_anonymous_details {
     flex-direction: column;
     gap: 0.5em;
+  }
+
+  .g-recaptcha {
+    justify-content: space-around;
   }
 }

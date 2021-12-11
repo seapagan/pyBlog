@@ -36,8 +36,7 @@
   (if we have guest posters for example)
 * ~~Implement a maintenance mode to temporarily disable the whole app if
   needed.~~ [`Done`] Logged in users of staff or higher can still see the site,
-  and the admin. Logged out or lower get the 503 page. Need to link this to the
-  option in the sidebar.
+  and the admin. Logged out or lower get the 503 page.
 * ~~Add search functionality~~ [`DONE`]. Currently just searches on the title
   and description, perhaps need to add tags too but that is a little more
   complicated. Future update maybe :)
@@ -61,6 +60,8 @@
 
 ### Misc Bugs / Fixes / Ideas
 
+* Draft posts are still listed on the profile for other/anon users, they should
+  only be seen by the author.
 * ~~Update settings.ALLOWED_HOSTS to take extra hosts from the .env file.~~
 * After login, redirect to the same page user was on.
 * ~~Sort out styles on small screen for new comment when not logged in -

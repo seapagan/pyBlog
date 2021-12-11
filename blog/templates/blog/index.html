@@ -19,6 +19,14 @@
 </div>
 {% endif %}
 
+<div class="popular_posts only_no_sb">
+  {% load blog_extras %}
+  {% sidebar as sb %}
+  <article class="sidebar_article">
+    {% include 'blog/sidebar/sidebar_popular.html' %}
+  </article>
+</div>
+
 {% with preferences.SitePreferences.pinned_post as pinned %}
 {% for blog in blogs %}
 {% comment %} {% if page_obj.number != 1 and blog != pinned %} {% endcomment %}

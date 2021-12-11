@@ -60,8 +60,8 @@
 
 ### Misc Bugs / Fixes / Ideas
 
-* Draft posts are still listed on the profile for other/anon users, they should
-  only be seen by the author.
+* ~~Draft posts are still listed on the profile for other/anon users, they should
+  only be seen by the author.~~
 * ~~Update settings.ALLOWED_HOSTS to take extra hosts from the .env file.~~
 * After login, redirect to the same page user was on.
 * ~~Sort out styles on small screen for new comment when not logged in -

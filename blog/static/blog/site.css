@@ -986,6 +986,10 @@ input#id_password2 {
   background-color: var(--block-background);
 }
 
+.profile_post_summary_draft {
+  border: 2px dashed red;
+}
+
 .profile_post_section_title {
   justify-self: center;
   font-size: 2em;

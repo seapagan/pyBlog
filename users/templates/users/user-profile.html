@@ -32,6 +32,9 @@
       </div>
     </div>
   </div>
+
+  {{ request.resolver_match.url_name }}
+
   {% with person.blog_posts.all as posts %}
   {% if posts %}
   <div class="profile_post_wrapper">
@@ -39,8 +42,13 @@
       {{ person.username|capfirst }}.</div>
     {% autopaginate posts 8 %}
     {% for post in posts %}
+
+    {% if not post.draft or post.draft and request.resolver_match.url_name == 'my-profile' %}
+
+
     <article>
-      <a class="profile_post_summary" href="{% url 'blog:detail' post.slug %}">
+      <a class="profile_post_summary {% if post.draft%}profile_post_summary_draft{% endif %}"
+        href="{% url 'blog:detail' post.slug %}">
         <div class='profile_post_title'>{{ post.title|capfirst }}</div>
 
         <div class="profile_date_wrapper">
@@ -55,6 +63,7 @@
         <div class='profile_post_desc'>{{ post.desc }}</div>
       </a>
     </article>
+    {% endif %}
     {% endfor %}
   </div>
   {% paginate %}

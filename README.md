@@ -92,6 +92,16 @@ From the root of the checked out repository.
 pip install -r requirements.txt
 ```
 
+### Register for Google Recaptcha
+
+The Comment system is protected using a `Recaptcha` to help avoid bots.
+
+Visit the [Google Recaptcha][recaptcha] site, register if not already done, then
+set up a site for this Blog. Copy the public and private keys, you will need to
+add them into the `.env` file below. Choose the `V2 Tickbox type` as that is
+what is used for this application (at the moment, however this hard-coded
+setting will likely be removed later to allow all types).
+
 ### Set up the .env file
 
 Some of the more secret settings are kept in a .env file which will not be
@@ -110,6 +120,15 @@ BLOG_DB_PASSWORD=
 BLOG_DB_NAME=
 BLOG_DB_HOST=
 BLOG_DB_PORT=
+
+# Extra hosts for ALLOWED_HOSTS, generally the same as your domain name / IP
+# this should be a string of comma separated values eg:
+# ALLOWED_HOSTS="www.example.com,www.example.net"
+ALLOWED_HOSTS=""
+
+# setup recapcha keys - SET THESE TO YOUR OWN KEYS FROM ABOVE
+RECAPTCHA_PUBLIC_KEY="my_public_key"
+RECAPTCHA_PRIVATE_KEY="my_private_key"
 ```
 
 In Production, If you are self hosting your app, and the server is secure you
@@ -168,7 +187,7 @@ The entire site can be locked down, returning a `503 Service Unavailable` error
 for all anonymous users, or any registered users below 'Staff' level. This can
 be done by the **Superuser only** from the sidebar or menu. It can also be done
 from the local teminal, in the Django project directory using the below
-managemnt commands :
+management commands :
 
 ```bash
 python manage.py maintenance_mode <on|off>
@@ -176,8 +195,6 @@ python manage.py maintenance_mode <on|off>
 
 During Maintenence mode, a banner is shown at the top of the screen to remind
 any logged in users that the site is unavailable to the public in general.
-
-[geo_data]: https://dev.maxmind.com/geoip/geolite2-free-geolocation-data
 
 ### Running behind a Proxy
 
@@ -194,3 +211,6 @@ cannot get the IP, or Geo-location does not work, change the
 # Set to 1 IF NEEDED AND BEHIND A PROXY. See README!!
 FIX_PROXY_IP=0
 ```
+
+[geo_data]: https://dev.maxmind.com/geoip/geolite2-free-geolocation-data
+[recaptcha]: https://www.google.com/recaptcha/about/

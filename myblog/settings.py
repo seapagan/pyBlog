@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "dj_pagination",
     "maintenance_mode",
     "secretballot",
+    "captcha",
     "likes",
     "blog",
     "users",
@@ -305,3 +306,7 @@ SECRETBALLOT_FOR_MODELS = {
 # Settings for the maintenance_mode plugin
 MAINTENANCE_MODE_IGNORE_STAFF = True
 MAINTENANCE_MODE_IGNORE_SUPERUSER = True
+
+# recapcha settings
+RECAPTCHA_PUBLIC_KEY = str(os.getenv("RECAPTCHA_PUBLIC_KEY"))
+RECAPTCHA_PRIVATE_KEY = str(os.getenv("RECAPTCHA_PRIVATE_KEY"))

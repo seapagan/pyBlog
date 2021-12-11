@@ -1,4 +1,6 @@
 """Define any forms used in the Blogs app."""
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 from django import forms
 from django.forms.widgets import ClearableFileInput
 
@@ -30,6 +32,13 @@ class CustomImageField(ClearableFileInput):
 
 class NewCommentForm(forms.ModelForm):
     """Define the form to Add a comment."""
+
+    captcha = ReCaptchaField(
+        widget=ReCaptchaV2Checkbox(),
+        error_messages={
+            "required": "Please tick the box to prove you are not a robot.",
+        },
+    )
 
     class Meta:
         """Metadata for this form."""

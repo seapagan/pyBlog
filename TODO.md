@@ -56,7 +56,7 @@
 * Nested comments
 * Record visitors IP address with the comment. Can be used for moderation or in
   case of spamming / abuse. Can use `django-ipware` package.
-* humanize the dates and time? (ie '10 minutes ago', 'last month' etc)
+* ~~humanize the dates and time? (ie '10 minutes ago', 'last month' etc)~~
 
 ### Misc Bugs / Fixes / Ideas
 

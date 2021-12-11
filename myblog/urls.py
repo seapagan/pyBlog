@@ -3,15 +3,25 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as authentication_views
+from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 
+from blog.sitemaps import BlogSitemap
 from users import views as user_views
 
 handler403 = "myblog.errors.views.custom403"
 handler404 = "myblog.errors.views.custom404"
 
+sitemaps = {"blog": BlogSitemap}
+
 urlpatterns = (
     [
+        path(
+            "sitemap.xml",
+            sitemap,
+            {"sitemaps": sitemaps},
+            name="django.contrib.sitemaps.views.sitemap",
+        ),
         path("", include("blog.urls")),
         path("register/", user_views.register, name="register"),
         path(

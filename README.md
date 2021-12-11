@@ -54,6 +54,7 @@ into the project.
 - Post search functionality - currently only searches by post Title and
   Description.
 - ReCaptcha to help protect the comment functionality from abuse.
+- Google Search sitemap generated on request at `/sitemap.xml`
 
 ### Minimum required before Release
 

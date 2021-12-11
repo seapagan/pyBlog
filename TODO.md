@@ -132,8 +132,7 @@
   description for this `CLOSED`
 * ~~paginate the first page to say 5 or 10 etc latest post only.~~
 * ~~show a pinned post?~~
-* automatically create a google sitemap.xml on each new post. Also option to
-  regenerate from the (coming) admin site.
+* ~~automatically create a google sitemap.xml on request from search engine.~~
 * ensure we don't have duplicate slugs. not too difficult in a single-user blog
   but may be more of an issue if multiple users post.
 * allow to access posts by /year/month/date/slug also. This will perhaps help

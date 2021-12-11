@@ -53,7 +53,7 @@
   [`Done`] Using CKEditor same as Posts.
 * ~~profile links for registered users need to be switched to specific links,
   once that functionality is added~~
-* add ReCapcha to the comment entry form
+* ~~add ReCapcha to the comment entry form~~
 * Nested comments
 * Record visitors IP address with the comment. Can be used for moderation or in
   case of spamming / abuse. Can use `django-ipware` package.

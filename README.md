@@ -53,11 +53,11 @@ into the project.
   variables or `.env` file if it exists
 - Post search functionality - currently only searches by post Title and
   Description.
+- ReCaptcha to help protect the comment functionality from abuse.
 
 ### Minimum required before Release
 
 - Add proper Testing.
-- ReCaptcha or similar on the new comment form.
 - Add Timezone support so the user sees all times in his local timezone.
 - Disable Django's own admin in Production mode - (completely - the admin app
   and urls are not even loaded). `This is already done`, though I may want to

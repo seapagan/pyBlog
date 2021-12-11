@@ -1442,4 +1442,12 @@ nav a {
   .g-recaptcha {
     justify-content: space-around;
   }
+
+  .new_post_buttons,
+  .new_comment_buttons,
+  .edit_post_buttons,
+  .edit_comment_buttons {
+    justify-content: center;
+    margin-top: 0.5em;
+  }
 }

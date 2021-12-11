@@ -2,6 +2,7 @@
 {% load pagination_tags %}
 {% load hitcount_tags %}
 {% load likes_inclusion_tags %}
+{% load humanize %}
 
 {% block body %}
 <!-- Display the Blog Post, wrapped in an article tag -->
@@ -104,7 +105,7 @@
         {{comment.get_commenter}}
         {% endif %}
       </div>
-      <div class="blog_comment_date">Commented {{comment.created_at}}</div>
+      <div class="blog_comment_date">{{comment.created_at|naturaltime}}</div>
     </div>
     <div class="blog_comment_body">
       {{comment.body|safe}}

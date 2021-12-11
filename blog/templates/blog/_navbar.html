@@ -6,8 +6,6 @@
   <ul>
     <li class="nav-link"><a href="{% url 'blog:index' %}">Index</a></li>
     <hr>
-    <li class="nav-link"><a href="">Recent Posts</a></li>
-    <li class="nav-link"><a href="">Popular Posts</a></li>
     <li class="nav-link"><a href="{% url 'blog:tag_list' %}">Tags</a></li>
     <hr>
     {% if user.is_superuser or user.profile.author %}

@@ -184,6 +184,13 @@ body {
   font-weight: bold;
 }
 
+.popular_posts {
+  display: none;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  text-align: center;
+}
+
 .sidebar_container {
   display: flex;
   flex-direction: column;
@@ -1273,6 +1280,10 @@ nav a {
 
   .sidebar_container {
     display: none;
+  }
+
+  .only_no_sb {
+    display: block;
   }
 
   .site_header {

@@ -1,6 +1,8 @@
-<div class="sidebar_article_header">User
+<div class="sidebar_article_header">
   {% if user.is_authenticated %}
   {{user.username|capfirst}}
+  {% else %}
+  User
   {% endif %}
 </div>
 <div class="sidebar_article_content sidebar_user">

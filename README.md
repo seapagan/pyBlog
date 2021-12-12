@@ -57,6 +57,7 @@ into the project.
 - Google Search sitemap generated on request at `/sitemap.xml`
 - RSS feed availiable for Blog Posts at `/feed/posts/`. Will probably add a
   comments feed also, or upgrade this feed to also list comments.
+- HTML is minimized on the fly in production mode, non-minimized in DEBUG mode.
 
 ### Minimum required before Release
 
@@ -65,7 +66,7 @@ into the project.
 - Disable Django's own admin in Production mode - (completely - the admin app
   and urls are not even loaded). `This is already done`, though I may want to
   add the ability for certain trusted IP to still access if needed.
-- Implement code minimization and tidy up the CSS, probably refactor as PostCSS
+- Tidy up the CSS, probably refactor as PostCSS and compress css/js
 
 ### Good to Have
 

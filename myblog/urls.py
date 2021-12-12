@@ -6,6 +6,7 @@ from django.contrib.auth import views as authentication_views
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 
+from blog.feeds import PostsFeed
 from blog.sitemaps import BlogSitemap
 from users import views as user_views
 
@@ -22,6 +23,7 @@ urlpatterns = (
             {"sitemaps": sitemaps},
             name="django.contrib.sitemaps.views.sitemap",
         ),
+        path("feed/posts/", PostsFeed(), name="latest-feed"),
         path("", include("blog.urls")),
         path("register/", user_views.register, name="register"),
         path(

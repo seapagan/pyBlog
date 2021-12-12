@@ -1,6 +1,7 @@
 django>=3.2.6,<4.0.0
 django-ckeditor>=6.1.0,<6.3.0
 django-gravatar2>=1.4.4,<1.5.0
+django-htmlmin>=0.11.0,<0.12.0
 django-likes>=2.0.1,<2.1.0
 django-maintenance-mode>=0.16.1,<0.17.0
 django-preferences>=1.0.0,<1.1.0

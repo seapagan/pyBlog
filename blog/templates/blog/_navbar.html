@@ -20,6 +20,10 @@
     <li class="nav-link"><a href="{% url 'login' %}">Login</a></li>
     <li class="nav-link"><a href="{% url 'register' %}">Register</a></li>
     {% endif %}
+    <hr>
+    <li class="nav-link"><a href="{% url 'latest-posts-feed' %}">RSS Feed</a>
+    </li>
+
     {% if user.is_superuser %}
     <hr>
     <li class="nav-link"><a href="">Site Admin</a></li>

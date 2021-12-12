@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     "hitcount",
 ]
 
+# HTML_MINIFY = True
+
 # only include the Admin paths if we are in DEBUG mode
 if DEBUG:
     INSTALLED_APPS = ["myblog.apps.MyAdminConfig"] + INSTALLED_APPS
@@ -77,6 +79,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "dj_pagination.middleware.PaginationMiddleware",
     "likes.middleware.SecretBallotUserIpUseragentMiddleware",
+    "htmlmin.middleware.HtmlMinifyMiddleware",
+    "htmlmin.middleware.MarkRequestMiddleware",
 ]
 
 # Only load the XForwarded fix if explicitly required

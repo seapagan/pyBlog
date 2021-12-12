@@ -6,13 +6,14 @@ from django.contrib.auth import views as authentication_views
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 
-from blog.sitemaps import BlogSitemap
+from blog.feeds import PostsFeed
+from blog.sitemaps import BlogSitemap, StaticSiteMap
 from users import views as user_views
 
 handler403 = "myblog.errors.views.custom403"
 handler404 = "myblog.errors.views.custom404"
 
-sitemaps = {"blog": BlogSitemap}
+sitemaps = {"blog": BlogSitemap, "static": StaticSiteMap}
 
 urlpatterns = (
     [
@@ -22,6 +23,7 @@ urlpatterns = (
             {"sitemaps": sitemaps},
             name="django.contrib.sitemaps.views.sitemap",
         ),
+        path("feed/posts/", PostsFeed(), name="latest-posts-feed"),
         path("", include("blog.urls")),
         path("register/", user_views.register, name="register"),
         path(

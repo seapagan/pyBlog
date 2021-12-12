@@ -1,7 +1,23 @@
 """Create the sitemap.xml file."""
 from django.contrib.sitemaps import Sitemap
+from django.urls.base import reverse
 
 from blog.models import Blog
+
+
+class StaticSiteMap(Sitemap):
+    """Create the static sitemap."""
+
+    changefreq = "daily"
+    priority = 0.5
+
+    def items(self):
+        """Return the static items for the sitemap."""
+        return ["latest-posts-feed"]
+
+    def location(self, item):
+        """Return the location of the static item."""
+        return reverse(item)
 
 
 class BlogSitemap(Sitemap):

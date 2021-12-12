@@ -6,12 +6,12 @@
   index page, dont show the login/register links.~~ Always redirect to the index
   page.
 * ~~Responsive menu, replace the sidebar for smaller screens.~~ `DONE`
-* Comments - `Basic functionality complete`
-* Tags - `Basic functionality complete`
-* Add 'Category' functionality to categorise posts under specific categorise and
+* ~~Comments~~ `Basic functionality complete`
+* ~~Tags~~ `Basic functionality complete`
+* Add 'Category' functionality to categorize posts under specific categories and
   allow to sort/list by same.
-* Sidebar - `Basic functionality complete`. Sections need more coding as the
-  relevant functionality is written.
+* ~~Sidebar - `Basic functionality complete`. Sections need more coding as the
+  relevant functionality is written.~~
 * API to read / post Blog Posts and Comments, allowing a completely separate
   front end to be written and used.
 * ~~Sensitive variables to ENV vars, using `python-dotenv`~~
@@ -44,8 +44,8 @@
 
 ### Comments
 
-* Offer to remember commenter for next visit, or use credentials from logged in
-  user.
+* Offer to remember commenter for next visit, already uses  credentials from
+  logged in user if appliciable.
 * ~~Integrate an HTML editor. Could use markdown but it gives unexpected results
   to those not used to it (ie missing linebreaks). Comments saved as HTML and
   filtered through 'safe'. Using Markdown with WYSIWYG functionality for now.~~

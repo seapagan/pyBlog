@@ -1,7 +1,12 @@
 """Configure RSS feeds for the Blog model."""
 from django.contrib.syndication.views import Feed
+from django.utils.feedgenerator import DefaultFeed
 
 from blog.models import Blog, Tag
+
+
+class CorrectMimeTypeFeed(DefaultFeed):
+    content_type = "application/xml; charset=utf-8"
 
 
 class PostsFeed(Feed):
@@ -11,6 +16,7 @@ class PostsFeed(Feed):
     link = "/"
     description = "Updates from Tek:Cited."
     feed_copyright = "Copyright (c) 2021, Seapagan"
+    feed_type = CorrectMimeTypeFeed
 
     def items(self):
         """Return the latest blog posts."""

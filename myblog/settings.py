@@ -190,15 +190,6 @@ SITE_ID = 1
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
-MDEDITOR_CONFIGS = {
-    "default": {
-        "language": "en",
-        "watch": False,
-        "mode": "gfm",
-        "placeholder": "Enter your comment using Markdown! Supports Github Flavoured Markdown (GFM)",
-    }
-}
-
 # settings for the dj-pagination application.
 PAGINATION_DISPLAY_DISABLED_PREVIOUS_LINK = True
 PAGINATION_DISPLAY_DISABLED_NEXT_LINK = True

@@ -16,6 +16,9 @@
   {% include 'blog/sidebar/sidebar_tags.html' %}
 </article>
 <article class="sidebar_article">
+  {% include 'blog/sidebar/sidebar_rss.html' %}
+</article>
+<article class="sidebar_article">
   {% include 'blog/sidebar/sidebar_user.html' %}
 </article>
 {% if user.is_superuser %}

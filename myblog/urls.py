@@ -23,7 +23,7 @@ urlpatterns = (
             {"sitemaps": sitemaps},
             name="django.contrib.sitemaps.views.sitemap",
         ),
-        path("feed/posts/", PostsFeed(), name="latest-feed"),
+        path("feed/posts/", PostsFeed(), name="latest-posts-feed"),
         path("", include("blog.urls")),
         path("register/", user_views.register, name="register"),
         path(

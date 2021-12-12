@@ -246,6 +246,10 @@ body {
   text-align: center;
 }
 
+.sidebar_rss {
+  text-align: center;
+}
+
 .sidebar_danger {
   color: red;
 }

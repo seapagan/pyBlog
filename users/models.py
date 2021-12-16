@@ -25,6 +25,7 @@ class Profile(models.Model):
     github_user = models.CharField(max_length=50, blank=True, default="")
     youtube_user = models.CharField(max_length=50, blank=True, default="")
     twitter_user = models.CharField(max_length=50, blank=True, default="")
+    bio = models.TextField(max_length=300, blank=True, default="")
 
     # set to true if the user can Author posts.
     author = models.BooleanField(default=False)

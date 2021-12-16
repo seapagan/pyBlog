@@ -11,8 +11,12 @@
       <div class="profile_joined_date">Joined :
         {{person.date_joined|date:"dS \o\f F Y"}}</div>
       <div class="profile_location">
-        From <span
-          class="profile_location_text">{{person.profile.location}}</span>
+        {%if person.profile.location%}
+        Location :
+        <span class="profile_location_text">
+          {{person.profile.location}}
+        </span>
+        {% endif %}
       </div>
       {% with post_count=person.blog_posts.all.count comment_count=person.comments.all.count %}
       <div class="profile_post_count">Contributions : {{post_count}}
@@ -31,6 +35,11 @@
         {% endfor %}
       </div>
     </div>
+    {% if person.profile.bio %}
+    <div class="profile_meta_bio">
+      {{person.profile.bio|linebreaks}}
+    </div>
+    {% endif %}
   </div>
 
   {{ request.resolver_match.url_name }}

@@ -4,6 +4,13 @@
 {% block body %}
 <div class="profile_page_wrapper">
   <div class="profile_meta_wrapper">
+
+    {% if request.resolver_match.url_name == 'my-profile' %}
+    <div class="profile_edit_button">
+      Edit
+    </div>
+    {% endif %}
+
     <div class="profile_meta_left"><img class="profile_avatar"
         src="{{ person.profile.image.url }}" alt=""></div>
     <div class="profile_meta_right">
@@ -41,8 +48,6 @@
     </div>
     {% endif %}
   </div>
-
-  {{ request.resolver_match.url_name }}
 
   {% with person.blog_posts.all as posts %}
   {% if posts %}

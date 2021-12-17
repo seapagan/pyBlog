@@ -4,9 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, UpdateView
 
-from users.forms import RegisterForm
+from users.forms import EditProfileForm, RegisterForm
 from users.models import Profile
 
 
@@ -115,3 +115,16 @@ class UserProfileView(DetailView):
         context["links"] = get_profile_context(self.object)
         context["page_title"] = self.object.username.capitalize()
         return context
+
+
+class EditProfileView(LoginRequiredMixin, UpdateView):
+    """View for editing the current users profile."""
+
+    form_class = EditProfileForm
+    template_name = "users/edit-profile.html"
+    success_url = "/profile/"
+    context_object_name = "profile"
+
+    def get_object(self):
+        """Return the correct profile object."""
+        return Profile.objects.get(user=self.request.user)

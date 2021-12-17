@@ -933,6 +933,13 @@ input#id_password2 {
   background-color: var(--block-background);
   box-shadow: 1px 1px 1px 0px hsla(0, 0%, 55%, 0.678);
   overflow: hidden;
+  position: relative;
+}
+
+.profile_edit_button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }
 
 .profile_meta_left {

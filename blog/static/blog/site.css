@@ -1469,8 +1469,8 @@ nav a {
   }
 
   .blog_comment_header {
-    flex-direction: column;
-    row-gap: 0.3em;
+    /* flex-direction: column; */
+    /* row-gap: 0.3em; */
   }
 
   .blog_comment_footer_add {

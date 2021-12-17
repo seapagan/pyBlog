@@ -107,8 +107,8 @@
 * ~~Dynamic page titles~~
 * ~~Add a user section in the sidebar (also holding login/register links if not
   logged in). Will allow to create a new post, edit profile etc.~~
-* zap up the profile, allow ~~display of social links, and~~ to edit User
-  settings etc.
+* zap up the profile, ~~allow display of social links, and to edit User
+  settings~~ etc. `[Probably ready to go]`
 * ~~Header is messed up when looking at someone else profile when you are logged
   in or out, it displays the header as if you are logged in as that user (ie the
   avatar and logout display)~~

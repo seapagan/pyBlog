@@ -25,7 +25,7 @@ def get_profile_context(profile_object):
         "website": {
             "icon": "fal fa-globe",
             "base_url": "",
-            "title": "Homepage",
+            "title": "Personal Website",
             "color": "var(--sidebar-links)",
         },
         "twitter_user": {
@@ -128,3 +128,11 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
     def get_object(self):
         """Return the correct profile object."""
         return Profile.objects.get(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        """Add page_title to this context."""
+        context = super(EditProfileView, self).get_context_data(**kwargs)
+        context[
+            "page_title"
+        ] = f"Editing Profile for {self.request.user.username.capitalize()}"
+        return context

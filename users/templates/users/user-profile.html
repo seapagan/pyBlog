@@ -6,9 +6,10 @@
   <div class="profile_meta_wrapper">
 
     {% if request.resolver_match.url_name == 'my-profile' %}
-    <div class="profile_edit_button">
+    <a href="{% url 'edit-profile' %}" class="profile_edit_button"
+      title="Edit your Profile">
       Edit
-    </div>
+    </a>
     {% endif %}
 
     <div class="profile_meta_left"><img class="profile_avatar"

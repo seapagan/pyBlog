@@ -60,6 +60,9 @@
 
 ### Misc Bugs / Fixes / Ideas
 
+* Implement a Light/Dark mode.
+* Add attributation to post title images, with link if supplied. Stored in
+  database for each post.
 * ~~Draft posts are still listed on the profile for other/anon users, they should
   only be seen by the author.~~
 * ~~Update settings.ALLOWED_HOSTS to take extra hosts from the .env file.~~

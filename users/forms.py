@@ -59,7 +59,7 @@ class EditProfileForm(forms.ModelForm):
     image = forms.ImageField(
         label="Avatar",
         widget=CustomImageField,
-        required=False,
+        required=True,
     )
 
     class Meta:

@@ -15,7 +15,6 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(
-        default="default_profile_pic.png",
         upload_to=get_upload_path,
     )
     location = models.CharField(max_length=100, blank=True)

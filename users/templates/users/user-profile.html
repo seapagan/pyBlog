@@ -13,7 +13,10 @@
     {% endif %}
 
     <div class="profile_meta_left"><img class="profile_avatar"
-        src="{{ person.profile.image.url }}" alt=""></div>
+        {% if person.profile.image %} src="{{ person.profile.image.url }}"
+        alt="" {% else %} src="/media/default_profile_pic.png" alt=""
+        {% endif %}>
+    </div>
     <div class="profile_meta_right">
       <h2 class="profile_username">{{ person.username|capfirst }}</h2>
       <div class="profile_joined_date">Joined :

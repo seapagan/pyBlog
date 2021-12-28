@@ -68,7 +68,6 @@ if DEBUG:
 # Change this IF needed AND running the server behind a proxy.
 FIX_PROXY_IP = bool(int(os.getenv("FIX_PROXY_IP", 0)))
 
-COMPRESS_ENABLED = True
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

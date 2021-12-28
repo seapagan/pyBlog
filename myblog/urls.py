@@ -46,6 +46,11 @@ urlpatterns = (
             name="user-profile",
         ),
         path("profile/", user_views.MyProfileView.as_view(), name="my-profile"),
+        path(
+            "profile/edit/",
+            user_views.EditProfileView.as_view(),
+            name="edit-profile",
+        ),
         path("ckeditor/", include("ckeditor_uploader.urls")),
         path("likes/", include("likes.urls")),
         path("maintenance-mode/", include("maintenance_mode.urls")),

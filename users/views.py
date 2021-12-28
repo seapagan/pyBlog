@@ -4,9 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, UpdateView
 
-from users.forms import RegisterForm
+from users.forms import EditProfileForm, RegisterForm
 from users.models import Profile
 
 
@@ -25,7 +25,7 @@ def get_profile_context(profile_object):
         "website": {
             "icon": "fal fa-globe",
             "base_url": "",
-            "title": "Homepage",
+            "title": "Personal Website",
             "color": "var(--sidebar-links)",
         },
         "twitter_user": {
@@ -114,4 +114,25 @@ class UserProfileView(DetailView):
         context = super(UserProfileView, self).get_context_data(**kwargs)
         context["links"] = get_profile_context(self.object)
         context["page_title"] = self.object.username.capitalize()
+        return context
+
+
+class EditProfileView(LoginRequiredMixin, UpdateView):
+    """View for editing the current users profile."""
+
+    form_class = EditProfileForm
+    template_name = "users/edit-profile.html"
+    success_url = "/profile/"
+    context_object_name = "profile"
+
+    def get_object(self):
+        """Return the correct profile object."""
+        return Profile.objects.get(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        """Add page_title to this context."""
+        context = super(EditProfileView, self).get_context_data(**kwargs)
+        context[
+            "page_title"
+        ] = f"Editing Profile for {self.request.user.username.capitalize()}"
         return context

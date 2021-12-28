@@ -4,6 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import PasswordInput, TextInput
 
+from myblog.widgets.image import CustomImageField
+from users.models import Profile
+
 
 class RegisterForm(UserCreationForm):
     """Custom form class for registering users."""
@@ -48,3 +51,29 @@ class RegisterForm(UserCreationForm):
 
         model = User
         fields = ["username", "email"]
+
+
+class EditProfileForm(forms.ModelForm):
+    """Define the form to Edit a Profile."""
+
+    image = forms.ImageField(
+        label="Avatar",
+        widget=CustomImageField,
+        required=True,
+    )
+
+    class Meta:
+        """Metadata for this form."""
+
+        model = Profile
+        fields = [
+            "location",
+            "bio",
+            "image",
+            "website",
+            "linkedin_user",
+            "facebook_user",
+            "github_user",
+            "youtube_user",
+            "twitter_user",
+        ]

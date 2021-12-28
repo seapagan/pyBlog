@@ -1,0 +1,25 @@
+{% extends 'blog/_base.html' %}
+{% load pagination_tags %}
+
+{% block body %}
+<div class="profile_edit_wrapper">
+  <div class="profile_edit_username">
+    Editing the Profile for {{ user.username|title }}
+  </div>
+  <form method="post" class="profile_edit_form" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {% for field in form %}
+    <div id="edit_label_{{field.name}}" class="profile_edit_label">
+      {{ field.label|capfirst }}
+    </div>
+    <div class="profile_edit_field">{{ field }}</div>
+    {% endfor %}
+    <div class="profile_edit_buttons">
+      <button class="btn btn_success" type="submit"><i
+          class="fad fa-save"></i>&nbsp;Save</button>
+      <a class="btn" href="{{ view.get_success_url }}"><i
+          class="fad fa-ban"></i>&nbsp;Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock body %}

@@ -2,34 +2,35 @@
   {% if widget.is_initial %}
   <img class="post_image_upload_preview" src="{{widget.value.url}}"
     alt="Post Header Image Preview">
-  {% if widget.show_initial %}
-  <span>
-    {{ widget.initial_text }}: <a
-      href="{{ widget.value.url }}">{{ widget.value }}</a>
-  </span>
-  {% endif %}
-  {% if not widget.required %}
-  <div class="post_image_upload_checkbox">
-    <label for="{{ widget.checkbox_id }}">
-      {{ widget.clear_checkbox_label }}
-    </label>
-    <input type="checkbox" name="{{ widget.checkbox_name }}"
-      id="{{ widget.checkbox_id }}" {% if widget.attrs.disabled %} disabled
-      {% endif %}>
+  <div class="post_image_upload_inner">
+    {% if widget.show_initial %}
+    <span>
+      {{ widget.initial_text }}: <a
+        href="{{ widget.value.url }}">{{ widget.value }}</a>
+    </span>
+    {% endif %}
+
+    {% if not widget.required %}
+    <div class="post_image_upload_checkbox">
+      <label for="{{ widget.checkbox_id }}">
+        {{ widget.clear_checkbox_label }}
+      </label>
+      <input type="checkbox" name="{{ widget.checkbox_name }}"
+        id="{{ widget.checkbox_id }}" {% if widget.attrs.disabled %} disabled
+        {% endif %}>
+    </div>
+    {% endif %}
+    <br>
+    <div class="post_image_upload_selector">
+      <span>{{ widget.input_text }}:</span>
+      <input type="{{ widget.type }}" name="{{ widget.name }}"
+        {% include "django/forms/widgets/attrs.html" %}>
+    </div>
+    {% else %}
+    <div class="post_image_upload_selector">
+      <span>{{ widget.add_text_label }}:</span>
+      <input type="{{ widget.type }}" name="{{ widget.name }}"
+        {% include "django/forms/widgets/attrs.html" %}>
+      {% endif %}
+    </div>
   </div>
-  {% endif %}
-  <br>
-  <div class="post_image_upload_selector">
-    <span>{{ widget.input_text }}:</span>
-    <input type="{{ widget.type }}" name="{{ widget.name }}"
-      {% include "django/forms/widgets/attrs.html" %}>
-  </div>
-  {% else %}
-  <div>No Current Image.</div>
-  <div class="post_image_upload_selector">
-    <span>{{ widget.add_text_label }}:</span>
-    <input type="{{ widget.type }}" name="{{ widget.name }}"
-      {% include "django/forms/widgets/attrs.html" %}>
-  </div>
-  {% endif %}
-</div>

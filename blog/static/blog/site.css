@@ -622,7 +622,19 @@ body {
   margin-top: 0.5em;
   display: flex;
   row-gap: 0.5em;
+  flex-direction: row;
+  align-items: center;
+}
+
+.post_image_upload_inner {
+  display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  gap: 0.5em;
+  padding: 0 1em;
 }
 
 .post_image_upload_preview {
@@ -636,7 +648,7 @@ body {
 
 .post_image_upload_selector > * {
   display: inline;
-  width: unset !important;
+  /* width: unset !important; */
 }
 
 .blog_comment_count {
@@ -1592,5 +1604,17 @@ nav a {
   .profile_edit_buttons {
     margin-top: 1em;
     text-align: right;
+  }
+
+  .post_image_upload_wrapper {
+    flex-direction: column;
+  }
+
+  .post_image_upload_preview {
+    width: 80%;
+  }
+
+  .post_image_upload_inner {
+    padding: 0;
   }
 }

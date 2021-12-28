@@ -2,32 +2,9 @@
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
 from django import forms
-from django.forms.widgets import ClearableFileInput
 
 from blog.models import Blog, Comment
-
-
-class CustomImageField(ClearableFileInput):
-    """Create our custom image upload widget."""
-
-    template_name = "blog/widgets/clearable_file_input.html"
-    initial_text = "Current Image"
-    input_text = "Change Image"
-    clear_checkbox_label = "Remove Image"
-    # our own custom context variables.
-    add_text_label = "Add an Image"
-    show_initial = False
-
-    def get_context(self, name, value, attrs):
-        """Add our new variables to the context."""
-        context = super().get_context(name, value, attrs)
-        context["widget"].update(
-            {
-                "add_text_label": self.add_text_label,
-                "show_initial": self.show_initial,
-            }
-        )
-        return context
+from myblog.widgets.image import CustomImageField
 
 
 class NewCommentForm(forms.ModelForm):
@@ -135,6 +112,8 @@ class EditPostForm(forms.ModelForm):
 
         fields = ("title", "desc", "body", "image", "tags_list")
         labels = {
-            "desc": "Description",
+            "title": "Post Title",
+            "desc": "Post Description",
             "body": "",
+            "image": "Post Header Image",
         }

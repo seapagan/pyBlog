@@ -1608,6 +1608,7 @@ nav a {
 
   .post_image_upload_wrapper {
     flex-direction: column;
+    margin-top: 0;
   }
 
   .post_image_upload_preview {

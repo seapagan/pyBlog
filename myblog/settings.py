@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     "django.contrib.humanize",
     "preferences",
+    "compressor",
     "django.forms",
     "django_gravatar",
     "ckeditor",
@@ -66,6 +67,8 @@ if DEBUG:
 
 # Change this IF needed AND running the server behind a proxy.
 FIX_PROXY_IP = bool(int(os.getenv("FIX_PROXY_IP", 0)))
+
+COMPRESS_ENABLED = True
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -174,6 +177,13 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = "static"
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "compressor.finders.CompressorFinder",
+)
+
 
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"

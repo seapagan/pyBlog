@@ -1,4 +1,5 @@
 {% load static %}
+{% load compress %}
 
 <head>
   <meta charset="UTF-8">
@@ -29,8 +30,11 @@
   <script defer
     src="{% static 'ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js' %}">
   </script>
+
   <link rel="stylesheet" href="{% static 'prism/prism.css' %}">
+  {% compress css %}
   <link rel="stylesheet" href="{% static 'blog/site.css' %}" />
+  {% endcompress %}
   <title>
     {{ preferences.SitePreferences.title }}
     {% if page_title %}

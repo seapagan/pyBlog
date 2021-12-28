@@ -1,4 +1,6 @@
 {% load static %}
+{% load compress %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +29,9 @@
       </div>
       {% include 'blog/_footer.html' %}
     </div>
+    {% compress js%}
     <script src="{% static 'blog/site.js' %}"></script>
+    {% endcompress %}
     <script src="https://instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw">
     </script>

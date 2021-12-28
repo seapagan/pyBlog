@@ -9,7 +9,8 @@
 * ~~Comments~~ `Basic functionality complete`
 * ~~Tags~~ `Basic functionality complete`
 * Add 'Category' functionality to categorize posts under specific categories and
-  allow to sort/list by same.
+  allow to sort/list by same. `Honestly not sure if needed, tags should be
+  pretty specific for now.`
 * ~~Sidebar - `Basic functionality complete`. Sections need more coding as the
   relevant functionality is written.~~
 * API to read / post Blog Posts and Comments, allowing a completely separate
@@ -153,14 +154,16 @@
   required, so an external one can use the API (maybe make into a plugin app?)
 * ~~sort out different WYSIWYG editor placeholders depending if we are creating
   a post or a comment~~
-* add `rel=canonical` to \<head\> where it fits, to avoid google tagging ie
-  pagainated pages as different
+* add `rel=canonical` to \<head\> where it is needed, to avoid Google issues.
+  `Currently added to Profile pages only`
 * add site metadata, custom search tags eg for each post, generic ones for the
   others, tag with the n most used tags?
 * Allow ability to use non-pro version of FontAwesome - atm we use the duotone
   icons which are pro only. I invisage a custom tag that will return the 'fad'
   or 'fas' respectively depending on a setting in settings.py. The link in the
   head will need changed for non-pro also.
+* Add 'Follow on Twitter/Youtube etc' links to directly follow/subscribe to the
+  relevant accounts.
 
 [djc]: https://github.com/django-compressor/django-compressor
 [djc-postcss]: https://github.com/Pithikos/django-compressor-postcss

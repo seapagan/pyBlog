@@ -99,6 +99,9 @@ class MyProfileView(LoginRequiredMixin, ListView):
         context = super(MyProfileView, self).get_context_data(**kwargs)
         context["links"] = get_profile_context(self.object_list)
         context["page_title"] = self.object_list.username.capitalize()
+        context[
+            "canonical"
+        ] = f"{self.request.build_absolute_uri()}{self.request.user.pk}/"
         return context
 
 
@@ -114,6 +117,7 @@ class UserProfileView(DetailView):
         context = super(UserProfileView, self).get_context_data(**kwargs)
         context["links"] = get_profile_context(self.object)
         context["page_title"] = self.object.username.capitalize()
+        context["canonical"] = f"{self.request.build_absolute_uri()}"
         return context
 
 

@@ -1617,4 +1617,8 @@ nav a {
   .post_image_upload_inner {
     padding: 0;
   }
+
+  .post_image_upload_selector {
+    width: 100%;
+  }
 }

@@ -6,7 +6,7 @@
   <div class="profile_edit_username">
     Editing the Profile for {{ user.username|title }}
   </div>
-  <form method="post" class="profile_edit_form">
+  <form method="post" class="profile_edit_form" enctype='multipart/form-data'>
     {% csrf_token %}
     {% for field in form %}
     <div id="edit_label_{{field.name}}" class="profile_edit_label">

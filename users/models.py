@@ -2,12 +2,31 @@
 import os
 
 from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
 from django.db import models
+
+
+class OverwriteStorage(FileSystemStorage):
+    """Returns a filename that's free on the target storage system.
+
+    Will delete any file with the same name.
+    """
+
+    def get_available_name(self, name, max_length=None):
+        """Override the get_availiable_name, to delete existing file."""
+        self.delete(name)
+        super().get_available_name(name, max_length)
+        return name
 
 
 def get_upload_path(instance, filename):
     """Helper function to get a user-specific upload path."""
-    return os.path.join("profile_pictures", instance.user.username, filename)
+    ext = os.path.splitext(filename)[1]
+    filename = "avatar" + ext
+    full_path = os.path.join(
+        "profile_pictures", instance.user.username, filename
+    )
+    return full_path
 
 
 class Profile(models.Model):
@@ -16,6 +35,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(
         upload_to=get_upload_path,
+        storage=OverwriteStorage(),
     )
     location = models.CharField(max_length=100, blank=True)
     website = models.URLField(blank=True, default="")

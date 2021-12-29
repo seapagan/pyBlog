@@ -80,7 +80,7 @@ body {
   position: relative;
   display: inline-block;
   font-family: "Big Shoulders Stencil Display", cursive;
-  font-size: 1.5em;
+  font-size: 2.5em;
   letter-spacing: 2px;
   text-decoration: none;
   color: hsl(162, 16%, 13%);
@@ -1299,7 +1299,7 @@ input#id_password2 {
 
 .nav_toggle_label {
   position: absolute;
-  top: 20px;
+  top: 38px;
   left: 0;
   margin-left: 1em;
   align-items: center;

@@ -26,13 +26,14 @@ urlpatterns = (
         path("feed/posts/", PostsFeed(), name="latest-posts-feed"),
         path("", include("blog.urls")),
         path("register/", user_views.register, name="register"),
-        path(
-            "login/",
-            authentication_views.LoginView.as_view(
-                template_name="users/login.html"
-            ),
-            name="login",
-        ),
+        # path(
+        #     "login/",
+        #     authentication_views.LoginView.as_view(
+        #         template_name="users/login.html"
+        #     ),
+        #     name="login",
+        # ),
+        path("login/", user_views.CustomLoginView.as_view(), name="login"),
         path(
             "logout/",
             authentication_views.LogoutView.as_view(

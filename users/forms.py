@@ -1,6 +1,8 @@
 """Custom forms for the users App."""
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import PasswordInput, TextInput
 
@@ -8,10 +10,33 @@ from myblog.widgets.image import CustomImageField
 from users.models import Profile
 
 
+class LoginForm(AuthenticationForm):
+    """Custom Login Form."""
+
+    captcha = ReCaptchaField(
+        widget=ReCaptchaV2Checkbox(),
+        error_messages={
+            "required": "Please tick the box to prove you are not a robot.",
+        },
+    )
+
+    class Meta:
+        labels = {
+            "captcha": "",
+        }
+
+
 class RegisterForm(UserCreationForm):
     """Custom form class for registering users."""
 
     email = forms.EmailField()
+
+    captcha = ReCaptchaField(
+        widget=ReCaptchaV2Checkbox(),
+        error_messages={
+            "required": "Please tick the box to prove you are not a robot.",
+        },
+    )
 
     def __init__(self, *args, **kwargs):
         """Customize the registration form labels."""
@@ -44,7 +69,7 @@ class RegisterForm(UserCreationForm):
                 "class": "form-control",
             }
         )
-        print("In init")
+        self.fields["captcha"].label = ""
 
     class Meta:
         """Metadata for this class."""

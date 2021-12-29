@@ -22,11 +22,6 @@
       <div class="login_form_error"><strong>{{error|escape}}</strong></div>
       {% endfor %}
 
-      {% comment %} {% for field in form %}
-      <div class="form_field_label">{{ field.label|capfirst }}</div>
-      <div class="form_field_field">{{ field }}</div>
-      {% endfor %} {% endcomment %}
-
       <div class="form_field_label">{{ form.username.label|capfirst }}</div>
       <div class="form_field_field">{{ form.username }}</div>
 

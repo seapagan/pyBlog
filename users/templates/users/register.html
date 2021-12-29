@@ -6,7 +6,19 @@
   <div class="form_header">Register</div>
   <form method="POST">
     <div class="form_form">
+
       {% csrf_token %}
+
+      {% if form.errors %}
+      {% for field in form %}
+      {% for error in field.errors %}
+      <div class="login_form_error">
+        <strong>{{ error|escape }}</strong>
+      </div>
+      {% endfor %}
+      {% endfor %}
+      {% endif %}
+
       {% for field in form %}
       <div class="form_field_label">{{ field.label|capfirst }}</div>
       <div class="form_field_field">{{ field }}</div>

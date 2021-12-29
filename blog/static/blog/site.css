@@ -898,6 +898,8 @@ code {
   display: inline-grid;
   grid-template-columns: auto auto;
   row-gap: 0.5em;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .form_header {

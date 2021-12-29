@@ -31,6 +31,13 @@ class RegisterForm(UserCreationForm):
 
     email = forms.EmailField()
 
+    captcha = ReCaptchaField(
+        widget=ReCaptchaV2Checkbox(),
+        error_messages={
+            "required": "Please tick the box to prove you are not a robot.",
+        },
+    )
+
     def __init__(self, *args, **kwargs):
         """Customize the registration form labels."""
         super().__init__(*args, **kwargs)
@@ -62,7 +69,7 @@ class RegisterForm(UserCreationForm):
                 "class": "form-control",
             }
         )
-        print("In init")
+        self.fields["captcha"].label = ""
 
     class Meta:
         """Metadata for this class."""

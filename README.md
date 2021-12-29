@@ -53,7 +53,7 @@ into the project.
   variables or `.env` file if it exists
 - Post search functionality - currently only searches by post Title and
   Description.
-- ReCaptcha to help protect the comment functionality from abuse.
+- ReCaptcha to help protect the Login and comment functionality from abuse.
 - Google Search sitemap generated on request at `/sitemap.xml`
 - RSS feed availiable for Blog Posts at `/feed/posts/`. Will probably add a
   comments feed also, or upgrade this feed to also list comments.

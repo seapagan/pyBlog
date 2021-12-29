@@ -3,10 +3,11 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
 from django.views.generic import DetailView, ListView, UpdateView
 
-from users.forms import EditProfileForm, RegisterForm
+from users.forms import EditProfileForm, LoginForm, RegisterForm
 from users.models import Profile
 
 
@@ -140,3 +141,10 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
             "page_title"
         ] = f"Editing Profile for {self.request.user.username.capitalize()}"
         return context
+
+
+class CustomLoginView(LoginView):
+    """Custom login view."""
+
+    template_name = "users/login.html"
+    form_class = LoginForm

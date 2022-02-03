@@ -7,6 +7,7 @@ django-likes>=2.0.1,<2.1.0
 django-maintenance-mode>=0.16.1,<0.17.0
 django-preferences>=1.0.0,<1.1.0
 django-recaptcha>=2.0.6,<2.1.0
+django-rundevserver>=0.3.1,<0.4.0
 django-secretballot>=2.0.0,<2.1.0
 django-user-sessions>=1.7.1,<1.8.0
 django-xforwardedfor-middleware==2.0

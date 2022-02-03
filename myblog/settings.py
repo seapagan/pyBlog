@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     "django.contrib.humanize",
     "preferences",
+    "rundevserver",
     "compressor",
     "django.forms",
     "django_gravatar",
@@ -316,3 +317,7 @@ MAINTENANCE_MODE_IGNORE_SUPERUSER = True
 # recapcha settings
 RECAPTCHA_PUBLIC_KEY = str(os.getenv("RECAPTCHA_PUBLIC_KEY"))
 RECAPTCHA_PRIVATE_KEY = str(os.getenv("RECAPTCHA_PRIVATE_KEY"))
+
+# rundevserver settings
+RDS_ALL_INTERFACES = True
+# RDS_DEBUG = False

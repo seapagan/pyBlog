@@ -555,6 +555,7 @@ body {
 .blog_description {
   padding: 1em;
   line-height: var(--content-line-height);
+  font-size: 1.2em;
 }
 
 .blog_buttons {

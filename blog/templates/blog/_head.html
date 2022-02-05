@@ -9,6 +9,13 @@
   {% if canonical %}
   <link rel="canonical" href="{{canonical}}">
   {% endif %}
+
+  {% if meta %}
+  <meta name="description" content="{{ meta.description }}">
+  {% else %}
+  <meta name="description" content="{{ preferences.SitePreferences.heading }}">
+  {% endif %}
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://code.jquery.com">

@@ -46,8 +46,12 @@ class PostDetailView(HitCountDetailView):
     def get_context_data(self, **kwargs):
         """Add page title to the context."""
         context = super(PostDetailView, self).get_context_data(**kwargs)
+        # set a custom page title for the post
         context["page_title"] = self.object.title.capitalize()
-
+        # add description Metadata to the context
+        context["meta"] = {
+            "description": self.object.desc.capitalize(),
+        }
         return context
 
     def get_object(self, queryset=None):

@@ -2,6 +2,10 @@
 
 ## Important functionality
 
+* Add ability to pin a post from it's own edit page. Also warn that doing this
+  will unpin {current pipnned post}. Superuser only.
+* style Paragraphs (more space below), links and lists (they are default) etc
+  for text in the post BODY
 * ~~on logout, check if in maintenance mode and if so, redirect directly to the
   index page, dont show the login/register links.~~ Always redirect to the index
   page.

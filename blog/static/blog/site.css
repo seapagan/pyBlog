@@ -18,6 +18,8 @@ html {
   --button-background-color: hsl(30, 20%, 90%);
   --btn-backgroud-disabled: inherit;
 
+  --body-links: hsla(221, 54%, 45%, 0.8);
+
   --sidebar-links: hsla(0, 0%, 20%, 0.8);
   --sidebar-links-hover: black;
 
@@ -417,6 +419,15 @@ body {
   border-top: 1px solid var(--faded-border);
   letter-spacing: 0.5px;
   line-height: var(--content-line-height);
+}
+
+.blog_body p {
+  padding-bottom: 1em;
+}
+
+.blog_body a {
+  color: var(--body-links);
+  text-decoration: none;
 }
 
 .blog_body_footer {

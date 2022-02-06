@@ -2,6 +2,7 @@
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -32,6 +33,29 @@ class IndexClassView(ListView):
         """Add page title to the context."""
         context = super(IndexClassView, self).get_context_data(**kwargs)
         context["page_title"] = preferences.SitePreferences.heading
+        # add description Metadata to the context
+        context["meta"] = {
+            "twitter": [
+                {
+                    "name": "description",
+                    "content": preferences.SitePreferences.heading,
+                },
+                {
+                    "name": "title",
+                    "content": preferences.SitePreferences.title,
+                },
+                {
+                    "name": "site",
+                    "content": f"@{preferences.SitePreferences.twitter_site}",
+                },
+                {
+                    "name": "image",
+                    "content": self.request.build_absolute_uri(
+                        staticfiles_storage.url("blog/twitter.png")
+                    ),
+                },
+            ],
+        }
 
         return context
 
@@ -46,8 +70,31 @@ class PostDetailView(HitCountDetailView):
     def get_context_data(self, **kwargs):
         """Add page title to the context."""
         context = super(PostDetailView, self).get_context_data(**kwargs)
+        # set a custom page title for the post
         context["page_title"] = self.object.title.capitalize()
-
+        # add description Metadata to the context
+        context["meta"] = {
+            "description": self.object.desc,
+            "twitter": [
+                {
+                    "name": "description",
+                    "content": self.object.desc,
+                },
+                {
+                    "name": "title",
+                    "content": self.object.title,
+                },
+                {
+                    "name": "creator",
+                    "content": f"@{self.object.user.username}",
+                },
+                {
+                    "name": "site",
+                    "content": f"@{preferences.SitePreferences.twitter_site}",
+                },
+            ],
+        }
+        # print(context)
         return context
 
     def get_object(self, queryset=None):

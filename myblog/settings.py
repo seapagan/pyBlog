@@ -316,4 +316,4 @@ RECAPTCHA_PRIVATE_KEY = str(os.getenv("RECAPTCHA_PRIVATE_KEY"))
 
 # rundevserver settings
 RDS_ALL_INTERFACES = True
-RDS_DEBUG = False
+RDS_DEBUG = True

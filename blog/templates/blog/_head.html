@@ -9,6 +9,20 @@
   {% if canonical %}
   <link rel="canonical" href="{{canonical}}">
   {% endif %}
+
+  {% if meta.description %}
+  <meta name="description" content="{{ meta.description }}">
+  {% else %}
+  <meta name="description" content="{{ preferences.SitePreferences.heading }}">
+  {% endif %}
+
+  {% if meta.twitter %}
+  <meta name="twitter:card" content="summary">
+  {% for meta in meta.twitter %}
+  <meta name="twitter:{{ meta.name }}" content="{{ meta.content }}">
+  {% endfor %}
+  {% endif %}
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://code.jquery.com">

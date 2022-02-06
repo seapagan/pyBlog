@@ -18,6 +18,8 @@ html {
   --button-background-color: hsl(30, 20%, 90%);
   --btn-backgroud-disabled: inherit;
 
+  --body-links: hsla(221, 54%, 45%, 0.8);
+
   --sidebar-links: hsla(0, 0%, 20%, 0.8);
   --sidebar-links-hover: black;
 
@@ -419,6 +421,15 @@ body {
   line-height: var(--content-line-height);
 }
 
+.blog_body p {
+  padding-bottom: 1em;
+}
+
+.blog_body a {
+  color: var(--body-links);
+  text-decoration: none;
+}
+
 .blog_body_footer {
   padding: 0.2em 0.5em;
   display: flex;
@@ -544,6 +555,7 @@ body {
 .blog_description {
   padding: 1em;
   line-height: var(--content-line-height);
+  font-size: 1.2em;
 }
 
 .blog_buttons {

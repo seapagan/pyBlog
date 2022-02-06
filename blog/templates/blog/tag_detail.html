@@ -4,8 +4,8 @@
 {% block body %}
 {% with tag.posts.all|by_hits as posts %}
 {% if posts %}
-<div class="tags_header"><span>The following Posts are tagged
-    as</span><span class="sidebar_tag">{{ tag.tag_name }}</span>
+<div class="tags_header"><span>Posts tagged
+    as</span>&nbsp;<span class="sidebar_tag">{{ tag.tag_name }}</span>
 </div>
 {% for blog in posts %}
 {% include 'blog/_single_post_summary.html' %}

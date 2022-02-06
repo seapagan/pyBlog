@@ -140,6 +140,7 @@ class SitePreferences(Preferences):
     pinned_post = models.ForeignKey(
         Blog, null=True, blank=True, on_delete=models.CASCADE
     )
+    twitter_site = models.CharField(max_length=50, default="")
 
     class Meta:
         """class-specific configuration."""

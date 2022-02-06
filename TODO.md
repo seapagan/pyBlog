@@ -5,8 +5,8 @@
 * Add Backup / Restore ability for posts, tags etc.
 * Add ability to pin a post from it's own edit page. Also warn that doing this
   will unpin {current pipnned post}. Superuser only.
-* style Paragraphs (more space below), links and lists (they are default) etc
-  for text in the post BODY
+* ~~style Paragraphs (more space below), links and lists (they are default) etc
+  for text in the post BODY~~
 * ~~on logout, check if in maintenance mode and if so, redirect directly to the
   index page, dont show the login/register links.~~ Always redirect to the index
   page.
@@ -153,7 +153,7 @@
   pagination, `{{ posts|length }}` only displays the number on that page.~~
 * refactor CSS to PostCSS, using [`django-compressor`][djc] and
   [`django-compressor-postcss`][djc-postcss]
-* add social media sharing to a post. Add correct post metadata for Twitter,
+* add social media sharing to a post. Add correct post metadata for ~~Twitter~~,
   Facebook etc to give proper share summarys
 * Toggle (from manage.py) to disable the native Django front end completely if
   required, so an external one can use the API (maybe make into a plugin app?)
@@ -161,14 +161,15 @@
   a post or a comment~~
 * add `rel=canonical` to \<head\> where it is needed, to avoid Google issues.
   `Currently added to Profile pages only`
-* add site metadata, custom search tags eg for each post, generic ones for the
-  others, tag with the n most used tags?
+* ~~add site metadata, custom search tags eg for each post, generic ones for the
+  others, tag with the n most used tags?~~ The Description tag has been added
+  only, Google no longer reads or uses keyword meta tags.
 * Allow ability to use non-pro version of FontAwesome - atm we use the duotone
   icons which are pro only. I invisage a custom tag that will return the 'fad'
   or 'fas' respectively depending on a setting in settings.py. The link in the
   head will need changed for non-pro also.
 * Add 'Follow on Twitter/Youtube etc' links to directly follow/subscribe to the
-  relevant accounts.
+  relevant accounts. Offer to follow both site and post author.
 
 [djc]: https://github.com/django-compressor/django-compressor
 [djc-postcss]: https://github.com/Pithikos/django-compressor-postcss

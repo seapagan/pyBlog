@@ -60,6 +60,7 @@ into the project.
   comments feed also, or upgrade this feed to also list comments.
 - Local HTML, CSS and JS is minimized on the fly in production mode, left as-is
   in DEBUG mode.
+- Add the metadata for Twitter Cards.
 
 ### Minimum required before Release
 

@@ -84,7 +84,10 @@ class PostDetailView(HitCountDetailView):
                     "name": "title",
                     "content": self.object.title,
                 },
-                {"name": "creator", "content": f"@{self.object.user.username}"},
+                {
+                    "name": "creator",
+                    "content": f"@{self.object.user.username}",
+                },
                 {
                     "name": "site",
                     "content": f"@{preferences.SitePreferences.twitter_site}",

@@ -2,6 +2,7 @@
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -34,7 +35,6 @@ class IndexClassView(ListView):
         context["page_title"] = preferences.SitePreferences.heading
         # add description Metadata to the context
         context["meta"] = {
-            "description": preferences.SitePreferences.heading,
             "twitter": [
                 {
                     "name": "description",
@@ -47,6 +47,12 @@ class IndexClassView(ListView):
                 {
                     "name": "site",
                     "content": f"@{preferences.SitePreferences.twitter_site}",
+                },
+                {
+                    "name": "image",
+                    "content": self.request.build_absolute_uri(
+                        staticfiles_storage.url("blog/twitter.png")
+                    ),
                 },
             ],
         }

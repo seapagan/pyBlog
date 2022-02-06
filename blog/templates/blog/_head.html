@@ -10,7 +10,7 @@
   <link rel="canonical" href="{{canonical}}">
   {% endif %}
 
-  {% if meta %}
+  {% if meta.description %}
   <meta name="description" content="{{ meta.description }}">
   {% else %}
   <meta name="description" content="{{ preferences.SitePreferences.heading }}">

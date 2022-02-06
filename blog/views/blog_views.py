@@ -32,6 +32,24 @@ class IndexClassView(ListView):
         """Add page title to the context."""
         context = super(IndexClassView, self).get_context_data(**kwargs)
         context["page_title"] = preferences.SitePreferences.heading
+        # add description Metadata to the context
+        context["meta"] = {
+            "description": preferences.SitePreferences.heading,
+            "twitter": [
+                {
+                    "name": "description",
+                    "content": preferences.SitePreferences.heading,
+                },
+                {
+                    "name": "title",
+                    "content": preferences.SitePreferences.title,
+                },
+                {
+                    "name": "site",
+                    "content": f"@{preferences.SitePreferences.twitter_site}",
+                },
+            ],
+        }
 
         return context
 
@@ -50,8 +68,24 @@ class PostDetailView(HitCountDetailView):
         context["page_title"] = self.object.title.capitalize()
         # add description Metadata to the context
         context["meta"] = {
-            "description": self.object.desc.capitalize(),
+            "description": self.object.desc,
+            "twitter": [
+                {
+                    "name": "description",
+                    "content": self.object.desc,
+                },
+                {
+                    "name": "title",
+                    "content": self.object.title,
+                },
+                {"name": "creator", "content": f"@{self.object.user.username}"},
+                {
+                    "name": "site",
+                    "content": f"@{preferences.SitePreferences.twitter_site}",
+                },
+            ],
         }
+        # print(context)
         return context
 
     def get_object(self, queryset=None):

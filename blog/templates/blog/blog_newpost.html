@@ -7,44 +7,8 @@
   <div class="new_post_user">You are Logged in as <b>{{ user.username }}</b>
   </div>
   <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.media }}
-    {% for field in form %}
-    {% if not "image_attrib_" in field.label_tag %}
-    <div class="new_post_field">
-      <span class="new_post_field_label">{{ field.label_tag|capfirst }}</span>
-      <span class="new_post_field_field">{{ field }}</span>
-    </div>
-    {% if "Tags" in field.label_tag %}
-    <div class="edit_post_tags">
-      Existing Tags :&nbsp;
-      {% if sb.tags %}
-      {% for tag in sb.tags %}
-      <span class="sidebar_tag">{{ tag.tag_name}}</span>
-      {% endfor %}
-      {% else %}
-      No Tags Defined yet
-      {% endif %}
-    </div>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
 
-    {% comment %} second loop on form fields, to get the image attrib fields
-    only {% endcomment %}
-    <div class="image_meta_container">
-      <div class="image_meta_header">
-        Image Attribution (Optional)
-      </div>
-      {% for field in form %}
-      {% if "image_attrib_" in field.label_tag %}
-      <div class="image_meta_field">
-        <span class="post_attribute_label">{{ field.label_tag|capfirst }}</span>
-        <span class="post_attribute_field">{{ field }}</span>
-      </div>
-      {% endif %}
-      {% endfor %}
-    </div>
+    {% include 'blog/common/post_form.html' %}
 
     <div class="new_post_buttons">
       <button class="btn btn_alt" type="submit" name="draft" value="Draft"><i

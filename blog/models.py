@@ -65,6 +65,10 @@ class Blog(models.Model, HitCountModelMixin):
         object_id_field="object_pk",
         related_query_name="hit_count_generic_relation",
     )
+    image_attrib_name = models.CharField(max_length=50, default="")
+    image_attrib_name_link = models.CharField(max_length=100, default="")
+    image_attrib_site = models.CharField(max_length=50, default="")
+    image_attrib_site_link = models.URLField(max_length=200, default="")
 
     class Meta:
         """Meta configuration for the Blog model."""

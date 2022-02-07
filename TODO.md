@@ -66,6 +66,10 @@
 
 ### Misc Bugs / Fixes / Ideas
 
+* Add Meta (site preference) to insert `google-site-verification` tag, used to
+  verify ownership of your site for the Google Search Console.
+* BUG - Tags only attached to draft posts are still shown in the tag list and
+  individual tag pages.
 * Implement a Light/Dark mode.
 * Add attributation to post title images, with link if supplied. Stored in
   database for each post.

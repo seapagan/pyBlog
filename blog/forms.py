@@ -98,7 +98,7 @@ class NewPostForm(forms.ModelForm):
             "body": "",
             "image": "Post Header Image",
             "image_attrib_name": "Author",
-            "image_attrib_name_link": "Author Link/Email",
+            "image_attrib_name_link": "Author Email",
             "image_attrib_site": "Source Site Name",
             "image_attrib_site_link": "Source Site Link",
         }
@@ -136,7 +136,7 @@ class EditPostForm(forms.ModelForm):
             "body": "",
             "image": "Post Header Image",
             "image_attrib_name": "Author",
-            "image_attrib_name_link": "Author Link/Email",
+            "image_attrib_name_link": "Author Email",
             "image_attrib_site": "Source Site Name",
             "image_attrib_site_link": "Source Site Link",
         }

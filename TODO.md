@@ -4,7 +4,7 @@
 
 * Add Backup / Restore ability for posts, tags, etc.
 * Add the ability to pin a post from its edit page. Also, warn that doing this
-  will unpin {current pinned post}. Superuser only.
+  will unpin the current pinned post. Superuser only.
 * ~~style Paragraphs (more space below), links and lists (they are default),
   etc. for text in the post BODY~~
 * ~~on logout, check if in maintenance mode and, if so, redirect directly to the
@@ -83,8 +83,8 @@
   forbidden' but records the vote anyway.
   [#54](https://github.com/seapagan/myblog/issues/54) [`FIXED`] but now the
   Ajax functionality does not work. To be investigated.~~ [`FIXED`]
-* if we are on the first page, dont also display a post in the standard list if
-  it is also pinned.
+* ~~if we are on the first page, dont also display a post in the standard list if
+  it is also pinned.~~ [`FIXED`]
 * ~~profile has double scrollbar on small screens~~
 * If the user has no custom User image, the profile page should show the
   gravatar of the user if it exists, then show the default user image. At the

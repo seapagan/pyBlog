@@ -22,11 +22,10 @@ project.
 - Comment on a Post
 - Tag posts with similar topics, list all the tags, and list posts for each tag.
 - A post can be set as 'draft' and published later. Draft posts are hidden from
-- all
-  but Superuser or the post author.
-- Ability to 'like' a post, single vote per logged or anonymous user. Page views
-  are tracked (anonymously and only used for internal page ranking). Like button
-  uses Ajax, so it does not force a page refresh.
+  all but a Superuser or the post author.
+- Ability to 'like' a post, with a single vote per logged or anonymous user.
+  Page views are tracked (anonymously and only used for internal page ranking).
+  Like button uses Ajax, so it does not force a page refresh.
 - Responsive design - Sidebar on larger screens and degrading cleanly to a
   drop-down menu on smaller. The menu is CSS only.
 - Sidebar has a section for 6 most 'Popular Posts' (ranked by page views then
@@ -93,7 +92,7 @@ outstanding bugs and plans.
 
 ## Installation and Usage
 
-From the root of the checked-out repository.
+From the root of the checked-out repository:
 
 ### Install the dependencies
 
@@ -150,9 +149,8 @@ production env.
 
 ### Migrate the Database
 
-You will need to adjust the database settings to your own needs, the application
-currently defaults to using a file-based `SQLite` Database, though this will be
-changed to Postgresql when development is complete.
+You need to adjust the database settings to your own needs; we use Postgresql as
+the Database backend.
 
 ```bash
 python manage.py migrate
@@ -160,7 +158,7 @@ python manage.py migrate
 
 ### Create a Superuser
 
-The Superuser will automatically have Author rights, which regular users
+The Superuser automatically has Author rights, which regular users
 registered to the app will not, so we need at least one. The Django default
 admin site is completely removed in a non-DEBUG setting.
 

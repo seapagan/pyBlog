@@ -19,7 +19,7 @@ load_dotenv(override=True)  # loads the configs from .env
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Read the SECRTE_KEY from the .env file
+# Read the SECRET_KEY from the .env file
 SECRET_KEY = str(os.getenv("SECRET_KEY"))
 
 # Set DEBUG from the .env file
@@ -196,7 +196,6 @@ LOGIN_URL = "login"
 # set a SITE_ID, due to the (3rd party) 'preferences' app using the sites
 # functionality. long term, rewrite the addon to remove this need.
 SITE_ID = 1
-
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 

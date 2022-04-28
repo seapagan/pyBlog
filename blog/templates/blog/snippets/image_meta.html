@@ -1,0 +1,23 @@
+<!-- return a block containing the image meta data -->
+<div class="image_meta_block">
+  Image
+  {% if blog.image_attrib_name%}
+  &copy;
+  {% if blog.image_attrib_name_link %}
+  <a href="mailto:{{blog.image_attrib_name_link}}" target="_blank"
+    rel="noopener noreferrer">{{blog.image_attrib_name}}</a>
+  {% else %}
+  {{ blog.image_attrib_name }}
+  {% endif %}
+  {% endif %}
+
+  {% if blog.image_attrib_site%}
+  from
+  {% if blog.image_attrib_site_link %}
+  <a href="{{blog.image_attrib_site_link}}" target="_blank"
+    rel="noopener noreferrer">{{blog.image_attrib_site}}</a>
+  {% else %}
+  {{blog.image_attrib_site}}
+  {% endif %}
+  {% endif %}
+</div>

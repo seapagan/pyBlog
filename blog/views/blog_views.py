@@ -94,7 +94,6 @@ class PostDetailView(HitCountDetailView):
                 },
             ],
         }
-        # print(context)
         return context
 
     def get_object(self, queryset=None):

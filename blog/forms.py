@@ -84,14 +84,23 @@ class NewPostForm(forms.ModelForm):
         fields = (
             "title",
             "desc",
-            "image",
             "body",
+            "tags_list",
+            "image",
+            "image_attrib_name",
+            "image_attrib_name_link",
+            "image_attrib_site",
+            "image_attrib_site_link",
         )
         labels = {
             "title": "Post Title",
             "desc": "Post Description",
             "body": "",
             "image": "Post Header Image",
+            "image_attrib_name": "Author",
+            "image_attrib_name_link": "Author Email",
+            "image_attrib_site": "Source Site Name",
+            "image_attrib_site_link": "Source Site Link",
         }
 
 
@@ -110,10 +119,24 @@ class EditPostForm(forms.ModelForm):
 
         model = Blog
 
-        fields = ("title", "desc", "body", "image", "tags_list")
+        fields = (
+            "title",
+            "desc",
+            "body",
+            "tags_list",
+            "image",
+            "image_attrib_name",
+            "image_attrib_name_link",
+            "image_attrib_site",
+            "image_attrib_site_link",
+        )
         labels = {
             "title": "Post Title",
             "desc": "Post Description",
             "body": "",
             "image": "Post Header Image",
+            "image_attrib_name": "Author",
+            "image_attrib_name_link": "Author Email",
+            "image_attrib_site": "Source Site Name",
+            "image_attrib_site_link": "Source Site Link",
         }

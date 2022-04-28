@@ -65,6 +65,26 @@ class Blog(models.Model, HitCountModelMixin):
         object_id_field="object_pk",
         related_query_name="hit_count_generic_relation",
     )
+    image_attrib_name = models.CharField(
+        max_length=50,
+        default="",
+        blank=True,
+    )
+    image_attrib_name_link = models.CharField(
+        max_length=100,
+        default="",
+        blank=True,
+    )
+    image_attrib_site = models.CharField(
+        max_length=50,
+        default="",
+        blank=True,
+    )
+    image_attrib_site_link = models.URLField(
+        max_length=200,
+        default="",
+        blank=True,
+    )
 
     class Meta:
         """Meta configuration for the Blog model."""
@@ -87,6 +107,15 @@ class Blog(models.Model, HitCountModelMixin):
     def no_of_comments(self):
         """Count comments on this post."""
         return Comment.objects.filter(related_post=self).count()
+
+    def has_image_meta(self):
+        """Return true if this post has any image metadata."""
+        return (
+            self.image_attrib_name != ""
+            or self.image_attrib_name_link != ""
+            or self.image_attrib_site != ""
+            or self.image_attrib_site_link != ""
+        )
 
 
 class Comment(models.Model):

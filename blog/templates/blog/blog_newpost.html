@@ -7,24 +7,9 @@
   <div class="new_post_user">You are Logged in as <b>{{ user.username }}</b>
   </div>
   <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.media }}
-    {% for field in form %}
-    <div class="new_post_field">
-      <span class="new_post_field_label">{{ field.label_tag|capfirst }}</span>
-      <span class="new_post_field_field">{{ field }}</span>
-    </div>
-    {% endfor %}
-    <div class="new_post_tags">
-      Existing Tags :&nbsp;
-      {% if sb.tags %}
-      {% for tag in sb.tags %}
-      <span class="sidebar_tag">{{ tag.tag_name}}</span>
-      {% endfor %}
-      {% else %}
-      No Tags Defined yet
-      {% endif %}
-    </div>
+
+    {% include 'blog/common/post_form.html' %}
+
     <div class="new_post_buttons">
       <button class="btn btn_alt" type="submit" name="draft" value="Draft"><i
           class="fad fa-save"></i>&nbsp;Save as DRAFT</button>

@@ -8,24 +8,9 @@
   </div>
   <div class="edit_post_title">Editing Post : <i>"{{ blog.title }}"</i></div>
   <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.media }}
-    {% for field in form %}
-    <div class="edit_post_field">
-      <span class="edit_post_field_label">{{ field.label_tag|capfirst }}</span>
-      <span class="edit_post_field_field">{{ field }}</span>
-    </div>
-    {% endfor %}
-    <div class="edit_post_tags">
-      Existing Tags :&nbsp;
-      {% if sb.tags %}
-      {% for tag in sb.tags %}
-      <span class="sidebar_tag">{{ tag.tag_name}}</span>
-      {% endfor %}
-      {% else %}
-      No Tags Defined yet
-      {% endif %}
-    </div>
+
+    {% include 'blog/common/post_form.html' %}
+
     <div class="edit_post_buttons">
       {% if blog.draft %}
       <button class="btn btn_success" type="submit" name="publish"

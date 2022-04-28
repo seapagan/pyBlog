@@ -409,6 +409,7 @@ body {
 
 .blog_heading_image {
   padding: 0.5em;
+  padding-bottom: 0.2em;
   width: 100%;
   height: 100%;
 }
@@ -553,9 +554,11 @@ body {
 }
 
 .blog_description {
-  padding: 1em;
+  padding: 0.5em;
   line-height: var(--content-line-height);
   font-size: 1.2em;
+  font-weight: 500;
+  text-align: center;
 }
 
 .blog_buttons {
@@ -579,13 +582,15 @@ body {
 
 .edit_post_tags,
 .new_post_tags {
-  padding: 0.5em 0;
+  /* padding: 0.5em 0; */
+  margin-bottom: 1em;
 }
 
 .edit_post_buttons {
   display: flex;
   justify-content: flex-end;
   gap: 0.5em;
+  margin-top: 0.5em;
 }
 
 .new_post_wrapper {
@@ -605,7 +610,7 @@ body {
 
 .new_post_field,
 .edit_post_field {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 .new_post_field_label,
@@ -618,6 +623,54 @@ body {
 
 .new_post_field_field input,
 .edit_post_field_field input {
+  width: 100%;
+  padding: 2px 5px;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                  format the add/edit post image meta data                  */
+/* -------------------------------------------------------------------------- */
+.image_meta_container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1em;
+  font-size: 0.8em;
+  width: 95%;
+  background-color: var(--block-title);
+  border: 1px solid var(--faded-border);
+  padding: 0.5em;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+
+.image_meta_header {
+  font-size: 1.2em;
+  grid-column: 1 / 3;
+  justify-self: center;
+}
+
+.image_meta_field {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-between;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                         Display image meta in post                         */
+/* -------------------------------------------------------------------------- */
+
+.image_meta_block {
+  font-size: 0.8em;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.post_attribute_field input {
+  margin-top: 0.5em;
   width: 100%;
   padding: 2px 5px;
   border-radius: 5px;
@@ -1488,6 +1541,10 @@ nav a {
     text-align: center;
   }
 
+  .blog_date_wrapper {
+    align-self: center;
+  }
+
   .blog_body_footer.index {
     grid-column: auto;
   }
@@ -1656,5 +1713,13 @@ nav a {
     width: 95%;
     justify-self: center;
     margin: 0;
+  }
+
+  .image_meta_container {
+    grid-template-columns: 1fr;
+  }
+
+  .image_meta_header {
+    grid-column: auto;
   }
 }

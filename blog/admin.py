@@ -41,6 +41,10 @@ class BlogAdmin(admin.ModelAdmin):
         "image",
         "draft",
         "slug",
+        "image_attrib_name",
+        "image_attrib_name_link",
+        "image_attrib_site",
+        "image_attrib_site_link",
     ]
     readonly_fields = [
         "created_at",

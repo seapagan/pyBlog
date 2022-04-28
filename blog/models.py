@@ -108,6 +108,15 @@ class Blog(models.Model, HitCountModelMixin):
         """Count comments on this post."""
         return Comment.objects.filter(related_post=self).count()
 
+    def has_image_meta(self):
+        """Return true if this post has any image metadata."""
+        return (
+            self.image_attrib_name != ""
+            or self.image_attrib_name_link != ""
+            or self.image_attrib_site != ""
+            or self.image_attrib_site_link != ""
+        )
+
 
 class Comment(models.Model):
     """Define the 'Comment' Model."""

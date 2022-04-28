@@ -35,7 +35,7 @@ into the project.
 - Profile page for each registered user, showing their Posts, Comments and
   Social Media links.
 - Posts can have an image assigned to them, this will appear on the main page
-  sumary and each posts detail page. If the image is not specified, a default
+  summary and each posts detail page. If the image is not specified, a default
   will be used.
 - Pagination of posts and Comments
 - Ability to 'Pin' a single post at the top of the first page to give it
@@ -46,7 +46,7 @@ into the project.
 - Site maintenance functionality - the whole site will be blocked with an
   informative page when enabled, except for logged in 'Staff' user or above.
 - Site preferences module integrated, which sets the site Name, Tagline, Pinned
-  post and more through the Database. This allows very easy customisation
+  post and more through the Database. This allows very easy customization
   without needing to change the code. All styling is through CSS classes so easy
   to change the look too.
 - Sensitive variables (Secret, database credentials etc) are taken from ENV
@@ -56,11 +56,12 @@ into the project.
 - ReCaptcha to help protect the Login, Registration and comment functionality
   from abuse.
 - Google Search sitemap generated on request at `/sitemap.xml`
-- RSS feed availiable for Blog Posts at `/feed/posts/`. Will probably add a
+- RSS feed available for Blog Posts at `/feed/posts/`. Will probably add a
   comments feed also, or upgrade this feed to also list comments.
 - Local HTML, CSS and JS is minimized on the fly in production mode, left as-is
   in DEBUG mode.
 - Add the metadata for Twitter Cards.
+- Display image metadata for the main title image
 
 ### Minimum required before Release
 
@@ -113,7 +114,7 @@ setting will likely be removed later to allow all types).
 
 Some of the more secret settings are kept in a .env file which will not be
 placed in source control. There is a file `.env.example` in the project root -
-rename this to `.env` and set the values as you need. First you definately want
+rename this to `.env` and set the values as you need. First you definitely want
 to generate a new SECRET_KEY and set up the database login details :
 
 ```python
@@ -193,20 +194,20 @@ You can now access the application in your browser at `http://localhost:8000`
 The entire site can be locked down, returning a `503 Service Unavailable` error
 for all anonymous users, or any registered users below 'Staff' level. This can
 be done by the **Superuser only** from the sidebar or menu. It can also be done
-from the local teminal, in the Django project directory using the below
+from the local terminal, in the Django project directory using the below
 management commands :
 
 ```bash
 python manage.py maintenance_mode <on|off>
 ```
 
-During Maintenence mode, a banner is shown at the top of the screen to remind
+During Maintenance mode, a banner is shown at the top of the screen to remind
 any logged in users that the site is unavailable to the public in general.
 
 ### Running behind a Proxy
 
 If you are running the site behind an HTTP proxy (`Nginx` for example), it is
-posible the Geo-location wil not work, as the IP address will be blank or wrong.
+possible the Geo-location wil not work, as the IP address will be blank or wrong.
 We would need to modify the `REMOTE_ADDR` HTTP header to use the address from
 `HTTP_X_FORWARDED_FOR`. There is a middleware installed in the application to do
 this, however it is disabled by default. Try without first (this is a security

@@ -5,7 +5,9 @@
     }
   },
   "autoDocstring.startOnNewLine": true,
-  "cornflakes.linter.run": "onType",
+  "beautify.language": {
+    "html": ["htm", "html", "django-html"]
+  },
   "editor.formatOnPaste": false,
   "emmet.includeLanguages": {
     "django-html": "html"
@@ -22,6 +24,7 @@
     "**/__pycache__": true
   },
   "git.alwaysSignOff": true,
+  "git.enableCommitSigning": true,
   "html.format.indentHandlebars": true,
   "html.format.templating": true,
   "python.analysis.extraPaths": [],
@@ -47,7 +50,5 @@
   "python.testing.pytestEnabled": false,
   "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "*_test.py"],
   "python.testing.unittestEnabled": false,
-  "testExplorer.addToEditorContextMenu": true,
-  "cornflakes.linter.executablePath": "/home/seapagan/.pyenv/versions/myblog/bin/flake8",
-  "git.enableCommitSigning": true
+  "testExplorer.addToEditorContextMenu": true
 }

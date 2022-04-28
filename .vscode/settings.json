@@ -8,6 +8,8 @@
   "beautify.language": {
     "html": ["htm", "html", "django-html"]
   },
+  "cSpell.ignoreWords": ["myblog"],
+  "cSpell.language": "en-GB",
   "editor.formatOnPaste": false,
   "emmet.includeLanguages": {
     "django-html": "html"

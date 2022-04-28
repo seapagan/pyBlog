@@ -16,7 +16,7 @@ html {
   --very-faded-text: hsla(0, 0%, 38%, 0.4);
 
   --button-background-color: hsl(30, 20%, 90%);
-  --btn-backgroud-disabled: inherit;
+  --btn-background-disabled: inherit;
 
   --body-links: hsla(221, 54%, 45%, 0.8);
 

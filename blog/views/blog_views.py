@@ -180,7 +180,6 @@ class EditPostView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         """Validate the form."""
-
         # get the original slug before any edits.
         original_slug = self.object.slug
         form.save()

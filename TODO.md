@@ -2,19 +2,19 @@
 
 ## Important functionality
 
-* Add Backup / Restore ability for posts, tags etc.
-* Add ability to pin a post from it's own edit page. Also warn that doing this
-  will unpin {current pipnned post}. Superuser only.
-* ~~style Paragraphs (more space below), links and lists (they are default) etc
-  for text in the post BODY~~
-* ~~on logout, check if in maintenance mode and if so, redirect directly to the
-  index page, dont show the login/register links.~~ Always redirect to the index
-  page.
+* Add Backup / Restore ability for posts, tags, etc.
+* Add the ability to pin a post from its edit page. Also, warn that doing this
+  will unpin {current pinned post}. Superuser only.
+* ~~style Paragraphs (more space below), links and lists (they are default),
+  etc. for text in the post BODY~~
+* ~~on logout, check if in maintenance mode and, if so, redirect directly to the
+  index page, don't show the login/register links.~~ Always redirect to the
+  index page.
 * ~~Responsive menu, replace the sidebar for smaller screens.~~ `DONE`
 * ~~Comments~~ `Basic functionality complete`
 * ~~Tags~~ `Basic functionality complete`
 * Add 'Category' functionality to categorize posts under specific categories and
-  allow to sort/list by same. `Honestly not sure if needed, tags should be
+  allow to sort/list by same. `Honestly, not sure if needed; tags should be
   pretty specific for now.`
 * ~~Sidebar - `Basic functionality complete`. Sections need more coding as the
   relevant functionality is written.~~
@@ -22,46 +22,46 @@
   front end to be written and used.
 * ~~Sensitive variables to ENV vars, using `python-dotenv`~~
 * ~~Add a 'like' option to a post~~ `Functionality added, no option to 'unlike'
-  post (yet)
+  a post (yet).
 * ~~Implement the 'Popular Posts' sidebar section
   [[#32](https://github.com/seapagan/myblog/issues/32)]. This will need to wait
-  until the 'likes' functionality is complete. Also start logging unique page
+  until the 'likes' functionality is complete. Also, start logging unique page
   views somehow to help with this.~~
 * ~~Add draft mode for new posts~~
 * Add a future post mode. Can use the background module to daily check for any
   future published posts and publish them.
 * Add functionality to temporarily disable a post (transparently - it will not
-  be hidden, though will be replaced by a custom message)
+  be hidden, it instead will be replaced by a custom message)
 * Add 'Series' functionality where a set of posts can be grouped numerically
-  and accessed as such.
-* Add list of other recommended posts at the bottom of each post, calculated on
-  post tags and popularity.
-* Implement an 'Admin' site, independent of the Django built-in Admin pages, and
+  and read in order.
+* Add a list of other recommended posts at the bottom of each post, calculated
+  on post tags and popularity.
+* Implement an 'Admin' site, independent of the Django built-in Admin pages and
   specific to administrating just the Blog.
 * Add the ability for Admin user to Moderate Comments and Tags, or even a Post
-  (if we have guest posters for example)
-* ~~Implement a maintenance mode to temporarily disable the whole app if
-  needed.~~ [`Done`] Logged in users of staff or higher can still see the site,
-  and the admin. Logged out or lower get the 503 page.
-* ~~Add search functionality~~ [`DONE`]. Currently just searches on the title
-  and description, perhaps need to add tags too but that is a little more
-  complicated. Future update maybe :)
-* Testing. Seriously, lots and lots of testing. Just DO It.
+  (if we have guest posters, for example)
+* ~~Implement a maintenance mode to disable the whole app temporarily if
+  needed.~~ [`Done`] Logged in users of staff or higher can still see the site
+  and the admin. Logged out or lower will see the '503' page.
+* ~~Add search functionality~~ [`DONE`]. Currently, it only searches on the
+  title and description. Perhaps we can search on tags too in the future, but
+  that is a little more complicated.
+* Testing. Seriously, lots and lots of testing. Just DO it.
 
 ### Comments
 
 * Offer to remember commenter for next visit, already uses  credentials from
-  logged in user if appliciable.
+  logged in user if applicable.
 * ~~Integrate an HTML editor. Could use markdown but it gives unexpected results
   to those not used to it (ie missing linebreaks). Comments saved as HTML and
   filtered through 'safe'. Using Markdown with WYSIWYG functionality for now.~~
   [`Done`] Using CKEditor same as Posts.
 * ~~profile links for registered users need to be switched to specific links,
   once that functionality is added~~
-* ~~add ReCapcha to the comment entry form~~
+* ~~add ReCaptcha to the comment entry form~~
 * Nested comments
-* Record visitors IP address with the comment. Can be used for moderation or in
-  case of spamming / abuse. Can use `django-ipware` package.
+* Record the IP address of visitors with the comment; this can be used for
+  moderation or in case of spamming / abuse. Can use `django-ipware` package.
 * ~~humanize the dates and time? (ie '10 minutes ago', 'last month' etc)~~
 
 ### Misc Bugs / Fixes / Ideas
@@ -71,10 +71,10 @@
 * BUG - Tags only attached to draft posts are still shown in the tag list and
   individual tag pages.
 * Implement a Light/Dark mode.
-* Add attributation to post title images, with link if supplied. Stored in
-  database for each post.
-* ~~Draft posts are still listed on the profile for other/anon users, they should
-  only be seen by the author.~~
+* ~~Add attribution to post title images, with a link if supplied. Stored in the
+  database for each post.~~
+* ~~Draft posts are still listed on the profile for other/anon users; they
+  should only be seen by the author.~~
 * ~~Update settings.ALLOWED_HOSTS to take extra hosts from the .env file.~~
 * After login, redirect to the same page user was on.
 * ~~Sort out styles on small screen for new comment when not logged in -
@@ -96,25 +96,25 @@
 * ~~On new/edit post if no existing tags, say 'None'. Also, curently the New and
   Edit post pages dont show any tags(will be due to the sidebar context
   change.)~~
-* ~~When a draft post is published, the created_at date should be set to current
-  date/time, not left at the original creation time.
+* ~~When a draft post is published, the created_at date should change to the
+  current date/time, not the original creation time.
   [[#24](https://github.com/seapagan/myblog/issues/24)]~~ [`Fixed`]
-* ~~Cannot edit the title of a blog post. Add functionality to do this, while
+* ~~Cannot edit the title of a blog post. Add functionality to do this while
   either keeping the slug or generating a new slug but keeping the old one
-  pointing at this post for external link security. Offer a choice? (If post is
-  draft we should defo just change the slug)
+  pointing at this post for external link security. Offer a choice? (If the post
+  is draft we should definitely just change the slug)
   [[#25](https://github.com/seapagan/myblog/issues/25)]~~
 * If post has been renamed, redirect the old slug to the new slug automatically.
 * ~~Style the image upload widget for new/edit post.~~ Base work done for this,
   will need further styling when we redo the entire app.
 * ~~make sure front page link in sidebar doesn't show on front page.~~
 * Add Emoji reactions to posts and comments
-* ~~More work needed on the form styles for small mobile devices.
+* ~~More work is needed on the form styles for small mobile devices.
   [[#19](https://github.com/seapagan/myblog/issues/19)]~~
 * ~~Make a default post image to use if one is not specified~~ `functionality
   complete with a dummy placeholder image which will need replaced before going
   live`. Also offer default ones based on tag and predefined ones?
-* ~~Profile needs link back to main page, or use the sidebar template?~~
+* ~~The profile needs link back to main page, or use the sidebar template?~~
 * ~~Need to reformat the style for the index page post summary  display, I
   really really don't like it! Probably the post detail display too.~~
 * ~~Dynamic page titles~~

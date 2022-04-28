@@ -29,9 +29,9 @@
 
 {% with preferences.SitePreferences.pinned_post as pinned %}
 {% for blog in blogs %}
-{% comment %} {% if page_obj.number != 1 and blog != pinned %} {% endcomment %}
+{% if page_obj.number != 1 or blog.id != pinned.id %}
 {% include 'blog/_single_post_summary.html' %}
-{% comment %} {% endif %} {% endcomment %}
+{% endif %}
 {% endfor %}
 {% endwith %}
 

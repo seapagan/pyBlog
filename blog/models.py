@@ -225,6 +225,8 @@ class Series(models.Model):
     posts = models.ManyToManyField(Blog, blank=True)
 
     class Meta:
+        """Set up Class Metadata."""
+
         verbose_name_plural = "Series"
 
     def __str__(self):
@@ -234,4 +236,4 @@ class Series(models.Model):
     def save(self, *args, **kwargs):
         """Override the save function, so we can generate the slug."""
         self.slug = slugify(self.series_name)
-        super(Series, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)

@@ -21,7 +21,7 @@ class OverwriteStorage(FileSystemStorage):
     """
 
     def get_available_name(self, name, max_length=None):
-        """Override the get_availiable_name, to delete existing file."""
+        """Override the get_available_name, to delete existing file."""
         self.delete(name)
         super().get_available_name(name, max_length)
         return name
@@ -96,7 +96,7 @@ class Blog(models.Model, HitCountModelMixin):
         return self.title
 
     def save(self, *args, **kwargs):
-        """Override the save fumction, so we can generate the slug."""
+        """Override the save function, so we can generate the slug."""
         self.slug = slugify(self.title)
         super(Blog, self).save(*args, **kwargs)
 
@@ -212,3 +212,26 @@ class Redirect(models.Model):
     def __str__(self):
         """Define the Text version of this object."""
         return f"{self.old_slug} -> {self.old_post}"
+
+
+class Series(models.Model):
+    """Define the Series model."""
+
+    series_name = models.CharField(max_length=50)
+    series_creator = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="series"
+    )
+    slug = models.SlugField(default="", unique=True)
+    posts = models.ManyToManyField(Blog, blank=True)
+
+    class Meta:
+        verbose_name_plural = "Series"
+
+    def __str__(self):
+        """Define the Text version of this object."""
+        return f"{self.series_name}"
+
+    def save(self, *args, **kwargs):
+        """Override the save function, so we can generate the slug."""
+        self.slug = slugify(self.series_name)
+        super(Series, self).save(*args, **kwargs)

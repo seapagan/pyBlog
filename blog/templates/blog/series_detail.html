@@ -2,23 +2,6 @@
 {% load blog_extras %}
 
 {% block body %}
-{% with tag.posts.all|by_hits as posts %}
-{% if posts %}
-<div class="tags_header"><span>Posts tagged
-    as</span>&nbsp;<span class="sidebar_tag">{{ tag.tag_name }}</span>
-</div>
-{% for blog in posts %}
-{% include 'blog/_single_post_summary.html' %}
-{% endfor %}
-{% else %}
-<div class="tags_no_tags_text">
-  No posts are tagged with <span class="sidebar_tag">{{tag.tag_name}}</span>
-</div>
-{% endif %}
-<div class=tags_home_btn>
-  <a class="btn" href="{% url 'blog:index' %}"><i
-      class="fad fa-home"></i>&nbsp;Back to Index</a>
-</div>
-{% endwith %}
+
 
 {% endblock body %}

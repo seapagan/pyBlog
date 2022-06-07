@@ -6,7 +6,7 @@ from blog.models import Series
 
 
 class SeriesDetailView(DetailView):
-    """This will list all posts with a certain Tag slug."""
+    """This will list all posts in the Series with the slug."""
 
     model = Series
     template_name = "blog/series_detail.html"
@@ -20,11 +20,11 @@ class SeriesDetailView(DetailView):
 
 
 class SeriesListView(ListView):
-    """List all the tags, and posts that are linked to them."""
+    """List all the Series, and posts that are linked to them."""
 
     model = Series
     template_name = "blog/series/list.html"
-    ordering = [Lower("tag_name")]
+    ordering = [Lower("series_name")]
 
     def get_context_data(self, **kwargs):
         """Add the Page Title context."""

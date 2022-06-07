@@ -4,36 +4,16 @@
 
 <div class="tags_header">Series.</div>
 <div class="tag_list_container">
-  {% if tag_list %}
-  {% for tag in tag_list %}
+  {% if series_list %}
+  {% for series in series_list %}
   <div>
-    <span class="tag_list_tag"><a class="sidebar_tag"
-        href="{% url 'blog:tag_detail' tag.slug %}">{{ tag }}</a></span>
-    <div class="tag_list_post_list">
-      {% with tag.posts.all|no_draft:user|by_hits as posts %}
-      {% if posts %}
-      <div>
-        {% for post in posts|slice:":6" %}
-        <a href="{% url 'blog:detail' post.slug %}" class="tag_list_post
-          {% if post.draft %} tag_list_post_draft
-          {% endif %}">{{post.title|capfirst}}</a>
-        {% endfor %}
-
-        {% if posts.count > 6 %}
-        <a class="tag_list_more" href="{% url 'blog:tag_detail' tag.slug %}">
-          see more ...</a>
-        {% endif %}
-
-      </div>
-      {% else %}
-      <div class="notag_list_post">No tagged posts.</div>
-      {% endif %}
-      {% endwith %}
-    </div>
+    <span class="series_list_series"><a class=""
+        href="{% url 'blog:series_detail' series.slug %}">{{ series }}</a></span>
   </div>
   {% endfor %}
   {% else %}
-  <div class="tags_no_tags_text">There are no tags defined.</div>
+  <div class="tags_no_tags_text">We do not have any Series of articles yet.
+  </div>
   {% endif %}
 </div>
 <div class=tags_home_btn>

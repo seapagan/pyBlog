@@ -1,34 +1,34 @@
-"""Define the views for the Tag Model."""
+"""Define the views for the Series Model."""
 from django.db.models.functions import Lower
 from django.views.generic import DetailView, ListView
 
-from blog.models import Tag
+from blog.models import Series
 
 
-class TagDetailView(DetailView):
+class SeriesDetailView(DetailView):
     """This will list all posts with a certain Tag slug."""
 
-    model = Tag
-    template_name = "blog/tag_detail.html"
+    model = Series
+    template_name = "blog/series_detail.html"
 
     def get_context_data(self, **kwargs):
-        """Add the page title context."""
+        """Add the Page Title context."""
         context = super().get_context_data(**kwargs)
-        context["page_title"] = f"Posts tagged as '{self.object.tag_name}'"
+        context["page_title"] = f"Series | '{self.object.series_name}'"
 
         return context
 
 
-class TagListView(ListView):
+class SeriesListView(ListView):
     """List all the tags, and posts that are linked to them."""
 
-    model = Tag
-    template_name = "blog/tag/list.html"
+    model = Series
+    template_name = "blog/series/list.html"
     ordering = [Lower("tag_name")]
 
     def get_context_data(self, **kwargs):
-        """Add the page title context."""
+        """Add the Page Title context."""
         context = super().get_context_data(**kwargs)
-        context["page_title"] = "Tags"
+        context["page_title"] = "Series"
 
         return context

@@ -70,5 +70,6 @@
         "goals": ["inform"]
       }
     }
-  ]
+  ],
+  "cSpell.enableFiletypes": ["!django-html"]
 }

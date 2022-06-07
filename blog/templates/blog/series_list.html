@@ -2,13 +2,20 @@
 {% load blog_extras %}
 {% block body %}
 
-<div class="tags_header">Series.</div>
-<div class="tag_list_container">
+<div class="series_header">Series.</div>
+<div class="series_list_container">
   {% if series_list %}
   {% for series in series_list %}
-  <div>
-    <span class="series_list_series"><a class=""
-        href="{% url 'blog:series_detail' series.slug %}">{{ series }}</a></span>
+  <div class="series_list_series">
+    <a class="series_list_series_link"
+      href="{% url 'blog:series_detail' series.slug %}">{{ series }}
+      ({{series.posts.count}} post{{series.posts.count|pluralize}})</a>
+  </div>
+  <div class="series_description">
+    {{ series.description|safe }}
+  </div>
+  <div class="series_author">
+    created by {{ series.series_creator|title }}
   </div>
   {% endfor %}
   {% else %}

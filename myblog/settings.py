@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     "user_sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.humanize",
     "preferences",
@@ -192,10 +191,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "blog:index"
 LOGOUT_REDIRECT_URL = "blog:index"
 LOGIN_URL = "login"
-
-# set a SITE_ID, due to the (3rd party) 'preferences' app using the sites
-# functionality. long term, rewrite the addon to remove this need.
-SITE_ID = 1
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 

@@ -10,7 +10,7 @@ class SingletonManager(models.Manager):
 
         If preferences do not exist create it.
         """
-        queryset = super(SingletonManager, self).get_queryset()
+        queryset = super().get_queryset()
 
         if not queryset.exists():
             # Create object  if it doesn't exist.

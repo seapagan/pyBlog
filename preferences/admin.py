@@ -19,13 +19,13 @@ class PreferencesAdmin(admin.ModelAdmin):
         """
         model = self.model
         if model.objects.all().count() > 1:
-            return super(PreferencesAdmin, self).changelist_view(request)
+            return super().changelist_view(request)
         else:
             obj = model.singleton.get()
             return redirect(
                 reverse(
-                    "admin:%s_%s_change"
-                    % (model._meta.app_label, model._meta.model_name),
+                    f"admin:{model._meta.app_label}"
+                    f"_{model._meta.model_name}_change",
                     args=(obj.id,),
                 )
             )

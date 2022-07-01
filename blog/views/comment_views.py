@@ -1,4 +1,6 @@
 """Define the views for the Comment Model."""
+import smtplib
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.http.response import Http404
@@ -52,13 +54,16 @@ class AddCommentView(CreateView):
         )
         html_message += f"{form.instance.body}\n"
         message = strip_tags(html_message)
-        send_mail(
-            subject=f"New comment on {related_post.title}",
-            message=message,
-            html_message=html_message,
-            from_email="noreply@tekcited.net",
-            recipient_list=[related_post.user.email],
-        )
+        try:
+            send_mail(
+                subject=f"New comment on {related_post.title}",
+                message=message,
+                html_message=html_message,
+                from_email="noreply@tekcited.net",
+                recipient_list=[related_post.user.email],
+            )
+        except smtplib.SMTPException as e:
+            print(f"Cant send email: {e}")
 
         return super().form_valid(form)
 

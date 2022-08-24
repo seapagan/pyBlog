@@ -34,7 +34,9 @@ def by_hits(posts):
 @register.simple_tag
 def analytics():
     """Return the analytics tag from the environment."""
-    return str(os.getenv("GOOGLE_ANALYTICS"))
+    context = {}
+    context["ga_key"] = str(os.getenv("GOOGLE_ANALYTICS"))
+    return context
 
 
 # the below tag is used in the sidebar to pass extra context that is needed to

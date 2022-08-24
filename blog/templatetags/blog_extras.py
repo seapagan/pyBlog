@@ -1,4 +1,6 @@
 """Several custom Template tags to make things easier."""
+import os
+
 from django import template
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -27,6 +29,14 @@ def by_hits(posts):
     return posts.order_by(
         "-hit_count_generic__hits", "-total_upvotes", "-created_at"
     )
+
+
+@register.simple_tag
+def analytics():
+    """Return the analytics tag from the environment."""
+    context = {}
+    context["ga_key"] = str(os.getenv("GOOGLE_ANALYTICS"))
+    return context
 
 
 # the below tag is used in the sidebar to pass extra context that is needed to

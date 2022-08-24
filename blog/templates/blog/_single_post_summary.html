@@ -11,9 +11,6 @@
            alt="{{ blog.title|capfirst}} ">
       {% else %}
       <img class="blog_summary_image"
-           {% comment %}
-           src="/media/default_placeholder.png"
-           {% endcomment %}
            src={% static "blog/default_placeholder.png" %}
            alt="{{ blog.title|capfirst}} ">
       {% endif %}

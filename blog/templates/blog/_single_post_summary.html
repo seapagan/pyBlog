@@ -4,11 +4,13 @@
   <a href="{% url 'blog:detail' blog.slug %}">
     <div class="blog_summary_image_wrapper">
       {% if blog.image %}
-      <img class="blog_summary_image" src="{{ blog.image.url }}"
-        alt="{{ blog.title|capfirst}} ">
+      <img class="blog_summary_image"
+           src="{{ blog.image.url }}"
+           alt="{{ blog.title|capfirst}} ">
       {% else %}
-      <img class="blog_summary_image" src="/media/default_placeholder.png"
-        alt="{{ blog.title|capfirst}} ">
+      <img class="blog_summary_image"
+           src="/media/default_placeholder.png"
+           alt="{{ blog.title|capfirst}} ">
       {% endif %}
     </div>
   </a>
@@ -16,16 +18,18 @@
     <h2 class="blog_summary_title">{{ blog.title|capfirst }}</h2>
     <div class="blog_summary_desc">{{ blog.desc }}</div>
     <div class="blog_read_more">
-      <a class="btn" href="{% url 'blog:detail' blog.slug %}">Read
+      <a class="btn"
+         href="{% url 'blog:detail' blog.slug %}">Read
         More ...</a>
     </div>
   </div>
   <div class="blog_body_footer index">
     <div class="blog_body_footer_left">
-      <div class="blog_comment_badge" title="Go to the Comments"><span>
+      <div class="blog_comment_badge"
+           title="Go to the Comments"><span>
           {% with blog.no_of_comments as total_comments %}
-          <a href="{% url 'blog:detail' blog.slug %}#comments">{{total_comments}}&nbsp;<i
-              class="fal fa-comment"></i></a>
+          <a href="{% url 'blog:detail' blog.slug %}#comments">{{total_comments}}&nbsp;<span
+                  class="fal fa-comment"></span></a>
           {% endwith %}
         </span>
       </div>
@@ -42,14 +46,14 @@
         {% endif %}
         {% for tag in tag_list %}
         <a href="{% url 'blog:tag_detail' tag.slug %}"
-          class="sidebar_tag">{{tag.tag_name}}</a>
+           class="sidebar_tag">{{tag.tag_name}}</a>
         {% endfor %}
         {% endwith %}
       </div>
     </div>
     <div class="blog_date_wrapper"><span class="blog_date_posted"><span
-          class="hide_on_xs">by</span> <a class="blog_user"
-          href="{% url 'user-profile' blog.user.id %}">{{blog.user}}</a> on
+              class="hide_on_xs">by</span> <a class="blog_user"
+           href="{% url 'user-profile' blog.user.id %}">{{blog.user}}</a> on
         {{ blog.created_at|date:"SHORT_DATETIME_FORMAT" }}</span>
       {% if blog.created_at|date:"SHORT_DATETIME_FORMAT" != blog.updated_at|date:"SHORT_DATETIME_FORMAT" %}
       <span class="blog_date_updated hide_on_xs">(Edited)</span>

@@ -17,7 +17,10 @@
 <div class="tags_header">No results for &ldquo;{{ query }}&rdquo;</div>
 {% endif %}
 <div class=search_home_btn>
-  <a class="btn" href="{% url 'blog:index' %}"><i
-      class="fad fa-home"></i>&nbsp;Back to Index</a>
+  <a class="btn"
+     href="{% url 'blog:index' %}">
+    <span class="fad fa-home"></span>
+    &nbsp;Back
+    to Index</a>
 </div>
 {% endblock body %}

@@ -10,8 +10,10 @@
 {% if preferences.SitePreferences.pinned_post and not page_obj.has_previous %}
 <div class="pinned_post_outer">
   <div class="pinned_post_wrapper">
-    <div class="pinned_icon"><i class="fas fa-thumbtack"
-        data-fa-transform="rotate-20"></i></div>
+    <div class="pinned_icon">
+      <span class="fas fa-thumbtack"
+            data-fa-transform="rotate-20"></span>
+    </div>
     {% with preferences.SitePreferences.pinned_post as blog %}
     {% include 'blog/_single_post_summary.html' %}
     {% endwith %}
@@ -39,8 +41,10 @@
 <div class="pagination">
   <span class="step-links">
     {% if page_obj.has_previous %}
-    <a class="btn hide_on_xs" href="?page=1">&laquo; first</a>
-    <a class="btn" href="?page={{ page_obj.previous_page_number }}">previous</a>
+    <a class="btn hide_on_xs"
+       href="?page=1">&laquo; first</a>
+    <a class="btn"
+       href="?page={{ page_obj.previous_page_number }}">previous</a>
     {% else %}
     <span class="btn btn-disabled hide_on_xs">&laquo; first</span>
     <span class="btn btn-disabled">previous</span>
@@ -51,9 +55,10 @@
     </span>
 
     {% if page_obj.has_next %}
-    <a class="btn" href="?page={{ page_obj.next_page_number }}">next</a>
+    <a class="btn"
+       href="?page={{ page_obj.next_page_number }}">next</a>
     <a class="btn hide_on_xs"
-      href="?page={{ page_obj.paginator.num_pages }}">last
+       href="?page={{ page_obj.paginator.num_pages }}">last
       &raquo;</a>
     {% else %}
     <span class="btn btn-disabled">next</span>
@@ -68,7 +73,7 @@
   <div>
     There have not been any articles posted to
     <span
-      class="no_posts_site">{{ preferences.SitePreferences.sitename }}</span>
+          class="no_posts_site">{{ preferences.SitePreferences.sitename }}</span>
     (yet!)
   </div>
 </div>

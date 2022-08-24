@@ -4,26 +4,33 @@
 {% load blog_extras %}
 {% sidebar as sb %}
 <div class="edit_post_wrapper">
-  <div class="edit_post_user">You are Logged in as <b>{{ user.username }}</b>
+  <div class="edit_post_user">You are Logged in as
+    <strong>{{ user.username }}</strong>
   </div>
-  <div class="edit_post_title">Editing Post : <i>"{{ blog.title }}"</i></div>
-  <form method="post" enctype="multipart/form-data">
+  <div class="edit_post_title">Editing Post : <span>"{{ blog.title }}"</span>
+  </div>
+  <form method="post"
+        enctype="multipart/form-data">
 
     {% include 'blog/common/post_form.html' %}
 
     <div class="edit_post_buttons">
       {% if blog.draft %}
-      <button class="btn btn_success" type="submit" name="publish"
-        value="Publish"><i
-          class="fad fa-comment-alt-check"></i>&nbsp;Publish!</button>
-      <button class="btn btn_alt" type="submit"><i
-          class="fad fa-save"></i>&nbsp;Save as Draft</button>
+      <button class="btn btn_success"
+              type="submit"
+              name="publish"
+              value="Publish"><span
+              class="fad fa-comment-alt-check"></span>&nbsp;Publish!</button>
+      <button class="btn btn_alt"
+              type="submit"><span class="fad fa-save"></span>&nbsp;Save as
+        Draft</button>
       {% else %}
-      <button class="btn btn_success" type="submit"><i
-          class="fad fa-save"></i>&nbsp;Save</button>
+      <button class="btn btn_success"
+              type="submit"><span class="fad fa-save"></span>&nbsp;Save</button>
       {% endif %}
-      <a class="btn" href="{{ view.get_success_url }}"><i
-          class="fad fa-ban"></i>&nbsp;Cancel</a>
+      <a class="btn"
+         href="{{ view.get_success_url }}"><span
+              class="fad fa-ban"></span>&nbsp;Cancel</a>
     </div>
   </form>
 </div>

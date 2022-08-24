@@ -8,19 +8,21 @@
   {% for tag in tag_list %}
   <div>
     <span class="tag_list_tag"><a class="sidebar_tag"
-        href="{% url 'blog:tag_detail' tag.slug %}">{{ tag }}</a></span>
+         href="{% url 'blog:tag_detail' tag.slug %}">{{ tag }}</a></span>
     <div class="tag_list_post_list">
       {% with tag.posts.all|no_draft:user|by_hits as posts %}
       {% if posts %}
       <div>
         {% for post in posts|slice:":6" %}
-        <a href="{% url 'blog:detail' post.slug %}" class="tag_list_post
+        <a href="{% url 'blog:detail' post.slug %}"
+           class="tag_list_post
           {% if post.draft %} tag_list_post_draft
           {% endif %}">{{post.title|capfirst}}</a>
         {% endfor %}
 
         {% if posts.count > 6 %}
-        <a class="tag_list_more" href="{% url 'blog:tag_detail' tag.slug %}">
+        <a class="tag_list_more"
+           href="{% url 'blog:tag_detail' tag.slug %}">
           see more ...</a>
         {% endif %}
 
@@ -37,8 +39,11 @@
   {% endif %}
 </div>
 <div class=tags_home_btn>
-  <a class="btn" href="{% url 'blog:index' %}"><i
-      class="fad fa-home"></i>&nbsp;Back to Index</a>
+  <a class="btn"
+     href="{% url 'blog:index' %}">
+    <span class="fad fa-home"></span>
+    &nbsp;Back to Index
+  </a>
 </div>
 
 {% endblock body %}

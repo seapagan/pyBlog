@@ -3,13 +3,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+  <!-- Include the site header -->
   {% include 'blog/_head.html' %}
-  {% include 'blog/_maintenance_mode.html' %}
-  {% include 'blog/_noscript.html' %}
+
 
   <body>
+    <!-- Include situational markup -->
+    {% include 'blog/_maintenance_mode.html' %}
+    {% include 'blog/_noscript.html' %}
     <div class="site_container">
+      <!-- Blog Header Section -->
       {% include 'blog/_header.html' %}
       {% if messages %}
       {% for message in messages %}
@@ -18,22 +21,28 @@
       </div>
       {% endfor %}
       {% endif %}
-      <div class="content_container">
-        <main class="main_container">
+      <!-- Main section -->
+      <main class="content_container">
+        <!-- Main content -->
+        <section class="main_container">
           {% block body %}
           {% endblock body %}
-        </main>
+        </section>
+        <!-- Sidebar -->
         <aside class="sidebar_container">
           {% include 'blog/sidebar/sidebar.html' %}
         </aside>
-      </div>
+      </main>
+      <!-- Footer Section -->
       {% include 'blog/_footer.html' %}
     </div>
+    <!-- Include Javascript -->
     {% compress js%}
     <script src="{% static 'blog/site.js' %}"></script>
     {% endcompress %}
-    <script src="https://instant.page/5.1.0" type="module"
-      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw">
+    <script src="https://instant.page/5.1.0"
+            type="module"
+            integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw">
     </script>
   </body>
 

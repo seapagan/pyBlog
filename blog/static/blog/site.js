@@ -16,7 +16,6 @@ const ga_id = document.getElementById("ga");
 if (ga_id) {
   const ga_data = JSON.parse(ga_id.textContent);
   if (ga_data.enabled) {
-    console.log(ga_data);
     gtag("js", new Date());
     gtag("config", ga_data.key);
   }

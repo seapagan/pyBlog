@@ -35,7 +35,8 @@ def by_hits(posts):
 def analytics():
     """Return the analytics tag from the environment."""
     context = {}
-    context["ga_key"] = str(os.getenv("GOOGLE_ANALYTICS"))
+    context["tag"] = str(os.getenv("GOOGLE_ANALYTICS_TAG"))
+    context["enabled"] = bool(int(os.getenv("GOOGLE_ANALYTICS_ENABLED", 1)))
     return context
 
 

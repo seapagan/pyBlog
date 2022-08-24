@@ -12,7 +12,11 @@ function gtag() {
   dataLayer.push(arguments);
 }
 
-const ga_key = document.getElementById("ga").textContent;
-
-gtag("js", new Date());
-gtag("config", ga_key);
+const ga_id = document.getElementById("ga");
+if (ga_id) {
+  const ga_data = JSON.parse(ga_id.textContent);
+  if (ga_data.enabled) {
+    gtag("js", new Date());
+    gtag("config", ga_data.key);
+  }
+}

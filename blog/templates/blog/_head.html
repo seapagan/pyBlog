@@ -31,10 +31,13 @@
             content="{{ meta.content }}">
       {% endfor %}
       {% endif %}
+
+      {% if GA.enabled %}
       <script async
-              src="https://www.googletagmanager.com/gtag/js?id={{ GA.ga_key }}">
+              src="https://www.googletagmanager.com/gtag/js?id={{ GA.tag }}">
       </script>
-      {{ GA.ga_key|json_script:"ga" }}
+      {{ GA|json_script:"ga" }}
+      {% endif %}
       <link rel="preconnect"
             href="https://fonts.googleapis.com">
       <link rel="preconnect"

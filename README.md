@@ -62,6 +62,7 @@ project.
   in DEBUG mode.
 - Add the metadata for Twitter Cards.
 - Display image metadata for the main title image
+- Add a `Google Analytics` tag if required
 
 ### Minimum required before Release
 
@@ -70,7 +71,7 @@ project.
 - Disable Django's admin in Production mode - (completely - the admin app and
   URLs are not even loaded). `This is already done`, though I may want to add
   the ability for specific trusted IPs to still access the admin if needed.
-- Tidy up the CSS, possibly refactor as PostCSS
+- Tidy up the CSS, probably refactor to SCSS
 
 ### Good to Have
 
@@ -116,7 +117,8 @@ You can add Google Analytics by adding your own personal site key to the `.env`
 file :
 
 ```ini
-GOOGLE_ANALYTICS='UA-1234567-1' #Use your own key
+GOOGLE_ANALYTICS_ENABLED=1 # 0 is disabled (default), 1 is enabled
+GOOGLE_ANALYTICS_TAG='UA-1234567-1' #Use your own key
 ```
 
 ### Set up the .env file
@@ -148,7 +150,8 @@ RECAPTCHA_PUBLIC_KEY="my_public_key"
 RECAPTCHA_PRIVATE_KEY="my_private_key"
 
 # Google analytics key - CHANGE TO YOUR OWN SITE-SPECIFIC KEY
-GOOGLE_ANALYTICS='UA-1234567-1'
+GOOGLE_ANALYTICS_ENABLED=1
+GOOGLE_ANALYTICS_TAG='UA-1234567-1'
 ```
 
 In Production, If you are self-hosting your app and the server is secure, you

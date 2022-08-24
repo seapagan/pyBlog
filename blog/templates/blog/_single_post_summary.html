@@ -1,4 +1,6 @@
 {% load hitcount_tags %}
+{% load static  %}
+
 {% if blog.draft and request.user == blog.user or not blog.draft %}
 <article class="blog_summary {% if blog.draft %}blog_summary_draft{% endif %}">
   <a href="{% url 'blog:detail' blog.slug %}">
@@ -9,7 +11,10 @@
            alt="{{ blog.title|capfirst}} ">
       {% else %}
       <img class="blog_summary_image"
+           {% comment %}
            src="/media/default_placeholder.png"
+           {% endcomment %}
+           src={% static "blog/default_placeholder.png" %}
            alt="{{ blog.title|capfirst}} ">
       {% endif %}
     </div>

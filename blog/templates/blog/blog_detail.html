@@ -3,6 +3,7 @@
 {% load hitcount_tags %}
 {% load likes_inclusion_tags %}
 {% load humanize %}
+{% load static %}
 
 {% block body %}
 <!-- Display the Blog Post, wrapped in an article tag -->
@@ -18,7 +19,7 @@
   {% endif %}
   {% else %}
   <img class="blog_heading_image"
-       src="/media/default_placeholder.png"
+       src={% static "blog/default_placeholder.png" %}
        alt="Post Header Image">
   {% endif %}
 

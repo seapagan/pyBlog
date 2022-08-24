@@ -110,6 +110,15 @@ add them to the `.env` file below. Choose the `V2 Tickbox type` as that is
 what we use for this application (at the moment, however, this hard-coded
 setting will likely be removed later to allow all types).
 
+### Optionally add Google Analytics
+
+You can add Google Analytics by adding your own personal site key to the `.env`
+file :
+
+```ini
+GOOGLE_ANALYTICS='UA-1234567-1' #Use your own key
+```
+
 ### Set up the .env file
 
 We keep some of the more secret settings in a .env file which does not go into
@@ -117,7 +126,7 @@ source control. There is a file `.env.example` in the project root - rename this
 to `.env` and set the values as you need. First, you want to generate
 a new SECRET_KEY and set up the database login details :
 
-```python
+```ini
 # set our secret key. Go to https://djecrety.ir/ to generate a good one
 SECRET_KEY="this_is_not_very_secret"
 
@@ -137,6 +146,9 @@ ALLOWED_HOSTS=""
 # setup ReCaptcha keys - SET THESE TO YOUR OWN KEYS FROM ABOVE
 RECAPTCHA_PUBLIC_KEY="my_public_key"
 RECAPTCHA_PRIVATE_KEY="my_private_key"
+
+# Google analytics key - CHANGE TO YOUR OWN SITE-SPECIFIC KEY
+GOOGLE_ANALYTICS='UA-1234567-1'
 ```
 
 In Production, If you are self-hosting your app and the server is secure, you

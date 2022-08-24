@@ -135,7 +135,7 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         """Add page_title to this context."""
-        context = super(EditProfileView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context[
             "page_title"
         ] = f"Editing Profile for {self.request.user.username.capitalize()}"

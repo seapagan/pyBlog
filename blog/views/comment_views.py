@@ -93,7 +93,7 @@ class EditCommentView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         """Ensure that the current logged in user owns the comment."""
-        obj = super(EditCommentView, self).get_object()
+        obj = super().get_object()
         if (
             obj.created_by_user != self.request.user
             and not self.request.user.is_superuser

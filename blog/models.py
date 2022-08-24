@@ -11,6 +11,7 @@ from django.template.defaultfilters import slugify
 from django.urls import reverse
 from hitcount.conf import settings as hitcount_settings
 from hitcount.mixins import HitCountModelMixin
+
 from preferences.models import Preferences
 
 
@@ -98,7 +99,7 @@ class Blog(models.Model, HitCountModelMixin):
     def save(self, *args, **kwargs):
         """Override the save fumction, so we can generate the slug."""
         self.slug = slugify(self.title)
-        super(Blog, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         """Override get_absolute_url function."""
@@ -200,7 +201,7 @@ class Tag(models.Model):
     def save(self, *args, **kwargs):
         """Override the save function, so we can generate the slug."""
         self.slug = slugify(self.tag_name)
-        super(Tag, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
 
 class Redirect(models.Model):

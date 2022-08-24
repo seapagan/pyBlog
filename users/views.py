@@ -87,7 +87,6 @@ def register(request):
 class MyProfileView(LoginRequiredMixin, ListView):
     """View for the current users profile page."""
 
-    # model = User
     template_name = "users/user-profile.html"
     context_object_name = "person"
 
@@ -97,7 +96,7 @@ class MyProfileView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         """Add links data to this context."""
-        context = super(MyProfileView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["links"] = get_profile_context(self.object_list)
         context["page_title"] = self.object_list.username.capitalize()
         context[
@@ -115,7 +114,7 @@ class UserProfileView(DetailView):
 
     def get_context_data(self, **kwargs):
         """Add links data to this context."""
-        context = super(UserProfileView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["links"] = get_profile_context(self.object)
         context["page_title"] = self.object.username.capitalize()
         context["canonical"] = f"{self.request.build_absolute_uri()}"

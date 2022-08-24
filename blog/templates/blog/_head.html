@@ -1,53 +1,72 @@
 {% load static %}
 {% load compress %}
+{% load blog_extras%}
+
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge">
   <meta name="viewport"
-    content="width=device-width, initial-scale=1 maximum-scale=1">
+        content="width=device-width, initial-scale=1 maximum-scale=1">
   {% if canonical %}
-  <link rel="canonical" href="{{canonical}}">
+  <link rel="canonical"
+        href="{{canonical}}">
   {% endif %}
 
   {% if meta.description %}
-  <meta name="description" content="{{ meta.description }}">
+  <meta name="description"
+        content="{{ meta.description }}">
   {% else %}
-  <meta name="description" content="{{ preferences.SitePreferences.heading }}">
+  <meta name="description"
+        content="{{ preferences.SitePreferences.heading }}">
   {% endif %}
 
   {% if meta.twitter %}
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card"
+        content="summary">
   {% for meta in meta.twitter %}
-  <meta name="twitter:{{ meta.name }}" content="{{ meta.content }}">
+  <meta name="twitter:{{ meta.name }}"
+        content="{{ meta.content }}">
   {% endfor %}
   {% endif %}
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://code.jquery.com">
-  <link rel="preconnect" href="https://kit.fontawesome.com">
+  <script async
+          src="https://www.googletagmanager.com/gtag/js?id={% analytics %}">
+  </script>
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+  <link rel="preconnect"
+        href="https://code.jquery.com">
+  <link rel="preconnect"
+        href="https://kit.fontawesome.com">
   <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@400;700&family=JetBrains+Mono&family=Architects+Daughter&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Special+Elite&display=swap"
-    rel="stylesheet" />
-  <link rel="shortcut icon" href="{% static 'blog/favicon.png' %}"
-    type="image/x-icon">
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@400;700&family=JetBrains+Mono&family=Architects+Daughter&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Special+Elite&display=swap"
+        rel="stylesheet" />
+  <link rel="shortcut icon"
+        href="{% static 'blog/favicon.png' %}"
+        type="image/x-icon">
   <script type="text/javascript"
-    src="https://code.jquery.com/jquery-3.6.0.min.js">
+          src="https://code.jquery.com/jquery-3.6.0.min.js">
   </script>
-  <script defer src="https://kit.fontawesome.com/0195aa752c.js"
-    crossorigin="anonymous"></script>
   <script defer
-    src="{% static 'ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js' %}">
+          src="https://kit.fontawesome.com/0195aa752c.js"
+          crossorigin="anonymous"></script>
+  <script defer
+          src="{% static 'ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js' %}">
   </script>
 
-  <link rel="stylesheet" href="{% static 'prism/prism.css' %}">
+  <link rel="stylesheet"
+        href="{% static 'prism/prism.css' %}">
   {% compress css %}
-  <link rel="stylesheet" href="{% static 'blog/site.css' %}" />
+  <link rel="stylesheet"
+        href="{% static 'blog/site.css' %}" />
   {% endcompress %}
   <title>
     {{ preferences.SitePreferences.title }}

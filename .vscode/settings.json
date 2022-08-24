@@ -8,8 +8,6 @@
   "beautify.language": {
     "html": ["htm", "html", "django-html"]
   },
-  "cSpell.ignoreWords": ["myblog"],
-  "cSpell.language": "en-GB",
   "editor.formatOnPaste": false,
   "emmet.includeLanguages": {
     "django-html": "html"
@@ -53,22 +51,9 @@
   "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "*_test.py"],
   "python.testing.unittestEnabled": false,
   "testExplorer.addToEditorContextMenu": true,
-  "cSpell.words": ["Hashicorp", "Heroku"],
   "explorer.experimental.fileNesting.enabled": true,
   "explorer.experimental.fileNesting.expand": false,
   "explorer.experimental.fileNesting.patterns": {
     "requirements.txt": ".coveragerc, .env.example, tox.ini, .python-version, pytest.ini, .gitignore"
-  },
-  "grammarly.overrides": [
-    {
-      "files": ["**/README.md"],
-      "config": {
-        "audience": "general",
-        "dialect": "british",
-        "domain": "technical",
-        "emotions": [],
-        "goals": ["inform"]
-      }
-    }
-  ]
+  }
 }

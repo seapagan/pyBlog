@@ -12,12 +12,10 @@ from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
 from hitcount.views import HitCountDetailView
-from preferences import preferences
 
 from blog.forms import EditPostForm, NewPostForm
 from blog.models import Blog, Redirect, Tag
-
-# from itertools import chain
+from preferences import preferences
 
 
 class IndexClassView(ListView):
@@ -31,7 +29,7 @@ class IndexClassView(ListView):
 
     def get_context_data(self, **kwargs):
         """Add page title to the context."""
-        context = super(IndexClassView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["page_title"] = preferences.SitePreferences.heading
         # add description Metadata to the context
         context["meta"] = {
@@ -69,7 +67,7 @@ class PostDetailView(HitCountDetailView):
 
     def get_context_data(self, **kwargs):
         """Add page title to the context."""
-        context = super(PostDetailView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         # set a custom page title for the post
         context["page_title"] = self.object.title.capitalize()
         # add description Metadata to the context
@@ -104,7 +102,7 @@ class PostDetailView(HitCountDetailView):
         Return 404 if the slug is not found.
         """
         try:
-            obj = super(PostDetailView, self).get_object()
+            obj = super().get_object()
         except Http404:
             slug_wanted = self.kwargs.get("slug")
             try:
@@ -159,7 +157,7 @@ class NewPostView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         """Add page title to the context."""
-        context = super(NewPostView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["page_title"] = "New Post"
 
         return context
@@ -185,7 +183,7 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         form.save()
         # if the slug has changed, add this to a redirect table
         new_slug = self.object.slug
-        if (not original_slug == new_slug) and not self.object.draft:
+        if (original_slug != new_slug) and not self.object.draft:
             # the redirect may exist and should be unique, so we need to check
             # and update the existing in that case.
             try:
@@ -233,7 +231,7 @@ class EditPostView(LoginRequiredMixin, UpdateView):
 
     def get_initial(self):
         """Override initial value to display active tags."""
-        initial = super(EditPostView, self).get_initial()
+        initial = super().get_initial()
 
         current_tags = self.object.tag_set.all().order_by(Lower("tag_name"))
         tag_string = ""
@@ -245,7 +243,7 @@ class EditPostView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         """Add page title to the context."""
-        context = super(EditPostView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["page_title"] = self.object.title.capitalize()
 
         return context
@@ -253,7 +251,6 @@ class EditPostView(LoginRequiredMixin, UpdateView):
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""
         post_slug = slugify(self.object.title)
-        # post_slug = Blog.objects.get(slug=self.kwargs["slug"]).slug
         return reverse("blog:detail", kwargs={"slug": post_slug})
 
     def get_object(self, queryset=None):
@@ -261,7 +258,7 @@ class EditPostView(LoginRequiredMixin, UpdateView):
 
         Also can edit if they are a superuser.
         """
-        obj = super(EditPostView, self).get_object()
+        obj = super().get_object()
 
         if (
             obj.user == self.request.user and self.request.user.profile.author
@@ -275,13 +272,12 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
     """Edit an existing Post."""
 
     model = Blog
-    # template_name = "blog/blog_deletepost.html"
 
     success_url = reverse_lazy("blog:index")
 
     def get_context_data(self, **kwargs):
         """Add page title to the context."""
-        context = super(DeletePostView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["page_title"] = self.object.title.capitalize()
 
         return context
@@ -292,7 +288,7 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
         They must also still be tagged as an Author in their profile.
         Also can delete if they are a superuser.
         """
-        obj = super(DeletePostView, self).get_object()
+        obj = super().get_object()
         if (
             obj.user == self.request.user and self.request.user.profile.author
         ) or self.request.user.is_superuser:
@@ -323,7 +319,7 @@ class SearchView(ListView):
 
     def get_context_data(self, **kwargs):
         """Add page title to the context."""
-        context = super(SearchView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["page_title"] = "Search Results"
         context["query"] = self.request.GET.get("q")
 

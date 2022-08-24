@@ -3,21 +3,28 @@
 {% block body %}
 
 {% if user.is_authenticated %}
-<div>You are Logged in as <b>{{ user.username }}</b></div>
+<div>You are Logged in as <strong>{{ user.username }}</strong>
+</div>
 {% else %}
 <div>You are not logged in.</div>
 {% endif %}
 
-<div>Commenting on Post : <i>"{{ comment.related_post.title }}"</i></div>
+<div>Commenting on Post : <em>"{{ comment.related_post.title }}"</em></div>
 <form method="post">
   {% csrf_token %}
   {{ form.media }}
   {{ form.as_p }}
   <div class="edit_comment_buttons">
-    <button class="btn btn_success" type="submit"><i
-        class="fad fa-save"></i>&nbsp;Publish</button>
-    <a class="btn" href="{{ view.get_success_url }}"><i
-        class="fad fa-ban"></i>&nbsp;Cancel</a>
+    <button class="btn btn_success"
+            type="submit">
+      <span class="fad fa-save"></span>
+      &nbsp;Publish
+    </button>
+    <a class="btn"
+       href="{{ view.get_success_url }}">
+      <span class="fad fa-ban"></span>
+      &nbsp;Cancel
+    </a>
   </div>
 </form>
 {% endblock body %}

@@ -33,7 +33,7 @@ class NewCommentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         """Override the init function to set the user."""
         self.user = kwargs.pop("user", None)
-        super(NewCommentForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def clean(self):
         """Overload the clean function to set validate comment fields."""

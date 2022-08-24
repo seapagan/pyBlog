@@ -36,7 +36,7 @@ class AddCommentView(CreateView):
 
     def get_form_kwargs(self):
         """Add the User to the form kwargs."""
-        kwargs = super(AddCommentView, self).get_form_kwargs()
+        kwargs = super().get_form_kwargs()
         kwargs["user"] = self.request.user
         return kwargs
 
@@ -93,9 +93,9 @@ class EditCommentView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         """Ensure that the current logged in user owns the comment."""
-        obj = super(EditCommentView, self).get_object()
+        obj = super().get_object()
         if (
-            not obj.created_by_user == self.request.user
+            obj.created_by_user != self.request.user
             and not self.request.user.is_superuser
         ):
             raise Http404("You Dont have permission to do that!")
@@ -121,9 +121,9 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
 
     def get_object(self, queryset=None):
         """Ensure that the current logged in user owns the comment."""
-        obj = super(DeleteCommentView, self).get_object()
+        obj = super().get_object()
         if (
-            not obj.created_by_user == self.request.user
+            obj.created_by_user != self.request.user
             and not self.request.user.is_superuser
         ):
             raise Http404("You Dont have permission to do that!")

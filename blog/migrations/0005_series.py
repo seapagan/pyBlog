@@ -6,10 +6,9 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ("blog", "0004_auto_20220207_1650"),
+        ("blog", "0001_initial"),
     ]
 
     operations = [

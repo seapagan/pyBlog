@@ -3,11 +3,11 @@
 {% block body %}
 <div class="new_comment_user">
   {% if user.is_authenticated %}
-  <b>{{ user.username }}</b>, you are
+  <strong>{{ user.username }}</strong>, you are
   {% else %}
-  <b>You are not logged in</b> and are
+  <strong>You are not logged in</strong> and are
   {% endif %}
-  commenting on post <b>&ldquo;{{ post.title }}&rdquo;</b>
+  commenting on post <strong>&ldquo;{{ post.title }}&rdquo;</strong>
 </div>
 
 <form method="post">
@@ -21,18 +21,16 @@
     <div>
 
       <span
-        class="form_field_label">{{form.created_by_guest.label|capfirst}}</span><span
-        class="comment_input">{{form.created_by_guest}}</span>
+            class="form_field_label">{{form.created_by_guest.label|capfirst}}</span>
+      <span class="comment_input">{{form.created_by_guest}}</span>
     </div>
     <div>
-      <span
-        class="form_field_label">{{form.guest_email.label|capfirst}}</span><span
-        class="comment_input">{{form.guest_email}}</span>
+      <span class="form_field_label">{{form.guest_email.label|capfirst}}</span>
+      <span class="comment_input">{{form.guest_email}}</span>
     </div>
   </div>
   <div class="comment_email_disclaimer">Your email will only be used to notify
-    you of any replies and not
-    displayed anywhere</div>
+    you of any replies and will not be publicly visible</div>
   {% endif %}
 
   {% if form.errors %}
@@ -54,10 +52,16 @@
   {{form.captcha}}
 
   <div class="new_comment_buttons">
-    <button class="btn btn_success" type="submit"><i
-        class="fad fa-save"></i>&nbsp;Publish</button>
-    <a class="btn" href="{{ view.get_success_url }}"><i
-        class="fad fa-ban"></i>&nbsp;Cancel</a>
+    <button class="btn btn_success"
+            type="submit">
+      <span class="fad fa-save"></span>
+      &nbsp;Publish
+    </button>
+    <a class="btn"
+       href="{{ view.get_success_url }}">
+      <span class="fad fa-ban"></span>
+      &nbsp;Cancel
+    </a>
   </div>
 </form>
 {% endblock body %}

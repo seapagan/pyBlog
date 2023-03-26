@@ -1,10 +1,26 @@
-# Django-based Blogging engine
+# Django-based Blogging engine <!-- omit in toc -->
 
 This application is a work in progress to write a blogging Engine in Django for
 my personal use, and release as OSS when it reaches that level.
 
 This README is very basic and will be updated as I add more functionality to the
 project.
+
+- [Progress](#progress)
+  - [Already Implemented](#already-implemented)
+  - [Minimum required before Release](#minimum-required-before-release)
+  - [Good to Have](#good-to-have)
+- [Installation and Usage](#installation-and-usage)
+  - [Install the dependencies](#install-the-dependencies)
+  - [Register for Google Recaptcha](#register-for-google-recaptcha)
+  - [Optionally add Google Analytics](#optionally-add-google-analytics)
+  - [Set up the .env file](#set-up-the-env-file)
+  - [Migrate the Database](#migrate-the-database)
+  - [Create a Superuser](#create-a-superuser)
+  - [Download GeoIP data if required](#download-geoip-data-if-required)
+  - [Run the Development server](#run-the-development-server)
+  - [Maintenance mode](#maintenance-mode)
+  - [Running behind a Proxy](#running-behind-a-proxy)
 
 ## Progress
 
@@ -62,6 +78,7 @@ project.
   in DEBUG mode.
 - Add the metadata for Twitter Cards.
 - Display image metadata for the main title image
+- Add a `Google Analytics` tag if required
 
 ### Minimum required before Release
 
@@ -70,7 +87,7 @@ project.
 - Disable Django's admin in Production mode - (completely - the admin app and
   URLs are not even loaded). `This is already done`, though I may want to add
   the ability for specific trusted IPs to still access the admin if needed.
-- Tidy up the CSS, possibly refactor as PostCSS
+- Tidy up the CSS, probably refactor to SCSS
 
 ### Good to Have
 
@@ -96,9 +113,17 @@ From the root of the checked-out repository:
 
 ### Install the dependencies
 
-```bash
-pip install -r requirements.txt
+I have switched over to using [Poetry](https://python-poetry.org/) to have much
+better control of Dependencies. Please make sure that it is installed globally
+before continuing.
+
+```terminal
+poetry install
+poetry shell
 ```
+
+This will install all the dependencies and switch to a virtual environment ready
+to use the app.
 
 ### Register for Google Recaptcha
 
@@ -110,6 +135,16 @@ add them to the `.env` file below. Choose the `V2 Tickbox type` as that is
 what we use for this application (at the moment, however, this hard-coded
 setting will likely be removed later to allow all types).
 
+### Optionally add Google Analytics
+
+You can add Google Analytics by adding your own personal site key to the `.env`
+file :
+
+```ini
+GOOGLE_ANALYTICS_ENABLED=1 # 0 is disabled (default), 1 is enabled
+GOOGLE_ANALYTICS_TAG='UA-1234567-1' #Use your own key
+```
+
 ### Set up the .env file
 
 We keep some of the more secret settings in a .env file which does not go into
@@ -117,7 +152,7 @@ source control. There is a file `.env.example` in the project root - rename this
 to `.env` and set the values as you need. First, you want to generate
 a new SECRET_KEY and set up the database login details :
 
-```python
+```ini
 # set our secret key. Go to https://djecrety.ir/ to generate a good one
 SECRET_KEY="this_is_not_very_secret"
 
@@ -137,6 +172,11 @@ ALLOWED_HOSTS=""
 # setup ReCaptcha keys - SET THESE TO YOUR OWN KEYS FROM ABOVE
 RECAPTCHA_PUBLIC_KEY="my_public_key"
 RECAPTCHA_PRIVATE_KEY="my_private_key"
+
+# Google analytics key - CHANGE TO YOUR OWN SITE-SPECIFIC KEY
+# This functionality is not currently working!
+GOOGLE_ANALYTICS_ENABLED=1
+GOOGLE_ANALYTICS_TAG='UA-1234567-1'
 ```
 
 In Production, If you are self-hosting your app and the server is secure, you

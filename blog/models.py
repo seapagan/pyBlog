@@ -11,6 +11,7 @@ from django.template.defaultfilters import slugify
 from django.urls import reverse
 from hitcount.conf import settings as hitcount_settings
 from hitcount.mixins import HitCountModelMixin
+
 from preferences.models import Preferences
 
 

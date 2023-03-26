@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     "user_sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.humanize",
     "preferences",
@@ -154,6 +153,16 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Setup Email backend
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = str(os.getenv("EMAIL_HOST"))
+EMAIL_PORT = str(os.getenv("EMAIL_PORT"))
+EMAIL_USE_TLS = str(os.getenv("EMAIL_USE_TLS"))
+EMAIL_HOST_USER = str(os.getenv("EMAIL_HOST_USER"))
+EMAIL_HOST_PASSWORD = str(os.getenv("EMAIL_HOST_PASSWORD"))
+DEFAULT_FROM_EMAIL = str(os.getenv("EMAIL_FROM"))
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -192,10 +201,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "blog:index"
 LOGOUT_REDIRECT_URL = "blog:index"
 LOGIN_URL = "login"
-
-# set a SITE_ID, due to the (3rd party) 'preferences' app using the sites
-# functionality. long term, rewrite the addon to remove this need.
-SITE_ID = 1
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 

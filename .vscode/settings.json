@@ -8,8 +8,6 @@
   "beautify.language": {
     "html": ["htm", "html", "django-html"]
   },
-  "cSpell.ignoreWords": ["myblog"],
-  "cSpell.language": "en-GB",
   "editor.formatOnPaste": false,
   "emmet.includeLanguages": {
     "django-html": "html"
@@ -45,31 +43,12 @@
   ],
   "python.linting.pylintEnabled": true,
   "python.linting.pylintUseMinimalCheckers": false,
-  "python.pythonPath": "/home/seapagan/.pyenv/versions/myblog/bin/python",
-  "python.sortImports.args": ["--profile", "black", "--src=${workspaceFolder}"],
+  "python.pythonPath": ".venv/bin/python",
+  "isort.args": ["--profile", "black", "--src=${workspaceFolder}"],
   "python.testing.nosetestsEnabled": false,
   "python.testing.promptToConfigure": false,
   "python.testing.pytestEnabled": false,
   "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "*_test.py"],
   "python.testing.unittestEnabled": false,
-  "testExplorer.addToEditorContextMenu": true,
-  "cSpell.words": ["attrib", "Hashicorp", "Heroku"],
-  "explorer.experimental.fileNesting.enabled": true,
-  "explorer.experimental.fileNesting.expand": false,
-  "explorer.experimental.fileNesting.patterns": {
-    "requirements.txt": ".coveragerc, .env.example, tox.ini, .python-version, pytest.ini, .gitignore"
-  },
-  "grammarly.overrides": [
-    {
-      "files": ["**/README.md"],
-      "config": {
-        "audience": "general",
-        "dialect": "british",
-        "domain": "technical",
-        "emotions": [],
-        "goals": ["inform"]
-      }
-    }
-  ],
-  "cSpell.enableFiletypes": ["!css", "!django-html"]
+  "testExplorer.addToEditorContextMenu": true
 }

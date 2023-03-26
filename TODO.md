@@ -3,6 +3,9 @@
 ## Important functionality
 
 * Add Backup / Restore ability for posts, tags, etc.
+* ~~Send email to post author when a comment is posted to that post.~~
+* Option for commenters to get sent an email if another comment is added to a
+  post they have commented on.
 * Add the ability to pin a post from its edit page. Also, warn that doing this
   will unpin the current pinned post. Superuser only.
 * ~~style Paragraphs (more space below), links and lists (they are default),
@@ -50,6 +53,10 @@
 
 ### Comments
 
+* Comment form should be on same page as the post, at the bottom. This allows
+  commenter to refer easily back to the post if needed.
+* After posting a comment, automatically scroll down to that comment instead of
+  back to top of page.
 * Offer to remember commenter for next visit, already uses  credentials from
   logged in user if applicable.
 * ~~Integrate an HTML editor. Could use markdown but it gives unexpected results

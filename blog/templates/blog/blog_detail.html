@@ -3,21 +3,24 @@
 {% load hitcount_tags %}
 {% load likes_inclusion_tags %}
 {% load humanize %}
+{% load static %}
 
 {% block body %}
 <!-- Display the Blog Post, wrapped in an article tag -->
 <article class="blog_article {% if blog.draft %}blog_article_draft{% endif %}">
   <h2 class="blog_title">{{ blog.title|capfirst }}</h2>
   {% if blog.image %}
-  <img class="blog_heading_image" src="{{ blog.image.url}}"
-    alt="Post Header Image">
+  <img class="blog_heading_image"
+       src="{{ blog.image.url}}"
+       alt="Post Header Image">
   <!-- display the image attribution data if it exists -->
   {% if blog.has_image_meta %}
   {% include "blog/snippets/image_meta.html" %}
   {% endif %}
   {% else %}
-  <img class="blog_heading_image" src="/media/default_placeholder.png"
-    alt="Post Header Image">
+  <img class="blog_heading_image"
+       src={% static "blog/default_placeholder.png" %}
+       alt="Post Header Image">
   {% endif %}
 
   <div class="blog_description">
@@ -41,19 +44,20 @@
       <span class="blog_post_views">{% get_hit_count for blog as hits %}
         {{ hits }}&nbsp;view{{ hits|pluralize}}</span>
       <span class="blog_body_footer_vertical_divider">|</span>
-      <span class="blog_post_views" id="total">
+      <span class="blog_post_views"
+            id="total">
         {{ blog.vote_total }}&nbsp;like{{ blog.vote_total|pluralize}}</span>
     </div>
     <div>
       <span
-        class="blog_body_footer_like">{% likes blog 'likes/inclusion_tags/likes_blog.html' %}</span>
+            class="blog_body_footer_like">{% likes blog 'likes/inclusion_tags/likes_blog.html' %}</span>
       {% if blog.user.username == user.username and user.profile.author or user.is_superuser %}
       <span class="blog_body_footer_edit"><a class="btn"
-          href="{% url 'blog:edit_post' blog.slug %}"><i
-            class="fad fa-edit"></i>&nbsp;Edit</a></span>
+           href="{% url 'blog:edit_post' blog.slug %}"><span
+                class="fad fa-edit"></span>&nbsp;Edit</a></span>
       <span class="blog_body_footer_delete"><a class="btn btn_danger"
-          href="{% url 'blog:delete_post' blog.slug %}"><i
-            class="fad fa-trash-alt"></i>&nbsp;Delete</a></span>
+           href="{% url 'blog:delete_post' blog.slug %}"><span
+                class="fad fa-trash-alt"></span>&nbsp;Delete</a></span>
     </div>
     {% endif %}
   </div>
@@ -66,7 +70,7 @@
   <span>Tags :</span>
   {% for tag in tags %}
   <a class="sidebar_tag"
-    href="{% url 'blog:tag_detail' tag.slug %}">{{tag.tag_name}}</a>
+     href="{% url 'blog:tag_detail' tag.slug %}">{{tag.tag_name}}</a>
   {% endfor %}
   {% else %}
   <div>No Tags</div>
@@ -80,19 +84,22 @@
 <section class="blog_comments">
   {% if not blog.comments.all %}
   <div class="blog_comment_count">
-    <span>There are <b>NO</b> comments for this post so far.</span>
-    <a class='btn' href="{% url 'blog:add_comment' blog.slug %}"><i
-        class="fad fa-comment-lines"></i>&nbsp;Add a
+    <span>There are <strong>NO</strong> comments for this post so far.</span>
+    <a class='btn'
+       href="{% url 'blog:add_comment' blog.slug %}"><span
+            class="fad fa-comment-lines"></span>&nbsp;Add a
       comment!</a>
   </div>
   {% else %}
   {% with blog.no_of_comments as total_comments %}
   <div class="blog_comment_count"><span>
       There {{total_comments|pluralize:"is,are"}}
-      <b>{{total_comments}}</b> comment{{total_comments|pluralize}} on this
+      <strong>{{total_comments}}</strong> comment{{total_comments|pluralize}} on
+      this
       post
-    </span><a class='btn' href="{% url 'blog:add_comment' blog.slug %}"><i
-        class="fad fa-comment-lines"></i>&nbsp;Add
+    </span><a class='btn'
+       href="{% url 'blog:add_comment' blog.slug %}"><span
+            class="fad fa-comment-lines"></span>&nbsp;Add
       comment</a>
   </div>
   {% endwith %}
@@ -104,7 +111,7 @@
       <div class="blog_comment_author">
         {% if comment.created_by_user %}
         <a class="blog_comment_userlink"
-          href="{% url 'user-profile' comment.created_by_user.id %}">{{comment.get_commenter|capfirst}}</a>
+           href="{% url 'user-profile' comment.created_by_user.id %}">{{comment.get_commenter|capfirst}}</a>
         {% else %}
         {{comment.get_commenter}}
         {% endif %}
@@ -117,11 +124,12 @@
     {% if comment.get_commenter == user.username or user.is_superuser %}
     <div class="blog_comment_footer">
       <a class="btn blog_comment_edit"
-        href="{% url 'blog:edit_comment' comment.id %}"><i
-          class="fad fa-edit"></i>&nbsp;Edit</a>
+         href="{% url 'blog:edit_comment' comment.id %}"><span {% spaceless %}
+              {% endspaceless %}
+              class="fad fa-edit"></span>&nbsp;Edit</a>
       <a class="btn btn_danger blog_comment_delete"
-        href="{% url 'blog:delete_comment' comment.id %}"><i
-          class="fad fa-trash-alt"></i>&nbsp;Delete</a>
+         href="{% url 'blog:delete_comment' comment.id %}"><span
+              class="fad fa-trash-alt"></span>&nbsp;Delete</a>
     </div>
     {% endif %}
   </div>
@@ -129,15 +137,18 @@
   {% paginate %}
   {% endwith %}
   <div class="blog_comment_footer_add">
-    <a class='btn' href="{% url 'blog:add_comment' blog.slug %}"><i
-        class="fad fa-comment-lines"></i>&nbsp;Add
+    <a class='btn'
+       href="{% url 'blog:add_comment' blog.slug %}"><span
+            class="fad fa-comment-lines"></span>&nbsp;Add
       comment</a>
   </div>
   {% endif %}
 </section>
 <!-- End of comment display -->
 
-<div class="detail_home_btn"><a class="btn" href="{% url 'blog:index' %}"><i
-      class="fad fa-home"></i>&nbsp;Back to Index</a>
+<div class="detail_home_btn"><a class="btn"
+     href="{% url 'blog:index' %}"><span class="fad fa-home"></span>&nbsp;Back
+    to
+    Index</a>
 </div>
 {% endblock body %}

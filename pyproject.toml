@@ -27,8 +27,8 @@ psycopg2 = "^2.9.5"
 requests = "^2.28.2"
 gunicorn = "^20.1.0"
 django-likes = {git = "https://github.com/seapagan/django-likes.git", rev = "develop"}
-django-user-sessions = {git = "https://github.com/jazzband/django-user-sessions.git", rev = "a15cd695360d19eb608e1cf8684ea3d2529ba9f7"}
 dj-pagination = {git = "https://github.com/seapagan/dj-pagination.git", rev = "master"}
+django-user-sessions = "^2.0.0"
 
 
 [tool.poetry.group.dev.dependencies]

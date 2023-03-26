@@ -1,10 +1,26 @@
-# Django-based Blogging engine
+# Django-based Blogging engine <!-- omit in toc -->
 
 This application is a work in progress to write a blogging Engine in Django for
 my personal use, and release as OSS when it reaches that level.
 
 This README is very basic and will be updated as I add more functionality to the
 project.
+
+- [Progress](#progress)
+  - [Already Implemented](#already-implemented)
+  - [Minimum required before Release](#minimum-required-before-release)
+  - [Good to Have](#good-to-have)
+- [Installation and Usage](#installation-and-usage)
+  - [Install the dependencies](#install-the-dependencies)
+  - [Register for Google Recaptcha](#register-for-google-recaptcha)
+  - [Optionally add Google Analytics](#optionally-add-google-analytics)
+  - [Set up the .env file](#set-up-the-env-file)
+  - [Migrate the Database](#migrate-the-database)
+  - [Create a Superuser](#create-a-superuser)
+  - [Download GeoIP data if required](#download-geoip-data-if-required)
+  - [Run the Development server](#run-the-development-server)
+  - [Maintenance mode](#maintenance-mode)
+  - [Running behind a Proxy](#running-behind-a-proxy)
 
 ## Progress
 
@@ -97,9 +113,17 @@ From the root of the checked-out repository:
 
 ### Install the dependencies
 
-```bash
-pip install -r requirements.txt
+I have switched over to using [Poetry](https://python-poetry.org/) to have much
+better control of Dependencies. Please make sure that it is installed globally
+before continuing.
+
+```terminal
+poetry install
+poetry shell
 ```
+
+This will install all the dependencies and switch to a virtual environment ready
+to use the app.
 
 ### Register for Google Recaptcha
 
@@ -150,6 +174,7 @@ RECAPTCHA_PUBLIC_KEY="my_public_key"
 RECAPTCHA_PRIVATE_KEY="my_private_key"
 
 # Google analytics key - CHANGE TO YOUR OWN SITE-SPECIFIC KEY
+# This functionality is not currently working!
 GOOGLE_ANALYTICS_ENABLED=1
 GOOGLE_ANALYTICS_TAG='UA-1234567-1'
 ```

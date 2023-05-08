@@ -29,7 +29,7 @@ class OverwriteStorage(FileSystemStorage):
 
 
 def get_upload_path(instance, filename):
-    """Helper function to get a user-specific upload path.
+    """Define a helper function to get a user-specific upload path.
 
     We rename the file to "header_image" with the existing extension. This
     should stop the media dirs being cluttered if the image changes.
@@ -179,7 +179,7 @@ class SitePreferences(Preferences):
 
 
 def post_count(self):
-    """Helper function to get the count of posts with this tag."""
+    """Define a helper function to get the count of posts with this tag."""
     return self.posts.all().count()
 
 

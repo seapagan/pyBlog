@@ -39,11 +39,11 @@
     "--load-plugins",
     "pylint_django",
     "--django-settings-module",
-    "myblog.settings"
+    "pyblog.settings"
   ],
   "python.linting.pylintEnabled": true,
   "python.linting.pylintUseMinimalCheckers": false,
-  "python.pythonPath": "/home/seapagan/.pyenv/versions/myblog/bin/python",
+  "python.pythonPath": "./.venv/bin/python",
   "python.sortImports.args": ["--profile", "black", "--src=${workspaceFolder}"],
   "python.testing.nosetestsEnabled": false,
   "python.testing.promptToConfigure": false,

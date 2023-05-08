@@ -20,7 +20,7 @@ class OverwriteStorage(FileSystemStorage):
 
 
 def get_upload_path(instance, filename):
-    """Helper function to get a user-specific upload path."""
+    """Define a helper function to get a user-specific upload path."""
     ext = os.path.splitext(filename)[1]
     filename = "avatar" + ext
     full_path = os.path.join(

@@ -27,7 +27,7 @@
 * ~~Add a 'like' option to a post~~ `Functionality added, no option to 'unlike'
   a post (yet).
 * ~~Implement the 'Popular Posts' sidebar section
-  [[#32](https://github.com/seapagan/myblog/issues/32)]. This will need to wait
+  [[#32](https://github.com/seapagan/pyBlog/issues/32)]. This will need to wait
   until the 'likes' functionality is complete. Also, start logging unique page
   views somehow to help with this.~~
 * ~~Add draft mode for new posts~~
@@ -88,7 +88,7 @@
   name/email fields need to be stacked.~~
 * ~~Seems to be a bug now in the 'like' function - it redirects to 'vote was
   forbidden' but records the vote anyway.
-  [#54](https://github.com/seapagan/myblog/issues/54) [`FIXED`] but now the
+  [#54](https://github.com/seapagan/pyBlog/issues/54) [`FIXED`] but now the
   Ajax functionality does not work. To be investigated.~~ [`FIXED`]
 * ~~if we are on the first page, dont also display a post in the standard list if
   it is also pinned.~~ [`FIXED`]
@@ -105,19 +105,19 @@
   change.)~~
 * ~~When a draft post is published, the created_at date should change to the
   current date/time, not the original creation time.
-  [[#24](https://github.com/seapagan/myblog/issues/24)]~~ [`Fixed`]
+  [[#24](https://github.com/seapagan/pyBlog/issues/24)]~~ [`Fixed`]
 * ~~Cannot edit the title of a blog post. Add functionality to do this while
   either keeping the slug or generating a new slug but keeping the old one
   pointing at this post for external link security. Offer a choice? (If the post
   is draft we should definitely just change the slug)
-  [[#25](https://github.com/seapagan/myblog/issues/25)]~~
+  [[#25](https://github.com/seapagan/pyBlog/issues/25)]~~
 * If post has been renamed, redirect the old slug to the new slug automatically.
 * ~~Style the image upload widget for new/edit post.~~ Base work done for this,
   will need further styling when we redo the entire app.
 * ~~make sure front page link in sidebar doesn't show on front page.~~
 * Add Emoji reactions to posts and comments
 * ~~More work is needed on the form styles for small mobile devices.
-  [[#19](https://github.com/seapagan/myblog/issues/19)]~~
+  [[#19](https://github.com/seapagan/pyBlog/issues/19)]~~
 * ~~Make a default post image to use if one is not specified~~ `functionality
   complete with a dummy placeholder image which will need replaced before going
   live`. Also offer default ones based on tag and predefined ones?

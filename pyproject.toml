@@ -26,8 +26,8 @@ python-dotenv = "^1.0.0"
 psycopg2 = "^2.9.6"
 requests = "^2.29.0"
 gunicorn = "^20.1.0"
-django-likes = {git = "https://github.com/seapagan/django-likes.git", rev = "develop"}
-dj-pagination = {git = "https://github.com/seapagan/dj-pagination.git", rev = "master"}
+django-likes = { git = "https://github.com/seapagan/django-likes.git", rev = "develop" }
+dj-pagination = { git = "https://github.com/seapagan/dj-pagination.git", rev = "master" }
 django-user-sessions = "^2.0.0"
 
 
@@ -50,7 +50,32 @@ pep8-naming = "^0.13.3"
 poethepoet = "^0.20.0"
 pre-commit = "^3.3.1"
 flake8-pyproject = "^1.2.3"
+bandit = "^1.7.5"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+pre = "pre-commit run --all-files"
+serve = "python manage.py runserver"
+
+[tool.bandit]
+exclude_dirs = ["config/settings.py", "schemas/examples.py"]
+
+[tool.bandit.assert_used]
+skips = ['*_test.py', '*/test_*.py']
+
+[tool.pydocstyle]
+add-ignore = ["D104"]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+  "ignore::django.utils.deprecation.RemovedInDjango40Warning",
+  "ignore::django.utils.deprecation.RemovedInDjango41Warning",
+]
+
+[tool.flake8]
+exclude = ["__init__.py", ".git", "migrations", "plugins"]
+max-line-length = 80
+docstring-convention = "google"

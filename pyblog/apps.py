@@ -5,4 +5,4 @@ from django.contrib.admin.apps import AdminConfig
 class MyAdminConfig(AdminConfig):
     """Admin site configuration."""
 
-    default_site = "myblog.admin.MyAdminSite"
+    default_site = "pyblog.admin.MyAdminSite"

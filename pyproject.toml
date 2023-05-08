@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "myblog"
+name = "pyblog"
 version = "0.1.0"
 description = "Python-Based (Django) Blog Engine"
 authors = ["Grant Ramsay <seapagan@gmail.com>"]

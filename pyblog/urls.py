@@ -10,8 +10,8 @@ from blog.feeds import PostsFeed
 from blog.sitemaps import BlogSitemap, StaticSiteMap
 from users import views as user_views
 
-handler403 = "pyBlog.errors.views.custom403"
-handler404 = "pyBlog.errors.views.custom404"
+handler403 = "pyblog.errors.views.custom403"
+handler404 = "pyblog.errors.views.custom404"
 
 sitemaps = {"blog": BlogSitemap, "static": StaticSiteMap}
 

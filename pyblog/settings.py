@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 
 # only include the Admin paths if we are in DEBUG mode
 if DEBUG:
-    INSTALLED_APPS = ["pyBlog.apps.MyAdminConfig"] + INSTALLED_APPS
+    INSTALLED_APPS = ["pyblog.apps.MyAdminConfig"] + INSTALLED_APPS
 
 # Change this IF needed AND running the server behind a proxy.
 FIX_PROXY_IP = bool(int(os.getenv("FIX_PROXY_IP", 0)))
@@ -96,7 +96,7 @@ SILENCED_SYSTEM_CHECKS = ["admin.E410"]
 # location of GeoIP data
 GEOIP_PATH = BASE_DIR / "geoip"
 
-ROOT_URLCONF = "pyBlog.urls"
+ROOT_URLCONF = "pyblog.urls"
 
 TEMPLATES = [
     {
@@ -116,7 +116,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "pyBlog.wsgi.application"
+WSGI_APPLICATION = "pyblog.wsgi.application"
 
 
 # Database

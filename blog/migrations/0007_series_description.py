@@ -5,15 +5,14 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0006_alter_series_options'),
+        ("blog", "0006_alter_series_options"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='series',
-            name='description',
+            model_name="series",
+            name="description",
             field=ckeditor.fields.RichTextField(blank=True),
         ),
     ]

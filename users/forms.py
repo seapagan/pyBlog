@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import PasswordInput, TextInput
 
-from pyBlog.widgets.image import CustomImageField
+from pyblog.widgets.image import CustomImageField
 from users.models import Profile
 
 
@@ -21,6 +21,11 @@ class LoginForm(AuthenticationForm):
     )
 
     class Meta:
+        """Metadata for this class.
+
+        Remove the label for the captcha field.
+        """
+
         labels = {
             "captcha": "",
         }

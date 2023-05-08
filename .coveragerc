@@ -10,8 +10,8 @@ omit =
   */tests/*
   */static/*
   manage.py
-  myblog/asgi.py
-  myblog/wsgi.py
+  pyblog/asgi.py
+  pyblog/wsgi.py
 [report]
 show_missing = True
 skip_covered = True

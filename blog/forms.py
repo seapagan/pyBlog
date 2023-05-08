@@ -4,7 +4,7 @@ from captcha.widgets import ReCaptchaV2Checkbox
 from django import forms
 
 from blog.models import Blog, Comment
-from pyBlog.widgets.image import CustomImageField
+from pyblog.widgets.image import CustomImageField
 
 
 class NewCommentForm(forms.ModelForm):

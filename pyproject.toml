@@ -61,7 +61,7 @@ pre = "pre-commit run --all-files"
 serve = "python manage.py runserver"
 
 [tool.bandit]
-exclude_dirs = ["config/settings.py", "schemas/examples.py"]
+exclude_dirs = []
 
 [tool.bandit.assert_used]
 skips = ['*_test.py', '*/test_*.py']

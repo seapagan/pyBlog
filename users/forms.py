@@ -21,6 +21,11 @@ class LoginForm(AuthenticationForm):
     )
 
     class Meta:
+        """Metadata for this class.
+
+        Remove the label for the captcha field.
+        """
+
         labels = {
             "captcha": "",
         }

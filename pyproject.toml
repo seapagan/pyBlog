@@ -76,6 +76,6 @@ filterwarnings = [
 ]
 
 [tool.flake8]
-exclude = ["__init__.py", ".git", "migrations", "plugins"]
+exclude = ["__init__.py", ".git", "*/migrations/*.py", "plugins", "settings.py"]
 max-line-length = 80
 docstring-convention = "google"

@@ -6,6 +6,8 @@ from blog.models import Blog, Tag
 
 
 class CorrectMimeTypeFeed(DefaultFeed):
+    """Corrects the MIME type for the RSS feed."""
+
     content_type = "application/xml; charset=utf-8"
 
 
@@ -31,18 +33,18 @@ class PostsFeed(Feed):
         return item.desc
 
     def item_author_name(self, item):
-        """Returns the author's name."""
+        """Return the author's name."""
         return item.user.username.capitalize()
 
     def item_pubdate(self, item):
-        """Returns the post's published date."""
+        """Return the post's published date."""
         return item.created_at
 
     def item_updateddate(self, item):
-        """Returns the post's updated date."""
+        """Return the post's updated date."""
         return item.updated_at
 
     def item_categories(self, item):
-        """Returns the tags for this post as categories."""
+        """Return the tags for this post as categories."""
         tags = Tag.objects.filter(posts=item)
         return list(tags.values_list("tag_name", flat=True))

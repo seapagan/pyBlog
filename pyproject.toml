@@ -24,7 +24,7 @@ geoip2 = "^4.6.0"
 pillow = "^9.5.0"
 python-dotenv = "^1.0.0"
 psycopg2 = "^2.9.6"
-requests = "^2.30.0"
+requests = "^2.31.0"
 gunicorn = "^20.1.0"
 django-likes = { git = "https://github.com/seapagan/django-likes.git", rev = "develop" }
 dj-pagination = { git = "https://github.com/seapagan/dj-pagination.git", rev = "master" }

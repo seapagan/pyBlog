@@ -1901,13 +1901,13 @@ pytest = "*"
 
 [[package]]
 name = "pytest-reverse"
-version = "1.5.0"
+version = "1.6.0"
 description = "Pytest plugin to reverse test order."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pytest-reverse-1.5.0.tar.gz", hash = "sha256:71952dbcc09d0bbed88af33dab2d540298325cc6193a00b4bb037f380041d680"},
-    {file = "pytest_reverse-1.5.0-py3-none-any.whl", hash = "sha256:78ec5c8bab341403abf43a1e59e0f7499b7b0b897a54606f67e4f4d1ffc8b4cc"},
+    {file = "pytest_reverse-1.6.0-py3-none-any.whl", hash = "sha256:8b1a67b9f5d2c448ac0cffab282f07ab09cd852601f83ca9b0cb97bdac4a2fd4"},
+    {file = "pytest_reverse-1.6.0.tar.gz", hash = "sha256:b052f258958978fc327d5bcf3b1d3dc5f4ba80f0e7305e809664c7bb124eaf3e"},
 ]
 
 [package.dependencies]
@@ -2554,4 +2554,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "fdea1ebad491795f2d371ae5e616ffed38b358acf5ff07a5e8ad2e6173dc4331"
+content-hash = "7a47b3e4d7310c2f8f71d4a1b73a90fe5427d958a8b3f948d8341d18e3a8efec"

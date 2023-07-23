@@ -1016,20 +1016,19 @@ files = [
 
 [[package]]
 name = "geoip2"
-version = "4.6.0"
+version = "4.7.0"
 description = "MaxMind GeoIP2 API"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "geoip2-4.6.0-py2.py3-none-any.whl", hash = "sha256:745e2d7a665072690056f9566774727da89216c7858793f89804f6945f969714"},
-    {file = "geoip2-4.6.0.tar.gz", hash = "sha256:f0e80bce80b06bb38bd08bf4877d5a84e354e932095e6ccfb4d27bb598fa4f83"},
+    {file = "geoip2-4.7.0-py2.py3-none-any.whl", hash = "sha256:078fcd4cce26ea029b1e3252a0f0ec20a1f42e7ab0f19b7be3864f20f4db2b51"},
+    {file = "geoip2-4.7.0.tar.gz", hash = "sha256:3bdde4994f6bc917eafab5b51e772d737b2ae00037a5b85001fb06dc68f779df"},
 ]
 
 [package.dependencies]
 aiohttp = ">=3.6.2,<4.0.0"
-maxminddb = ">=2.2.0,<3.0.0"
+maxminddb = ">=2.3.0,<3.0.0"
 requests = ">=2.24.0,<3.0.0"
-urllib3 = ">=1.25.2,<2.0.0"
 
 [[package]]
 name = "gitdb"
@@ -1295,12 +1294,12 @@ traitlets = "*"
 
 [[package]]
 name = "maxminddb"
-version = "2.2.0"
+version = "2.4.0"
 description = "Reader for the MaxMind DB format"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "maxminddb-2.2.0.tar.gz", hash = "sha256:e37707ec4fab115804670e0fb7aedb4b57075a8b6f80052bdc648d3c005184e5"},
+    {file = "maxminddb-2.4.0.tar.gz", hash = "sha256:81e54e53408bd502650e5969ccba16780af659ec1db1c44b2c997e4330a5ed96"},
 ]
 
 [[package]]
@@ -2544,4 +2543,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "fa65c0247bf706131e1d6b826b78cc4b25a89df57bc46b8dddd016c489c1781c"
+content-hash = "9cb53b89d63dab67ca533473d20ca1f5eb51dd7b60c0627ff5afbc923d4976e7"

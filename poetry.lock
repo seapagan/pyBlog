@@ -610,13 +610,13 @@ django = "*"
 
 [[package]]
 name = "django-ckeditor"
-version = "6.5.1"
+version = "6.6.1"
 description = "Django admin CKEditor integration."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "django-ckeditor-6.5.1.tar.gz", hash = "sha256:57cd8fb7cd150adca354cd4e5c35a743fadaab7073f957d2b7167f0d9fe1fcaf"},
-    {file = "django_ckeditor-6.5.1-py3-none-any.whl", hash = "sha256:1321f24df392f30698513930ce5c9f6d899f9bd0ef734c3b64fe936d809e11b3"},
+    {file = "django-ckeditor-6.6.1.tar.gz", hash = "sha256:a804a98137058c00fc092aafc475e9491b2ca7c68c84d6ca12c4fa2453696017"},
+    {file = "django_ckeditor-6.6.1-py3-none-any.whl", hash = "sha256:44894c2a1050f58edcab6f9e631dbb63fa5532e7432a5650cfd878b6f33b0d46"},
 ]
 
 [package.dependencies]
@@ -2544,4 +2544,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "8546f79e0f57ad8c8a336626897bd804055c5231f3784a5305ca7703f4ffc06f"
+content-hash = "fa65c0247bf706131e1d6b826b78cc4b25a89df57bc46b8dddd016c489c1781c"

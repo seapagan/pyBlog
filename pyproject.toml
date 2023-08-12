@@ -23,7 +23,7 @@ dj-hitcount = "^1.3.0"
 geoip2 = "^4.7.0"
 pillow = "^10.0.0"
 python-dotenv = "^1.0.0"
-psycopg2 = "^2.9.6"
+psycopg2 = "^2.9.7"
 requests = "^2.31.0"
 gunicorn = "^20.1.0"
 django-likes = { git = "https://github.com/seapagan/django-likes.git", rev = "develop" }

@@ -12,7 +12,7 @@ class TagDetailView(DetailView):
     template_name = "blog/tag_detail.html"
 
     def get_context_data(self, **kwargs):
-        """Add posts and tags to this context, so we can use in the sidebar."""
+        """Add the page title context."""
         context = super().get_context_data(**kwargs)
         context["page_title"] = f"Posts tagged as '{self.object.tag_name}'"
 
@@ -27,7 +27,7 @@ class TagListView(ListView):
     ordering = [Lower("tag_name")]
 
     def get_context_data(self, **kwargs):
-        """Add posts and tags to this context, so we can use in the sidebar."""
+        """Add the page title context."""
         context = super().get_context_data(**kwargs)
         context["page_title"] = "Tags"
 

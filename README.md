@@ -1,4 +1,4 @@
-# Django-based Blogging engine <!-- omit in toc -->
+# pyBlog : A Django-based Blogging engine <!-- omit in toc -->
 
 This application is a work in progress to write a blogging Engine in Django for
 my personal use, and release as OSS when it reaches that level.

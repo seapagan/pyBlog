@@ -22,7 +22,7 @@ class OverwriteStorage(FileSystemStorage):
     """
 
     def get_available_name(self, name, max_length=None):
-        """Override the get_availiable_name, to delete existing file."""
+        """Override the get_available_name, to delete existing file."""
         self.delete(name)
         super().get_available_name(name, max_length)
         return name
@@ -97,7 +97,7 @@ class Blog(models.Model, HitCountModelMixin):
         return self.title
 
     def save(self, *args, **kwargs):
-        """Override the save fumction, so we can generate the slug."""
+        """Override the save function, so we can generate the slug."""
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 

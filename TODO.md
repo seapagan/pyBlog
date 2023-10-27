@@ -91,5 +91,9 @@
 * Add 'Follow on Twitter/Youtube etc' links to directly follow/subscribe to the
   relevant accounts. Offer to follow both site and post author.
 
+### Interal
+
+* Migrate to Ruff for Linting and Formatting
+
 [djc]: https://github.com/django-compressor/django-compressor
 [djc-postcss]: https://github.com/Pithikos/django-compressor-postcss

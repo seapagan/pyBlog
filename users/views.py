@@ -138,7 +138,7 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
         """Return the correct profile object."""
         return Profile.objects.get(user=self.request.user)
 
-    def get_context_data(self, **kwargs: dict[str, Any]) -> dict[str, Any]:
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
         """Add page_title to this context."""
         context = super().get_context_data(**kwargs)
         context[

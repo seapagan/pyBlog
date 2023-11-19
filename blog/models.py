@@ -100,7 +100,7 @@ class Blog(models.Model, HitCountModelMixin):
         """Return string representation of the Blog object."""
         return self.title
 
-    def save(self, *args: object, **kwargs: dict[str, Any]) -> None:
+    def save(self, *args, **kwargs) -> None:
         """Override the save function, so we can generate the slug."""
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)

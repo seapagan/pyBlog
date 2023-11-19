@@ -32,7 +32,7 @@ class NewCommentForm(forms.ModelForm):
             "guest_email": "your email",
         }
 
-    def __init__(self, *args: object, **kwargs) -> None:
+    def __init__(self, *args, **kwargs) -> None:
         """Override the init function to set the user."""
         self.user = kwargs.pop("user", None)
         super().__init__(*args, **kwargs)

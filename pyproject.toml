@@ -180,7 +180,12 @@ keep-runtime-typing = true
 
 [tool.mypy]
 python_version = "3.9"
-exclude = ["blog/migrations/", "manage.py"]
+exclude = [
+  "blog/migrations/",
+  "manage.py",
+  "pyblog/settings.py",
+  "preferences/",
+]
 plugins = ["mypy_django_plugin.main"]
 ignore_missing_imports = true
 

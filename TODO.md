@@ -2,7 +2,7 @@
 
 ## Important functionality
 
-* Optimize thumbnails of the post header image, create smalledr sized ones for
+* Optimize thumbnails of the post header image, create smaller sized ones for
   this when they are added/changed. Currently, the full size image is used and
   resized in the template which is slow and results in a large image being
   downloaded.
@@ -93,7 +93,7 @@
 
 ### Interal
 
-* Migrate to Ruff for Linting and Formatting
+* None
 
 [djc]: https://github.com/django-compressor/django-compressor
 [djc-postcss]: https://github.com/Pithikos/django-compressor-postcss

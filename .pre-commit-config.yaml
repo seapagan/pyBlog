@@ -24,7 +24,7 @@ repos:
     hooks:
       - id: pymarkdown
         name: "check markdown"
-        exclude: ^.github/|CHANGELOG
+        exclude: ^.github/|CHANGELOG|^blog/static/
         args: [-d, "MD046", scan]
 
   - repo: https://github.com/python-poetry/poetry

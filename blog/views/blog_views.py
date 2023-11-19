@@ -1,10 +1,13 @@
 """Define the views for the Blog Model."""
-from datetime import datetime
+from __future__ import annotations
+
+import datetime
+from typing import TYPE_CHECKING, Optional
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.exceptions import PermissionDenied
-from django.db.models import Q
+from django.db.models import Model, Q
 from django.db.models.functions import Lower
 from django.http import Http404
 from django.template.defaultfilters import slugify
@@ -12,10 +15,13 @@ from django.urls.base import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
 from hitcount.views import HitCountDetailView
+from preferences import preferences
 
 from blog.forms import EditPostForm, NewPostForm
 from blog.models import Blog, Redirect, Tag
-from preferences import preferences
+
+if TYPE_CHECKING:
+    from django.db.models.query import QuerySet
 
 
 class IndexClassView(ListView):
@@ -65,6 +71,8 @@ class PostDetailView(HitCountDetailView):
     template = "blog/detail.html"
     count_hit = True
 
+    MISSING_POST_ERROR = "That Post does not exist"
+
     def get_context_data(self, **kwargs):
         """Add page title to the context."""
         context = super().get_context_data(**kwargs)
@@ -94,7 +102,7 @@ class PostDetailView(HitCountDetailView):
         }
         return context
 
-    def get_object(self, queryset=None):
+    def get_object(self, queryset: Optional[QuerySet] = None):
         """Get the correct post object.
 
         Return 404 if the post is a draft.
@@ -102,16 +110,16 @@ class PostDetailView(HitCountDetailView):
         Return 404 if the slug is not found.
         """
         try:
-            obj = super().get_object()
+            obj = super().get_object(queryset)
         except Http404:
             slug_wanted = self.kwargs.get("slug")
             try:
                 redirect = Redirect.objects.get(old_slug=slug_wanted)
-            except Redirect.DoesNotExist:
-                raise Http404("Post does not exist")
+            except Redirect.DoesNotExist as exc:
+                raise Http404(self.MISSING_POST_ERROR) from exc
             obj = Blog.objects.get(pk=redirect.old_post_id)
         if obj.draft is True and self.request.user != obj.user:
-            raise Http404("That Page does not exist")
+            raise Http404(self.MISSING_POST_ERROR)
         return obj
 
 
@@ -224,8 +232,12 @@ class EditPostView(LoginRequiredMixin, UpdateView):
             # zero page view count
             form.instance.hit_count_generic.clear()
             # reset the created_at and updated_at time to right now
-            form.instance.created_at = datetime.now()
-            form.instance.updated_at = datetime.now()
+            form.instance.created_at = datetime.datetime.now(
+                tz=datetime.timezone.utc
+            )
+            form.instance.updated_at = datetime.datetime.now(
+                tz=datetime.timezone.utc
+            )
 
         return super().form_valid(form)
 
@@ -253,12 +265,12 @@ class EditPostView(LoginRequiredMixin, UpdateView):
         post_slug = slugify(self.object.title)
         return reverse("blog:detail", kwargs={"slug": post_slug})
 
-    def get_object(self, queryset=None):
+    def get_object(self, queryset: Optional[QuerySet] = None):
         """Ensure that the current logged in user owns the post.
 
         Also can edit if they are a superuser.
         """
-        obj = super().get_object()
+        obj = super().get_object(queryset)
 
         if (
             obj.user == self.request.user and self.request.user.profile.author
@@ -282,13 +294,15 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
 
         return context
 
-    def get_object(self, queryset=None):
+    def get_object(
+        self, queryset: Optional[QuerySet] = None
+    ) -> Model | PermissionDenied:
         """Ensure that the current logged in user owns the post.
 
         They must also still be tagged as an Author in their profile.
         Also can delete if they are a superuser.
         """
-        obj = super().get_object()
+        obj = super().get_object(queryset)
         if (
             obj.user == self.request.user and self.request.user.profile.author
         ) or self.request.user.is_superuser:
@@ -307,15 +321,12 @@ class SearchView(ListView):
         """Search for a post by title and content."""
         query = self.request.GET.get("q")
         if query:
-            blog_result = Blog.objects.filter(
+            return Blog.objects.filter(
                 Q(title__icontains=query) | Q(desc__icontains=query)
             )
             # will want to include tag names in this search, but they need to
             # return posts not tags. Further work needed.
-            # tag_result =Tag.objects.filter(tag_name__icontains=query)
-            # object_list = chain(blog_result)
-            object_list = blog_result
-            return object_list
+        return None
 
     def get_context_data(self, **kwargs):
         """Add page title to the context."""

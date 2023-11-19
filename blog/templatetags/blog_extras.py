@@ -36,7 +36,7 @@ def analytics():
     """Return the analytics tag from the environment."""
     context = {}
     context["tag"] = str(os.getenv("GOOGLE_ANALYTICS_TAG"))
-    context["enabled"] = bool(int(os.getenv("GOOGLE_ANALYTICS_ENABLED", 1)))
+    context["enabled"] = bool(int(os.getenv("GOOGLE_ANALYTICS_ENABLED", "1")))
     return context
 
 
@@ -71,8 +71,4 @@ def sidebar():
     )
     context["popular"] = popular_posts
 
-    #  empty each context (for troubleshooting)
-    # context["posts"] = ()
-    # context["tags"] = ()
-    # context["popular"] = ()
     return context

@@ -1,5 +1,5 @@
 """Define models used by the Users app."""
-import os
+from pathlib import Path
 
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
@@ -21,12 +21,9 @@ class OverwriteStorage(FileSystemStorage):
 
 def get_upload_path(instance, filename):
     """Define a helper function to get a user-specific upload path."""
-    ext = os.path.splitext(filename)[1]
+    ext = Path(filename).suffix
     filename = "avatar" + ext
-    full_path = os.path.join(
-        "profile_pictures", instance.user.username, filename
-    )
-    return full_path
+    return Path("profile_pictures" / instance.user.username / filename)
 
 
 class Profile(models.Model):
@@ -49,6 +46,6 @@ class Profile(models.Model):
     # set to true if the user can Author posts.
     author = models.BooleanField(default=False)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Return the string representation of this model."""
         return self.user.username

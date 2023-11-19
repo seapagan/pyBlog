@@ -1,8 +1,13 @@
 """Define the views for the Comment Model."""
 import smtplib
+from typing import Any, Optional
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
+from django.db.models import Model
+from django.db.models.query import QuerySet
+from django.forms import BaseModelForm
+from django.http import HttpResponse
 from django.http.response import Http404
 from django.urls.base import reverse
 from django.utils.html import strip_tags
@@ -12,6 +17,8 @@ from django.views.generic.edit import DeleteView, UpdateView
 from blog.forms import EditCommentForm, NewCommentForm
 from blog.models import Blog, Comment
 
+blog_detail_path = "blog:detail"
+
 
 class AddCommentView(CreateView):
     """Add a new comment to a specific post."""
@@ -20,7 +27,7 @@ class AddCommentView(CreateView):
     form_class = NewCommentForm
     template_name = "blog/comment_newcomment.html"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs: dict[str, Any]) -> dict[str, Any]:
         """Add extra context to the View.
 
         This allows us to access Post-related stuff like the title from inside
@@ -34,13 +41,13 @@ class AddCommentView(CreateView):
 
         return context
 
-    def get_form_kwargs(self):
+    def get_form_kwargs(self) -> dict[str, Any]:
         """Add the User to the form kwargs."""
         kwargs = super().get_form_kwargs()
         kwargs["user"] = self.request.user
         return kwargs
 
-    def form_valid(self, form):
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
         """Validate the form."""
         related_post = Blog.objects.get(slug=self.kwargs["slug"])
         form.instance.related_post_id = related_post.id
@@ -63,13 +70,13 @@ class AddCommentView(CreateView):
                 recipient_list=[related_post.user.email],
             )
         except smtplib.SMTPException as e:
-            print(f"Cant send email: {e}")
+            print(f"Cant send email: {e}")  # noqa: T201
 
         return super().form_valid(form)
 
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""
-        return reverse("blog:detail", kwargs={"slug": self.kwargs["slug"]})
+        return reverse(blog_detail_path, kwargs={"slug": self.kwargs["slug"]})
 
 
 class EditCommentView(LoginRequiredMixin, UpdateView):
@@ -79,7 +86,9 @@ class EditCommentView(LoginRequiredMixin, UpdateView):
     form_class = EditCommentForm
     template_name = "blog/comment_editcomment.html"
 
-    def get_context_data(self, **kwargs):
+    permission_denied_message = "You do not have permission to do that!"
+
+    def get_context_data(self, **kwargs: dict[str, Any]) -> dict[str, Any]:
         """Add extra context to the View."""
         context = super().get_context_data(**kwargs)
         context["page_title"] = "Edit Comment"
@@ -89,16 +98,16 @@ class EditCommentView(LoginRequiredMixin, UpdateView):
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""
         post_slug = Comment.objects.get(pk=self.kwargs["pk"]).related_post.slug
-        return reverse("blog:detail", kwargs={"slug": post_slug})
+        return reverse(blog_detail_path, kwargs={"slug": post_slug})
 
-    def get_object(self, queryset=None):
+    def get_object(self, queryset: Optional[QuerySet] = None) -> Model:
         """Ensure that the current logged in user owns the comment."""
-        obj = super().get_object()
+        obj = super().get_object(queryset)
         if (
             obj.created_by_user != self.request.user
             and not self.request.user.is_superuser
         ):
-            raise Http404("You Dont have permission to do that!")
+            raise Http404(self.permission_denied_message)
         return obj
 
 
@@ -107,7 +116,7 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
 
     model = Comment
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs: dict[str, Any]) -> dict[str, Any]:
         """Add extra context to the View."""
         context = super().get_context_data(**kwargs)
         context["page_title"] = "Delete Comment"
@@ -117,14 +126,14 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
     def get_success_url(self) -> str:
         """On success, return to the blog post we commented on."""
         post_slug = Comment.objects.get(pk=self.kwargs["pk"]).related_post.slug
-        return reverse("blog:detail", kwargs={"slug": post_slug})
+        return reverse(blog_detail_path, kwargs={"slug": post_slug})
 
-    def get_object(self, queryset=None):
+    def get_object(self, queryset: Optional[QuerySet] = None) -> Model:
         """Ensure that the current logged in user owns the comment."""
-        obj = super().get_object()
+        obj = super().get_object(queryset)
         if (
             obj.created_by_user != self.request.user
             and not self.request.user.is_superuser
         ):
-            raise Http404("You Dont have permission to do that!")
+            raise Http404(self.permission_denied_message)
         return obj

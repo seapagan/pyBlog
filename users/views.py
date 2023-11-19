@@ -1,17 +1,22 @@
 """Define views for the User App."""
 
+from typing import Any
+
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import DetailView, ListView, UpdateView
 
 from users.forms import EditProfileForm, LoginForm, RegisterForm
 from users.models import Profile
 
+ProfileContextType = dict[str, dict[str, str]]
 
-def get_profile_context(profile_object):
+
+def get_profile_context(profile_object) -> ProfileContextType:
     """Take the profile links and return a fuller dictionary."""
     my_profile = Profile.objects.filter(user=profile_object).values()[0]
     # remove certain fields that we dont want
@@ -68,7 +73,7 @@ def get_profile_context(profile_object):
     return final
 
 
-def register(request):
+def register(request: HttpRequest) -> HttpResponse:
     """Register a new user."""
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -112,7 +117,7 @@ class UserProfileView(DetailView):
     template_name = "users/user-profile.html"
     context_object_name = "person"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs: dict[str, Any]) -> dict[str, Any]:
         """Add links data to this context."""
         context = super().get_context_data(**kwargs)
         context["links"] = get_profile_context(self.object)
@@ -133,7 +138,7 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
         """Return the correct profile object."""
         return Profile.objects.get(user=self.request.user)
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
         """Add page_title to this context."""
         context = super().get_context_data(**kwargs)
         context[

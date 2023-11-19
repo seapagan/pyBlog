@@ -13,6 +13,7 @@ repository = "https://github.com/seapagan/pyBlog"
 "Bug Tracker" = "https://github.com/seapagan/pyBlog/issues"
 "Changelog" = "https://github.com/seapagan/pyBlog/blob/main/CHANGELOG.md"
 
+#  ------------------------------- dependencies --------------------------------
 [tool.poetry.dependencies]
 python = "^3.10"
 django = "^4.2"
@@ -78,6 +79,7 @@ django-stubs = { extras = ["compatible-mypy"], version = "^4.2.6" }
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+# ---------------------------------- poe tasks ---------------------------------
 [tool.poe.tasks]
 # Run the Django development server
 serve.cmd = "python manage.py runserver"
@@ -114,7 +116,7 @@ lint.help = "Run all linting checks"
 changelog.cmd = "github-changelog-md"
 changelog.help = "Generate the CHANGELOG.md file"
 
-# configure assorted tools and linters
+# -------------------- configure assorted tools and linters --------------------
 [tool.pymarkdown]
 plugins.md014.enabled = false
 plugins.md036.enabled = false
@@ -173,6 +175,7 @@ keep-runtime-typing = true
 python_version = "3.9"
 exclude = ["blog/migrations/", "manage.py"]
 plugins = ["mypy_django_plugin.main"]
+ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
 disable_error_code = ["method-assign", "no-untyped-def", "attr-defined"]

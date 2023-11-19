@@ -77,8 +77,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "dj_pagination.middleware.PaginationMiddleware",
     "likes.middleware.SecretBallotUserIpUseragentMiddleware",
-    "htmlmin.middleware.HtmlMinifyMiddleware",
-    "htmlmin.middleware.MarkRequestMiddleware",
+    # "htmlmin.middleware.HtmlMinifyMiddleware",
+    # "htmlmin.middleware.MarkRequestMiddleware",
 ]
 
 # Only load the XForwarded fix if explicitly required

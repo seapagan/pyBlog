@@ -1,4 +1,6 @@
 """Define the views for the Tag Model."""
+from typing import Any
+
 from django.db.models.functions import Lower
 from django.views.generic import DetailView, ListView
 
@@ -11,7 +13,7 @@ class TagDetailView(DetailView):
     model = Tag
     template_name = "blog/tag_detail.html"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
         """Add the page title context."""
         context = super().get_context_data(**kwargs)
         context["page_title"] = f"Posts tagged as '{self.object.tag_name}'"
@@ -26,7 +28,7 @@ class TagListView(ListView):
     template_name = "blog/tag/list.html"
     ordering = [Lower("tag_name")]
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
         """Add the page title context."""
         context = super().get_context_data(**kwargs)
         context["page_title"] = "Tags"

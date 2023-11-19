@@ -146,7 +146,12 @@ ignore = [
   "ANN",    # ignoring type errors for now. Django is a big PITA for this.
 ] # These rules are too strict even for us 😝
 extend-ignore = ["COM812", "ISC001"] # these are ignored for ruff formatting
-extend-exclude = ["migrations", "manage.py", "pyblog/settings.py"]
+extend-exclude = [
+  "migrations",
+  "manage.py",
+  "pyblog/settings.py",
+  "preferences",        # third-party app
+]
 
 src = ["blog", "pyBlog", "tests"]
 target-version = "py39"           # minimum python version supported

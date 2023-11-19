@@ -1,4 +1,6 @@
 """Custom widgets used by multiple apps."""
+from typing import Any
+
 from django.forms.widgets import ClearableFileInput
 
 
@@ -13,7 +15,7 @@ class CustomImageField(ClearableFileInput):
     add_text_label = "Add an Image"
     show_initial = False
 
-    def get_context(self, name, value, attrs):
+    def get_context(self, name: str, value, attrs) -> dict[str, Any]:
         """Add our new variables to the context."""
         context = super().get_context(name, value, attrs)
         context["widget"].update(

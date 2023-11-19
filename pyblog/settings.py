@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     "dj_pagination",
     "maintenance_mode",
     "secretballot",
-    "captcha",
+    "django_recaptcha",
     "likes",
     "blog",
     "users",
@@ -62,7 +62,7 @@ if DEBUG:
     INSTALLED_APPS = ["pyblog.apps.MyAdminConfig"] + INSTALLED_APPS
 
 # Change this IF needed AND running the server behind a proxy.
-FIX_PROXY_IP = bool(int(os.getenv("FIX_PROXY_IP", 0)))
+FIX_PROXY_IP = bool(int(os.getenv("FIX_PROXY_IP", "0")))
 
 
 MIDDLEWARE = [

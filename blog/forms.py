@@ -1,7 +1,9 @@
 """Define any forms used in the Blogs app."""
-from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV2Checkbox
+from typing import Any
+
 from django import forms
+from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV2Checkbox
 
 from blog.models import Blog, Comment
 from pyblog.widgets.image import CustomImageField
@@ -30,12 +32,12 @@ class NewCommentForm(forms.ModelForm):
             "guest_email": "your email",
         }
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args: object, **kwargs) -> None:
         """Override the init function to set the user."""
         self.user = kwargs.pop("user", None)
         super().__init__(*args, **kwargs)
 
-    def clean(self):
+    def clean(self) -> dict[str, Any]:
         """Overload the clean function to set validate comment fields."""
         super().clean()
 

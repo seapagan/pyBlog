@@ -16,7 +16,7 @@ handler404 = "pyblog.errors.views.custom404"
 sitemaps = {"blog": BlogSitemap, "static": StaticSiteMap}
 
 urlpatterns = (
-    [
+    [  # noqa: RUF005
         path(
             "sitemap.xml",
             sitemap,
@@ -26,13 +26,6 @@ urlpatterns = (
         path("feed/posts/", PostsFeed(), name="latest-posts-feed"),
         path("", include("blog.urls")),
         path("register/", user_views.register, name="register"),
-        # path(
-        #     "login/",
-        #     authentication_views.LoginView.as_view(
-        #         template_name="users/login.html"
-        #     ),
-        #     name="login",
-        # ),
         path("login/", user_views.CustomLoginView.as_view(), name="login"),
         path(
             "logout/",
@@ -63,4 +56,6 @@ urlpatterns = (
 
 # only include the Admin paths if we are in DEBUG mode
 if settings.DEBUG:
-    urlpatterns = [path("admin/", admin.site.urls)] + urlpatterns
+    urlpatterns = [  # noqa: RUF005
+        path("admin/", admin.site.urls),
+    ] + urlpatterns

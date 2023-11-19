@@ -1,5 +1,6 @@
 """Define the Database models for this application."""
-import os
+from pathlib import Path
+from typing import Any
 
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -9,9 +10,10 @@ from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+from django_stubs_ext.db.models import TypedModelMeta
+from git import Optional
 from hitcount.conf import settings as hitcount_settings
 from hitcount.mixins import HitCountModelMixin
-
 from preferences.models import Preferences
 
 
@@ -21,22 +23,24 @@ class OverwriteStorage(FileSystemStorage):
     Will delete any file with the same name.
     """
 
-    def get_available_name(self, name, max_length=None):
+    def get_available_name(
+        self, name: str, max_length: Optional[int] = None
+    ) -> str:
         """Override the get_available_name, to delete existing file."""
         self.delete(name)
         super().get_available_name(name, max_length)
         return name
 
 
-def get_upload_path(instance, filename):
+def get_upload_path(instance, filename: str) -> Path:
     """Define a helper function to get a user-specific upload path.
 
     We rename the file to "header_image" with the existing extension. This
     should stop the media dirs being cluttered if the image changes.
     """
-    ext = os.path.splitext(filename)[1]
+    ext = Path(filename).suffix.lower()
     filename = "header_image" + ext
-    return os.path.join("posts", instance.slug, filename)
+    return Path("posts") / instance.slug / filename
 
 
 class Blog(models.Model, HitCountModelMixin):
@@ -92,24 +96,24 @@ class Blog(models.Model, HitCountModelMixin):
 
         ordering = ["-created_at"]
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Return string representation of the Blog object."""
         return self.title
 
-    def save(self, *args, **kwargs):
+    def save(self, *args: object, **kwargs: dict[str, Any]) -> None:
         """Override the save function, so we can generate the slug."""
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> str:
         """Override get_absolute_url function."""
         return reverse("blog:detail", args=[self.slug])
 
-    def no_of_comments(self):
+    def no_of_comments(self) -> int:
         """Count comments on this post."""
         return Comment.objects.filter(related_post=self).count()
 
-    def has_image_meta(self):
+    def has_image_meta(self) -> bool:
         """Return true if this post has any image metadata."""
         return (
             self.image_attrib_name != ""
@@ -138,19 +142,19 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     body = RichTextField(config_name="comment", blank=True)
 
-    class Meta:
+    class Meta(TypedModelMeta):
         """Meta configuration for the Blog model."""
 
         ordering = ["created_at"]
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Return string representation of the Comment object."""
         return (
             f"Comment by '{self.get_commenter()}' "
             f"on post: '{self.related_post}'"
         )
 
-    def get_commenter(self):
+    def get_commenter(self) -> str:
         """Return either the logged in user name or temp user name."""
         return (
             self.created_by_user.username
@@ -178,7 +182,7 @@ class SitePreferences(Preferences):
         verbose_name_plural = "Site Preferences"
 
 
-def post_count(self):
+def post_count(self) -> int:
     """Define a helper function to get the count of posts with this tag."""
     return self.posts.all().count()
 
@@ -194,11 +198,11 @@ class Tag(models.Model):
     slug = models.SlugField(default="", unique=True)
     posts = models.ManyToManyField(Blog, blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Define the Text version of this object."""
         return f"{self.tag_name}"
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs: dict[str, Any]) -> None:
         """Override the save function, so we can generate the slug."""
         self.slug = slugify(self.tag_name)
         super().save(*args, **kwargs)
@@ -210,6 +214,6 @@ class Redirect(models.Model):
     old_slug = models.SlugField(default="", unique=True)
     old_post = models.ForeignKey(Blog, on_delete=models.CASCADE)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Define the Text version of this object."""
         return f"{self.old_slug} -> {self.old_post}"

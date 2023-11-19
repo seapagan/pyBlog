@@ -142,9 +142,11 @@ ignore = [
   "FBT002",
   "FBT003",
   "B006",
+  "RUF012", # this is a big pita to enforce and doubtful usageg in Django
+  "ANN",    # ignoring type errors for now. Django is a big PITA for this.
 ] # These rules are too strict even for us 😝
 extend-ignore = ["COM812", "ISC001"] # these are ignored for ruff formatting
-extend-exclude = ["migrations", "manage.py"]
+extend-exclude = ["migrations", "manage.py", "pyblog/settings.py"]
 
 src = ["blog", "pyBlog", "tests"]
 target-version = "py39"           # minimum python version supported

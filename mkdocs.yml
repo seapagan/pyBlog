@@ -1,0 +1,53 @@
+site_name: pyBLog
+repo_url: https://github.com/seapagan/pyBLog
+repo_name: seapagan/pyBLog
+
+dev_addr: "127.0.0.1:9000"
+
+theme:
+  name: material
+  palette:
+    primary: light-blue
+    accent: blue
+  features:
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.prune
+    - navigation.top
+    - toc.follow
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+      minify_css: true
+      minify_js: true
+      htmlmin_opts:
+        remove_comments: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/seapagan
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/gnramsay-dev
+
+copyright: © 2023 Grant Ramsay (Seapagan)
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - md_in_html
+  - pymdownx.highlight:
+      linenums: false
+      auto_title: false
+  - attr_list
+  - tables
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg

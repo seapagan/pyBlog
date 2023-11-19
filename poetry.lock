@@ -720,13 +720,13 @@ python-fsutil = ">=0.9.2,<1.0.0"
 
 [[package]]
 name = "django-recaptcha"
-version = "3.0.0"
+version = "4.0.0"
 description = "Django recaptcha form field/widget app."
 optional = false
 python-versions = "*"
 files = [
-    {file = "django-recaptcha-3.0.0.tar.gz", hash = "sha256:253197051288923cae675d7eff91b619e3775311292a5dbaf27a8a55ffebc670"},
-    {file = "django_recaptcha-3.0.0-py3-none-any.whl", hash = "sha256:1aed69fd6ac8fd9e99e52665392ae6748f8b6339ace656fad779fe0c6c915a52"},
+    {file = "django-recaptcha-4.0.0.tar.gz", hash = "sha256:5316438f97700c431d65351470d1255047e3f2cd9af0f2f13592b637dad9213e"},
+    {file = "django_recaptcha-4.0.0-py3-none-any.whl", hash = "sha256:0d912d5c7c009df4e47accd25029133d47a74342dbd2a8edc2877b6bffa971a3"},
 ]
 
 [package.dependencies]
@@ -2400,4 +2400,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "b823a5654c176b3f5dd49e9ede7a05b5203592902c2cea57fc69a0c0c5a3601d"
+content-hash = "5b2c676a35de53a3a2448fb74a490e9b78b3e103f21d9c2f12cffc2947b103bc"

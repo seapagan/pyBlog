@@ -16,26 +16,26 @@ repository = "https://github.com/seapagan/pyBlog"
 [tool.poetry.dependencies]
 python = "^3.10"
 django = "^4.2"
+dj-pagination = { git = "https://github.com/seapagan/dj-pagination.git", rev = "master" }
 django-ckeditor = "^6.7.0"
 django-compressor = "^4.4"
 django-gravatar2 = "^1.4.4"
 django-htmlmin = "^0.11.0"
+django-likes = { git = "https://github.com/seapagan/django-likes.git", rev = "develop" }
 django-maintenance-mode = "^0.19.0"
 django-recaptcha = "^3.0.0"
 django-rundevserver = "^0.3.1"
 django-secretballot = "^2.0.0"
+django-user-sessions = "^2.0.0"
 django-xforwardedfor-middleware = "^2.0"
 djangorestframework = "^3.14.0"
 dj-hitcount = "^1.3.0"
 geoip2 = "^4.7.0"
+gunicorn = "^21.2.0"
 pillow = "^10.1.0"
 python-dotenv = "^1.0.0"
 psycopg2 = "^2.9.9"
 requests = "^2.31.0"
-gunicorn = "^21.2.0"
-django-likes = { git = "https://github.com/seapagan/django-likes.git", rev = "develop" }
-dj-pagination = { git = "https://github.com/seapagan/dj-pagination.git", rev = "master" }
-django-user-sessions = "^2.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -53,13 +53,14 @@ faker = ">=19.2,<21.0"
 mock = "^5.1.0"
 pyfakefs = "^5.3.0"
 pytest = "^7.4.0"
+pytest-asyncio = "^0.21.1"
 pytest-cov = "^4.0.0"
-pytest-xdist = "^3.2.1"
-pytest-sugar = "^0.9.7"
+pytest-django = "^4.7.0"
+pytest-mock = "^3.11.1"
 pytest-randomly = "^3.13.0"
 pytest-reverse = "^1.7.0"
-pytest-asyncio = "^0.21.1"
-pytest-mock = "^3.11.1"
+pytest-sugar = "^0.9.7"
+pytest-xdist = "^3.2.1"
 
 # documentation
 mkdocs = "^1.4.3"
@@ -69,6 +70,9 @@ mkdocs-minify-plugin = "^0.7.0"
 mkdocs-git-revision-date-localized-plugin = "^1.2.0"
 pymdown-extensions = "^10.1"
 pygments = "^2.15.1"
+
+# type stubs
+django-stubs = { extras = ["compatible-mypy"], version = "^4.2.6" }
 
 [build-system]
 requires = ["poetry-core"]
@@ -82,7 +86,7 @@ serve.help = "Run the Django development server"
 # setup PoeThePoet tasks
 pre.cmd = "pre-commit run --all-files"
 pre.help = "Run pre-commit checks"
-mypy.cmd = "mypy github_changelog_md/**/*.py tests/**/*.py --strict"
+mypy.cmd = "mypy . --strict"
 mypy.help = "Run mypy checks"
 format.help = "Format code with Ruff"
 format.cmd = "ruff format ."
@@ -90,7 +94,7 @@ ruff.help = "Run Ruff checks"
 ruff.cmd = "ruff check ."
 test.help = "Run tests using Pytest"
 test.cmd = "pytest"
-markdown.cmd = "pymarkdown scan  -r github_changelog_md/**/*.md docs/**/*.md"
+markdown.cmd = "pymarkdown scan  -r *.md"
 markdown.help = "Run markdown checks"
 
 # run all linting checks in sequence. we want to run them all, even if one fails
@@ -120,10 +124,11 @@ plugins.md046.enabled = false
 addopts = ["--cov", "--cov-report", "term-missing", "--cov-report", "html"]
 filterwarnings = []
 mock_use_standalone_module = true
-pythonpath = ["github_changelog_md"]
+pythonpath = ["blog", "pyBlog"]
+DJANGO_SETTINGS_MODULE = "pyblog.settings"
 
 [tool.coverage.run]
-source = ["github_changelog_md"]
+source = ["blog", "pyBlog"]
 omit = ["*/tests/*"]
 
 [tool.ruff]
@@ -137,9 +142,10 @@ ignore = [
   "B006",
 ] # These rules are too strict even for us 😝
 extend-ignore = ["COM812", "ISC001"] # these are ignored for ruff formatting
+extend-exclude = ["migrations", "manage.py"]
 
-src = ["github_changelog_md"]
-target-version = "py39"       # minimum python version supported
+src = ["blog", "pyBlog", "tests"]
+target-version = "py39"           # minimum python version supported
 
 [tool.ruff.format]
 indent-style = "space"
@@ -163,6 +169,14 @@ known-first-party = ["blog", "pyblog", "users"]
 [tool.ruff.pyupgrade]
 keep-runtime-typing = true
 
+[tool.mypy]
+python_version = "3.9"
+exclude = ["blog/migrations/", "manage.py"]
+plugins = ["mypy_django_plugin.main"]
+
 [[tool.mypy.overrides]]
 disable_error_code = ["method-assign", "no-untyped-def", "attr-defined"]
 module = "tests.*"
+
+[tool.django-stubs]
+django_settings_module = "pyblog.settings"

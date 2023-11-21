@@ -60,7 +60,7 @@ pytest-mock = "^3.11.1"
 pytest-randomly = "^3.13.0"
 pytest-reverse = "^1.7.0"
 pytest-sugar = "^0.9.7"
-pytest-xdist = "^3.2.1"
+pytest-xdist = "^3.5.0"
 
 # documentation
 mkdocs = "^1.4.3"

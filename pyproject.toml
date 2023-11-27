@@ -68,7 +68,7 @@ mkdocs-autorefs = "^0.5.0"
 mkdocs-material = "^9.1.19"
 mkdocs-minify-plugin = "^0.7.0"
 mkdocs-git-revision-date-localized-plugin = "^1.2.0"
-pymdown-extensions = "^10.1"
+pymdown-extensions = "^10.5"
 pygments = "^2.15.1"
 
 # type stubs

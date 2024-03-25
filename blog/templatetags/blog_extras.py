@@ -1,4 +1,5 @@
 """Several custom Template tags to make things easier."""
+
 import os
 
 from django import template

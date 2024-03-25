@@ -1,4 +1,5 @@
 """Create the sitemap.xml file."""
+
 from django.contrib.sitemaps import Sitemap
 from django.urls.base import reverse
 

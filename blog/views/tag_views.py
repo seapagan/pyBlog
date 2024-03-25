@@ -1,4 +1,5 @@
 """Define the views for the Tag Model."""
+
 from typing import Any
 
 from django.db.models.functions import Lower

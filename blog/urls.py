@@ -1,4 +1,5 @@
 """Define URL patterns for the Blog app."""
+
 from django.urls import path
 
 from blog.views import blog_views, comment_views, tag_views

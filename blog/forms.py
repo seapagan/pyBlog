@@ -1,4 +1,5 @@
 """Define any forms used in the Blogs app."""
+
 from typing import Any
 
 from django import forms

@@ -1,4 +1,5 @@
 """Define the views for the Comment Model."""
+
 import smtplib
 from typing import Any, Optional
 

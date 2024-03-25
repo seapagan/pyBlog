@@ -1,4 +1,5 @@
 """Configure and customise the default Admin site."""
+
 from django.contrib import admin
 from django.db.models.functions import Lower
 from preferences.admin import PreferencesAdmin

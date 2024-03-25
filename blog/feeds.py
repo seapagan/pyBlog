@@ -1,4 +1,5 @@
 """Configure RSS feeds for the Blog model."""
+
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import DefaultFeed
 

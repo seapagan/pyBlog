@@ -1,4 +1,5 @@
 """Define the views for the Blog Model."""
+
 from __future__ import annotations
 
 import datetime

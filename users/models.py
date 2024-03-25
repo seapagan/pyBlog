@@ -1,4 +1,5 @@
 """Define models used by the Users app."""
+
 from pathlib import Path
 
 from django.contrib.auth.models import User

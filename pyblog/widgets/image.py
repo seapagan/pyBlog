@@ -1,4 +1,5 @@
 """Custom widgets used by multiple apps."""
+
 from typing import Any
 
 from django.forms.widgets import ClearableFileInput

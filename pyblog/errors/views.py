@@ -1,4 +1,5 @@
 """Override some default http error handlers."""
+
 from django.shortcuts import render
 
 

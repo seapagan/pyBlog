@@ -1,4 +1,5 @@
 """App configuration for blog app."""
+
 from django.apps import AppConfig
 
 

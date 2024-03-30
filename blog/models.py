@@ -1,4 +1,5 @@
 """Define the Database models for this application."""
+
 from pathlib import Path
 from typing import Any
 

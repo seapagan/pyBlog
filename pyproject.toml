@@ -134,6 +134,17 @@ omit = ["*/tests/*"]
 
 [tool.ruff]
 line-length = 80
+extend-exclude = [
+  "migrations",
+  "manage.py",
+  "pyblog/settings.py",
+  "preferences",        # third-party app
+]
+
+src = ["blog", "pyBlog", "tests"]
+target-version = "py39"           # minimum python version supported
+
+[tool.ruff.lint]
 select = ["ALL"] # we are being very strict!
 ignore = [
   "ANN101",
@@ -145,36 +156,27 @@ ignore = [
   "ANN",    # ignoring type errors for now. Django is a big PITA for this.
 ] # These rules are too strict even for us 😝
 extend-ignore = ["COM812", "ISC001"] # these are ignored for ruff formatting
-extend-exclude = [
-  "migrations",
-  "manage.py",
-  "pyblog/settings.py",
-  "preferences",        # third-party app
-]
-
-src = ["blog", "pyBlog", "tests"]
-target-version = "py39"           # minimum python version supported
 
 [tool.ruff.format]
 indent-style = "space"
 quote-style = "double"
 
-[tool.ruff.pep8-naming]
+[tool.ruff.lint.pep8-naming]
 classmethod-decorators = ["pydantic.validator", "pydantic.root_validator"]
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.ruff.extend-per-file-ignores]
+[tool.ruff.lint.extend-per-file-ignores]
 "tests/**/*.py" = [
   "S101",   # we can (and MUST!) use 'assert' in test files.
   "ANN001", # annotations for fixtures are sometimes a pain for test files.
 ]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["blog", "pyblog", "users"]
 
-[tool.ruff.pyupgrade]
+[tool.ruff.lint.pyupgrade]
 keep-runtime-typing = true
 
 [tool.mypy]

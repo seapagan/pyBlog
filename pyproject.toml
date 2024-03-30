@@ -72,7 +72,7 @@ pymdown-extensions = "^10.7"
 pygments = "^2.17.2"
 
 # type stubs
-django-stubs = { extras = ["compatible-mypy"], version = "^4.2.6" }
+django-stubs = { extras = ["compatible-mypy"], version = "^4.2.7" }
 
 [build-system]
 requires = ["poetry-core"]

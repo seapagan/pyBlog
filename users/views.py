@@ -104,9 +104,9 @@ class MyProfileView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context["links"] = get_profile_context(self.object_list)
         context["page_title"] = self.object_list.username.capitalize()
-        context[
-            "canonical"
-        ] = f"{self.request.build_absolute_uri()}{self.request.user.pk}/"
+        context["canonical"] = (
+            f"{self.request.build_absolute_uri()}{self.request.user.pk}/"
+        )
         return context
 
 
@@ -141,9 +141,9 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         """Add page_title to this context."""
         context = super().get_context_data(**kwargs)
-        context[
-            "page_title"
-        ] = f"Editing Profile for {self.request.user.username.capitalize()}"
+        context["page_title"] = (
+            f"Editing Profile for {self.request.user.username.capitalize()}"
+        )
         return context
 
 

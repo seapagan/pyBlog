@@ -40,7 +40,7 @@ requests = "^2.31.0"
 
 [tool.poetry.group.dev.dependencies]
 # linting, type-checking and security checks
-pre-commit = "^3.3.3"
+pre-commit = "^3.7.1"
 pymarkdownlnt = "^0.9.12"
 mypy = "^1.4.1"
 ruff = "^0.3.4"

@@ -46,7 +46,7 @@ mypy = "^1.4.1"
 ruff = "^0.3.4"
 
 # task runner
-poethepoet = ">=0.21.1,<0.25.0"
+poethepoet = ">=0.21.1,<0.28.0"
 
 # testing
 faker = ">=19.2,<25.0"

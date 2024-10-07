@@ -2,7 +2,7 @@ ci:
   autofix_commit_msg: "[pre-commit.ci] auto fixes from pre-commit.com hooks [dependabot skip]"
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v5.0.0
     hooks:
       - id: check-yaml
         args: [--unsafe]
@@ -12,7 +12,7 @@ repos:
       - id: end-of-file-fixer
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.3.4
+    rev: v0.6.9
     hooks:
       - id: ruff
         name: "lint with ruff"
@@ -20,7 +20,7 @@ repos:
         name: "format with ruff"
 
   - repo: https://github.com/jackdewinter/pymarkdown
-    rev: v0.9.18
+    rev: v0.9.23
     hooks:
       - id: pymarkdown
         name: "check markdown"
@@ -34,7 +34,7 @@ repos:
         name: "check poetry files"
       # - id: poetry-lock
   - repo: https://github.com/python-poetry/poetry-plugin-export
-    rev: "1.7.1"
+    rev: "1.8.0"
     hooks:
       - id: poetry-export
         name: "export production dependencies"

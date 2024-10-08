@@ -12,7 +12,6 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django_stubs_ext.db.models import TypedModelMeta
-
 from hitcount.conf import settings as hitcount_settings
 from hitcount.mixins import HitCountModelMixin
 from preferences.models import Preferences

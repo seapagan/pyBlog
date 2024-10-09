@@ -255,3 +255,4 @@ geoip/*.mmdb
 newrelic.ini
 pyblog/maintenance_mode_state.txt
 .changelog_generator.toml
+.envrc

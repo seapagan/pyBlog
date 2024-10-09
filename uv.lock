@@ -396,19 +396,6 @@ wheels = [
 ]
 
 [[package]]
-name = "django-ckeditor"
-version = "6.7.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "django" },
-    { name = "django-js-asset" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/d5/64/8d465c32de704e766fa3e85f0205825ba7db7497b0c1440b5160b31ae4c1/django-ckeditor-6.7.1.tar.gz", hash = "sha256:7144f9ead662306266c728912487313b3b87ba2abf9dbb82c447f662ce25d1f7", size = 1725957 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/69/b7/0b3f6ff07c0635152da129532ce0a305e7d3239a15e2a1fc710904d5e3b6/django_ckeditor-6.7.1-py3-none-any.whl", hash = "sha256:55b5f9ce3af47e3c8a8ed37d42be8439da2a664d6e571c2247c1db5c96459dd7", size = 2454834 },
-]
-
-[[package]]
 name = "django-compressor"
 version = "4.5.1"
 source = { registry = "https://pypi.org/simple" }
@@ -439,18 +426,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/7c/51/e3a278d7f9a505abeccf7b12995b1d24c3f22657fee30ac39ca5b64af293/django_gravatar2-1.4.5.tar.gz", hash = "sha256:2dbb56465e395dd8b3920d4017e27a4756912cc2ad9b11ba48cf143871a80364", size = 10444 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/95/e3/22cd408d91f1732582dc266654e8cbc10a5e8c9e8036f299e70bea6827ea/django_gravatar2-1.4.5-py2.py3-none-any.whl", hash = "sha256:7e6c8f63f59b0077d42402531684807ea6295867ebd2195a638d87b851f0d41c", size = 8180 },
-]
-
-[[package]]
-name = "django-js-asset"
-version = "2.2.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "django" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/28/bb/04accb19b0c0b6d835a393c20f04dfc379648e8cd6654c045e4d843ad527/django_js_asset-2.2.0.tar.gz", hash = "sha256:0c57a82cae2317e83951d956110ce847f58ff0cdc24e314dbc18b35033917e94", size = 7904 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/dc/4d/5bb8c351f2515a616576a4218c736af081edf0dd4d1eead1c7e880f74c0e/django_js_asset-2.2.0-py3-none-any.whl", hash = "sha256:7ef3e858e13d06f10799b56eea62b1e76706f42cf4e709be4e13356bc0ae30d8", size = 4704 },
 ]
 
 [[package]]
@@ -1340,7 +1315,6 @@ dependencies = [
     { name = "dj-hitcount" },
     { name = "dj-pagination" },
     { name = "django" },
-    { name = "django-ckeditor" },
     { name = "django-compressor" },
     { name = "django-gravatar2" },
     { name = "django-likes" },
@@ -1391,7 +1365,6 @@ requires-dist = [
     { name = "dj-hitcount", specifier = ">=1.3.0" },
     { name = "dj-pagination", git = "https://github.com/seapagan/dj-pagination.git?branch=master" },
     { name = "django", specifier = ">=5.1.2" },
-    { name = "django-ckeditor", specifier = ">=6.7.1" },
     { name = "django-compressor", specifier = ">=4.5.1" },
     { name = "django-gravatar2", specifier = ">=1.4.5" },
     { name = "django-likes", git = "https://github.com/seapagan/django-likes.git?branch=develop" },

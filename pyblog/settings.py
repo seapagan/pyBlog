@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     "compressor",
     "django.forms",
     "django_gravatar",
-    "ckeditor",
-    "ckeditor_uploader",
     "dj_pagination",
     "maintenance_mode",
     "secretballot",

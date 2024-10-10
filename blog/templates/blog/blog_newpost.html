@@ -7,26 +7,19 @@
   <div class="new_post_user">You are Logged in as
     <strong>{{ user.username }}</strong>
   </div>
-  <form method="post"
-        enctype="multipart/form-data">
-
+  <form method="post">
     {% include 'blog/common/post_form.html' %}
 
     <div class="new_post_buttons">
-      <button class="btn btn_alt"
-              type="submit"
-              name="draft"
-              value="Draft">
+      <button class="btn btn_alt" type="submit" name="draft" value="Draft">
         <span class="fad fa-save"></span>
         &nbsp;Save as DRAFT
       </button>
-      <button class="btn btn_success"
-              type="submit">
+      <button class="btn btn_success" type="submit">
         <span class="fad fa-comment-alt-check"></span>
         &nbsp;Publish!
       </button>
-      <a class="btn"
-         href="{% url 'blog:index' %}">
+      <a class="btn" href="{% url 'blog:index' %}">
         <span class="fad fa-ban"></span>
         &nbsp;Cancel</a>
     </div>

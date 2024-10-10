@@ -18,7 +18,7 @@ class PostsFeed(Feed):
     title = "Tek:Cited Posts"
     link = "/"
     description = "Updates from Tek:Cited."
-    feed_copyright = "Copyright (c) 2021, Seapagan"
+    feed_copyright = "Copyright (c) 2021-2024, Seapagan"
     feed_type = CorrectMimeTypeFeed
 
     def items(self):

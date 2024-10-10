@@ -345,11 +345,11 @@ sdist = { url = "https://files.pythonhosted.org/packages/f1/2a/8c3ac3d8bc94e6de8
 
 [[package]]
 name = "distlib"
-version = "0.3.8"
+version = "0.3.9"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c4/91/e2df406fb4efacdf46871c25cde65d3c6ee5e173b7e5a4547a47bae91920/distlib-0.3.8.tar.gz", hash = "sha256:1530ea13e350031b6312d8580ddb6b27a104275a31106523b8f123787f494f64", size = 609931 }
+sdist = { url = "https://files.pythonhosted.org/packages/0d/dd/1bec4c5ddb504ca60fc29472f3d27e8d4da1257a854e1d96742f15c1d02d/distlib-0.3.9.tar.gz", hash = "sha256:a60f20dea646b8a33f3e7772f74dc0b2d0772d2837ee1342a00645c81edf9403", size = 613923 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8e/41/9307e4f5f9976bc8b7fea0b66367734e8faf3ec84bc0d412d8cfabbb66cd/distlib-0.3.8-py2.py3-none-any.whl", hash = "sha256:034db59a0b96f8ca18035f36290806a9a6e6bd9d1ff91e45a7f172eb17e51784", size = 468850 },
+    { url = "https://files.pythonhosted.org/packages/91/a1/cf2472db20f7ce4a6be1253a81cfdf85ad9c7885ffbed7047fb72c24cf87/distlib-0.3.9-py2.py3-none-any.whl", hash = "sha256:47f8c22fd27c27e25a65601af709b38e4f0a45ea4fc2e710f65755fa8caaaf87", size = 468973 },
 ]
 
 [[package]]
@@ -393,6 +393,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/65/e0/704b6453f21fac22f0ab128150e9782b7d38bc1ed09710ac2197ddc1751f/django-appconf-1.0.6.tar.gz", hash = "sha256:cfe87ea827c4ee04b9a70fab90b86d704cb02f2981f89da8423cb0fabf88efbf", size = 15895 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c0/98/1cb3d9e8b1c6d0a74539b998474796fc5c0c0888b6201e5c95ba2f7a0677/django_appconf-1.0.6-py3-none-any.whl", hash = "sha256:c3ae442fba1ff7ec830412c5184b17169a7a1e71cf0864a4c3f93cf4c98a1993", size = 6424 },
+]
+
+[[package]]
+name = "django-ckeditor-5"
+version = "0.2.13"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "pillow" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e7/a0/feca2ff2a1896db89e1bc104b426014da9482502d061df1b5e24b2e60344/django_ckeditor_5-0.2.13.tar.gz", hash = "sha256:76fa26bdd65842262be7deb1b4cdb419cb080c89c62e0af933dfdd035b13b688", size = 2458662 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7c/f6/0550beb0d56331b2ac52742d574a6e5e8ab0c03a9677039479fc64da52e6/django_ckeditor_5-0.2.13-py3-none-any.whl", hash = "sha256:0850402680fb6b9dc255b1883910173ed37cc28906712558008f1d5a29045e6f", size = 2504195 },
 ]
 
 [[package]]
@@ -1315,6 +1328,7 @@ dependencies = [
     { name = "dj-hitcount" },
     { name = "dj-pagination" },
     { name = "django" },
+    { name = "django-ckeditor-5" },
     { name = "django-compressor" },
     { name = "django-gravatar2" },
     { name = "django-likes" },
@@ -1365,6 +1379,7 @@ requires-dist = [
     { name = "dj-hitcount", specifier = ">=1.3.0" },
     { name = "dj-pagination", git = "https://github.com/seapagan/dj-pagination.git?branch=master" },
     { name = "django", specifier = ">=5.1.2" },
+    { name = "django-ckeditor-5", specifier = ">=0.2.13" },
     { name = "django-compressor", specifier = ">=4.5.1" },
     { name = "django-gravatar2", specifier = ">=1.4.5" },
     { name = "django-likes", git = "https://github.com/seapagan/django-likes.git?branch=develop" },

@@ -31,7 +31,9 @@ repos:
   #     - id: mypy
   #       name: "run mypy"
   #       additional_dependencies:
-  #         - "types-requests"
+  #         - "django-stubs"
+  #         - "python-dotenv"
+  #         - "django-user-sessions"
 
   - repo: https://github.com/astral-sh/uv-pre-commit
     # uv version.

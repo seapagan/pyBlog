@@ -49,6 +49,7 @@ urlpatterns = (
         path("likes/", include("likes.urls")),
         path("maintenance-mode/", include("maintenance_mode.urls")),
         path("", include("user_sessions.urls", "user_sessions")),
+        path("ckeditor5/", include("django_ckeditor_5.urls")),
     ]
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

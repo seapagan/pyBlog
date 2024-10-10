@@ -1,4 +1,5 @@
 {% csrf_token %}
+{{ form.errors }}
 {{ form.media }}
 {% for field in form %}
 {% comment %} first loop on form fields {% endcomment %}

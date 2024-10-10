@@ -345,11 +345,11 @@ sdist = { url = "https://files.pythonhosted.org/packages/f1/2a/8c3ac3d8bc94e6de8
 
 [[package]]
 name = "distlib"
-version = "0.3.8"
+version = "0.3.9"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c4/91/e2df406fb4efacdf46871c25cde65d3c6ee5e173b7e5a4547a47bae91920/distlib-0.3.8.tar.gz", hash = "sha256:1530ea13e350031b6312d8580ddb6b27a104275a31106523b8f123787f494f64", size = 609931 }
+sdist = { url = "https://files.pythonhosted.org/packages/0d/dd/1bec4c5ddb504ca60fc29472f3d27e8d4da1257a854e1d96742f15c1d02d/distlib-0.3.9.tar.gz", hash = "sha256:a60f20dea646b8a33f3e7772f74dc0b2d0772d2837ee1342a00645c81edf9403", size = 613923 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8e/41/9307e4f5f9976bc8b7fea0b66367734e8faf3ec84bc0d412d8cfabbb66cd/distlib-0.3.8-py2.py3-none-any.whl", hash = "sha256:034db59a0b96f8ca18035f36290806a9a6e6bd9d1ff91e45a7f172eb17e51784", size = 468850 },
+    { url = "https://files.pythonhosted.org/packages/91/a1/cf2472db20f7ce4a6be1253a81cfdf85ad9c7885ffbed7047fb72c24cf87/distlib-0.3.9-py2.py3-none-any.whl", hash = "sha256:47f8c22fd27c27e25a65601af709b38e4f0a45ea4fc2e710f65755fa8caaaf87", size = 468973 },
 ]
 
 [[package]]
@@ -396,16 +396,16 @@ wheels = [
 ]
 
 [[package]]
-name = "django-ckeditor"
-version = "6.7.1"
+name = "django-ckeditor-5"
+version = "0.2.13"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
-    { name = "django-js-asset" },
+    { name = "pillow" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d5/64/8d465c32de704e766fa3e85f0205825ba7db7497b0c1440b5160b31ae4c1/django-ckeditor-6.7.1.tar.gz", hash = "sha256:7144f9ead662306266c728912487313b3b87ba2abf9dbb82c447f662ce25d1f7", size = 1725957 }
+sdist = { url = "https://files.pythonhosted.org/packages/e7/a0/feca2ff2a1896db89e1bc104b426014da9482502d061df1b5e24b2e60344/django_ckeditor_5-0.2.13.tar.gz", hash = "sha256:76fa26bdd65842262be7deb1b4cdb419cb080c89c62e0af933dfdd035b13b688", size = 2458662 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/69/b7/0b3f6ff07c0635152da129532ce0a305e7d3239a15e2a1fc710904d5e3b6/django_ckeditor-6.7.1-py3-none-any.whl", hash = "sha256:55b5f9ce3af47e3c8a8ed37d42be8439da2a664d6e571c2247c1db5c96459dd7", size = 2454834 },
+    { url = "https://files.pythonhosted.org/packages/7c/f6/0550beb0d56331b2ac52742d574a6e5e8ab0c03a9677039479fc64da52e6/django_ckeditor_5-0.2.13-py3-none-any.whl", hash = "sha256:0850402680fb6b9dc255b1883910173ed37cc28906712558008f1d5a29045e6f", size = 2504195 },
 ]
 
 [[package]]
@@ -439,18 +439,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/7c/51/e3a278d7f9a505abeccf7b12995b1d24c3f22657fee30ac39ca5b64af293/django_gravatar2-1.4.5.tar.gz", hash = "sha256:2dbb56465e395dd8b3920d4017e27a4756912cc2ad9b11ba48cf143871a80364", size = 10444 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/95/e3/22cd408d91f1732582dc266654e8cbc10a5e8c9e8036f299e70bea6827ea/django_gravatar2-1.4.5-py2.py3-none-any.whl", hash = "sha256:7e6c8f63f59b0077d42402531684807ea6295867ebd2195a638d87b851f0d41c", size = 8180 },
-]
-
-[[package]]
-name = "django-js-asset"
-version = "2.2.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "django" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/28/bb/04accb19b0c0b6d835a393c20f04dfc379648e8cd6654c045e4d843ad527/django_js_asset-2.2.0.tar.gz", hash = "sha256:0c57a82cae2317e83951d956110ce847f58ff0cdc24e314dbc18b35033917e94", size = 7904 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/dc/4d/5bb8c351f2515a616576a4218c736af081edf0dd4d1eead1c7e880f74c0e/django_js_asset-2.2.0-py3-none-any.whl", hash = "sha256:7ef3e858e13d06f10799b56eea62b1e76706f42cf4e709be4e13356bc0ae30d8", size = 4704 },
 ]
 
 [[package]]
@@ -1340,7 +1328,7 @@ dependencies = [
     { name = "dj-hitcount" },
     { name = "dj-pagination" },
     { name = "django" },
-    { name = "django-ckeditor" },
+    { name = "django-ckeditor-5" },
     { name = "django-compressor" },
     { name = "django-gravatar2" },
     { name = "django-likes" },
@@ -1391,7 +1379,7 @@ requires-dist = [
     { name = "dj-hitcount", specifier = ">=1.3.0" },
     { name = "dj-pagination", git = "https://github.com/seapagan/dj-pagination.git?branch=master" },
     { name = "django", specifier = ">=5.1.2" },
-    { name = "django-ckeditor", specifier = ">=6.7.1" },
+    { name = "django-ckeditor-5", specifier = ">=0.2.13" },
     { name = "django-compressor", specifier = ">=4.5.1" },
     { name = "django-gravatar2", specifier = ">=1.4.5" },
     { name = "django-likes", git = "https://github.com/seapagan/django-likes.git?branch=develop" },

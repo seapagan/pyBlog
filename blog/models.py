@@ -3,14 +3,13 @@
 from pathlib import Path
 from typing import Any, Optional
 
-from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+from django_ckeditor_5.fields import CKEditor5Field
 from django_stubs_ext.db.models import TypedModelMeta
 from hitcount.conf import settings as hitcount_settings
 from hitcount.mixins import HitCountModelMixin
@@ -56,7 +55,7 @@ class Blog(models.Model, HitCountModelMixin):
     desc = models.CharField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    body = RichTextUploadingField(config_name="post")
+    body = CKEditor5Field("Post", config_name="extends")
     slug = models.SlugField(default="", unique=True)
     image = models.ImageField(
         upload_to=get_upload_path,
@@ -140,7 +139,7 @@ class Comment(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    body = RichTextField(config_name="comment", blank=True)
+    body = CKEditor5Field("Comment", config_name="extends")
 
     class Meta(TypedModelMeta):
         """Meta configuration for the Blog model."""
